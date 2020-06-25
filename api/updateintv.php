@@ -10,8 +10,6 @@ if($cursor)
     $mail->isHTML(true);   
 
     $invname=$_POST['intv'];
-    $date=$_POST['date'];
-    $time=$_POST['time'];
     $oldintv=$_POST['oldintv'];
     $emails = $_POST['emails'];
     $ctr = 0;
@@ -33,8 +31,9 @@ if($cursor)
                     "prf"=>$digit13[0],
                     "pos"=>$digit13[1],
                     "intvmail"=>$_POST['intv'],
-                    ));
+                    ),array('projection' => array('intvmail'=>1)));
             $res=count($res);
+            // echo json_encode($res);
             //END - Check whether the new interviewer exists or not
 
             //Start -If new interviewer exists
@@ -85,7 +84,7 @@ if($cursor)
                                 "prf"=>$digit13[0],
                                 "intvmail"=>$_POST['oldintv'],
                                 ),
-                            array('$set'=>array("reject"=>"Assigned To Other Interviewer","invstatus"=>"0")));
+                            array('$set'=>array("reject"=>"Assigned To Other Interviewer","invstatus"=>"0","accepted"=>"no")));
                         
                         foreach($emails as $d)
                         {
@@ -106,7 +105,7 @@ if($cursor)
                     else
                     {
                         //Start - Create new document if the new interviewer doesnt exists.
-                        $result=$db->interviews->updateOne(array("rid"=>$digit13[3],"prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"intvmail"=>$_POST['oldintv']),array('$set'=>array("intvmail"=>$_POST['intv'],"invname"=>$_POST['iname'],"designation"=>$_POST['idesg'],"dept"=>$_POST['idept'],"dates"=>$dates,"moddates"=>$dates,"times"=>$times,"modtimes"=>$times,"ilocation"=>$_POST['iloc'],"iperson"=>$_POST['iperson'],"invstatus"=>"0")));
+                        $result=$db->interviews->updateOne(array("rid"=>$digit13[3],"prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"intvmail"=>$_POST['oldintv']),array('$set'=>array("intvmail"=>$_POST['intv'],"invname"=>$_POST['iname'],"designation"=>$_POST['idesg'],"dept"=>$_POST['idept'],"dates"=>$dates,"moddates"=>$dates,"times"=>$times,"modtimes"=>$times,"ilocation"=>$_POST['iloc'],"iperson"=>$_POST['iperson'],"invstatus"=>"0","accepted"=>"no")));
                         //END - Create new document if the new interviewer doesnt exists.
                     }
         

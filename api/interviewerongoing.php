@@ -83,8 +83,8 @@ if($cursor)
 
 
     //newly added
-
-    $criteria=array("status"=>"ristart","prf"=>$digit13[0],"pos"=>$digit13[1],"rid"=>$rid,'iid'=>$digit13[2],"dept"=>$_POST['posdept'],"poszone"=>$_POST['poszone']);
+    $result3 = $db->prfs->findOne(array("prf"=>$digit13[0]));
+    $criteria=array("status"=>"ristart","prf"=>$digit13[0],"pos"=>$digit13[1],"rid"=>$rid,'iid'=>$digit13[2],"dept"=>$_POST['posdept'],"poszone"=>$_POST['poszone'],"position"=>$result3['position']);
         
     foreach($_POST['emails'] as $d)
     {
