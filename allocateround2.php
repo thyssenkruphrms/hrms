@@ -52,7 +52,7 @@ if(isset($_COOKIE['sid']))
     </div>
     <div class="modal-footer">
       <center>
-      <a class="modal-close waves-effect green btn" >OK<i class="material-icons left" >check_box</i></a>
+      <a class="modal-close waves-effect green btn" href="http://localhost/hrms/hrdash.php">OK<i class="material-icons left" >check_box</i></a>
       </center>
     </div>
   </div>
@@ -94,6 +94,11 @@ if(isset($_COOKIE['sid']))
                             <table class="striped">
                                 <thead>
                                   <tr>
+                                      <th>Instance ID</th>
+                                      <th>Position Details</th>
+                                      <th>Zone</th>
+                                      <th>Department</th>
+                                      <th>No. of Positions</th>
                                       <th>PRF-POSITION-INSTANCE-ROUND</th>
                                       <th>Interviewer Name</th>
 
@@ -226,8 +231,8 @@ $(document).ready(function(){
           var s6='<tr id="intvmail row">'
           var s7='<tr id="reason row">'
         
-          var s2='<td>'
-          var s3='<b>'+appended+'</b></td><td>'
+          var s2='<td>'+arr[i]['prf']+'</td><td>'+arr[i]['posdetails']+'</td><td>'+arr[i]['poszone']+'</td><td>'+arr[i]['dept']+'</td><td>'+arr[i]['position']+'</td>'
+          var s3='<td><b>'+appended+'</b></td><td>'
           var s8='<p >'+arr[i]['intvmail']+'</p></td><td>'
           var s9='<p >'+reason+'</p></td><td>'
           var s10='<p>'+arr[i]['invname']+'</p></td><td>'

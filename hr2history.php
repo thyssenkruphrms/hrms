@@ -88,7 +88,7 @@ width: 350%;
         </div>
         <div class="modal-footer">
         <center>
-        <a class="modal-close waves-effect green btn" >OK<i class="material-icons left" >check_box</i></a>
+        <a class="modal-close waves-effect green btn" href="http://localhost/hrms/hr2dash.php" >OK<i class="material-icons left" >check_box</i></a>
         </center>
         </div>
     </div>
@@ -124,10 +124,15 @@ width: 350%;
     <thead>
       <tr>
           <th>PRF</th>
-          <th>POSITION</th>
-          <th>NAME</th>
-          <th>MEMBERS</th>
-          <th>STATUS</th>
+          <th>Position Details</th>
+          <th>Zone</th>
+          <th>Department</th>
+          <th>No. of Positions</th>
+          
+          <th>Position</th>
+          <th>Name</th>
+          <th>Members</th>
+          <th>Status</th>
 
       </tr>
     </thead>
@@ -348,7 +353,7 @@ $(document).ready(function(){
             {
               status = "Offer Letter Sent"
             }
-            var x='<tr id="rows"><td id="prf" value="'+para[j].prf+'">'+para[j].prf+'</td><td id="pos">'+para[j].pos+'</td><td id="zone">'+para[j].name+'</td><td id="dept">'+para[j].members+'</td><td id="dept">'+status+'</td></tr>'
+            var x='<tr id="rows"><td id="prf" value="'+para[j].prf+'">'+para[j].prf+'</td><td>'+para[j].posdetail+'</td><td>'+para[j].poszone+'</td><td>'+para[j].dept+'</td><td>'+para[j].position+'</td><td id="pos">'+para[j].pos+'</td><td id="zone">'+para[j].name+'</td><td id="dept">'+para[j].members+'</td><td id="dept">'+status+'</td></tr>'
           $('#rawdata').append(x);
         }
         

@@ -82,7 +82,7 @@ if(window.screen.width <= 720)
     </div>
     <div class="modal-footer">
       <center>
-      <a class="modal-close waves-effect green btn" >OK<i class="material-icons left" >check_box</i></a>
+      <a class="modal-close waves-effect green btn" href="http://localhost/hrms/hrdash.php">OK<i class="material-icons left" >check_box</i></a>
       </center>
     </div>
   </div>
@@ -122,7 +122,14 @@ if(window.screen.width <= 720)
   <table class="striped " >
     <thead>
       <tr>
+      
+                        
+                        
           <th>PRF</th>
+          <th>Position Details</th>
+          <th>Zone</th>
+          <th>Department</th>
+          <th>No. of Positions</th>
           <th>Round Id</th>
           <th>Instance Id</th>
           <th>Interviewer Name</th>
@@ -403,20 +410,20 @@ $(document).ready(function(){
         console.log("this is : ",para)
         //para=JSON.parse(para)
         //para=[['1111','ABCD','Accept','28/11/19','4.00'],['1111','ABCD','Accept','28/11/19','4.00'],['1111','ABCD','Accept','28/11/19','4.00']]
-      
+        
         for(let j=0;j<para.length;j++)
         {
             if(para[j][10] == "yes" && para[j][13] == "done")
             {
-              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][7]+'</td><td>'+para[j][3]+'</td><td>'+para[j][10]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Mail Sent</a></td></tr>'
+              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][14]+'</td><td>'+para[j][15]+'</td><td>'+para[j][16]+'</td><td>'+para[j][17]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][7]+'</td><td>'+para[j][3]+'</td><td>'+para[j][10]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Mail Sent</a></td></tr>'
             }
             else if(para[j][10] == "pending")
             {
-              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][7]+'</td><td>'+para[j][3]+'</td><td>'+para[j][10]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn red darken-3" onclick="notifyCandidate(this.id)" name="notify"  style="width: 150px;">Send Mail</a></td></tr>'
+              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][14]+'</td><td>'+para[j][15]+'</td><td>'+para[j][16]+'</td><td>'+para[j][17]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][7]+'</td><td>'+para[j][3]+'</td><td>'+para[j][10]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn red darken-3" onclick="notifyCandidate(this.id)" name="notify"  style="width: 150px;">Send Mail</a></td></tr>'
             }
             else
             {
-              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][7]+'</td><td>'+para[j][3]+'</td><td>'+para[j][10]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Send Mail</a></td></tr>'
+              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][14]+'</td><td>'+para[j][15]+'</td><td>'+para[j][16]+'</td><td>'+para[j][17]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][7]+'</td><td>'+para[j][3]+'</td><td>'+para[j][10]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Send Mail</a></td></tr>'
             }
             $('#rawdata').append(x); 
         }
