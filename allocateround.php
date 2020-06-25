@@ -270,6 +270,8 @@ function abort_round(confr)
             <div id="noselect">
             </div>
             <a class="waves-effect red btn" disabled  id="completeprocess"  onclick='$("#modal2").modal("open")'>Complete Interview Process</a>
+            <br>
+            <a class="waves-effect red btn" id="completeprocess2"  onclick="sendforhistory()">Complete Interview Process</a>
           </div>          
         </div>
       </div>
@@ -344,6 +346,8 @@ var selecteddate = []
 var selecteddate2 = []
 $(document).ready(function(){
   $('#nodata').hide()
+  $("#completeprocess2").hide()
+
   $('.datepicker').datepicker
   ({
       minDate:new Date(),
@@ -660,6 +664,34 @@ function selection(x)
   }
 }
 
+
+function sendforhistory()
+{
+  con = confirm("Are You Sure ?")
+  if(con == true)
+  {
+    $.ajax({
+      url:'http://localhost/hrms/api/sendforhistory.php',
+      type:'POST',
+      data:{
+            "prf" : groupid
+          },
+      success:function(para)
+      {
+        console.log(para)
+        if(para == "success")
+        {
+          document.location.reload();
+        }
+        else
+        {
+          alert("Some Error Occured")
+        }
+      }
+    })
+  }
+}
+
 var id_round
 function createnextround(id)
 {
@@ -697,6 +729,8 @@ function createnextround(id)
       console.log("Array = ",para)
       if(para=="")
       {
+        $("#completeprocess").hide()
+        $("#completeprocess2").show()
         var s5='<b style="color: red;font-size:15px;" id="noselected"> There are no candidates selected for this process. Please complete this process to know about the candidates which are on hold and rejected</b><br><br>'
         $('#noselect').append(s5);
         counter=0;
@@ -749,7 +783,6 @@ function terminateround(confrm)
       console.log(groupid)
       if(confrm)
       {
-        alert(confrm)
         $('#allocation2').fadeIn(600);
         $('#sendingmail').fadeIn(600)
         if(selectedmail.length==0)
