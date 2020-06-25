@@ -126,12 +126,11 @@ if(window.screen.width <= 720)
                         
                         
           <th>PRF</th>
+          <th>Instance Id</th>
+          <th>Round Id</th>
           <th>Position Details</th>
           <th>Zone</th>
           <th>Department</th>
-          <th>No. of Positions</th>
-          <th>Round Id</th>
-          <th>Instance Id</th>
           <th>Interviewer Name</th>
           <th>Interviewer Email</th>
           <th>Accepted</th>
@@ -353,27 +352,24 @@ function xyz(x)
   })
   console.log(prfints)
     $('#updatediv').show(600);
-    $('#interviewer_name').val(prfints[7])
+    $('#interviewer_name').val(prfints[5])
     $('#interviewer_email').val(prfints[3])
-    $('#interviewer_dept').val(prfints[8])
-    $('#interviewer_dsg').val(prfints[9])
+    $('#interviewer_dept').val(prfints[6])
+    $('#interviewer_dsg').val(prfints[7])
     $('#interview_date').val(prfints[5])
     $('#interview_time').val(prfints[6])
-    $('#iloc').val(prfints[12])
-    $('#iperson').val(prfints[11])
+    $('#iloc').val(prfints[10])
+    $('#iperson').val(prfints[9])
 
     prf=prfints[0];
     rid=prfints[1];
     iid=prfints[2];
-
-    oldname=prfints[7];
-    olddept=prfints[8];
-    olddsg=prfints[9];
+    oldname=prfints[5];
+    olddept=prfints[6];
+    olddsg=prfints[7];
     oldemail=prfints[3];
-    olddate=prfints[5];
-    oldtime=prfints[6];
     oldiloc=prfints[10];
-    oldiperson=prfints[12];
+    oldiperson=prfints[9];
 
 }
 
@@ -415,15 +411,15 @@ $(document).ready(function(){
         {
             if(para[j][10] == "yes" && para[j][13] == "done")
             {
-              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][14]+'</td><td>'+para[j][15]+'</td><td>'+para[j][16]+'</td><td>'+para[j][17]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][7]+'</td><td>'+para[j][3]+'</td><td>'+para[j][10]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Mail Sent</a></td></tr>'
+              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][2]+'</td><td>'+para[j][1]+'</td><td>'+para[j][12]+'</td><td>'+para[j][14]+'</td><td>'+para[j][13]+'</td><td>'+para[j][5]+'</td><td>'+para[j][3]+'</td><td>'+para[j][8]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Mail Sent</a></td></tr>'
             }
             else if(para[j][10] == "pending")
             {
-              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][14]+'</td><td>'+para[j][15]+'</td><td>'+para[j][16]+'</td><td>'+para[j][17]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][7]+'</td><td>'+para[j][3]+'</td><td>'+para[j][10]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn red darken-3" onclick="notifyCandidate(this.id)" name="notify"  style="width: 150px;">Send Mail</a></td></tr>'
+              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][2]+'</td><td>'+para[j][1]+'</td><td>'+para[j][12]+'</td><td>'+para[j][14]+'</td><td>'+para[j][13]+'</td><td>'+para[j][5]+'</td><td>'+para[j][3]+'</td><td>'+para[j][8]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn red darken-3" onclick="notifyCandidate(this.id)" name="notify"  style="width: 150px;">Send Mail</a></td></tr>'
             }
             else
             {
-              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][14]+'</td><td>'+para[j][15]+'</td><td>'+para[j][16]+'</td><td>'+para[j][17]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][7]+'</td><td>'+para[j][3]+'</td><td>'+para[j][10]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Send Mail</a></td></tr>'
+              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][2]+'</td><td>'+para[j][1]+'</td><td>'+para[j][12]+'</td><td>'+para[j][14]+'</td><td>'+para[j][13]+'</td><td>'+para[j][5]+'</td><td>'+para[j][3]+'</td><td>'+para[j][8]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Send Mail</a></td></tr>'
             }
             $('#rawdata').append(x); 
         }
@@ -503,12 +499,8 @@ $('#updatebtn').click(function()
                 'oldname':oldname,
                 'oldemail':oldemail,
                 'olddept':olddept,
-                'olddsg':olddsg,
-                'olddate':olddate,
-                'oldtime':oldtime,
+                'olddsg':olddsg, 
                 'newname':newname,
-                'newdate':newdate,
-                'newtime':newtime,
                 'newemail':newemail,
                 'newdept':newdept,
                 'newdsg':newdsg,
@@ -521,7 +513,6 @@ $('#updatebtn').click(function()
             {
               console.log("para : ",para)
                 //console.log(oldname,olddate,oldtime,newname,newdate,newtime)
-               
                    $('#updatediv').hide(800);
                   $('#successdiv').show(800);
                   $('#updated').hide()     

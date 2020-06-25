@@ -12,7 +12,8 @@ if($cursor)
     $result=$db->interviews->find(array("status"=>"0"));
     foreach($result as $d)
     {
-        $arr[$i]=array($d['prf'],$d['rid'],$d['iid'],$d['intvmail'],$d['invstatus'],$d['date'],$d['time'],$d['invname'],$d['dept'],$d['designation'],$d['accepted'],$d['iperson'],$d['ilocation'],$d['sent']);
+        $getpos = $db->prfs->findOne(array("prf"=>$d['prf']));
+        $arr[$i]=array($d['prf'],$d['rid'],$d['iid'],$d['intvmail'],$d['invstatus'],$d['invname'],$d['dept'],$d['designation'],$d['accepted'],$d['iperson'],$d['ilocation'],$d['sent'],$getpos['position'],$getpos['department'],$getpos['zone']);
         $i++;
     }
     if(count($arr)==0)
