@@ -32,7 +32,23 @@ if(isset($_COOKIE['sid']))
   
   <script src="public/js/materialize.js"></script>
   <script src="public/js/materialize.min.js"></script>
-
+<script>
+      function readURL(input) {
+        var f = $('#uploadcsv').val().split('.')
+            var x=f[1]
+            if(x=='csv')
+            {
+              var f = $('#uploadcsv').val()
+            
+            $('#myfile0').text(f)
+            }
+            else
+            {
+              alert('Invalid File\n Only CSV Files Accepted')
+              $('#uploadcsv').val(" ")
+            }
+      }
+</script>
 </head>
 <style>
     .button {
@@ -67,6 +83,39 @@ if(isset($_COOKIE['sid']))
     <center>
 <button class="button">Only you can create delete or update info of users.</button>
 </center>
+
+    <!-- card stars -->
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <div class="card white">
+                <div class="card-content blue-text">
+                <a class="btn red modal-trigger" href="#modal1" style="float:right;" id="mymodal">CSV FILE FORMAT</a>
+                <span class="card-title">Upload Dump</span>
+                <p>Upload csv dump here cosisting of all the previous data.<br>
+                    Once the file is uploaded
+                 cannot be changed.   
+                </p>
+
+                <form method="POST" id="myform" action="api/importUserExcel.php"  enctype="multipart/form-data">
+                            
+                         
+                    <div class="input-field col s12 offset-m4" id="uphoto">
+                            <label class="custom-file-upload" id="prof">
+                                <a class="btn blue darken-1">
+                                <input id="uploadcsv" required type="file" accept=".csv" name="uploadcsv" onchange="readURL(this)"><p id='myfile0'> Select file<i class="material-icons right">open_in_browser</i> </p></a>
+                            </label>
+                            <br><br><br> &nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn blue darken-1" name="submit" id="submit" value="Upload"><i class="material-icons right">send</i>Upload</button>
+
+                    </div>
+                </form>
+                <br><br><br><br><br>
+                </div>
+
+            </div>
+        </div>
+  </div>
+    <!-- card ends -->
 
     <br>
   <div class="row" id='row' >

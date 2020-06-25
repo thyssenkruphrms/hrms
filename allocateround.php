@@ -132,14 +132,12 @@ function abort_round(confr)
               <table class="striped">
                   <thead>
                     <tr>
-                        <th>Instance ID</th>
+                        <th>Completed Rounds</th>
                         <th>Position Details</th>
                         <th>Zone</th>
                         <th>Department</th>
                         <th>No. of Positions</th>
-                        <th>Completed Rounds</th>
                         <th>Create Next Round</th>
-                        
                     </tr>
                   </thead>
                   <tbody id="addtr">
@@ -395,10 +393,9 @@ $.ajax(
               appended2=  arr[i][0]+"/"+arr[i][1]+"/"+arr[i][2]+"/"+arr[i][3]+"/"+arr[i][4]+"/"+arr[i][5]
               oldarr.push(digit13)
               var s1='<tr id="'+digit13+'row">'
-              var s2='<td>'+arr[i][2]+'</td><td>'+arr[i].posdetails+'</td><td>'+arr[i][5]+'</td><td>'+arr[i][4]+'</td><td>'+arr[i][1]+'</td>'
-              var s3='<td><b>'+digit13+'</b></td><td>'
-              var s4='<button class="waves-effect green  btn"  id="'+appended2+'" onclick="createnextround(this.id)">See Members</button></td></tr>'
-              var str=s1+s2+s3+s4
+              var s2='<td>'+digit13+'</td><td>'+arr[i][6]+'</td><td>'+arr[i][5]+'</td><td>'+arr[i][4]+'</td><td>'+arr[i][1]+'</td>'
+              var s4='<td><button class="waves-effect green  btn"  id="'+appended2+'" onclick="createnextround(this.id)">See Members</button></td></tr>'
+              var str=s1+s2+s4
               $('#addtr').append(str)
             }
         }
