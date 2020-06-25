@@ -114,10 +114,11 @@ if(window.screen.width <= 720)
     <a href="/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
     </div>
 </nav>
-<br><br>
+<br>
 <!-- nav and side menu ended -->
-
- <div class="row">
+<a class="waves-effect green btn-small" style="float:right" href="http://localhost/hrms/interview.php"><i class="material-icons right">refresh</i>Refresh</a>
+<br><br>
+<div class="row">
 <div class="col s12 blue lighten-4">
   <table class="striped " >
     <thead>
