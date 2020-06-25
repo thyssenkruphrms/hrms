@@ -166,12 +166,11 @@ if(isset($_COOKIE['sid']))
                             <table class="striped">
                                 <thead>
                                   <tr>
-                                      <th>Instance ID</th>
+                                  <th>PRF-POSITION-INSTANCE-ROUND</th>
                                       <th>Position Details</th>
                                       <th>Zone</th>
                                       <th>Department</th>
                                       <th>No. of Positions</th>
-                                      <th>PRF-POSITION-INSTANCE-ROUND</th>
                                       <th>Initiate Round</th>
                                   </tr>
                                 </thead>
@@ -362,10 +361,9 @@ $(document).ready(function(){
           var appended2=arr[i].prf+"/"+arr[i].pos+"/"+arr[i].iid+"/"+arr[i].rid+"/"+arr[i].dept+"/"+arr[i].poszone;
           console.log(appended2)
           var s1='<tr id="'+appended+'row">'
-          var s2='<td>'+arr[i].iid+'</td><td>'+arr[i].posdetails+'</td><td>'+arr[i].poszone+'</td><td>'+arr[i].dept+'</td><td>'+arr[i].pos+'</td>'
-          var s3='<td><b >'+appended+'</b></td><td>'
-          var s4='<button class="waves-effect green  btn"  id="'+appended2+'" onclick="createnextround(this.id)">Initiate Round</button></td></tr>'
-          var str=s1+s2+s3+s4
+          var s2='<td><b>'+appended+'</b></td><td>'+arr[i].position+'</td><td>'+arr[i].poszone+'</td><td>'+arr[i].dept+'</td><td>'+arr[i].pos+'</td>'
+          var s4='<td><button class="waves-effect green  btn"  id="'+appended2+'" onclick="createnextround(this.id)">Initiate Round</button></td></tr>'
+          var str=s1+s2+s4
            $('#addtr').append(str)
         }
       }

@@ -17,7 +17,7 @@ if($cursor)
             foreach($cursor as $document)
             {
                 // Get base and next round completed PRFs
-                $arr[$i] = array($document['prf'],$document['pos'],$document['iid'],$document['rid'],$document['dept'],$document['poszone']);
+                $arr[$i] = array($document['prf'],$document['pos'],$document['iid'],$document['rid'],$document['dept'],$document['poszone'],$document['position']);
                 $i++;
             }
             if(count($arr)==0)
