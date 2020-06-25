@@ -310,6 +310,7 @@ $(document).ready(function(){
           "iperson":iperson
         },
         success:function(para){
+          alert(JSON.parse(para))
           console.log("After execution - "+para)
        //   console.log("This is the para after interbiew = ",para)
           for(let i=0;i<selectedmail.length;i++)
@@ -322,7 +323,7 @@ $(document).ready(function(){
               $("#pleasewait").hide();
             }
             selectedmail = []
-            window.setTimeout(function(){location.reload()},1000)
+            // window.setTimeout(function(){location.reload()},1000)
 
         }
       })
