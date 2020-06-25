@@ -134,8 +134,8 @@
                         para2=paradata.initiateddata;
                         para3=paradata.completeddata;
                         para=[para.initiated,para.ongoing,para.completed,para.avail]//graph 1 data
-                        para2=[para2.init,para2.accepted]//graph2 data
-                        para3=[para3.compl_not_hr2,para3.validated,para3.olrequest,para3.completed]//graph 3 data 
+                        para2=[para2.init,para2.assigned,para2.accepted]//graph2 data
+                        para3=[para3.compl_not_hr2,para3.validated,para3.olrequest,para3.completed,para3.aborted]//graph 3 data 
 
                         //linear graph data , here provide latest prfs data that is ongoing 
                         para4 = {mylabel:['Initiated', 'Round 1 Completed', 'Round 2 completed', 'Instance Ended','offer letter sent'],digit13:'123356-12-123-02'}
@@ -200,11 +200,12 @@
                             data: {
                                 datasets: [{
                                     data: para2,
-                                    backgroundColor: ["#0277bd", "#5d4037"],
+                                    backgroundColor: ["#0277bd", "#5d4037","#bf360c"],
                                 }],
                                 labels: [
                                     'Only Initiated',
-                                    'Interview Ongoing'
+                                    'Interview Assigned',
+                                    'Interview Accepted'
                                    ]
                             },
                             options: {
@@ -238,13 +239,14 @@
                             data: {
                                 datasets: [{
                                     data: para3,
-                                    backgroundColor: ["#7e57c2", "#81c784","yellow","#d4e157"],
+                                    backgroundColor: ["#7e57c2", "#81c784","yellow","#d4e157","#bf360c"],
                                 }],
                                 labels: [
                                     'completed but not by hr2',
                                     'validated',
                                     'offer letter requested',
                                     'offer letter sent',
+                                    'round aborted'
                                     
                                 ],
                                 
@@ -497,15 +499,15 @@
                         para=para.data
                         console.log(para)
                         // give details in this format demo data:
-                      // para = {prf:['111','222'],pos:['1','2'],iid:['9','8'],rid:['5','6'],members:[['abc@gmail.com','pqr@gmail.com'],['ac@gmail.com','qr@gmail.com','pr@gmail.com']]};
+                      // para = {prf:['111','222'],pos:['1','2'],iid:['9','8'],rid:['5','6'],interviewer:['Abc','xyz','pqr'],members:[['abc@gmail.com','pqr@gmail.com'],['ac@gmail.com','qr@gmail.com','pr@gmail.com']]};
                         //console.log(para.members[0].length)
                         $("#tableBody").text('')
-                        var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Members</th></tr></thead>'
+                        var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Interviewer</th><th>Members</th></tr></thead>'
                         $("#tableBody").append(headings)
                         for(let i=0;i<para.prf.length;i++)
                         {
                             var memberlength = para.members[i].length
-                            var str1 = '<tr><td rowspan="'+memberlength+'">'+para.prf[i]+'</td><td rowspan="'+memberlength+'">'+para.pos[i]+'</td><td rowspan="'+memberlength+'">'+para.iid[i]+'</td><td rowspan="'+memberlength+'">'+para.rid[i]+'</td><td>'+para.members[i][0]+'</td></tr>'
+                            var str1 = '<tr><td rowspan="'+memberlength+'">'+para.prf[i]+'</td><td rowspan="'+memberlength+'">'+para.pos[i]+'</td><td rowspan="'+memberlength+'">'+para.iid[i]+'</td><td rowspan="'+memberlength+'">'+para.rid[i]+'</td><td rowspan="'+memberlength+'">'+para.interviewer[i]+'</td><td>'+para.members[i][0]+'</td></tr>'
                             $('#tableBody').append(str1) 
                             for(let j=1;j<memberlength;j++)
                             {
@@ -518,10 +520,10 @@
                 })
             }
 
-            if(selected_part == 'Interview Ongoing')
+            if(selected_part == 'Interview Assigned')
             {
-                console.log("Interviewer Assigned is clicked")
-                $("#cardTitle").text("Interviewer Assigned")
+                console.log("Interview Assigned is clicked")
+                $("#cardTitle").text("Interview Assigned")
                 $("#tableParent").fadeOut()
                 $("#tableParent").fadeIn(200)
                 // ajax call for retriving re-validation candidate
@@ -533,15 +535,15 @@
                     {
                         para=para.data
                         // give details in this format demo data:
-                       // para = {prf:['111','222'],pos:['1','2'],iid:['9','8'],rid:['5','6'],members:[['abc@gmail.com','pqr@gmail.com'],['ac@gmail.com','qr@gmail.com','pr@gmail.com']]};
+                       // para = {prf:['111','222'],pos:['1','2'],iid:['9','8'],rid:['5','6'],interviewer:['Abc','XYZ','PQR'],members:[['abc@gmail.com','pqr@gmail.com'],['ac@gmail.com','qr@gmail.com','pr@gmail.com']]};
                         console.log(para.members[0].length)
                         $("#tableBody").text('')
-                        var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Members</th></tr></thead>'
+                        var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Interviewer</th><th>Members</th></tr></thead>'
                         $("#tableBody").append(headings)
                         for(let i=0;i<para.prf.length;i++)
                         {
                             var memberlength = para.members[i].length
-                            var str1 = '<tr><td rowspan="'+memberlength+'">'+para.prf[i]+'</td><td rowspan="'+memberlength+'">'+para.pos[i]+'</td><td rowspan="'+memberlength+'">'+para.iid[i]+'</td><td rowspan="'+memberlength+'">'+para.rid[i]+'</td><td>'+para.members[i][0]+'</td></tr>'
+                            var str1 = '<tr><td rowspan="'+memberlength+'">'+para.prf[i]+'</td><td rowspan="'+memberlength+'">'+para.pos[i]+'</td><td rowspan="'+memberlength+'">'+para.iid[i]+'</td><td rowspan="'+memberlength+'">'+para.rid[i]+'</td><td rowspan="'+memberlength+'">'+para.interviewer[i]+'</td><td>'+para.members[i][0]+'</td></tr>'
                             $('#tableBody').append(str1) 
                             for(let j=1;j<memberlength;j++)
                             {
@@ -553,6 +555,43 @@
                     }
                 })
             }
+
+            if(selected_part == 'Interview Accepted')
+            {
+                console.log("Interview Accepted is clicked")
+                $("#cardTitle").text("Interview Accepted")
+                $("#tableParent").fadeOut()
+                $("#tableParent").fadeIn(200)
+                // ajax call for retriving re-validation candidate
+                $.ajax({
+                    url:'http://localhost/hrms/api/getongoingmembers.php',
+                    type:'GET',
+                    success:function(para)
+
+                    {
+                        para=para.data
+                        // give details in this format demo data:
+                       // para = {prf:['111','222'],pos:['1','2'],iid:['9','8'],rid:['5','6'],interviewer:['Abc','XYZ','PQR'],members:[['abc@gmail.com','pqr@gmail.com'],['ac@gmail.com','qr@gmail.com','pr@gmail.com']]};
+                        console.log(para.members[0].length)
+                        $("#tableBody").text('')
+                        var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Interviewer</th><th>Members</th></tr></thead>'
+                        $("#tableBody").append(headings)
+                        for(let i=0;i<para.prf.length;i++)
+                        {
+                            var memberlength = para.members[i].length
+                            var str1 = '<tr><td rowspan="'+memberlength+'">'+para.prf[i]+'</td><td rowspan="'+memberlength+'">'+para.pos[i]+'</td><td rowspan="'+memberlength+'">'+para.iid[i]+'</td><td rowspan="'+memberlength+'">'+para.rid[i]+'</td><td rowspan="'+memberlength+'">'+para.interviewer[i]+'</td><td>'+para.members[i][0]+'</td></tr>'
+                            $('#tableBody').append(str1) 
+                            for(let j=1;j<memberlength;j++)
+                            {
+                                var str2 = '<tr><td>'+para.members[i][j]+'</td></tr>'
+                                $('#tableBody').append(str2)
+                            }
+                        }
+                        $('.modal').modal("open");
+                    }
+                })
+            }
+
             // functionalities for 2nd chart ends here (initiate round chart)
 
             // functionalities for 3rd chart starts here (completed chart)
@@ -613,7 +652,7 @@
                     }
                 })
             }
-
+            
             if(selected_part == 'offer letter sent')
             {
                 console.log("offer letter sent is clicked")
@@ -643,6 +682,67 @@
                     
                 })
             }
+
+            if(selected_part == 'round aborted')
+            {
+                console.log("round aborted sent is clicked")
+                $("#cardTitle").text("round aborted")
+                $("#tableParent").fadeOut()
+                $("#tableParent").fadeIn(200)
+                // ajax call for retriving validated candidate
+                $.ajax({
+                    url:'demo.txt',
+                    type:'GET',
+                    success:function(para)
+                    {
+                        // give details in this format demo data:
+                        para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
+                        
+                        $("#tableBody").text('')
+                        var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Details</th></tr></thead>'
+                        $("#tableBody").append(headings)
+                        for(let i=0;i<para.length;i++)
+                        {   
+                            var prfs_id = para[i][0]+para[i][1]+para[i][2]+para[i][3];
+                            var str1 = '<tr><td>'+para[i][0]+'</td><td>'+para[i][1]+'</td><td>'+para[i][2]+'</td><td>'+para[i][3]+'</td><td><a class="waves-effect green btn" onclick="getPrf('+prfs_id+')">View Details</a></td></tr>'
+                            $('#tableBody').append(str1) 
+                        }
+                        $('.modal').modal("open");
+                    }
+                    
+                })
+            }
+
+            if(selected_part == 'offer letter requested')
+            {
+                console.log("offer letter requested is clicked")
+                $("#cardTitle").text("offer letter requested")
+                $("#tableParent").fadeOut()
+                $("#tableParent").fadeIn(200)
+                // ajax call for retriving validated candidate
+                $.ajax({
+                    url:'demo.txt',
+                    type:'GET',
+                    success:function(para)
+                    {
+                        // give details in this format demo data:
+                        para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
+                        
+                        $("#tableBody").text('')
+                        var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Details</th></tr></thead>'
+                        $("#tableBody").append(headings)
+                        for(let i=0;i<para.length;i++)
+                        {   
+                            var prfs_id = para[i][0]+para[i][1]+para[i][2]+para[i][3];
+                            var str1 = '<tr><td>'+para[i][0]+'</td><td>'+para[i][1]+'</td><td>'+para[i][2]+'</td><td>'+para[i][3]+'</td><td><a class="waves-effect green btn" onclick="getPrf('+prfs_id+')">View Details</a></td></tr>'
+                            $('#tableBody').append(str1) 
+                        }
+                        $('.modal').modal("open");
+                    }
+                    
+                })
+            }
+
             //functionalities for 3rd chart ends here (completed chart)
 
         }
