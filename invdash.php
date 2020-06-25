@@ -245,7 +245,7 @@ if(isset($_COOKIE['sid']))
         <div class="col s12 m12">
             <div class="white-text">
                 <div class="card-content blue-text" id="wait">
-                    <span class="card-title">TO DO LIST</span>
+                    <span class="card-title">TO DO LIST <a class="waves-effect green btn-small" style="float:right" href="http://localhost/hrms/invdash.php"><i class="material-icons right">refresh</i>Refresh</a></span>
                     <table class="striped">
                         <thead>
                             <tr>

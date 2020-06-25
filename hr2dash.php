@@ -83,7 +83,7 @@ if(isset($_COOKIE['sid']))
     <div class="col s12 m12">
         <div class="white-text">
             <div class="card-content blue-text">
-                <span class="card-title">Groups For Document Validation</span>
+                <span class="card-title">Groups For Document Validation <a class="waves-effect green btn-small" style="float:right" href="http://localhost/hrms/hr2dash.php"><i class="material-icons right">refresh</i>Refresh</a></span>
                 <table class="striped">
                     <thead>
                         <tr>
