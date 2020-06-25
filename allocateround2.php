@@ -394,6 +394,7 @@ function createnextround(ids)
   //alert("this is reason : "+reason)
   console.log(id_round)
   console.log(intvmail)
+
   $('#allocatingcandidate').slideDown(600);
  
   $.ajax({
@@ -411,7 +412,15 @@ function createnextround(ids)
       $('#adddetail').text("")
       // console.log("mails : "+para.members)
       var arr = JSON.parse(para)
-      console.log("mails : "+arr.members[0])
+      console.log("mails :> "+para)
+      $('#iname').val(arr.invname)
+      $('#imail').val(arr.intvmail)
+      $('#location').val(arr.ilocation)
+      $('#contactperson').val(arr.iperson)
+      $('#idept').val(arr.dept)
+      $('#idesg').val(arr.designation)
+      
+      M.updateTextFields();
       for(let i =0;i<(arr.members).length;i++)
       {
 
