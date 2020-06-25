@@ -86,7 +86,7 @@ width: 350%;
     </div>
     <div class="modal-footer">
       <center>
-      <a class="modal-close waves-effect green btn" >OK<i class="material-icons left" >check_box</i></a>
+      <a class="modal-close waves-effect green btn" href="http://localhost/hrms/hrdash.php" >OK<i class="material-icons left" >check_box</i></a>
       </center>
     </div>
   </div>

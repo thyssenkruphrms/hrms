@@ -83,7 +83,7 @@ width: 350%;
         </div>
         <div class="modal-footer">
         <center>
-        <a class="modal-close waves-effect green btn" >OK<i class="material-icons left" >check_box</i></a>
+        <a class="modal-close waves-effect green btn" href="http://localhost/hrms/invdash.php" >OK<i class="material-icons left" >check_box</i></a>
         </center>
         </div>
     </div>
@@ -118,17 +118,17 @@ width: 350%;
       <tr>
           
           
-          <th>Instance ID</th>
+          <th>PRF</th>
           <th>Position Details</th>
           <th>Zone</th>
           <th>Department</th>
           <th>No. of Positions</th>
-          <th>ROUND</th>
+          <th>Round</th>
           <th>IID</th>
-          <th>DATE</th>
+          <th>Date</th>
           <th>Name</th>
           <th>Email</th>
-          <th>STATUS</th>
+          <th>Status</th>
 
       </tr>
     </thead>
@@ -372,7 +372,7 @@ $(document).ready(function(){
         console.log("this is length : "+para.length)
         for(let i=0;i<para.length;i++)
         { 
-          var x='<tr id="rows"><td id="prf" value="'+para[i].prf+'">'+para[i].prf+'</td><td id="pos">'+para[i].rid+'</td><td id="posno">'+para[i].iid+'</td><td id="status">'+para[i].date+'</td><td id="status">'+para[i].members+'</td><td id="email">'+para[i].email+'</td><td id="statusevaluated">'+para[i].status+'</td></tr>'
+          var x='<tr id="rows"><td id="prf" value="'+para[i].prf+'">'+para[i].prf+'</td><td>'+para[i].posdetail+'</td><td>'+para[i].poszone+'</td><td>'+para[i].dept+'</td><td>'+para[i].position+'</td><td id="pos">'+para[i].rid+'</td><td id="posno">'+para[i].iid+'</td><td id="status">'+para[i].date+'</td><td id="status">'+para[i].members+'</td><td id="email">'+para[i].email+'</td><td id="statusevaluated">'+para[i].status+'</td></tr>'
           $('#rawdata').append(x);
         }
       }

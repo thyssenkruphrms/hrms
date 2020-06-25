@@ -51,7 +51,7 @@ if(isset($_COOKIE['sid']))
         </div>
         <div class="modal-footer">
         <center>
-        <a class="modal-close waves-effect green btn" >OK<i class="material-icons left" >check_box</i></a>
+        <a class="modal-close waves-effect green btn" href="http://localhost/hrms/hr2dash.php" >OK<i class="material-icons left" >check_box</i></a>
         </center>
         </div>
     </div>
