@@ -87,8 +87,12 @@ if(isset($_COOKIE['sid']))
                 <table class="striped">
                     <thead>
                         <tr>
+                            <th>Instance ID</th>
+                            <th>Position Details</th>
+                            <th>Zone</th>
+                            <th>Department</th>
+                            <th>No. of Positions</th>
                             <th>Groups</th>
-                           
                             <th>Validate</th>
                         </tr>
                     </thead>
@@ -275,16 +279,17 @@ $.ajax({
     success:function(para)
     {   
         para=JSON.parse(para)
+        console.log("1 st ajax: : ",para)
         if(para.length!=0)
         {
            
             //dummy data please send in below format..!!
-            //para = ['PRF1-INSTANCE1-ROUND1','PRF2-INSTANCE2-ROUND2']
+            // para = [["instanceid","posdetails","poszone","dept","position",'PRF1-INSTANCE1-ROUND1'],["instanceid","posdetails","poszone","dept","position",'PRF1-INSTANCE1-ROUND1']]
             
             for(let i=0;i<para.length;i++)
             {
-                var txt1 = '<tr><td><label class="waves-effect blue darken-1 btn">'+para[i]+'</label></td>'
-                var txt2 = '<td><button class="btn waves-effect green"  id="'+para[i]+'" onclick="displayMail(this.id)">Start Validation' 
+                var txt1 = '<tr><td>'+para[i][0]+'</td><td>'+para[i][1]+'</td><td>'+para[i][2]+'</td><td>'+para[i][3]+'</td><td>'+para[i][4]+'</td><td><label class="waves-effect blue darken-1 btn">'+para[i][5]+'</label></td>'
+                var txt2 = '<td><button class="btn waves-effect green"  id="'+para[i][5]+'" onclick="displayMail(this.id)">Start Validation' 
                 var txt3 = ' </button></td></tr>'
                 var str = txt1+txt2+txt3;
                 $("#todolistbody").append(str)

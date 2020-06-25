@@ -589,3 +589,20 @@ Atharva	asdeshpande@mitaoe.ac.in	sales		23/06/2020	08:26:46 PM	Login
 Atharva	asdeshpande@mitaoe.ac.in	sales		23/06/2020	08:29:18 PM	Logout
 Atharva	asdeshpande@mitaoe.ac.in	sales		23/06/2020	08:30:48 PM	Login
 >>>>>>> 7b5b14d06b08a8aaff7336b7e6a163efdb4abb0f
+
+Atharva	asdeshpande@mitaoe.ac.in	sales		25/06/2020	06:25:13 PM	Login
+Atharva	asdeshpande@mitaoe.ac.in	sales		25/06/2020	06:44:55 PM	Login
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	07:22:02 PM	Login
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	07:25:25 PM	Logout
+Atharva	asdeshpande@mitaoe.ac.in	sales		25/06/2020	07:25:51 PM	Logout
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	07:26:06 PM	Login
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	07:36:38 PM	Logout
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	08:03:32 PM	Login
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	08:10:24 PM	Logout
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	08:10:30 PM	Login
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	08:20:42 PM	Logout
+sarang barshikar	skbarshikar@mitaoe.ac.in	sales		25/06/2020	08:20:48 PM	Login
+sarang barshikar	skbarshikar@mitaoe.ac.in	sales		25/06/2020	08:20:58 PM	Logout
+sarang barshikar	skbarshikar@mitaoe.ac.in	sales		25/06/2020	08:21:30 PM	Login
+sarang barshikar	skbarshikar@mitaoe.ac.in	sales		25/06/2020	08:37:27 PM	Logout
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	08:37:34 PM	Login

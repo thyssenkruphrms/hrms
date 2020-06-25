@@ -116,7 +116,13 @@ width: 350%;
   <table class="striped">
     <thead>
       <tr>
+          
+          
           <th>Instance ID</th>
+          <th>Position Details</th>
+          <th>Zone</th>
+          <th>Department</th>
+          <th>No. of Positions</th>
           <th>ROUND</th>
           <th>IID</th>
           <th>DATE</th>

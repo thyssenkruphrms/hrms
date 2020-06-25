@@ -128,6 +128,7 @@ width: 350%;
           <option value="" disabled selected style="color: white">Select Zone</option>
  </select>
 <!-- Filter Added End-->
+<br><br>
 <div style="color:white;width:18%;background-color:green;border-radius:2px;font-weight:bold;"> 
         Showing <p id="result" style="display:inline;"> </p> PRF of <p id="result1" style="display:inline;"> </p> PRF</div><br>
 
