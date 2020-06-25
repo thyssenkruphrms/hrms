@@ -621,3 +621,10 @@ sarang barshikar	skbarshikar@mitaoe.ac.in	sales		25/06/2020	09:05:17 PM	Login
 sarang barshikar	skbarshikar@mitaoe.ac.in	sales		25/06/2020	09:05:23 PM	Logout
 pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	09:05:28 PM	Login
 pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	09:05:32 PM	Logout
+sarang barshikar	skbarshikar@mitaoe.ac.in	sales		25/06/2020	09:39:12 PM	Login
+sarang barshikar	skbarshikar@mitaoe.ac.in	sales		25/06/2020	09:45:16 PM	Logout
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	09:45:23 PM	Login
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	09:51:05 PM	Logout
+sarang barshikar	skbarshikar@mitaoe.ac.in	sales		25/06/2020	09:51:10 PM	Login
+sarang barshikar	skbarshikar@mitaoe.ac.in	sales		25/06/2020	09:54:46 PM	Logout
+pragati	psgaikwad@mitaoe.ac.in	sales		25/06/2020	09:54:53 PM	Login

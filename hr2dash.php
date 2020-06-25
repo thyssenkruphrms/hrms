@@ -51,7 +51,7 @@ if(isset($_COOKIE['sid']))
         </div>
         <div class="modal-footer">
         <center>
-        <a class="modal-close waves-effect green btn" href="http://localhost/hrms/hr2dash.php" >OK<i class="material-icons left" >check_box</i></a>
+        <a class="modal-close waves-effect green btn" >OK<i class="material-icons left" >check_box</i></a>
         </center>
         </div>
     </div>
@@ -87,11 +87,12 @@ if(isset($_COOKIE['sid']))
                 <table class="striped">
                     <thead>
                         <tr>
-                            <th>Instance ID</th>
+                            <th>PRF</th>
                             <th>Position Details</th>
                             <th>Zone</th>
                             <th>Department</th>
                             <th>No. of Positions</th>
+                            <th>Position</th>
                             <th>Groups</th>
                             <th>Validate</th>
                         </tr>
@@ -284,12 +285,12 @@ $.ajax({
         {
            
             //dummy data please send in below format..!!
-            // para = [["instanceid","posdetails","poszone","dept","position",'PRF1-INSTANCE1-ROUND1'],["instanceid","posdetails","poszone","dept","position",'PRF1-INSTANCE1-ROUND1']]
+            // para = [["instanceid","posdetails","poszone","dept","number of position","position",'PRF1-INSTANCE1-ROUND1'],["instanceid","posdetails","poszone","dept","number ofpositions","position",'PRF1-INSTANCE1-ROUND1']]
             
             for(let i=0;i<para.length;i++)
             {
-                var txt1 = '<tr><td>'+para[i][0]+'</td><td>'+para[i][1]+'</td><td>'+para[i][2]+'</td><td>'+para[i][3]+'</td><td>'+para[i][4]+'</td><td><label class="waves-effect blue darken-1 btn">'+para[i][5]+'</label></td>'
-                var txt2 = '<td><button class="btn waves-effect green"  id="'+para[i][5]+'" onclick="displayMail(this.id)">Start Validation' 
+                var txt1 = '<tr><td>'+para[i][0]+'</td><td>'+para[i][1]+'</td><td>'+para[i][2]+'</td><td>'+para[i][3]+'</td><td>'+para[i][4]+'</td><td>'+para[i][5]+'</td><td><label class="waves-effect blue darken-1 btn">'+para[i][6]+'</label></td>'
+                var txt2 = '<td><button class="btn waves-effect green"  id="'+para[i][6]+'" onclick="displayMail(this.id)">Start Validation' 
                 var txt3 = ' </button></td></tr>'
                 var str = txt1+txt2+txt3;
                 $("#todolistbody").append(str)
