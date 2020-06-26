@@ -335,6 +335,8 @@ width: 350%;
       <th>Full Name</th>
       <th>View Evaluation Sheet</th>
       <th>View CV</th>
+      <th>Date</th>
+      <th>Time</th>
       <th>Select</th>
      
       </tr>
@@ -375,6 +377,9 @@ width: 350%;
 <script>
 var roundid;
 var selectedmail = []
+var selectedmailID = []
+var selecteddate = []
+var selecteddate2 = []
 $('#submithold').click(function(){
   if(selectedmail.length <= 0)
     {
@@ -532,14 +537,16 @@ function xyz(x)
                   mailidonly = element[i][0].split(",")
                   if(mailidonly[1] == "absent")
                   {
-                    var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>"+element[i][1]+"</p></td><td><p>Absent</p>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
-                  $('#tabledatahold').append(str)
+                    var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>"+element[i][1]+"</p></td><td><p>Absent</p>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
+                    $('#tabledatahold').append(str)
                   }
                   else
                   {
-                    var str = "<tr><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td><p>"+element[i][1]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
-                  $('#tabledatahold').append(str)
+                    var str = "<tr><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td><p>"+element[i][1]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
+                    $('#tabledatahold').append(str)
                   }
+                  $('.timepicker').timepicker();
+                  $('.datepicker').datepicker();
                   
                     
                 } 
@@ -846,11 +853,28 @@ $('#allocatesubmit').click(function()
   var iperson = $('#iperson').val();
 
   $('#allocation').hide(600);
-  $.ajax({
-  url:'http://localhost/hrms/api/assignonhold.php',
-  type:'POST',
-  data:{
+  if(imail != "" && iname != "" && idate != "" && itime != "" && idept != "" && idesg != "" && iperson != "" && iloc != "")
+  {
+    for(let i=0;i<selectedmailID.length;i++)
+    {
+      var b = selectedmailID[i]
+      b = b+'date'
+      b2 = b+'2'
+      console.log(b)
+      console.log(b2)
+      selecteddate.push($(b).val()) 
+      selecteddate2.push($(b2).val()) 
+      console.log("Email:",selectedmail[i]) 
+      console.log("Time:",selecteddate[i])
+      console.log("Date:",selecteddate2[i])
+    }
+    $.ajax({
+      url:'http://localhost/hrms/api/assignonhold.php',
+      type:'POST',
+      data:{
         "emails":selectedmail,
+        "cantimes" : selecteddate,
+        "candates" : selecteddate2,
         "iname":iname,
         "intvmail":imail,
         "date":idate,
@@ -864,22 +888,25 @@ $('#allocatesubmit').click(function()
         'pos':roundid[1],
         'iid':roundid[2]
       },
-  success:function(para){
-    console.log(para);
-    selectedmail = []
-    document.location.reload();
-
-
+      success:function(para){
+        console.log(para);
+        selectedmail = []
+        selecteddate = []
+        selecteddate2 = []
+        selectedmailID=[]
+        document.location.reload();
+      }
+    })
   }
-  })
 
- })
+})
 
 var ctr=0
 function selection(umail,mail)
 {
   console.log("name: ",mail)
-
+  var b = '#'+umail
+  console.log('b =' ,b)
   
   var umail="#"+umail;
   var pmail = '#'+mail
@@ -887,8 +914,20 @@ function selection(umail,mail)
 
   if($(umail).prop("checked") == true)
   {
-    selectedmail.push($(pmail).text())
-    console.log(selectedmail)
+    if($(b+"date").val() !="" && $(b+"date2").val() !="" )
+    {
+      selectedmail.push($(pmail).text())
+      selectedmailID.push(b)
+      console.log(selectedmail)
+      console.log('mail:'+selectedmail)
+      console.log('ID:'+selectedmailID)
+    }
+    else
+    {
+      $(b).prop("checked",false)
+      alert("Date or time not entered");
+    }
+
   }
   else
   {                                               
@@ -897,10 +936,12 @@ function selection(umail,mail)
       if ( selectedmail[i] == $(pmail).text()) 
       {
         selectedmail.splice(i, 1); 
+        selectedmailID.splice(i, 1)
         i--;
       }
     }
     console.log(selectedmail)
+    console.log(selectedmailID)
   }
 }
 </script>

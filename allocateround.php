@@ -633,6 +633,9 @@ $('#allocatesubmit').click(function()
         $("#waiting").hide();
       }
       selectedmail = []
+      selecteddate = []
+      selecteddate2 = []
+      selectedmailID=[]
 
     }
     })
