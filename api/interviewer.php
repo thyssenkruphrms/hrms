@@ -60,7 +60,7 @@ if($cursor)
     if($insertinvrecord)
     {
         
-        $criteria=array("status"=>"ristart","prf"=>$digit13[0],"pos"=>$digit13[1],"rid"=>"01",'iid'=>$digit13[2],"dept"=>$digit13[4],"poszone"=>$digit13[5],$result3['position']);
+        $criteria=array("status"=>"ristart","prf"=>$digit13[0],"pos"=>$digit13[1],"rid"=>"01",'iid'=>$digit13[2],"dept"=>$digit13[4],"poszone"=>$digit13[5],"position"=>$result3['position']);
     
         foreach($_POST['emails'] as $d)
         {

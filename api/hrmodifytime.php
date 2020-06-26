@@ -53,7 +53,7 @@ if($cursor)
             "rid"=>$digit13[3],
             "intvmail"=>$intvmail
             ),
-            array('$set'=>array("dates"=>$dates,"moddates"=>$dates,"times"=>$times,"modtimes"=>$times)));
+            array('$set'=>array("dates"=>$dates,"moddates"=>$dates,"times"=>$times,"modtimes"=>$times,"accepted"=>"no")));
 
     if($cursor)
     {
