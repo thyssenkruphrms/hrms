@@ -184,14 +184,6 @@ function abort_round(confr)
                     </div>
                       
                     <div class="row">
-                        <div class="input-field col s3 m3">
-                          <input id="idate" type="text" class="datepicker" required>
-                          <label  for="idate">Date</label>
-                        </div>
-                        <div class="input-field col s3 m3 " >
-                          <input id="itime" type="text" class="timepicker" required>
-                          <label class="active" for="itime">Time</label>
-                        </div>
                         <div class="input-field col s3 m3 " >
                           <input id="idept" type="text" class="text">
                           <label class="active" for="idept" id="idept" required>Interviewer Department</label>
@@ -379,7 +371,7 @@ $.ajax(
       {
         
         var arr = JSON.parse(para)
-        console.log(arr[0])
+        console.log(arr)
         var oldarr = []
         arr
 
@@ -555,8 +547,6 @@ $('#allocatesubmit').click(function()
   console.log("zone - ",window.zone)
   var groupid=window.groupid
   var iname = $('#iname').val();
-  var idate = $('#idate').val();
-  var itime = $('#itime').val();
   var idept = $('#idept').val();
   var idesg = $('#idesg').val();
   var imail = $('#imail').val();
@@ -590,8 +580,6 @@ $('#allocatesubmit').click(function()
           "candates" : selecteddate2,
           "iname":iname,
           "intvmail":imail,
-          "date":idate,
-          "time":itime,
           "prf":groupid,
           "iloc":iloc,
           "iperson":iperson,

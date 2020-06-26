@@ -270,9 +270,20 @@ function modifyMail(id,name)
     console.log("Date id - ",date,name)
     updatedTime = $(name).val()
     updatedDate = $(date).val()
-    console.log("Updated Date - ",updatedDate)
-    console.log("Updated Time - ",updatedTime)
-    console.log('Exsiting is time : ',id[2])
+    // console.log("Updated Date - ",updatedDate)
+    // console.log("Updated Time - ",updatedTime)
+    // console.log('Exsiting is time : ',id[2])
+
+    // console.log("Updated index - ",id[0])
+    // console.log("Updated date - ",id[1])
+    // console.log("Updated time - ",id[2])
+    // console.log("Updated digit13 - ",id[3])
+    // console.log("Updated mail - ",newemail)
+    // console.log("Updated times - ",updatedTime)
+    // console.log("Updated dates - ",updatedDate)
+
+
+
 
     if(id[2].localeCompare(updatedTime)==0 && id[1].localeCompare(updatedDate) == 0 )
     {
@@ -324,6 +335,7 @@ function xyz(x)
   id=x;
   prfint=id;
   prfints=id.split('*')
+  console.log(prfints)
   // alert(prfint)
   $.ajax({
       url:"http://localhost/hrms/api/getthatintvmembers.php",
@@ -353,14 +365,12 @@ function xyz(x)
   })
   console.log(prfints)
     $('#updatediv').show(600);
-    $('#interviewer_name').val(prfints[5])
+    $('#interviewer_name').val(prfints[6])
     $('#interviewer_email').val(prfints[3])
-    $('#interviewer_dept').val(prfints[6])
-    $('#interviewer_dsg').val(prfints[7])
-    $('#interview_date').val(prfints[5])
-    $('#interview_time').val(prfints[6])
-    $('#iloc').val(prfints[10])
-    $('#iperson').val(prfints[9])
+    $('#interviewer_dept').val(prfints[9])
+    $('#interviewer_dsg').val(prfints[10])
+    $('#iloc').val(prfints[13])
+    $('#iperson').val(prfints[12])
 
     prf=prfints[0];
     rid=prfints[1];
@@ -410,17 +420,17 @@ $(document).ready(function(){
         
         for(let j=0;j<para.length;j++)
         {
-            if(para[j][10] == "yes" && para[j][13] == "done")
+            if(para[j][8] == "yes" && para[j][11] == "done")
             {
-              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][2]+'</td><td>'+para[j][1]+'</td><td>'+para[j][12]+'</td><td>'+para[j][14]+'</td><td>'+para[j][13]+'</td><td>'+para[j][5]+'</td><td>'+para[j][3]+'</td><td>'+para[j][8]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Mail Sent</a></td></tr>'
+              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][3]+'</td><td>'+para[j][4]+'</td><td>'+para[j][5]+'</td><td>'+para[j][6]+'</td><td>'+para[j][7]+'</td><td>'+para[j][8]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'*'+para[j][13]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][7]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][6]+'*'+para[j][8]+'*'+para[j][13]+'*'+para[j][12]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Mail Sent</a></td></tr>'
             }
-            else if(para[j][10] == "pending")
+            else if(para[j][8] == "pending")
             {
-              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][2]+'</td><td>'+para[j][1]+'</td><td>'+para[j][12]+'</td><td>'+para[j][14]+'</td><td>'+para[j][13]+'</td><td>'+para[j][5]+'</td><td>'+para[j][3]+'</td><td>'+para[j][8]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn red darken-3" onclick="notifyCandidate(this.id)" name="notify"  style="width: 150px;">Send Mail</a></td></tr>'
+              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][3]+'</td><td>'+para[j][4]+'</td><td>'+para[j][5]+'</td><td>'+para[j][6]+'</td><td>'+para[j][7]+'</td><td>'+para[j][8]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'*'+para[j][13]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][7]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][6]+'*'+para[j][8]+'*'+para[j][13]+'*'+para[j][12]+'" class="btn red darken-3" onclick="notifyCandidate(this.id)" name="notify"  style="width: 150px;">Send Mail</a></td></tr>'
             }
             else
             {
-              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][2]+'</td><td>'+para[j][1]+'</td><td>'+para[j][12]+'</td><td>'+para[j][14]+'</td><td>'+para[j][13]+'</td><td>'+para[j][5]+'</td><td>'+para[j][3]+'</td><td>'+para[j][8]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][10]+'*'+para[j][12]+'*'+para[j][11]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Send Mail</a></td></tr>'
+              var x='<tr id="rows" class="rows"><td>'+para[j][0]+'</td><td>'+para[j][1]+'</td><td>'+para[j][2]+'</td><td>'+para[j][3]+'</td><td>'+para[j][4]+'</td><td>'+para[j][5]+'</td><td>'+para[j][6]+'</td><td>'+para[j][7]+'</td><td>'+para[j][8]+'</td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][3]+'*'+para[j][4]+'*'+para[j][5]+'*'+para[j][6]+'*'+para[j][7]+'*'+para[j][8]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][11]+'*'+para[j][12]+'*'+para[j][13]+'" class="btn green darken-1" onclick="xyz(this.id)">Update</a></td><td><a id="'+para[j][0]+'*'+para[j][1]+'*'+para[j][2]+'*'+para[j][7]+'*'+para[j][9]+'*'+para[j][10]+'*'+para[j][6]+'*'+para[j][8]+'*'+para[j][13]+'*'+para[j][12]+'" class="btn green darken-1" onclick="notifyCandidate(this.id)" name="notify" style="width: 150px;" disabled>Send Mail</a></td></tr>'
             }
             $('#rawdata').append(x); 
         }
@@ -436,15 +446,16 @@ function notifyCandidate(id)
 {
   console.log("ID - "+id)
   $('#loader').show()
-  // alert(id)
+  alert(id)
   $.ajax({
     url:"http://localhost/hrms/api/notifyCandidate.php",
     type:"POST",
     data:{
       "prf13":id
     },
-    success:function(){
+    success:function(para){
       $('#loader').hide()
+      console.log("This is - "+para)
       window.setTimeout(function(){location.reload()},1000)
       
     }
