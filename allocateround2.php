@@ -264,10 +264,9 @@ $(document).ready(function(){
           var s3='<td>'+arr[i]['invname']+'</td><td>'
           var s8='<p >'+arr[i]['intvmail']+'</p></td><td>'
           var s9='<p >'+reason+'</p></td><td>'
-          var s10='<p>'+arr[i]['invname']+'</p></td><td>'
-
+        
           var s4='<button class="waves-effect green  btn"  id='+appended+'*'+intvmail+' onclick="createnextround(this.id)">Reshedule Round</button></td></tr>'
-          var str=s1+s2+s3+s10+s8+s9+s4
+          var str=s1+s2+s3+s8+s9+s4
            $('#addtr').append(str)
         }
       }
