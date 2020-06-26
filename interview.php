@@ -97,11 +97,11 @@ if(window.screen.width <= 720)
   <a href="/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
   <a href="/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
   <a href="/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
-  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button">On going rounds</a> <br>
-  <a href="/hrms/history.php" class="w3-bar-item w3-button">See History  </a> <br>
-  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling</a> <br>
+  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
+  <a href="/hrms/history.php" class="w3-bar-item w3-button">See History</a> <br>
+  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
   <a href="/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
-  <a href="/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter</a> <br>
+  <a href="/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
   <a href="#" id="logoutuser" class="w3-bar-item w3-button">Logout</a> <br>
 
 </div>
@@ -380,6 +380,38 @@ function xyz(x)
 var prf
 var arr=[]
 $(document).ready(function(){ 
+
+  // functionality for notifications start here
+  $('#badge_ongoing').hide();
+  $('#badge_rescheduling').hide();
+  $('#badge_letter').hide();
+  // ajax call for getting notification details
+  $.ajax({
+    url:'http://localhost/hrms/demo.txt',
+    type:'GET',
+    success:function(para)
+    {
+      // dummy data : give notification count, if no new notification please give 0 ex offerletter:0
+      para = {'ongoing':10,'rescheduling':5,"offerletter":0} 
+      if(para.ongoing > 0)
+      {
+        $('#badge_ongoing').text(para.ongoing);
+        $('#badge_ongoing').show();
+      }
+      if(para.rescheduling > 0)
+      {
+        $('#badge_rescheduling').text(para.rescheduling);
+        $('#badge_rescheduling').show();
+      }
+      if(para.offerletter > 0)
+      {
+        $('#badge_letter').text(para.offerletter);
+        $('#badge_letter').show();
+      }
+    }
+  })
+  // functionality for notification ends here
+
   $('#loader').hide()
   $('#updated').hide()
   $('.modal').modal();

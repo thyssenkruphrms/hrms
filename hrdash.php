@@ -77,198 +77,196 @@ if(isset($_COOKIE['sid']))
   <a href="/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
   <a href="/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
   <a href="/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
-  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button">On going rounds</a> <br>
-  <a href="/hrms/history.php" class="w3-bar-item w3-button">See History  </a> <br>
-  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling</a> <br>
+  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
+  <a href="/hrms/history.php" class="w3-bar-item w3-button">See History</a> <br>
+  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
   <a href="/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
-  <a href="/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter</a> <br>
+  <a href="/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
   <a href="#" id="logoutuser" class="w3-bar-item w3-button">Logout</a> <br>
 
 </div>
 
 <div id="remin">
-<nav> 
-    <div class="nav-wrapper blue darken-1">
-      <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
-    </a>
-    <a href="/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
-    </div>
-</nav>
-<br><br>
-<!-- nav and side menu ended -->
-
-  
-
-
-
-        <!-- main card starts here -->
-                    <div class="row" id="attr">
-                        <div class="col s12 m12 ">
-                          <!-- <div class="card white"> -->
-                            <div class="card-content blue-text">
-                                
-                                    <div class="row" id="cardsradius">
-                                        <a href="/hrms/csvupload.php">
-                                            <div class="col  m6 s6">
-                                              <div class="card " style="background: #536DFE">
-                                                <div class="card-content white-text">
-                                                  <span class="card-title">Upload PRF Dump</span>
-                                                  <br>Total PRFs : <?php echo $countPrfs; ?><p></p>
-                                                </div>
-                                                
-                                              </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="/hrms/hrnew.php">
-
-                                            <div class="col  m6 s6">
-                                              <div class="card " style="background: #EA5455;">
-                                                <div class="card-content white-text">
-                                                  <span class="card-title">Open PRFs</span>
-                                                  <br> Open PRFs : <?php echo $countInstances; ?> <p></p>
-                                                </div>
-
-                                                
-                                                
-                                              </div>
-                                            </div>
-
-                                        </a> 
-                                        </div>
-                                        <div class="row" id="cardsradius">
-                                        <a href="/hrms/initiateround.php">
-                                            <div class="col  m6 s6">
-                                              <div class="card " style="background: #28C76F;">
-                                                <div class="card-content white-text">
-                                                  <span class="card-title">Round Initiation</span>
-                                                  <br> PRFs to be Initiated : <?php echo $countInitiate; ?>
-                                                </div>
-                                                
-                                              </div>
-                                            </div>
-                                        </a>
-                                       
-                                        <a href="/hrms/allocateround.php">
-
-                                            <div class="col  m6 s6">
-                                              <div class="card " style="background: #9F44D3;">
-                                                <div class="card-content white-text">
-                                                  <span class="card-title">Ongoing Rounds  </span>
-                                                  <br> Total Ongoing PRFs : <?php echo $countOngoing; ?><p></p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="/hrms/history.php">
-
-                                            <div class="col  m6 s6">
-                                              <div class="card " style="background: #9F44D3;">
-                                                <div class="card-content white-text">
-                                                  <span class="card-title">History  </span>
-                                                  <br> Completed PRFs : <?php echo $countHistory; ?><p></p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="/hrms/allocateround2.php">
-
-                                            <div class="col  m6 s6">
-                                              <div class="card " style="background: #28C76F; ">
-                                                <div class="card-content white-text">
-                                                  <span class="card-title">Rescheduling  </span>
-                                                  <br> Interviews to be Resheduled : <?php echo $countSchedule; ?><p></p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="/hrms/interview.php">
-
-                                            <div class="col  m6 s6">
-                                              <div class="card " style="background: #677E8C">
-                                                <div class="card-content white-text">
-                                                  <span class="card-title">Interview Updation  </span>
-                                                  <br> Total Scheduled Interviews : <?php echo $countInterviews; ?><p></p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="/hrms/offerletter.php">
-
-                                            <div class="col  m6 s6">
-                                              <div class="card " style="background: #EA5455; ">
-                                                <div class="card-content white-text">
-                                                  <span class="card-title">Offer Letters  </span>
-                                                  <br> Offer Letter Requests : <?php echo $countOffers; ?><p></p>
-                                                <!-- </div> -->
-                                              </div>
-                                            </div>
-                                        </a>
-
-                                              
-                                         
-                                           
-
-                                        
+  <nav> 
+      <div class="nav-wrapper blue darken-1">
+        <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
+      </a>
+      <a href="/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+      </div>
+  </nav>
+  <br><br>
+  <!-- nav and side menu ended -->
+  <!-- main card starts here -->
+  <div class="row" id="attr">
+    <div class="col s12 m12 ">
+      <!-- <div class="card white"> -->
+      <div class="card-content blue-text">
+        <div class="row" id="cardsradius">
+          <a href="/hrms/csvupload.php">
+              <div class="col  m6 s6">
+                <div class="card " style="background: #536DFE">
+                  <div class="card-content white-text">
+                    <span class="card-title">Upload PRF Dump</span>
+                    <br>Total PRFs : <?php echo $countPrfs; ?><p></p>
+                  </div>
                   
-                                    
-                                            
-                          </div>
-                          </div>
-                          </div>
-                          </div>
-                          </div>
+                </div>
+              </div>
+          </a>
 
-                         
+          <a href="/hrms/hrnew.php">
+
+              <div class="col  m6 s6">
+                <div class="card " style="background: #EA5455;">
+                  <div class="card-content white-text">
+                    <span class="card-title">Open PRFs</span>
+                    <br> Open PRFs : <?php echo $countInstances; ?> <p></p>
+                  </div>
+
+                  
+                  
+                </div>
+              </div>
+
+          </a> 
+          </div>
+          <div class="row" id="cardsradius">
+          <a href="/hrms/initiateround.php">
+              <div class="col  m6 s6">
+                <div class="card " style="background: #28C76F;">
+                  <div class="card-content white-text">
+                    <span class="card-title">Round Initiation</span>
+                    <br> PRFs to be Initiated : <?php echo $countInitiate; ?>
+                  </div>
+                  
+                </div>
+              </div>
+          </a>
+          
+          <a href="/hrms/allocateround.php">
+
+              <div class="col  m6 s6">
+                <div class="card " style="background: #9F44D3;">
+                  <div class="card-content white-text">
+                    <span class="card-title">Ongoing Rounds  </span>
+                    <br> Total Ongoing PRFs : <?php echo $countOngoing; ?><p></p>
+                  </div>
+                </div>
+              </div>
+          </a>
+
+          <a href="/hrms/history.php">
+
+              <div class="col  m6 s6">
+                <div class="card " style="background: #9F44D3;">
+                  <div class="card-content white-text">
+                    <span class="card-title">History  </span>
+                    <br> Completed PRFs : <?php echo $countHistory; ?><p></p>
+                  </div>
+                </div>
+              </div>
+          </a>
+
+          <a href="/hrms/allocateround2.php">
+
+              <div class="col  m6 s6">
+                <div class="card " style="background: #28C76F; ">
+                  <div class="card-content white-text">
+                    <span class="card-title">Rescheduling  </span>
+                    <br> Interviews to be Resheduled : <?php echo $countSchedule; ?><p></p>
+                  </div>
+                </div>
+              </div>
+          </a>
+
+          <a href="/hrms/interview.php">
+
+              <div class="col  m6 s6">
+                <div class="card " style="background: #677E8C">
+                  <div class="card-content white-text">
+                    <span class="card-title">Interview Updation  </span>
+                    <br> Total Scheduled Interviews : <?php echo $countInterviews; ?><p></p>
+                  </div>
+                </div>
+              </div>
+          </a>
+
+          <a href="/hrms/offerletter.php">
+
+              <div class="col  m6 s6">
+                <div class="card " style="background: #EA5455; ">
+                  <div class="card-content white-text">
+                    <span class="card-title">Offer Letters  </span>
+                    <br> Offer Letter Requests : <?php echo $countOffers; ?><p></p>
+                  <!-- </div> -->
+                </div>
+              </div>
+          </a>
         </div>
-                         
-                    
-                        
-                
-            
-                
-            
-            
-            
-            
-            
-            
-      
-    <!-- main card ends here -->
-    <script src="public/js/common.js"></script>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- main card ends here -->
+<script src="public/js/common.js"></script>
+<script>
 
-    <script>
+$( document ).ready(function() {
+  $('#badge_ongoing').hide();
+  $('#badge_rescheduling').hide();
+  $('#badge_letter').hide();
+  // ajax call for getting notification details
+  $.ajax({
+    url:'http://localhost/hrms/demo.txt',
+    type:'GET',
+    success:function(para)
+    {
+      // dummy data : give notification count, if no new notification please give 0 ex offerletter:0
+      para = {'ongoing':10,'rescheduling':5,"offerletter":0} 
+      if(para.ongoing > 0)
+      {
+        $('#badge_ongoing').text(para.ongoing);
+        $('#badge_ongoing').show();
+      }
+      if(para.rescheduling > 0)
+      {
+        $('#badge_rescheduling').text(para.rescheduling);
+        $('#badge_rescheduling').show();
+      }
+      if(para.offerletter > 0)
+      {
+        $('#badge_letter').text(para.offerletter);
+        $('#badge_letter').show();
+      }
+    }
+  })
+});
 
 
 $('#logoutuser').click(function(){
 
-$.ajax({
-url:"http://localhost/hrms/api/logout.php",
-type:"POST",
-success:function(para){
+  $.ajax({
+    url:"http://localhost/hrms/api/logout.php",
+    type:"POST",
+    success:function(para){
 
-if(para=="success")
-{
-$("#row").hide()
-$("#logout").show()
-document.location.replace("http://localhost/hrms/index.php")
-}
-else
-{
-$("#notlogout").show()
-document.location.replace("/hrms/")
-}
-} 
-
-})
+      if(para=="success")
+      {
+        $("#row").hide()
+        $("#logout").show()
+        document.location.replace("http://localhost/hrms/index.php")
+      }
+      else
+      {
+        $("#notlogout").show()
+        document.location.replace("/hrms/")
+      }
+    } 
+  })
 
 });
 
-    </script>
+</script>
 </body>
 </html>
 
