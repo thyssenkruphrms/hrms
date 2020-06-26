@@ -77,11 +77,11 @@ if(isset($_COOKIE['sid']))
   <a href="/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
   <a href="/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
   <a href="/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
-  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
+  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge green" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
   <a href="/hrms/history.php" class="w3-bar-item w3-button">See History</a> <br>
-  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
+  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge green" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
   <a href="/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
-  <a href="/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
+  <a href="/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge green" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
   <a href="#" id="logoutuser" class="w3-bar-item w3-button">Logout</a> <br>
 
 </div>

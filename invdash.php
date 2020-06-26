@@ -218,7 +218,7 @@ if(isset($_COOKIE['sid']))
   <h3 class="w3-bar-item white"> <center><a href="/hrms/">Home</a>
   <i id="remin" class="material-icons" style="float: right;cursor: pointer;">close</i></center>   
   </a></h3> <br><br>
-
+  <a href="/hrms/" class="w3-bar-item w3-button">To Do List <span class="new badge green" data-badge-caption="New Task(s)" id="badge_todo">4</span></a> <br>  
   <a href="/hrms/invhistory.php" class="w3-bar-item w3-button">See History  </a> <br>  
   <a href="/hrms/rejecedinvhistory.php" class="w3-bar-item w3-button">Rejected Interviews</a> <br>
   <a href="#" id="logoutuser" class="w3-bar-item w3-button">Logout</a> <br>
@@ -692,6 +692,26 @@ function submit_interview(cnfrm){
 
 
     $(document).ready(function(){
+
+        // functionality for notifications start here
+        $('#badge_todo').hide();
+        // ajax call for getting notification details
+        $.ajax({
+            url:'http://localhost/hrms/demo.txt',
+            type:'GET',
+            success:function(para)
+            {
+                // dummy data : give notification count, if no new notification please give 0 ex todo:0
+                para = {'todo':10} 
+                if(para.todo > 0)
+                {
+                    $('#badge_todo').text(para.todo);
+                    $('#badge_todo').show();
+                }
+
+            }
+        })
+        // functionality for notification ends here
         $("#status").hide()
         $("#loader").hide()
         $("#accept").hide()
