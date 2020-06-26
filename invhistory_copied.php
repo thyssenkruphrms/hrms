@@ -12,7 +12,7 @@ if(isset($_COOKIE['sid']))
     $cursor = $db->users->findOne(array("uid" => $cursor['uid']));
     $designation = $cursor['dsg'];
     
-    if($designation == "hr" || $designation == "ceo" || $designation == "hod" || $designation == "rghead" )
+    if($designation == "inv")
     {
 ?>
 
@@ -86,7 +86,7 @@ width: 350%;
     </div>
     <div class="modal-footer">
       <center>
-      <a class="modal-close waves-effect green btn" href="http://localhost/hrms/hrdash.php" >OK<i class="material-icons left" >check_box</i></a>
+      <!-- <a class="modal-close waves-effect green btn" href="http://localhost/hrms/invdash.php" >OK<i class="material-icons left" >check_box</i></a> -->
       </center>
     </div>
   </div>
@@ -144,8 +144,7 @@ width: 350%;
           <th>Department</th>
           <th>No. of Positions</th>
           <th>Instance ID</th>
-          <th>Status</th>
-          <th>Completion Date</th>
+          <th>Round</th>
           <th>VIEW DETAILS</th>
 
       </tr>
@@ -467,6 +466,7 @@ var flag0 = 0
 
 function xyz(x)
 {
+  alert(x)
   roundid = x.split("*");
   
 
@@ -652,7 +652,7 @@ success:function(arr)
 
     for(let j=0;j<arr.length;j++)
     {
-      var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="position">'+arr[j][1]+'</td><td id="zone">'+arr[j][2]+'</td><td id="dept">'+arr[j][3]+'</td><td id="posno">'+arr[j][4]+'</td><td id="iid">'+arr[j][6]+'</td><td id="status">'+arr[j][5]+'</td><td>'+arr[j][7]+'</td><td width="25%"><a id="'+arr[j][0]+"*"+arr[j][4]+"*"+arr[j][6]+'" class="btn small green darken-1" onclick="xyz(this.id)">View Details</a></td></tr>'
+      var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="position">'+arr[j][1]+'</td><td id="zone">'+arr[j][2]+'</td><td id="dept">'+arr[j][3]+'</td><td id="posno">'+arr[j][4]+'</td><td id="iid">'+arr[j][6]+'</td><td id="status">'+arr[j][5]+'</td><td width="25%"><a id="'+arr[j][0]+"*"+arr[j][4]+"*"+arr[j][5]+"*"+arr[j][6]+'" class="btn small green darken-1" onclick="xyz(this.id)">View Details</a></td></tr>'
       $('#rawdata').append(x);
     }
     $('#zonechoice').fadeIn(300);
@@ -737,7 +737,7 @@ $('#zonechoice').change(function(){
   
       for(let j=0;j<arr.length;j++)
       {
-        var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="position">'+arr[j][1]+'</td><td id="zone">'+arr[j][2]+'</td><td id="dept">'+arr[j][3]+'</td><td id="posno">'+arr[j][4]+'</td><td id="iid">'+arr[j][6]+'</td><td id="status">'+arr[j][5]+'</td><td>'+arr[j][7]+'</td><td width="25%"><a id="'+arr[j][0]+"*"+arr[j][4]+"*"+arr[j][6]+'" class="btn small green darken-1" onclick="xyz(this.id)">View Details</a></td></tr>'
+        var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="position">'+arr[j][1]+'</td><td id="zone">'+arr[j][2]+'</td><td id="dept">'+arr[j][3]+'</td><td id="posno">'+arr[j][4]+'</td><td id="iid">'+arr[j][6]+'</td><td id="status">'+arr[j][5]+'</td><td width="25%"><a id="'+arr[j][0]+"*"+arr[j][4]+"*"+arr[j][5]+"*"+arr[j][6]+'" class="btn small green darken-1" onclick="xyz(this.id)">View Details</a></td></tr>'
         $('#rawdata').append(x);
       }
       $('#zonechoice').fadeIn(300);
@@ -759,12 +759,12 @@ $('#zonechoice').change(function(){
 
  $("#mytabs").hide()
  $.ajax({
-    url:'http://localhost/hrms/api/getprfs.php',
+    url:'http://localhost/hrms/api/getprfsinvhistory.php',
     type:'POST',
     // data:{'arr1':arr1},
     success : function(para)
     {
-      // console.log("Hello WOrld");
+      console.log(para);
       if(para == "No Data")
       {
         $("#nodatamodal").modal("open");
@@ -790,7 +790,7 @@ $('#zonechoice').change(function(){
 
         for(let j=0;j<arr.length;j++)
         {
-          var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="position">'+arr[j][1]+'</td><td id="zone">'+arr[j][2]+'</td><td id="dept">'+arr[j][3]+'</td><td id="posno">'+arr[j][4]+'</td><td id="iid">'+arr[j][5]+'</td><td id="status">'+arr[j][6]+'</td><td>'+arr[j][7]+'</td><td width="25%"><a id="'+arr[j][0]+"*"+arr[j][4]+"*"+arr[j][5]+'" class="btn small green darken-1" onclick="xyz(this.id)">View Details</a></td></tr>'
+          var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="position">'+arr[j][1]+'</td><td id="zone">'+arr[j][2]+'</td><td id="dept">'+arr[j][3]+'</td><td id="posno">'+arr[j][4]+'</td><td id="iid">'+arr[j][5]+'</td><td id="status">'+arr[j][6]+'</td><td width="25%"><a id="'+arr[j][0]+"*"+arr[j][4]+"*"+arr[j][5]+"*"+arr[j][6]+'" class="btn small green darken-1" onclick="xyz(this.id)">View Details</a></td></tr>'
         $('#rawdata').append(x);
         }
       }
