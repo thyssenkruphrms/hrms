@@ -227,14 +227,7 @@ width: 350%;
                                   </div>
                                     
                                     <div class="row">
-                                        <div class="input-field col s3 m3">
-                                          <input id="idate" type="text" class="datepicker" required>
-                                          <label  for="idate">Date</label>
-                                        </div>
-                                        <div class="input-field col s3 m3 " >
-                                          <input id="itime" type="text" class="timepicker" required>
-                                          <label class="active" for="itime">Time</label>
-                                        </div>
+  
                                         <div class="input-field col s3 m3 " >
                                           <input id="idept" type="text" class="text">
                                           <label class="active" for="idept" id="idept" required>Interviewer Department</label>
@@ -853,7 +846,7 @@ $('#allocatesubmit').click(function()
   var iperson = $('#iperson').val();
 
   $('#allocation').hide(600);
-  if(imail != "" && iname != "" && idate != "" && itime != "" && idept != "" && idesg != "" && iperson != "" && iloc != "")
+  if(imail != "" && iname != "" &&  idept != "" && idesg != "" && iperson != "" && iloc != "")
   {
     for(let i=0;i<selectedmailID.length;i++)
     {
@@ -877,8 +870,6 @@ $('#allocatesubmit').click(function()
         "candates" : selecteddate2,
         "iname":iname,
         "intvmail":imail,
-        "date":idate,
-        "time":itime,
         "prf":groupid,
         "iloc":iloc,
         "iperson":iperson,

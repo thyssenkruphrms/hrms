@@ -28,7 +28,7 @@ if($cursor)
         $iid =(string) sprintf("%03s",$result["iid"]+1);
         $dashurl="http://localhost/hrms/invdash.php";
         $result3 = $db->prfs->findOne(array("prf"=>$_POST["prf"]));
-        $interviewUpdate = $db->interviews->insertOne(array("rid"=>"01","prf"=>$_POST["prf"],'pos'=>$_POST["pos"],"iid"=>$iid,"members"=>$_POST['emails'],"evaluated"=>array(),"intvmail"=>$_POST["intvmail"],"invname"=>$_POST["iname"],"designation"=>$_POST['idesg'],"dept"=>$_POST['dept'],"date"=>$_POST['date'],"time"=>$_POST['time'],"ilocation"=>$_POST['iloc'],"iperson"=>$_POST['iperson'],"status"=>"0","invstatus"=>"0","accepted"=>"no"));
+        $interviewUpdate = $db->interviews->insertOne(array("rid"=>"01","prf"=>$_POST["prf"],'pos'=>$_POST["pos"],"iid"=>$iid,"members"=>$_POST['emails'],"evaluated"=>array(),"intvmail"=>$_POST["intvmail"],"invname"=>$_POST["iname"],"designation"=>$_POST['idesg'],"dept"=>$_POST['dept'],"dates"=>$_POST['candates'],"moddates"=>$_POST['candates'],"times"=>$_POST['cantimes'],"modtimes"=>$_POST['cantimes'],"ilocation"=>$_POST['iloc'],"iperson"=>$_POST['iperson'],"status"=>"0","invstatus"=>"0","accepted"=>"no"));
         if($interviewUpdate)
         {
             $mail->addAddress($_POST["intvmail"]);
@@ -79,10 +79,7 @@ if($cursor)
                                                 <br><br>
                                                 Please find below the details for the interview for the post of '.$result3['position'].' and Confirm on the site portal.
                                                 <br><br>
-                                                Date - '.$_POST['date'].'
-                                                <br><br>
-                                                Timing - '.$_POST['time'].'
-                                                <br><br>
+    
                                                 Location - '.$_POST['iloc'].'
                                                 <br><br>
                                                 Contact Person - '.$_POST['iperson'].'
@@ -152,8 +149,11 @@ if($cursor)
             {
                 echo "sent";
             }
+
+            $result3 = $db->prfs->findOne(array("prf"=>$_POST["prf"]));
+            // $criteria=array("status"=>"ristart","prf"=>$_POST["prf"],'pos'=>$_POST["pos"],"rid"=>"01",'iid'=>$iid);
+            $criteria=array("status"=>"ristart","prf"=>$_POST["prf"],"pos"=>$_POST["pos"],"rid"=>"01",'iid'=>$iid,"dept"=>$result3['department'],"poszone"=>$result3['zone'],"position"=>$result3['position']);
             
-            $criteria=array("status"=>"ristart","prf"=>$_POST["prf"],'pos'=>$_POST["pos"],"rid"=>"01",'iid'=>$iid);
             foreach($_POST['emails'] as $d)
             {
                 //remove onhold candidate from previous round
