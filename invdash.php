@@ -250,6 +250,9 @@ if(isset($_COOKIE['sid']))
                         <thead>
                             <tr>
                                 <th>INTERVIEWS</th>
+                                <th>DEPARTMENT</th>
+                                <th>POSITION DETAILS</th>
+                                <th>ZONE</th>
                                 <th>SEE MEMBERS</th>
                                 <th>ACTION</th>
                                 <th>ACCEPT</th>
@@ -768,7 +771,7 @@ function submit_interview(cnfrm){
                     console.log("Status - ",temparr[3])
                     
                     var status = temparr[1]=="yes" ||temparr[1]=="pending"?"disabled":" ";
-                    var txt1 = '<tr><td><b>'+temparr[0]+'</b></td>'
+                    var txt1 = '<tr><td><b>'+temparr[0]+'</b></td><td>'+temparr[3]+'</td><td>'+temparr[4]+'</td><td>'+temparr[5]+'</td>'
                     var txt6 = '<td><button class="btn waves-effect green"  id="'+temparr[0]+'*2" onclick="displayreadonlymail(this.id)">See Members<i class="material-icons right">send</i></td>'                       
                     var txt5 = '<td><button class="btn waves-effect green"  id="act'+temparr[0]+'" onclick="openmodal3(this.id)" '+status+'>Accept<i class="material-icons right">send</i></button></td>' 
                     var txt4 = '<td><button class="btn waves-effect red"  id="act'+temparr[0]+'1" '+status+' onclick="openmodal(this.id)">Reject<i class="material-icons right">send</i></button></td>' 
