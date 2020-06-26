@@ -23,10 +23,11 @@ if($cursor)
             $i = 0;
             foreach($result as $document)
             {
+                $cursor = $db->rounds->findOne(array("prf"=>$document['prf'],"iid"=>$document['iid'],"rid"=>$document['rid']));
                 $prf = $document['prf'] ."-". $document['pos']."-". $document['iid'] ."-". $document['rid'];
                 $acc = $document['accepted'];
                 $invstat = $document['invstatus'];
-                $arr[$i] = array($prf,$acc, $invstat); 
+                $arr[$i] = array($prf,$acc, $invstat,$cursor['dept'],$cursor['position'],$cursor['poszone']); 
                 $i+=1;  
             }
 

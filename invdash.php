@@ -764,7 +764,7 @@ function submit_interview(cnfrm){
                 
                 for(let i = 0 ;i<para.length;i++)
                 {
-                    for(let j=0;j<4;j++)
+                    for(let j=0;j<6;j++)
                     {
                         temparr[j] = para[i][j];
                     }

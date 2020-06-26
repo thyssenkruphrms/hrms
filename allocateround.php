@@ -586,7 +586,7 @@ $('#allocatesubmit').click(function()
   var iperson = $('#iperson').val();
 
   $('#allocation').hide(600);
-  if(imail != "" && iname != "" && idate != "" && itime != "" && idept != "" && idesg != "" && iperson != "" && iloc != "")
+  if(imail != "" && iname != "" && idept != "" && idesg != "" && iperson != "" && iloc != "")
   {
     $('#allocation').hide(600);
     $("#pleasewait").fadeIn(600);
