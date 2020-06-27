@@ -615,13 +615,13 @@ $('#deptchoice').change(function(){
 $('#rawdata').empty();
 //Sarang Yesterday  13/03/2020
 $.ajax({
-url:"http://localhost/hrms/api/histgetfiltereddept.php",
+url:"http://localhost/hrms/api/invhisfiltereddept.php",
 type:"POST",
 data: {"dept": $('#deptchoice').val()},
 success:function(arr)
 { 
   console.log(arr)
-  if(arr == 'No data')
+  if(arr == 'No Data')
   {
     $('#nodata').fadeIn(300);
     $("#nodatamodal").modal("open");
@@ -700,7 +700,7 @@ $('#zonechoice').change(function(){
   $('#rawdata').empty();
   //Sarang Yesterday  13/03/2020
   $.ajax({
-  url:"http://localhost/hrms/api/histgetfilteredzones.php",
+  url:"http://localhost/hrms/api/invhisfilteredzone.php",
   type:"POST",
   data: {
     "dept": $('#deptchoice').val(),
@@ -708,7 +708,7 @@ $('#zonechoice').change(function(){
     },
   success:function(arr)
   { 
-    if(arr == 'No data')
+    if(arr == 'No Data')
     {
       $('#nodata').fadeIn(300);
       $("#nodatamodal").modal("open");
@@ -718,12 +718,14 @@ $('#zonechoice').change(function(){
     }
     else
     {
-      document.getElementById("result").innerHTML = arr.length;
-      document.getElementById("result1").innerHTML = arr.length;
+     
 
       $('#nodata').hide();
       console.log("This is my data : "+arr)
       arr=JSON.parse(arr);
+      console.log("ARr length - "+arr)
+      document.getElementById("result").innerHTML = arr.length;
+      document.getElementById("result1").innerHTML = arr.length;
       console.log("this are prflist = ",arr)
   
       for(let j=0;j<arr.length;j++)
