@@ -6,7 +6,7 @@ include 'db.php';
     {
             include 'maildetails.php';
             
-            $fullname = $_POST["full_name"];
+            $fullname = $_POST["last_name"]." ".$_POST["first_name"]." ".$_POST["mid_name"];
             $token = $_SESSION['token'];
             $collection = $db->tokens;
             $result1 = $collection->findOne(array("token" => $token));
@@ -48,6 +48,8 @@ include 'db.php';
                 $refcn = $_POST['cmpnmref0']?$_POST['cmpnmref0']:"NA";
                 $refcontact = $_POST['contref0']?$_POST['contref0']:"NA";
                 $refmail = $_POST['mailref0']?$_POST['mailref0']:"NA";
+                $refstd = $_POST['stdcoderef0']?$_POST['stdcoderef0']:"NA";
+                $refphone = $_POST['phoneref0']?$_POST['phoneref0']:"NA";
 
                 $orgname = $_POST['orgname0']?$_POST['orgname0']:"NA";
                 $olddesignation0 = $_POST['olddesignation0']?$_POST['olddesignation0']:"NA";
@@ -58,12 +60,21 @@ include 'db.php';
 
 
                 $values = array(
-                "userphoto" => $namephoto,
-                "usercv" => $namecv,
+                    "userphoto" => $namephoto,
+                    "usercv" => $namecv,
                     "aadharno" => $_POST["aadharno"],
-                    "full_name" => $_POST["full_name"],
-                    "address" => $_POST["address"],
+                    "first_name"=> $_POST['first_name'],
+                    "mid_name"=>$_POST['mid_name'],
+                    "last_name"=>$_POST['last_name'],
+                    "full_name" => $fullname,
+                    "street" => $_POST['street'],
+                    "Locality" => $_POST['Locality'],
+                    "State" => $_POST['State'],
+                    "Pincode" => $_POST['Pincode'],
+                    "City" => $_POST['City'],
                     "number" => $_POST["unumber"],
+                    "std" => $_POST["stdcode"],
+                    "phonenum" => $_POST["pnumber"],
                     "mail" => $_POST["uemail"],
                     "dob" => $_POST["udob"],
                     "position" => $_SESSION['positionapplied'],
@@ -108,6 +119,8 @@ include 'db.php';
                     "refdsg" => $refdsg,
                     "refcn" => $refcn,
                     "refcontact" => $refcontact,
+                    "refstd"=>$refstd,
+                    "refphone"=>$refphone,
                     "refmail" => $refmail,
                     "orgname" =>$orgname,
                     "olddesignation0" => $olddesignation0,
