@@ -541,6 +541,7 @@ function xyz(x)
                   }
                   $('.timepicker').timepicker();
                   $('.datepicker').datepicker();
+                  min date:mydate;
                   
                     
                 } 
