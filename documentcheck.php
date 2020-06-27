@@ -167,7 +167,7 @@ if(isset($_COOKIE['sid']))
                             </label>
 
                             <label class="col">
-                                <input value="hold" <?php echo ($doc['result']=='hold')?'checked':'disabled' ?> class="with-gap" name="group3" type="radio" onclick="disp(this)" id="rh" >
+                                <input value="hold" <?php echo ($doc['result']=='onhold')?'checked':'disabled' ?> class="with-gap" name="group3" type="radio" onclick="disp(this)" id="rh" >
                                 <span>put-on-hold</span>
                             </label>
 
@@ -180,13 +180,6 @@ if(isset($_COOKIE['sid']))
                     </div>
                 </div>
 
-                <!-- <div class="row" id="ifonhold">
-                    <b class="col">Reason For Put-on-hold :</b>
-                    <div class="input-field col s12">
-                        <input id="reasonhold" type="text" class="validate">
-                        <label for="reasonhold">Specify Reason For Put-on-hold</label>
-                    </div>
-                </div> -->
 
                 <?php if($doc['result']=='selected'){
 ?>
