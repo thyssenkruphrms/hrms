@@ -162,7 +162,7 @@ $_SESSION['positionapplied'] = $position;
                                               <label for="first_name">First Name</label>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="mid_name" name="middle_name" type="text" class="validate" required aria-required="true">
+                                              <input id="mid_name" name="mid_name" type="text" class="validate" required aria-required="true">
                                               <label for="mid_name">Middle Name</label>
                                             </div>
                                           </div>
@@ -190,26 +190,26 @@ $_SESSION['positionapplied'] = $position;
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="Pincode" name="Pincode" type="number" class="validate" required aria-required="true">
+                                              <input   id="Pincode" name="Pincode" type="number" class="validate"  maxlength="6" required aria-required="true">
                                               <label for="Pincode">Pincode</label>
                                             </div>
                                           </div>
 
                                           <b class="blue-text" style="font-size:20px">Contact Details</b>
                                           <div class="row">
-                                            <div class="input-field col s6">
+                                            <div class="input-field col s4">
                                               <input id="unumber" maxlength="10" onchange="checkcont(this.id)" name="unumber" type="number" class="validate" required aria-required="true">
                                               <label for="unumber">Contact number</label>
                                             </div>
 
-                                            <div class="input-field col s2">
-                                              <input id="stdcode" maxlength="10" name="stdcode" type="number" class="validate" required aria-required="true">
-                                              <label for="stdcode">STD Code</label>
+                                            <div class="input-field col s4">
+                                              <input id="stdcode" name="stdcode" type="number">
+                                              <label for="stdcode">STD Code (Optional)</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input id="pnumber" maxlength="10" name="pnumber" type="number" class="validate" required aria-required="true">
-                                              <label for="pnumber">Telphone number</label>
+                                              <input id="pnumber" maxlength="7" name="pnumber" type="number">
+                                              <label for="pnumber">Telphone number (Optional)</label>
                                             </div>
                                           </div>
                                           <div class="row">
@@ -680,12 +680,12 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
     
                                                 <div class="input-field col s3">
-                                                        <input id="stdcoderef0" name="stdcoderef0[]" type="number" class="validate" required aria-required="true"/>
+                                                        <input id="stdcoderef0" name="stdcoderef0[]" type="number"/>
                                                         <label for="stdcoderef0">STD  Code</label>
                                                 </div>
                                                 <div class="input-field col s3">
-                                                        <input id="phoneref0" name="phoneref0[]" type="number" class="validate" required aria-required="true"/>
-                                                        <label for="phoneref0">Reference</label>
+                                                        <input id="phoneref0" name="phoneref0[]" type="number"/>
+                                                        <label for="phoneref0">Phone Number</label>
                                                 </div>
                                                 
                                                 
@@ -783,7 +783,7 @@ function checknotice(x)
 {
         var id="#"+x;
         var noticeperiod=$(id).val();
-        if(noticeperiod.length!=3)
+        if(noticeperiod.length!=2)
         {
                 alert("Enter Valid Notice Period")
                 $(id).val(" ")
