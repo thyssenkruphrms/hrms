@@ -13,8 +13,9 @@ if($cursor)
         $i=0;
         foreach($result as $d)
         {
+            $res = $db->prfs->findOne(array("prf"=>$d['prf']));
            // $element=$d['prf']."-".$d['pos']."-".$d['iid']."-".$d['rid'];
-            $arr[$i]=array("prf"=>$d['prf'],"invname"=>$d['invname'],"position"=>$d['pos'],"iid"=>$d['iid'],"rid"=>$d['rid'] ,"intvmail"=>$d['intvmail'],"reason"=>$d['reason']);
+            $arr[$i]=array("prf"=>$d['prf'],"invname"=>$d['invname'],"position"=>$d['pos'],"iid"=>$d['iid'],"rid"=>$d['rid'] ,"intvmail"=>$d['intvmail'],"reason"=>$d['reason'],"dept"=>$res["department"],"posdetails"=> $res["position"],"zone"=> $res['zone']);
             $i++;
         }
       

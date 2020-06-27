@@ -866,8 +866,8 @@ $('#allocatesubmit').click(function()
       type:'POST',
       data:{
         "emails":selectedmail,
-        "cantimes" : selecteddate,
-        "candates" : selecteddate2,
+        "cantimes" : selecteddate2,
+        "candates" : selecteddate,
         "iname":iname,
         "intvmail":imail,
         "prf":groupid,
