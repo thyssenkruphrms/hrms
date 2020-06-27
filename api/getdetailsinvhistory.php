@@ -43,7 +43,8 @@ if($cursor1)
                 }
                 else if(in_array($doc['evaluated'][$j],$orderCount3))
                 {
-                    $getholdname =  $db->tokens->findOne(array("prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"iid"=>$_POST['iid'],"rid"=>$_POST['rid'],"email"=>$doc['evaluated'][$j]));
+                    $m = explode(",",$doc['evaluated'][$j])[0];
+                    $getholdname =  $db->tokens->findOne(array("email"=>$m,"prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"iid"=>$_POST['iid']));
                     $onhold[$h] = array($doc['evaluated'][$j],$getholdname['full_name']);
                     $h++;
                 } 

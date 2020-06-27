@@ -131,11 +131,11 @@ input[type="file"]{
                                               <label for="last_name">Last Name</label>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="first_name" name="first_name" type="text" class="validate" value="<?php echo $row['mid_name'];?>" readonly required aria-required="true">
+                                              <input id="first_name" name="first_name" type="text" class="validate" value="<?php echo $row['first_name'];?>" readonly required aria-required="true">
                                               <label for="first_name">First Name</label>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="mid_name" name="mid_name" type="text" class="validate" value="<?php echo $row['first_name'];?>" readonly required aria-required="true">
+                                              <input id="mid_name" name="mid_name" type="text" class="validate" value="<?php echo $row['mid_name'];?>" readonly required aria-required="true">
                                               <label for="mid_name">Middle Name</label>
                                             </div>
 
@@ -651,11 +651,11 @@ input[type="file"]{
                                                 </div>
     
                                                 <div class="input-field col s3">
-                                                        <input id="stdcoderef0" name="stdcoderef0[]" type="number" value="<?php echo $row["std_ref"][$i]; ?>" readonly />
+                                                        <input id="stdcoderef0" name="stdcoderef0[]" type="number" value="<?php echo $row["refstd"][$i]; ?>" readonly />
                                                         <label for="stdcoderef0">STD  Code</label>
                                                 </div>
                                                 <div class="input-field col s3">
-                                                        <input id="phoneref0" name="phoneref0[]" type="number" value="<?php echo $row["phonenum_ref"][$i]; ?>" readonly/>
+                                                        <input id="phoneref0" name="phoneref0[]" type="number" value="<?php echo $row["refphone"][$i]; ?>" readonly/>
                                                         <label for="phoneref0">Reference</label>
                                                 </div>
                                                                                                 

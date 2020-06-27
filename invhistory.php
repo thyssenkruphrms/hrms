@@ -474,7 +474,6 @@ function xyz(x)
               success:function(para)
               {
                 
-                
                 $("#select").click()
                console.log( JSON.parse(para))
               if(para != "no data")
@@ -523,7 +522,7 @@ function xyz(x)
                   mailidonly = element[i][0].split(",")
                   if(mailidonly[1] == "absent")
                   {
-                    var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>"+element[i][1]+"</p></td><td><p>Absent</p>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td></tr>"
+                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>Absent</p>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td></tr>"
                   $('#tabledatahold').append(str)
                   }
                   else
