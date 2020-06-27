@@ -31,13 +31,13 @@ if($cursor1)
 
                 if(in_array($doc['evaluated'][$j],$orderCount1))
                 {
-                    $getselectedname =  $db->tokens->findOne(array("prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"iid"=>$_POST['iid'],"rid"=>$_POST['rid'],"email"=>$doc['evaluated'][$j]));
+                    $getselectedname =  $db->tokens->findOne(array("prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"email"=>$doc['evaluated'][$j]));
                     $selected[$s] = array($doc['evaluated'][$j],$getselectedname['full_name']);
                     $s++;
                 }
                 else if(in_array($doc['evaluated'][$j],$orderCount2))
                 {
-                    $getrejectedname =  $db->tokens->findOne(array("prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"iid"=>$_POST['iid'],"rid"=>$_POST['rid'],"email"=>$doc['evaluated'][$j]));
+                    $getrejectedname =  $db->tokens->findOne(array("prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"email"=>$doc['evaluated'][$j]));
                     $rejected[$r] = array($doc['evaluated'][$j],$getrejectedname['full_name']);
                     $r++;
                 }

@@ -368,6 +368,7 @@ width: 350%;
     <script src="public/js/common.js"></script>
 
 <script>
+var mydate = new Date();
 var roundid;
 var selectedmail = []
 var selectedmailID = []
