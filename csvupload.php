@@ -75,7 +75,7 @@
                 <div class="card-content blue-text">
                 <a class="btn red modal-trigger" href="#modal1" style="float:right;" id="mymodal">CSV FILE FORMAT</a>
                 <span class="card-title">Upload Dump</span>
-                <p>Upload csv dump here cosisting of all the previous data.<br>
+                <p>Upload csv dump here consisting of all the previous data.<br>
                     Once the file is uploaded
                  cannot be changed.   
                 </p>
