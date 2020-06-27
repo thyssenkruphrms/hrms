@@ -121,25 +121,75 @@ input[type="file"]{
 
                                         <div class="row">
 
-                                            <div class="input-field col s12">
-                                              <input id="full_name" type="text" class="validate"  value = "<?php echo $row["full_name"]; ?>" readonly required="" aria-required="true">
+                                            <!-- <div class="input-field col s12">
+                                              <input id="full_name" type="text" class="validate"  value = "" readonly required="" aria-required="true">
                                               <label for="full_name">Full Name</label>
+                                            </div> -->
+                                          
+                                          <div class="input-field col s4">
+                                              <input id="last_name" name="last_name" type="text" class="validate" value="<?php echo $row['last_name'];?>" readonly required aria-required="true">
+                                              <label for="last_name">Last Name</label>
                                             </div>
-                                          </div>
+                                            <div class="input-field col s4">
+                                              <input id="first_name" name="first_name" type="text" class="validate" value="<?php echo $row['mid_name'];?>" readonly required aria-required="true">
+                                              <label for="first_name">First Name</label>
+                                            </div>
+                                            <div class="input-field col s4">
+                                              <input id="mid_name" name="mid_name" type="text" class="validate" value="<?php echo $row['first_name'];?>" readonly required aria-required="true">
+                                              <label for="mid_name">Middle Name</label>
+                                            </div>
 
+
+                                            <b class="blue-text" style="font-size:20px;">Present Address</b>
                                           <div class="row">
-                                            <div class="input-field col s12">
-                                              <input   id="address" type="text" class="validate"  value = "<?php echo $row["address"]; ?>" readonly required="" aria-required="true">
+                                            <!-- <div class="input-field col s12">
+                                              <input   id="address" type="text" class="validate"  value = "" readonly required="" aria-required="true">
                                               <label for="address">Present Address</label>
-                                              
+                                            </div> -->
+
+
+
+                                            <div class="input-field col s4">
+                                              <input   id="street" name="street" type="text" class="validate" value = "<?php echo $row["street"]; ?>" readonly required aria-required="true">
+                                              <label for="street">Street</label>
+                                            </div>
+
+                                            <div class="input-field col s4">
+                                              <input   id="Locality" name="Locality" type="text" class="validate" value = "<?php echo $row["Locality"]; ?>" readonly required aria-required="true">
+                                              <label for="Locality">Locality</label>
+                                            </div>
+
+                                            <div class="input-field col s4">
+                                              <input   id="City" name="City" type="text" class="validate" value = "<?php echo $row["City"]; ?>" readonly required aria-required="true">
+                                              <label for="City">City</label>
+                                            </div>
+
+                                            <div class="input-field col s4">
+                                              <input   id="State" name="State" type="text" class="validate" value = "<?php echo $row["State"]; ?>" readonly required aria-required="true">
+                                              <label for="State">State</label>
+                                            </div>
+
+                                            <div class="input-field col s4">
+                                              <input   id="Pincode" name="Pincode" type="number" class="validate" value = "<?php echo $row["Pincode"]; ?>" readonly required aria-required="true">
+                                              <label for="Pincode">Pincode</label>
                                             </div>
                                           </div>
 
-
+                                          <b class="blue-text" style="font-size:20px">Contact Details</b>
                                           <div class="row">
-                                            <div class="input-field col s12">
+                                            <div class="input-field col s4">
                                               <input id="unumber" type="number" class="validate"  value = "<?php echo $row["number"]; ?>" readonly required="" aria-required="true">
                                               <label for="number">Contact number</label>
+                                            </div>
+
+                                            <div class="input-field col s4">
+                                              <input id="stdcode" name="stdcode" type="number" value = "<?php echo $row["std"]; ?>" readonly>
+                                              <label for="stdcode">STD Code (Optional)</label>
+                                            </div>
+
+                                            <div class="input-field col s4">
+                                              <input id="pnumber" maxlength="7" name="pnumber" type="number" value = "<?php echo $row["phonenum"]; ?>" readonly>
+                                              <label for="pnumber">Telphone number (Optional)</label>
                                             </div>
                                           </div>
                                           <div class="row">
@@ -309,7 +359,7 @@ input[type="file"]{
     
                                                 
                                                 <div class="input-field col s6">
-                                                    <input id="notice" type="text" value = "<?php echo $row["notice"]; ?>" readonly >
+                                                    <input id="notice" type="number" value = "<?php echo $row["notice"]; ?>" readonly >
                                                     <label for="notice" >Notice Period In Current Oraganization</label>
                                                 </div>
 
@@ -595,7 +645,20 @@ input[type="file"]{
                                                         <label for="contref0">Reference</label>
                                                 </div>
                                                 
-                                                
+                                                <div class="input-field col s6">
+                                                        <input id="phoneref" type="text" disabled value="LandLine Number" style="color: black">
+       
+                                                </div>
+    
+                                                <div class="input-field col s3">
+                                                        <input id="stdcoderef0" name="stdcoderef0[]" type="number" value="<?php echo $row["std_ref"][$i]; ?>" readonly />
+                                                        <label for="stdcoderef0">STD  Code</label>
+                                                </div>
+                                                <div class="input-field col s3">
+                                                        <input id="phoneref0" name="phoneref0[]" type="number" value="<?php echo $row["phonenum_ref"][$i]; ?>" readonly/>
+                                                        <label for="phoneref0">Reference</label>
+                                                </div>
+                                                                                                
 
                                                 <div class="input-field col s6">
                                                          <input id="emailref" type="text" value="Company Email" disabled style="color: black">
