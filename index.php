@@ -104,7 +104,7 @@ else
             </div>
             
             <div class="input-field col s6 offset-s3 center">
-              <button class="btn waves-effect waves-light blue darken-1" id="submit" name="action">Submit
+              <button class="btn waves-effect waves-light blue darken-1" id="submit" name="action">Login
                 <i class="material-icons right">send</i>
               </button>
             </div>

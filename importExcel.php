@@ -31,7 +31,7 @@
 <body>
 
 <?PHP
-// error_reporting(0);
+error_reporting(0);
 function readCSV($csvFile){
     $file_handle = fopen($csvFile, 'r');
     while (!feof($file_handle) ) {
@@ -44,6 +44,11 @@ function readCSV($csvFile){
 if(isset($_FILES))
 {
     include 'api/db.php';
+    include 'api/maildetails.php';
+    $mail->setFrom('thyssenkrupp@tkep.com', 'tkei');
+    $mail->addReplyTo(Email, 'Information');
+    $mail->isHTML(true);
+
     $ctr = 0;
     // Set path to CSV file
     // $csvFile = 'test.csv';
@@ -126,12 +131,73 @@ if(isset($_FILES))
                     $today = date("Y-m-d H-i-s");
 
                     $db->generalized->insertOne(array("prf"=>$csv[$i][0],"uid"=>$uid,"init_time"=>"NA","comp_time"=>"NA","assign_time"=>"NA","accepted_time"=>"NA","creation_time"=>$today,"status"=>"avail"));
-
-                    
-                    
+      
             
         
         }
+        elseif(!$csv[$i][28]){
+
+            $cursor = $db->prfs->updateOne(array("prf"=>$csv[$i][0]),array('$set'=>array("status"=>$csv[$i][27])));
+            $cursor = $db->rounds->updateOne(array("prf"=>$csv[$i][0]),array('$set'=>array("status"=>$csv[$i][27])));
+            $cursor = $db->interviews->updateOne(array("prf"=>$csv[$i][0]),array('$set'=>array("status"=>$csv[$i][27])));
+            $cursor = $db->intereval->updateOne(array("prf"=>$csv[$i][0]),array('$set'=>array("status"=>$csv[$i][27])));
+
+
+            $cursor = $db->rounds->findOne(array("prf" => $csv[$i][0]));
+            if($cursor["status"] == "withdraw"){
+                $members = $cursor["members"];
+                $members2 = $cursor["selected"];
+    
+                    foreach($members as $member){
+                        $mail->addAddress($member);
+                        $mail->Subject = 'Regarding your application at thyssenkrupp';
+                        $mail->Body    = nl2br('Dear Candidate,
+
+                                 The position that you have applied for is withdrawn and applications are no longer accepted or processed further.
+                               
+                                Thank you for your interest in working with us.
+                               
+                               In-case of any query, feel free to reach out to recruitment@tkeap.com
+                               
+                                tkEI Recruiting Team.');
+                        
+                        
+
+                        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                    
+                        $mail->send(); 
+                        $mail->ClearAddresses();
+                    }
+
+
+                        foreach($members2 as $member){
+                            $mail->addAddress($member);
+                            $mail->Subject = 'Regarding your application at thyssenkrupp';
+                            $mail->Body    = nl2br('Dear Candidate,
+
+                                    The position that you have applied for is withdrawn and applications are no longer accepted or processed further.
+                                
+                                    Thank you for your interest in working with us.
+                                
+                                In-case of any query, feel free to reach out to recruitment@tkeap.com
+                                
+                                    tkEI Recruiting Team.');     
+                            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                        
+                            $mail->send(); 
+                            $mail->ClearAddresses();
+                    }
+
+
+
+
+            }
+
+            
+        }
+           
+        
+          
     }
   $countInstances = $db->prfs->count(array("status"=>"open"));
   $new = $countInstances - $ctr;
