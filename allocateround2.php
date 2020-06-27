@@ -94,14 +94,12 @@ if(isset($_COOKIE['sid']))
                             <table class="striped">
                                 <thead>
                                   <tr>
-                                      <th>Instance ID</th>
-                                      <th>Position Details</th>
-                                      <th>Zone</th>
-                                      <th>Department</th>
-                                      <th>No. of Positions</th>
                                       <th>PRF-POSITION-INSTANCE-ROUND</th>
+                                      <th>Department</th>
+                                      <th>Zone</th> 
+                                      <th>Position Details</th>
+                                      <th>No. of Positions</th>
                                       <th>Interviewer Name</th>
-
                                       <th>Interviewer Mail Id</th>
                                       <th>Reason Of rejection</th>
                                       <th>Reshedule Round</th>
@@ -262,15 +260,13 @@ $(document).ready(function(){
           var s1='<tr id="'+appended+'row">'
           var s6='<tr id="intvmail row">'
           var s7='<tr id="reason row">'
-        
-          var s2='<td>'+arr[i]['prf']+'</td><td>'+arr[i]['posdetails']+'</td><td>'+arr[i]['poszone']+'</td><td>'+arr[i]['dept']+'</td><td>'+arr[i]['position']+'</td>'
-          var s3='<td><b>'+appended+'</b></td><td>'
+          var s2='<td>'+appended+'</td><td>'+arr[i]['posdetails']+'</td><td>'+arr[i]['zone']+'</td><td>'+arr[i]['dept']+'</td><td>'+arr[i]['position']+'</td>'
+          var s3='<td>'+arr[i]['invname']+'</td><td>'
           var s8='<p >'+arr[i]['intvmail']+'</p></td><td>'
           var s9='<p >'+reason+'</p></td><td>'
-          var s10='<p>'+arr[i]['invname']+'</p></td><td>'
-
+        
           var s4='<button class="waves-effect green  btn"  id='+appended+'*'+intvmail+' onclick="createnextround(this.id)">Reshedule Round</button></td></tr>'
-          var str=s1+s2+s3+s10+s8+s9+s4
+          var str=s1+s2+s3+s8+s9+s4
            $('#addtr').append(str)
         }
       }
@@ -440,10 +436,11 @@ function createnextround(ids)
     {
       //var p1='<b>Reason : '+reason+'<b>'
       //$('#rid').replaceWith(p1);  
-     // console.log("this are rejected round mamnreafs = ",para)
       $('#adddetail').text("")
       // console.log("mails : "+para.members)
       var arr = JSON.parse(para)
+      console.log("this are rejected round mamnreafs = ",arr)
+
       console.log("mails :> "+para)
       $('#iname').val(arr.invname)
       $('#imail').val(arr.intvmail)
