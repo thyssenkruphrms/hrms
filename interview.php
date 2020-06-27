@@ -366,7 +366,7 @@ function xyz(x)
   console.log(prfints)
     $('#updatediv').show(600);
     $('#interviewer_name').val(prfints[6])
-    $('#interviewer_email').val(prfints[3])
+    $('#interviewer_email').val(prfints[7])
     $('#interviewer_dept').val(prfints[9])
     $('#interviewer_dsg').val(prfints[10])
     $('#iloc').val(prfints[13])
@@ -529,7 +529,6 @@ $('#updatebtn').click(function()
         newdsg=$('#interviewer_dsg').val() 
         iloc=$('#iloc').val()   
         iperson=$('#iperson').val()   
-
         console.log("Members", members) 
         $.ajax({
           
