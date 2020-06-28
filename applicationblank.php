@@ -109,7 +109,7 @@ $_SESSION['positionapplied'] = $position;
                           <div class="card white">
                             <div class="card-content blue-text darken-1" id="form">
                       
-                         <form method="POST" id="myform" name="applicationblank" enctype='multipart/form-data' action="./api/submitapplication.php" >
+                         <form method="POST" id="myform"  name="applicationblank" enctype='multipart/form-data' action="./api/submitapplication.php" >
                                  
 
                                 <!-- form starts -->
@@ -182,8 +182,7 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
                                                 
                                             <div class="input-field col s4">
-                                              <input   id="street" name="street" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                              <input   id="street" name="street" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" >
                                               <label for="street">Street</label>
                                             </div>
 
@@ -229,7 +228,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                           </div>
                                           <div class="row">
                                             <div class="input-field col s6">
-                                              <input id="uemail" name="uemail" type="email" class="validate" required aria-required="true">
+                                              <input id="uemail" name="uemail" type="email" class="validate" onchange="ValidateEmail(document.applicationblank.uemail)" required aria-required="true">
                                               <label for="uemail">Email</label>
                                             </div>
 
@@ -347,7 +346,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                         </div> 
                                                               
                                                         <div class="input-field col s6">
-                                                                <input id="managermail0" name="managermail0[]" type="email" class="validate"  aria-required="true">
+                                                                <input id="managermail0" name="managermail0[]" type="email"  class="validate"  aria-required="true">
                                                                 <label for="managermail0" style="font-size: 11px">Enter Manager Email</label>
                                                         </div> 
                                                         <div class="row" id="addnextexp"x>
@@ -724,7 +723,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                 </div>
 
                                                 <div class="input-field col s6">
-                                                        <input id="mailref0" name="mailref0[]" type="email" class="validate" required aria-required="true">
+                                                        <input id="mailref0" name="mailref0[]" type="email"  class="validate" required aria-required="true">
                                                         <label for="mailref0">Reference</label>
                                                 </div>
 
@@ -819,17 +818,33 @@ function checkpincode(x)
 
 function validtext(x)
 {
-        var id="#"+x;
-        var elementtext=$(id).val();
-        var mytxt = /^[a-z]+$/;
-        if(!elementtext.match(mytxt))
-        {
-                alert("Please Enter Valid Details");
-                $(id).val(" ");
-        }
+        // var id="#"+x;
+        // var elementtext=$(id).val();
+        // var mytxt = /^[a-z]+$/;
+        // if(!elementtext.match(mytxt))
+        // {
+        //         alert("Please Enter Valid Details");
+        //         $(id).val(" ");
+        // }
 
 }
 
+function ValidateEmail(inputText)
+{
+        var mailformat =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(inputText.value.match(mailformat))
+        {
+                   //The pop up alert for a valid email address
+        document.applicationblank.uemail.focus();
+        return true;
+        }
+        else
+        {
+        alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
+        document.applicationblank.uemail.focus();
+        return false;
+        }
+}
 function checknotice(x)
 {
         var id="#"+x;
@@ -897,7 +912,7 @@ $(document).ready(function(){
         var data={"token":token};
        // console.log(token);
         $.ajax({
-                                            url : 'http://localhost/hrms/api/checkExpiry.php',
+                                            url : 'http://localhost/api/checkExpiry.php',
                                             type : 'POST',
                                             data :(data),          
                                              success : function(para){
