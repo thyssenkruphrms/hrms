@@ -22,7 +22,7 @@ if($cursor)
             foreach($cursor as $document)
             {
                 $id = $document['prf']."-".$document['pos']."-".$document['iid']."-".$document['rid'];
-                $arr[$i] = array($id);
+                $arr[$i] = array($id,$document['position'],$document['poszone'],$document['dept']);
                 $i++;
             }  
            

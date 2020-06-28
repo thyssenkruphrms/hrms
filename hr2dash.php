@@ -83,7 +83,7 @@ if(isset($_COOKIE['sid']))
     <div class="col s12 m12">
         <div class="white-text">
             <div class="card-content blue-text">
-                <span class="card-title">Groups For Document Validation <a class="waves-effect green btn-small" style="float:right" href="http://localhost/hrms/hr2dash.php"><i class="material-icons right">refresh</i>Refresh</a></span>
+                <span class="card-title">Groups For Document Validation <a class="waves-effect green btn-small" style="float:right" href="http://118.185.100.233/hr2dash.php"><i class="material-icons right">refresh</i>Refresh</a></span>
                 <table class="striped">
                     <thead>
                         <tr>
@@ -91,9 +91,7 @@ if(isset($_COOKIE['sid']))
                             <th>Position Details</th>
                             <th>Zone</th>
                             <th>Department</th>
-                            <th>No. of Positions</th>
-                            <th>Position</th>
-                            <th>Groups</th>
+                           
                             <th>Validate</th>
                         </tr>
                     </thead>
@@ -217,7 +215,7 @@ if(isset($_COOKIE['sid']))
     $('#logoutuser').click(function(){
     
     $.ajax({
-    url:"http://localhost/hrms/api/logout.php",
+    url:"http://118.185.100.233/api/logout.php",
     type:"POST",
     success:function(para){
     
@@ -225,7 +223,7 @@ if(isset($_COOKIE['sid']))
     {
     $("#row").hide()
     $("#logout").show()
-    document.location.replace("http://localhost/hrms/index.php")
+    document.location.replace("http://118.185.100.233/index.php")
     }
     else
     {
@@ -250,7 +248,7 @@ $(document).ready(function(){
   $('#badge_todo').hide();
   // ajax call for getting notification details
   $.ajax({
-      url:'http://localhost/hrms/demo.txt',
+      url:'http://118.185.100.233/demo.txt',
       type:'GET',
       success:function(para)
       {
@@ -296,11 +294,14 @@ $("#validated").click(function(){
 
 // Ajax Call For Tking data of Grops for validation
 $.ajax({
-    url:"http://localhost/hrms/api/getprfvalidate.php",
+    url:"http://118.185.100.233/api/getprfvalidate.php",
     type:"GET",
     success:function(para)
     {   
+        console.log("1 st ajax: : ",para)
+
         para=JSON.parse(para)
+        
         console.log("1 st ajax: : ",para)
         if(para.length!=0)
         {
@@ -310,8 +311,8 @@ $.ajax({
             
             for(let i=0;i<para.length;i++)
             {
-                var txt1 = '<tr><td>'+para[i][0]+'</td><td>'+para[i][1]+'</td><td>'+para[i][2]+'</td><td>'+para[i][3]+'</td><td>'+para[i][4]+'</td><td>'+para[i][5]+'</td><td><label class="waves-effect blue darken-1 btn">'+para[i][6]+'</label></td>'
-                var txt2 = '<td><button class="btn waves-effect green"  id="'+para[i][6]+'" onclick="displayMail(this.id)">Start Validation' 
+                var txt1 = '<tr><td>'+para[i][0]+'</td><td>'+para[i][1]+'</td><td>'+para[i][2]+'</td><td>'+para[i][3]+'</td>'
+                var txt2 = '<td><button class="btn waves-effect green"  id="'+para[i][0]+'" onclick="displayMail(this.id)">Start Validation' 
                 var txt3 = ' </button></td></tr>'
                 var str = txt1+txt2+txt3;
                 $("#todolistbody").append(str)
@@ -342,7 +343,7 @@ function completeValidation(digit13)
     $("#"+digit13).attr('disabled','disabled')
     id=digit13.split("-");
     $.ajax({
-        url:"http://localhost/hrms/api/completevalidation.php",
+        url:"http://118.185.100.233/api/completevalidation.php",
         type:"POST",
         data:{
             "prf":id[0],
@@ -374,7 +375,7 @@ function displayMail(x)
     alert(x)
     
     $.ajax({
-        url:"http://localhost/hrms/api/getemailvalidate.php",
+        url:"http://118.185.100.233/api/getemailvalidate.php",
         type:"GET",
         data:{
             "id":x
@@ -501,7 +502,7 @@ function rol(para,name)
     // alert(s)
 
     $.ajax({
-        url:"http://localhost/hrms/api/reqofferletter.php",
+        url:"http://118.185.100.233/api/reqofferletter.php",
         type:"POST",
         data:{
             "mail":name,
