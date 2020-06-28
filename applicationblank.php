@@ -202,7 +202,7 @@ $_SESSION['positionapplied'] = $position;
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="Pincode" name="Pincode" type="number" class="validate"  maxlength="6" required aria-required="true">
+                                              <input   id="Pincode" name="Pincode" type="number" class="validate" onchange="checkpincode(this.id)" required aria-required="true">
                                               <label for="Pincode">Pincode</label>
                                             </div>
                                           </div>
@@ -262,7 +262,7 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
                                           </div>
 
-                                          <b style="font-size:20px;">Academic professional Qualification</b>
+                                          <b style="font-size:20px;">Academic Professional Qualification</b>
                                           <div class="row">
                                                 
                                                 <div class="input-field col s6">
@@ -456,7 +456,7 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="file-field input-field">
                                                 <div class="btn blue darken-1">
                                                         <span>Upload File</span>
-                                                        <input id="proof_address" name="proof_address"   required type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                                        <input id="proof_address" name="proof_address" required type="file" accept=".png, .jpg, .jpeg, .pdf">
                                                 </div>
                                                 <div class="file-path-wrapper">
                                                         <input class="file-path validate" type="text">
@@ -789,11 +789,22 @@ function checkcont(x)
         }
 }
 
+function checkpincode(x)
+{
+        var id="#"+x;
+        var txt=$(id).val();
+        if(txt.length!=6)
+        {
+                alert("Pincode Must be 6 Character Long");
+                $(id).val(" ")
+        }
+}
+
 function validtext(x)
 {
         var id="#"+x;
         var elementtext=$(id).val();
-        var mytxt = /^[A-Za-z]+$/;
+        var mytxt = /^[a-z]+$/;
         if(!elementtext.match(mytxt))
         {
                 alert("Please Enter Valid Details");
