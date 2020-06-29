@@ -109,7 +109,7 @@ $_SESSION['positionapplied'] = $position;
                           <div class="card white">
                             <div class="card-content blue-text darken-1" id="form">
                       
-                         <form method="POST" id="myform" name="applicationblank" enctype='multipart/form-data' action="./api/submitapplication.php" >
+                         <form method="POST" id="myform"  name="applicationblank" enctype='multipart/form-data' action="./api/submitapplication.php" >
                                  
 
                                 <!-- form starts -->
@@ -166,15 +166,15 @@ $_SESSION['positionapplied'] = $position;
                                         <div class="row">
 
                                             <div class="input-field col s4">
-                                              <input id="last_name" name="last_name" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)">
+                                              <input id="last_name" name="last_name" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                               <label for="last_name">Last Name</label>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="first_name" name="first_name" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)">
+                                              <input id="first_name" name="first_name" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                               <label for="first_name">First Name</label>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="mid_name" name="mid_name" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)">
+                                              <input id="mid_name" name="mid_name" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                               <label for="mid_name">Middle Name</label>
                                             </div>
                                           </div>
@@ -182,22 +182,24 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
                                                 
                                             <div class="input-field col s4">
-                                              <input   id="street" name="street" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)">
+                                              <input   id="street" name="street" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" >
                                               <label for="street">Street</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="Locality" name="Locality" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)">
+                                              <input   id="Locality" name="Locality" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                               <label for="Locality">Locality</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="City" name="City" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)">
+                                              <input   id="City" name="City" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                               <label for="City">City</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="State" name="State" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)">
+                                              <input   id="State" name="State" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                               <label for="State">State</label>
                                             </div>
 
@@ -226,7 +228,7 @@ $_SESSION['positionapplied'] = $position;
                                           </div>
                                           <div class="row">
                                             <div class="input-field col s6">
-                                              <input id="uemail" name="uemail" type="email" class="validate" required aria-required="true">
+                                              <input id="uemail" name="uemail" type="email" class="validate" onchange="ValidateEmail(document.applicationblank.uemail)" required aria-required="true">
                                               <label for="uemail">Email</label>
                                             </div>
 
@@ -247,7 +249,8 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                    <input id="location" name="location" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)">
+                                                    <input id="location" name="location" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                     <label for="location">Location</label>
                                                 </div>
                            
@@ -266,7 +269,8 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="qualification" name="qualification" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)">
+                                                        <input id="qualification" name="qualification" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                         <label for="qualification">Highest Qualification</label>
                                                       </div>
           
@@ -320,7 +324,8 @@ $_SESSION['positionapplied'] = $position;
                                   
                                                                               
                                                         <div class="input-field col s6">
-                                                                <input id="olddesignation0" name="olddesignation0[]" type="text"class="validate"  aria-required="true" onchange="validtext(this.id)">
+                                                                <input id="olddesignation0" name="olddesignation0[]" type="text"class="validate"  aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                                 <label for="olddesignation0" style="font-size: 11px">Designation</label>
                                                         </div>
                                                         
@@ -335,12 +340,13 @@ $_SESSION['positionapplied'] = $position;
                                                         </div> 
 
                                                         <div class="input-field col s6">
-                                                                <input id="managername0" name="managername0[]" type="text" class="validate"  aria-required="true" onchange="validtext(this.id)">
+                                                                <input id="managername0" name="managername0[]" type="text" class="validate"  aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                                 <label for="managername0" style="font-size: 11px">Reporting Manager Name</label>
                                                         </div> 
                                                               
                                                         <div class="input-field col s6">
-                                                                <input id="managermail0" name="managermail0[]" type="email" class="validate"  aria-required="true">
+                                                                <input id="managermail0" name="managermail0[]" type="email"  class="validate"  aria-required="true">
                                                                 <label for="managermail0" style="font-size: 11px">Enter Manager Email</label>
                                                         </div> 
                                                         <div class="row" id="addnextexp"x>
@@ -403,12 +409,14 @@ $_SESSION['positionapplied'] = $position;
 
                                                 
                                                 <div class="input-field col s6" >
-                                                        <input id="manager" name="manager" type="text"  required onchange="validtext(this.id)">
+                                                        <input id="manager" name="manager" type="text"  required onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                         <label for="manager" style="font-size: 11px">Reporting Manager Name & Designation</label>
                                                 </div>
 
                                                 <div class="input-field col s6" >
-                                                        <input id="ifselectposition" name="ifselectposition" type="text"  required onchange="validtext(this.id)">
+                                                        <input id="ifselectposition" name="ifselectposition" type="text"  required onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                         <label for="ifselectposition" style="font-size: 11px">Current Position</label>
                                                 </div>
 
@@ -471,7 +479,8 @@ $_SESSION['positionapplied'] = $position;
 
                                                 
                                             <div class="input-field col s6">
-                                                    <input id="father" name="father" type="text" onchange="validtext(this.id)">
+                                                    <input id="father" name="father" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                     <label for="father">Father Name</label>
                                             </div>
 
@@ -484,7 +493,8 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="mother" name="mother" type="text" onchange="validtext(this.id)">
+                                                    <input id="mother" name="mother" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                     <label for="mother">Mother Name</label>
                                             </div>
 
@@ -497,7 +507,8 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="spouse" name="spouse" type="text" onchange="validtext(this.id)">
+                                                    <input id="spouse" name="spouse" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                     <label for="spouse">Spouse Name</label>
                                             </div>
 
@@ -521,7 +532,8 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="child1" name="child1" type="text" onchange="validtext(this.id)">
+                                                    <input id="child1" name="child1" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                     <label for="child1">Child1 Name</label>
                                             </div>
 
@@ -544,7 +556,8 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="child2" name="child2" type="text" onchange="validtext(this.id)">
+                                                    <input id="child2" name="child2" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                     <label for="child2">Child2 Name</label>
                                             </div>
 
@@ -640,7 +653,8 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="nameref0" name="nameref0[]" type="text" onchange="validtext(this.id)">
+                                                        <input id="nameref0" name="nameref0[]" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                         <label for="nameref0">Reference</label>
                                                 </div>
                                                 
@@ -654,7 +668,8 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="designationref0" name="designationref0[]" type="text" onchange="validtext(this.id)">
+                                                        <input id="designationref0" name="designationref0[]" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                         <label for="designationref0">Reference</label>
                                                 </div>
                                                 
@@ -667,7 +682,8 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="cmpnmref0" name="cmpnmref0[]" type="text" onchange="validtext(this.id)">
+                                                        <input id="cmpnmref0" name="cmpnmref0[]" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                         <label for="cmpnmref0">Reference </label>
                                                 </div>
                                                 
@@ -707,7 +723,7 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
 
                                                 <div class="input-field col s6">
-                                                        <input id="mailref0" name="mailref0[]" type="email" class="validate" required aria-required="true">
+                                                        <input id="mailref0" name="mailref0[]" type="email"  class="validate" required aria-required="true">
                                                         <label for="mailref0">Reference</label>
                                                 </div>
 
@@ -802,17 +818,33 @@ function checkpincode(x)
 
 function validtext(x)
 {
-        var id="#"+x;
-        var elementtext=$(id).val();
-        var mytxt = /^[a-z]+$/;
-        if(!elementtext.match(mytxt))
-        {
-                alert("Please Enter Valid Details");
-                $(id).val(" ");
-        }
+        // var id="#"+x;
+        // var elementtext=$(id).val();
+        // var mytxt = /^[a-z]+$/;
+        // if(!elementtext.match(mytxt))
+        // {
+        //         alert("Please Enter Valid Details");
+        //         $(id).val(" ");
+        // }
 
 }
 
+function ValidateEmail(inputText)
+{
+        var mailformat =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(inputText.value.match(mailformat))
+        {
+                   //The pop up alert for a valid email address
+        document.applicationblank.uemail.focus();
+        return true;
+        }
+        else
+        {
+        alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
+        document.applicationblank.uemail.focus();
+        return false;
+        }
+}
 function checknotice(x)
 {
         var id="#"+x;
@@ -880,7 +912,7 @@ $(document).ready(function(){
         var data={"token":token};
        // console.log(token);
         $.ajax({
-                                            url : 'http://localhost/hrms/api/checkExpiry.php',
+                                            url : 'http://localhost/api/checkExpiry.php',
                                             type : 'POST',
                                             data :(data),          
                                              success : function(para){
