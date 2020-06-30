@@ -84,7 +84,7 @@ if(isset($_COOKIE['sid']))
       <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
       <br>
       
-      <center><h2>No Data Avilable</h2></center>
+      <center><h2>No Data Available</h2></center>
       
     </div>
     <div class="modal-footer">
@@ -109,24 +109,24 @@ if(isset($_COOKIE['sid']))
   </div>
 <!-- refresh data modal ends here -->
 
-<!-- modal 1 starts here -->
-  <div id="modal1" class="modal">
+<!-- modal 2 starts here -->
+<div id="modal2" class="modal">
     <div class="modal-content">
       <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
       <br>
       
       <center><h2>Are You Sure ?</h2></center>
-      
-      
+      <center><p>Interview Process Will Be Completed.You Can See These Members in Your History</p></center>
     </div>
     <div class="modal-footer">
       <center>
-      <a onclick="abort_round(true)" class="modal-close waves-effect green btn" >Confirm<i class="material-icons left" >check_box</i></a>
-      <a onclick="abort_round(false)" class="modal-close waves-effect red btn">Cancel<i class="material-icons left">highlight_off</i></a>
+      <a onclick="allocateSubmit(true)" class="modal-close waves-effect green btn" >Confirm<i class="material-icons left" >check_box</i></a>
+      <a onclick="allocateSubmit(false)" class="modal-close waves-effect red btn">Cancel<i class="material-icons left">highlight_off</i></a>
       </center>
     </div>
   </div>
-<!-- modal 1 ends here -->
+<!-- modal 2 ends here -->
+
 <div id="sidenn" class="w3-sidebar blue w3-bar-block sidemenu" style="z-index: 1000;overflow-y:hidden">
 
   <h3 class="w3-bar-item white"> <center><a href="/hrms/">Home</a>
@@ -437,9 +437,18 @@ $(document).ready(function(){
   })
 
   $('#allocatesubmit').click(function(){
+    $("#modal2").modal("open")
+  })
 
-     
-      var imail = $('#imail').val();
+
+})
+//end of document.ready(function)   
+
+function allocateSubmit(cnfrm)
+{
+  if(cnfrm)
+  {
+    var imail = $('#imail').val();
       var iname = $('#iname').val();
       var idept = $('#idept').val();
       var idesg = $('#idesg').val();
@@ -514,15 +523,8 @@ $(document).ready(function(){
       {
         alert("Please Fill All Data")
       }
-      
-      
-      
-    })
-
-
-})
-//end of document.ready(function)   
-
+  }
+}
 var ctr=0
 function selection(x)
 {

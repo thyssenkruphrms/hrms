@@ -36,6 +36,24 @@ if(isset($_COOKIE['sid']))
     <script src="public/js/materialize.js"></script>
     <script src="public/js/materialize.min.js"></script>
 
+<style>
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.96)  url(loader2.gif)  no-repeat center center !important;
+    z-index: 10000;
+  }
+  #loader > #txt{
+          font-size:25;
+          margin-left:35% !important;
+          margin-top:18% !important; 
+  }
+</style>
+
 </head>
 
 <body>
@@ -47,7 +65,7 @@ if(isset($_COOKIE['sid']))
       <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
       <br>
       
-      <center><h2>No Data Avilable</h2></center>
+      <center><h2>No Data Available</h2></center>
       
     </div>
     <div class="modal-footer">
@@ -199,6 +217,15 @@ if(isset($_COOKIE['sid']))
 <center>
 <p id="nodata"><b style="color:red;margin-left:12%">No Data Available..!</b></p>
 </center>
+
+
+<div id="loader">
+  <div id="txt">
+    <b>Please wait.. while we schedule this interview</b>
+  </div>
+</div>
+
+
 <script src="public/js/common.js"></script>
 <script>
 
@@ -210,6 +237,7 @@ $(document).ready(function(){
   $('#badge_ongoing').hide();
   $('#badge_rescheduling').hide();
   $('#badge_letter').hide();
+  $('#loader').hide();
   // ajax call for getting notification details
   $.ajax({
     url:'http://localhost/hrms/demo.txt',
@@ -313,6 +341,7 @@ $(document).ready(function(){
     $('#allocation').show(600);
     $('#allocatesubmit').click(function(){
       console.log(iid);
+      $('#loader').show();
       // alert("Old " +oldintv);
       var imail = $('#imail').val();
       var iname = $('#iname').val();
@@ -356,7 +385,8 @@ $(document).ready(function(){
               $("#pleasewait").hide();
             }
             selectedmail = []
-            // window.setTimeout(function(){location.reload()},1000)
+            $('#loader').hide();
+            window.setTimeout(function(){location.reload()},1000)
 
         }
       })

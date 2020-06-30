@@ -93,7 +93,7 @@ if(isset($_COOKIE['sid']))
                 <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
                 <br>
                 
-                <center><h2>No Data Avilable</h2></center>
+                <center><h2>No Data Available</h2></center>
                 
                 </div>
                 <div class="modal-footer">
@@ -955,7 +955,9 @@ function submit_interview(cnfrm){
                         console.log("Final current time - "+finaltime)
                         console.log("Final db time - "+time)
                         setDate.setHours(0,0,0,0)
-                        console.log(setDate)
+                        console.log("Db date = "+setDate)
+                        console.log("Curr date = "+currdate)
+
                         // var status = para[i][2]=="yes"?"disabled":" ";
                         var txt1 = '<tr id="'+para[i][1]+'"><td ><a href="http://localhost/hrms/applicationblank_readonly.php?aid='+para[i][1]+'"  target="_blank" ><p >'+para[i][0]+'</p></a></td>'
                         var txt2 = '<td ><p >'+para[i][1]+'</p></td>'
@@ -966,8 +968,18 @@ function submit_interview(cnfrm){
                             var txt5 = '<td><button disabled class="btn waves-effect green"  id="'+para[i][1]+'" onclick="openmodal2(this.id)">Evaluate<i class="material-icons right">send</i></button></td>'                       
                             var txt6 = '<td><button disabled class="btn waves-effect red"  id="'+para[i][1]+'" onclick="openmodal4(this.id)">Absent<i class="material-icons right">send</i></button></td></tr>' 
                         }
+                        else if(setDate < currdate)
+                        {
+                            var txt5 = '<td><button  class="btn waves-effect green"  id="'+para[i][1]+'" onclick="openmodal2(this.id)">Evaluate<i class="material-icons right">send</i></button></td>'                       
+                            var txt6 = '<td><button  class="btn waves-effect red"  id="'+para[i][1]+'" onclick="openmodal4(this.id)">Absent<i class="material-icons right">send</i></button></td></tr>' 
+
+                        }
                         else
                         {
+                            console.log("Entered Else");
+                            console.log("db time = "+time);
+                            console.log("cur time = "+finaltime);
+                            
                             if(time <= finaltime)
                             {
                                 // alert("Set time is lesser than current")
