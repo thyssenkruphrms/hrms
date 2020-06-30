@@ -86,7 +86,7 @@ function abort_round(confr)
       <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
       <br>
       
-      <center><h2>No Data Avilable</h2></center>
+      <center><h2>No Data Available</h2></center>
       
     </div>
     <div class="modal-footer">
@@ -264,7 +264,7 @@ function abort_round(confr)
             <br>
             <div id="noselect">
             </div>
-            <a class="waves-effect red btn" disabled  id="completeprocess"  onclick='$("#modal2").modal("open")'>Complete Interview Process</a>
+            <a class="waves-effect red btn" disabled  id="completeprocess"  onclick='terminateround()'>Complete Interview Process</a>
             <br>
             <a class="waves-effect red btn" id="completeprocess2"  onclick="sendforhistory()">Complete Interview Process</a>
           </div>          
@@ -309,17 +309,35 @@ function abort_round(confr)
           <br>
           
           <center><h2>Are You Sure ?</h2></center>
-          <center><p>Interview Process Will Be Completed.You Can See These Memebers in Your History</p></center>
-          
+          <center><p>Interview Process Will Be Completed.You Can See These Members in Your History</p></center>
         </div>
         <div class="modal-footer">
           <center>
-          <a onclick="terminateround(true)" class="modal-close waves-effect green btn" >Confirm<i class="material-icons left" >check_box</i></a>
-          <a onclick="terminateround(false)" class="modal-close waves-effect red btn">Cancel<i class="material-icons left">highlight_off</i></a>
+          <a onclick="completeProcess(true)" class="modal-close waves-effect green btn" >Confirm<i class="material-icons left" >check_box</i></a>
+          <a onclick="completeProcess(false)" class="modal-close waves-effect red btn">Cancel<i class="material-icons left">highlight_off</i></a>
           </center>
         </div>
       </div>
     <!-- modal 2 ends here -->
+
+    <!-- modal 3 starts here -->
+    <div id="modal3" class="modal">
+      <div class="modal-content">
+        <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
+        <br>
+        
+        <center><h2>Are You Sure ?</h2></center>
+        <center><p>You want to create a new round </p></center>
+      </div>
+      <div class="modal-footer">
+        <center>
+        <a onclick="allocateSubmit(true)" class="modal-close waves-effect green btn" >Confirm<i class="material-icons left" >check_box</i></a>
+        <a onclick="allocateSubmit(false)" class="modal-close waves-effect red btn">Cancel<i class="material-icons left">highlight_off</i></a>
+        </center>
+      </div>
+    </div>
+  <!-- modal 3 ends here -->
+
   <!-- modal ends here -->
 
 
@@ -482,83 +500,93 @@ $('#submit').click(function()
 // Function for round Completion (AD)
 $('#allocatesubmit2').click(function()
 {
-  $("#waiting").fadeIn(600);
-  var groupid=window.groupid
-  var hr2name = $('#hr2name').val();
-  var hr2dept = $('#hr2dept').val();
-  var hr2desg = $('#hr2desg').val();
-  var hr2mail = $('#hr2mail').val();
+  $("#modal2").modal("open")
 
-  $('#allocation2').hide(600);
-  if(hr2mail != "" && hr2name != "" && hr2dept != "" && hr2desg != "")
+})
+
+function completeProcess(cnfrm)
+{
+  if(cnfrm)
   {
-    $("#pleasewait").fadeIn(600);
+    $("#waiting").fadeIn(600);
+    var groupid=window.groupid
+    var hr2name = $('#hr2name').val();
+    var hr2dept = $('#hr2dept').val();
+    var hr2desg = $('#hr2desg').val();
+    var hr2mail = $('#hr2mail').val();
 
     $('#allocation2').hide(600);
-    for(let i=0;i<selectedmailID.length;i++)
+    if(hr2mail != "" && hr2name != "" && hr2dept != "" && hr2desg != "")
     {
-      var b = selectedmailID[i]
-      b = b+'date'
-      b2 = b+'2'
-      console.log(b)
-      console.log(b2)
-      selecteddate.push($(b).val()) 
-      selecteddate2.push($(b2).val()) 
-      console.log("Email:",selectedmail[i]) 
-    }
-    $.ajax({
-    url:'http://localhost/hrms/api/terminateround.php',
-    type:'POST',
-    data:{
-      "allmembers":window.allmembers,
-      "emails":selectedmail,
-      "hr2name":hr2name,
-      "hr2mail":hr2mail,
-      "prf":groupid,
-      "hr2desg":hr2desg,
-      "hr2dept":hr2dept
-    },
-    success:function(para)
-    {
-      alert(para)
-      $("#waiting").hide();
-      console.log("This is : ",para)
-      if(para == "nomails")
+      $("#pleasewait").fadeIn(600);
+
+      $('#allocation2').hide(600);
+      for(let i=0;i<selectedmailID.length;i++)
       {
-        alert("Complete")
-        window.setTimeout(function(){location.reload()},1000)
+        var b = selectedmailID[i]
+        b = b+'date'
+        b2 = b+'2'
+        console.log(b)
+        console.log(b2)
+        selecteddate.push($(b).val()) 
+        selecteddate2.push($(b2).val()) 
+        console.log("Email:",selectedmail[i]) 
       }
-      if(para=="sent")
+      $.ajax({
+      url:'http://localhost/hrms/api/terminateround.php',
+      type:'POST',
+      data:{
+        "allmembers":window.allmembers,
+        "emails":selectedmail,
+        "hr2name":hr2name,
+        "hr2mail":hr2mail,
+        "prf":groupid,
+        "hr2desg":hr2desg,
+        "hr2dept":hr2dept
+      },
+      success:function(para)
       {
-        $('#sentsuccess').fadeIn(600)
-        $('#sendingmail').hide()
-        window.setTimeout(function(){location.reload()},1000)
-        for(let i=0;i<selectedmail.length;i++)
+        alert(para)
+        $("#waiting").hide();
+        console.log("This is : ",para)
+        if(para == "nomails")
         {
-          var ml = selectedmail[i];
-          var id = allmail.indexOf(ml) 
-          var str='#check'+id+'row';
-          $(str).remove();
-          $("#waiting").hide();
+          alert("Complete")
+          window.setTimeout(function(){location.reload()},1000)
         }
-        selectedmail = []
-      }
-      else
-      {
-        alert("Mail was not sent.")
-        $('#sendingmail').hide()
+        if(para=="sent")
+        {
+          $('#sentsuccess').fadeIn(600)
+          $('#sendingmail').hide()
+          window.setTimeout(function(){location.reload()},1000)
+          for(let i=0;i<selectedmail.length;i++)
+          {
+            var ml = selectedmail[i];
+            var id = allmail.indexOf(ml) 
+            var str='#check'+id+'row';
+            $(str).remove();
+            $("#waiting").hide();
+          }
+          selectedmail = []
+        }
+        else
+        {
+          alert("Mail was not sent.")
+          $('#sendingmail').hide()
+
+        }
+        console.log((para))
+        $(str).remove();
 
       }
-      console.log((para))
-      $(str).remove();
 
+
+                
+    })
     }
-
-
-              
-  })
   }
-  })
+  
+}
 
 
 
@@ -574,7 +602,14 @@ $('#allocatesubmit2').click(function()
 
 $('#allocatesubmit').click(function()
 {
-  $("#waiting").fadeIn(600);
+  $("#modal3").modal("open")
+})  
+
+function allocateSubmit(cnfrm)
+{
+  if(cnfrm)
+  {
+    $("#waiting").fadeIn(600);
   console.log("dept - ",window.dept)
   console.log("zone - ",window.zone)
   var groupid=window.groupid
@@ -640,41 +675,39 @@ $('#allocatesubmit').click(function()
     }
     })
   }
-
- })  
+  }
+}
 
 var ctr=0
 function selection(x)
 {
   $('#submit').attr('disabled',false)
-  $('#completeprocess').attr('disabled',false)
-
+ 
 
   var b = '#'+x
   var y ='#'+x+'mail'  
   if($(b).prop("checked") == true)
   {
     console.log("Value of first - "+$(b+"date2").val())
-    if($(b+"date").val() !="" && $(b+"date2").val() !="" )
-    {
-        // $(b).prop("checked")=false
-        // alert("Date not entered");
-        selectedmail.push($(y).text())
-        selectedmailID.push(b)
-        console.log('mail:'+selectedmail)
-        console.log('ID:'+selectedmailID)
-    }
-    else
-    {
-      $(b).prop("checked",false)
-      alert("Date not entered");
-    }
-
-    
+    // if($(b+"date").val() !="" && $(b+"date2").val() !="" )
+    // {
+    // $('#completeprocess').attr('disabled',false)
+    //     // $(b).prop("checked")=false
+    //     // alert("Date not entered");
+       selectedmail.push($(y).text())
+       selectedmailID.push(b)
+      console.log('mail:'+selectedmail)
+      console.log('ID:'+selectedmailID)
+    // }
+    // else
+    // {
+    //   $(b).prop("checked",false)
+    //   alert("Date not entered");
+    // }
+    $('#completeprocess').attr('disabled',false)
   }
   else
-  { 
-                                                 
+  {                                            
     for( var i = 0; i < selectedmail.length; i++)
     { 
       if ( selectedmail[i] === $(y).text()) 
@@ -793,11 +826,10 @@ function createnextround(id)
 
 }
 counter=1;
-function terminateround(confrm)
+function terminateround()
 {
-  if(selectedmail.length <= 0 && counter == 1)
+    if(selectedmail.length <= 0 && counter == 1)
     {
-
       alert("Please Select Atleast 1 Member")
     }
     else
@@ -806,18 +838,15 @@ function terminateround(confrm)
       console.log(selectedmail)
       var groupid=window.groupid
       console.log(groupid)
-      if(confrm)
+      
+      $('#allocation2').fadeIn(600);
+      // $('#sendingmail').fadeIn(600)
+      if(selectedmail.length==0)
       {
-        $('#allocation2').fadeIn(600);
-        // $('#sendingmail').fadeIn(600)
-        if(selectedmail.length==0)
-        {
-          selectedmail="nomail";
-        }
+        selectedmail="nomail";
+      }
 
-        
     }
-}
 }
 
 $('#logoutuser').click(function(){

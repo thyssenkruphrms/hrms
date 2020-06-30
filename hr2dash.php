@@ -46,7 +46,7 @@ if(isset($_COOKIE['sid']))
         <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
         <br>
         
-        <center><h2>No Data Avilable</h2></center>
+        <center><h2>No Data Available</h2></center>
         
         </div>
         <div class="modal-footer">
