@@ -288,7 +288,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                                         <div class="file-field input-field">
                                                                                 <div class="btn blue darken-1">
                                                                                         <span>Upload Documents</span>
-                                                                                        <input id="alldocs" name="alldocs" type="file"  required accept=".png, .jpg, .jpeg, .pdf">
+                                                                                        <input id="alldocs" name="alldocs" type="file"  required accept=".pdf">
                                                                                 </div>
                                                                                 <div class="file-path-wrapper">
                                                                                         <input class="file-path validate" type="text">
@@ -912,7 +912,7 @@ $(document).ready(function(){
         var data={"token":token};
        // console.log(token);
         $.ajax({
-                                            url : 'http://localhost/api/checkExpiry.php',
+                                            url : 'http://localhost/hrms/api/checkExpiry.php',
                                             type : 'POST',
                                             data :(data),          
                                              success : function(para){
