@@ -13,7 +13,10 @@ if(isset($_COOKIE['sid']))
   $countOngoing = $db->rounds->count(array("status"=>"invcomplete"));
   $countSchedule = $db->interviews->count(array("invstatus"=>"1"));
   $countInterviews = $db->interviews->count(array("status"=>"0"));
-  $countOffers = $db->intereval->count(array("offerletter"=>"requested"));
+  $req = $db->intereval->count(array("offerletter"=>"requested"));
+  $sent = $db->intereval->count(array("offerletter"=>"sent"));
+  $countOffers = $req+$sent;
+
 
 
 
