@@ -9,21 +9,21 @@ if($cursor)
 {
 
 
-    $initiateprfs=$db->generalized->find(array("status"=>"completed"));
-    $prfs=array();
-    foreach($initiateprfs as $doc=>$docval){        
-                $prfs[]=$docval->prf;
-            //var_dump($docval);     
-    }
+    // $initiateprfs=$db->generalized->find(array("status"=>"completed"));
+    // $prfs=array();
+    // foreach($initiateprfs as $doc=>$docval){        
+    //             $prfs[]=$docval->prf;
+    //         //var_dump($docval);     
+    // }
 
-    $dataforinitiate=array();
+    // $dataforinitiate=array();
 
-    foreach($prfs as $val){
-        $cur_prf=$db->rounds->findOne(array("prf"=>$val,"status"=>"completed"));
+    // foreach($prfs as $val){
+        $cur_prf=$db->rounds->findOne(array("status"=>"completed","completevalidate"=>"inprocess"));
 
         if($cur_prf){
             $object=array(
-                "prf"=>$val,
+                "prf"=>$cur_prf->prf,
                 //"position"=>$cur_prf->position,
                 "pos"=>$cur_prf->pos,
                 "iid"=>$cur_prf->iid,
@@ -32,7 +32,7 @@ if($cursor)
 
             $dataforinitiate[]=$object;
         }
-    }
+    
 
     echo json_encode(array("data"=>$dataforinitiate));
 
