@@ -16,7 +16,9 @@ if($cursor1)
         foreach($cursor as $doc)
         {
             $getselectednames =  $db->tokens->findOne(array("prf"=>$doc['prf'],"pos"=>$doc['pos'],"iid"=>$doc['iid'],"email"=>$doc['email']));
-            $arr[$i] =array("prf"=>$doc['prf'],"members"=>$doc['email'],"pos"=>$doc['position'],"name"=>$getselectednames['full_name'],"status"=>$getselectednames['afterselection']);
+            $getdate =  $db->prfs->findOne(array("prf"=>$doc['prf']));
+        
+            $arr[$i] =array("prf"=>$doc['prf'],"members"=>$doc['email'],"posdetail"=>$doc['position'],"name"=>$getselectednames['full_name'],"status"=>$getselectednames['afterselection'],"poszone"=>$getdate['zone'],"dept"=>$getdate['department'],"position"=>$getdate['pos']);
             $i++;
         }
         if(count($arr)==0)

@@ -128,8 +128,6 @@ width: 350%;
           <th>Zone</th>
           <th>Department</th>
           <th>No. of Positions</th>
-          
-          <th>Position</th>
           <th>Name</th>
           <th>Members</th>
           <th>Status</th>
@@ -374,7 +372,15 @@ $(document).ready(function(){
             {
               status = "Offer Letter Sent"
             }
-            var x='<tr id="rows"><td id="prf" value="'+para[j].prf+'">'+para[j].prf+'</td><td>'+para[j].posdetail+'</td><td>'+para[j].poszone+'</td><td>'+para[j].dept+'</td><td>'+para[j].position+'</td><td id="pos">'+para[j].pos+'</td><td id="zone">'+para[j].name+'</td><td id="dept">'+para[j].members+'</td><td id="dept">'+status+'</td></tr>'
+            if(para[j].status == "7")
+            {
+              status = "Candidate Joined"
+            }
+            if(para[j].status == "8")
+            {
+              status = "Candidate Rejected Offer"
+            }
+            var x='<tr id="rows"><td id="prf" value="'+para[j].prf+'">'+para[j].prf+'</td><td>'+para[j].posdetail+'</td><td>'+para[j].poszone+'</td><td>'+para[j].dept+'</td><td>'+para[j].position+'</td><td id="zone">'+para[j].name+'</td><td id="dept">'+para[j].members+'</td><td id="dept">'+status+'</td></tr>'
           $('#rawdata').append(x);
         }
         
