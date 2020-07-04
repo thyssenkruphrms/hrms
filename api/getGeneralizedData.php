@@ -81,7 +81,7 @@ if($cursor){
 
         foreach($validate_process as $key=>$val){
             //echo "here   ".$val->prf." "."<br>".$val->afterselection;
-            if(($val->afterselection=="0" or $val->afterselection=="1" or  $val->afterselection=="4")  and in_array($val->prf,$validateprocessprfs)==false){
+            if(($val->afterselection=="0" or $val->afterselection=="1" or  $val->   afterselection=="4")  and in_array($val->prf,$validateprocessprfs)==false){
                 $validateprocessprfs[]=$val->prf;
 
             }
@@ -108,7 +108,7 @@ if($cursor){
 
         }
 
-        $completeddata=array("compl_not_hr2"=>$validateprocessprfs,"validated"=>$validatedprfs,"olrequest"=>$offerrequestedmem,"completed"=>$completedprfs);
+        $completeddata=array("compl_not_hr2"=>count($validateprocessprfs),"validated"=>count($validatedprfs),"olrequest"=>count($offerrequestedmem),"completed"=>count($completedprfs),"aborted"=>0);
     }
     else{
 

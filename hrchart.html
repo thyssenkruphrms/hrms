@@ -661,13 +661,15 @@
                 $("#tableParent").fadeIn(200)
                 // ajax call for retriving validate candidate
                 $.ajax({
-                    url:'http://localhost/hrms/api/getcompletedprf.php',
+                    url:'http://localhost/hrms/api/getcompletedDetails.php',
                     type:'GET',
                     success:function(para)
                     {
+                        console.log(para)
+
                         // give details in this format demo data:
-                        para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
-                        
+                        //para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
+                        para=para.data
                         $("#tableBody").text('')
                         var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Details</th></tr></thead>'
                         $("#tableBody").append(headings)
@@ -690,13 +692,13 @@
                 $("#tableParent").fadeIn(200)
                 // ajax call for retriving re-validation candidate
                 $.ajax({
-                    url:'demo.txt',
+                    url:'http://localhost/hrms/api/getvalidatedmembers.php',
                     type:'GET',
                     success:function(para)
                     {
                         // give details in this format demo data:
-                        para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
-                        
+                        //para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
+                        para=para.data
                         $("#tableBody").text('')
                         var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Details</th></tr></thead>'
                         $("#tableBody").append(headings)
@@ -719,13 +721,13 @@
                 $("#tableParent").fadeIn(200)
                 // ajax call for retriving validated candidate
                 $.ajax({
-                    url:'demo.txt',
+                    url:'http://localhost/hrms/api/getolsent.php',
                     type:'GET',
                     success:function(para)
                     {
                         // give details in this format demo data:
-                        para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
-                        
+                       // para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
+                        para=para.data
                         $("#tableBody").text('')
                         var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Details</th></tr></thead>'
                         $("#tableBody").append(headings)
@@ -749,7 +751,7 @@
                 $("#tableParent").fadeIn(200)
                 // ajax call for retriving validated candidate
                 $.ajax({
-                    url:'demo.txt',
+                    url:'http://localhost/hrms/api/getabortedDetails.php',
                     type:'GET',
                     success:function(para)
                     {
@@ -779,13 +781,13 @@
                 $("#tableParent").fadeIn(200)
                 // ajax call for retriving validated candidate
                 $.ajax({
-                    url:'demo.txt',
+                    url:'http://localhost/hrms/api/getolrequested.php',
                     type:'GET',
                     success:function(para)
                     {
                         // give details in this format demo data:
-                        para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
-                        
+                       // para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
+                        para=para.data
                         $("#tableBody").text('')
                         var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Details</th></tr></thead>'
                         $("#tableBody").append(headings)
