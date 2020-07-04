@@ -70,7 +70,7 @@ if(isset($_COOKIE['sid']))
                                     
                                     <div class="row" id="cardsradius">
 
-                                    <a href="/hrms/createusers.php">
+                                    <a href="http://localhost/hrms/createusers.php">
                                             <div class="col  m6 s6">
                                               <div class="card " style="background: orange">
                                                 <div class="card-content white-text">
@@ -82,7 +82,7 @@ if(isset($_COOKIE['sid']))
                                             </div>
                                         </a>
 
-                                        <a href="/hrms/createdepartment.php">
+                                        <a href="http://localhost/hrms/createdepartment.php">
                                             <div class="col  m6 s6">
                                               <div class="card " style="background: #677E8C">
                                                 <div class="card-content white-text">
@@ -96,7 +96,7 @@ if(isset($_COOKIE['sid']))
                                         </div>
                                         <div class="row" id="cardsradius">
 
-                                        <a href="/hrms/createiid.php">
+                                        <a href="http://localhost/hrms/createiid.php">
 
                                             <div class="col  m6 s6">
                                               <div class="card " style="background: #EA5455;">
@@ -111,7 +111,7 @@ if(isset($_COOKIE['sid']))
                                             </div>
 
                                         </a> 
-                                        <a href="/hrms/initiateround.php">
+                                        <a href="http://localhost/hrms/initiateround.php">
                                             <div class="col  m6 s6">
                                               <div class="card " style="background: #28C76F;">
                                                 <div class="card-content white-text">
@@ -123,7 +123,7 @@ if(isset($_COOKIE['sid']))
                                             </div>
                                         </a>
                                        
-                                        <a href="/hrms/allocateround.php">
+                                        <a href="http://localhost/hrms/allocateround.php">
 
                                             <div class="col  m6 s6">
                                               <div class="card " style="background: #9F44D3;">
@@ -135,7 +135,7 @@ if(isset($_COOKIE['sid']))
                                             </div>
                                         </a>
 
-                                        <a href="/hrms/allocateround2.php">
+                                        <a href="http://localhost/hrms/allocateround2.php">
 
                                             <div class="col  m6 s6">
                                               <div class="card " style="background: #9F44D3;">
@@ -197,7 +197,7 @@ document.location.replace("http://localhost/hrms/index.php")
 else
 {
 $("#notlogout").show()
-document.location.replace("/hrms/")
+document.location.replace("http://localhost/hrms/")
 }
 } 
 
@@ -213,16 +213,16 @@ document.location.replace("/hrms/")
             }
             else
             {
-                header("refresh:0;url=notfound.php");
+                header("refresh:0;url=notfound.html");
             }
         }
         else
         {
-            header("refresh:0;url=notfound.php");
+            header("refresh:0;url=notfound.html");
         }
     }
     else
     {
-        header("refresh:0;url=notfound.php");
+        header("refresh:0;url=notfound.html");
     }  
 ?>

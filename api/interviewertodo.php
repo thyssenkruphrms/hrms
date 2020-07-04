@@ -47,7 +47,7 @@ if($cursor)
 else
 {
     //run when session not found
-    header("refresh:0;url=notfound.php");
+    header("refresh:0;url=notfound.html");
 }
 
 

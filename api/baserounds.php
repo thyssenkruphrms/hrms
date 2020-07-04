@@ -28,6 +28,6 @@ if($cursor)
 }
 else
 {
-    header("refresh:0;url=notfound.php");
+    header("refresh:0;url=notfound.html");
 }
 ?>

@@ -732,12 +732,12 @@ $(document).ready(function(){
             }
             else
             {
-                header("refresh:0;url=notfound.php");
+                header("refresh:0;url=notfound.html");
             }
         }
         else
         {
-            header("refresh:0;url=notfound.php");
+            header("refresh:0;url=notfound.html");
         }
     
 ?>
