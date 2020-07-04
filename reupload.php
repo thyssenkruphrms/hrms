@@ -27,6 +27,22 @@ input[type="file"]
 {
     display: none;
 }
+#accept {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.97)  url(loader2.gif)  no-repeat center center !important;
+  z-index: 10000;
+}
+#accept > #txt{
+  font-size:22px;
+  color:lightskyblue;
+  margin-left:37% !important;
+  margin-top:18% !important; 
+}
 </style>
 <body>
 
@@ -239,6 +255,12 @@ input[type="file"]
     </div>
 </div>
 
+<div id="accept">
+        <div id="txt">
+          <b>Registering your response... Please wait !!</b>
+        </div>
+</div>
+
  <div id="modal1" class="modal">
     <div class="modal-content">
             <object data="p.pdf" type="application/pdf" width="700" height="800" id="obj">
@@ -377,13 +399,13 @@ $(document).ready(function(){
     // })
 
 })
-
+$("#accept").hide()
 function submitForm()
 {
+    $("#accept").show()
     var x = document.getElementsByName('validationform');
     x[0].submit(); // Form submission
-    alert('submitted')
-    
+    setTimeout(() => { $("#accept").hide()}, 3000);
 }
 </script>
 <!-- Script Ends -->

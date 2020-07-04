@@ -541,6 +541,12 @@ function xyz(x)
 
 <script>
 
+$("#forms").submit(function(){
+        $('#loader').show()
+        $("#pleasewait").show()
+
+})
+
 
   function readURL(input) {
   var f = $('#uploadcsv').val().split('.')
@@ -641,6 +647,7 @@ $(document).ready(function(){
   $('#badge_ongoing').hide();
   $('#badge_rescheduling').hide();
   $('#badge_letter').hide();
+  
   // ajax call for getting notification details
   $.ajax({
     url:'http://localhost/hrms/demo.txt',

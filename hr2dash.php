@@ -83,7 +83,7 @@ if(isset($_COOKIE['sid']))
     <div class="col s12 m12">
         <div class="white-text">
             <div class="card-content blue-text">
-                <span class="card-title">Groups For Document Validation <a class="waves-effect green btn-small" style="float:right" href="http://118.185.100.233/hr2dash.php"><i class="material-icons right">refresh</i>Refresh</a></span>
+                <span class="card-title">Groups For Document Validation <a class="waves-effect green btn-small" style="float:right" href="http://localhost/hrms/hr2dash.php"><i class="material-icons right">refresh</i>Refresh</a></span>
                 <table class="striped">
                     <thead>
                         <tr>
@@ -215,7 +215,7 @@ if(isset($_COOKIE['sid']))
     $('#logoutuser').click(function(){
     
     $.ajax({
-    url:"http://118.185.100.233/api/logout.php",
+    url:"http://localhost/hrms/api/logout.php",
     type:"POST",
     success:function(para){
     
@@ -223,7 +223,7 @@ if(isset($_COOKIE['sid']))
     {
     $("#row").hide()
     $("#logout").show()
-    document.location.replace("http://118.185.100.233/index.php")
+    document.location.replace("http://localhost/hrms/index.php")
     }
     else
     {
@@ -248,7 +248,7 @@ $(document).ready(function(){
   $('#badge_todo').hide();
   // ajax call for getting notification details
   $.ajax({
-      url:'http://118.185.100.233/demo.txt',
+      url:'http://localhost/hrms/demo.txt',
       type:'GET',
       success:function(para)
       {
@@ -294,7 +294,7 @@ $("#validated").click(function(){
 
 // Ajax Call For Tking data of Grops for validation
 $.ajax({
-    url:"http://118.185.100.233/api/getprfvalidate.php",
+    url:"http://localhost/hrms/api/getprfvalidate.php",
     type:"GET",
     success:function(para)
     {   
@@ -343,7 +343,7 @@ function completeValidation(digit13)
     $("#"+digit13).attr('disabled','disabled')
     id=digit13.split("-");
     $.ajax({
-        url:"http://118.185.100.233/api/completevalidation.php",
+        url:"http://localhost/hrms/api/completevalidation.php",
         type:"POST",
         data:{
             "prf":id[0],
@@ -375,7 +375,7 @@ function displayMail(x)
     alert(x)
     
     $.ajax({
-        url:"http://118.185.100.233/api/getemailvalidate.php",
+        url:"http://localhost/hrms/api/getemailvalidate.php",
         type:"GET",
         data:{
             "id":x
@@ -502,7 +502,7 @@ function rol(para,name)
     // alert(s)
 
     $.ajax({
-        url:"http://118.185.100.233/api/reqofferletter.php",
+        url:"http://localhost/hrms/api/reqofferletter.php",
         type:"POST",
         data:{
             "mail":name,

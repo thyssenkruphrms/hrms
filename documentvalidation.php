@@ -1290,10 +1290,10 @@ $("#submit").click(function(){
     console.log("this is vinalid reason:",invalidreason)
     console.log("this is ctr:",ctr)
 
-    $("#loader").show();
+  
     if(ctr==(10-validcount))    
     {
-    
+    $("#loader").show();
     cv=$("#rcv").val()
     pancard = $("#rpan").val()
     adhaar=$("#rAdhaar").val()

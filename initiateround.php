@@ -116,12 +116,12 @@ if(isset($_COOKIE['sid']))
       <br>
       
       <center><h2>Are You Sure ?</h2></center>
-      <center><p>Interview Process Will Be Completed.You Can See These Members in Your History</p></center>
+      <center><p>Want to Schedule this Interview </p></center>
     </div>
     <div class="modal-footer">
       <center>
-      <a onclick="allocateSubmit(true)" class="modal-close waves-effect green btn" >Confirm<i class="material-icons left" >check_box</i></a>
-      <a onclick="allocateSubmit(false)" class="modal-close waves-effect red btn">Cancel<i class="material-icons left">highlight_off</i></a>
+      <a onclick="allocateSubmit(true)" class="modal-close waves-effect green btn" >Yes<i class="material-icons left" >check_box</i></a>
+      <a onclick="allocateSubmit(false)" class="modal-close waves-effect red btn">No<i class="material-icons left">highlight_off</i></a>
       </center>
     </div>
   </div>
