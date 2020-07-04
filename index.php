@@ -1,6 +1,5 @@
 <?php
 error_reporting(0);
-<<<<<<< HEAD
 // added comment to index.php to check the change....
 if(isset($_COOKIE['sid']))
 {
@@ -23,12 +22,10 @@ if(isset($_COOKIE['sid']))
 else
 {
 ?>
-=======
 if (isset($_COOKIE['sid'])) {
     include 'api/db.php';
     $sid = $_COOKIE['sid'];
     $cursor = $db->session->findOne(array("sid" => $sid));
->>>>>>> 4d9ed598cc57cf58f1e968305cfc0d6efdbb2853
 
     if ($cursor) {
         $cursor = $db->users->findOne(array("uid" => $cursor['uid']));

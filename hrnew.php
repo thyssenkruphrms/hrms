@@ -521,13 +521,20 @@ $(document).ready(function(){
 
 </html>
 <?php
-} else {
-            header("refresh:0;url=notfound.html");
+            }
+            else
+            {
+                header("refresh:0;url=notfound.php");
+            }
         }
-    } else {
-        header("refresh:0;url=notfound.html");
+        else
+        {
+            header("refresh:0;url=notfound.php");
+        }
     }
-} else {
-    header("refresh:0;url=notfound.html");
-}
+    else
+    {
+        header("refresh:0;url=notfound.php");
+    }  
+
 ?>
