@@ -1,3 +1,11 @@
+<?php
+
+if($_COOKIE)
+{
+  setcookie("sid",$_COOKIE['sid'] , time()-3600 , '/');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
