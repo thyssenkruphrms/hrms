@@ -47,14 +47,10 @@ if($cursor){
 
 }
 else{
-<<<<<<< HEAD
-    header("refresh:0;url=notfound.html");
-=======
       
     
     
     header("refresh:0;url=notfound.php");
->>>>>>> c10e0a90cbd36519ec22b017bfc5c81aa6e2bbcf
 
 
 }
