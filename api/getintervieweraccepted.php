@@ -3,7 +3,7 @@
 include 'db.php';
 header('Content-Type: application/json');
 
-$cursor=$db->interviews->find(array('accepted'=>'yes','status'=>'0'));
+$cursor=$db->interviews->find(array('status'=>'0','accepted'=>array('$in'=>array('pending','yes'))));
 
 if($cursor){
 
@@ -26,6 +26,7 @@ if($cursor){
         }
 
         
+        
         if(in_array($val->prf,$prf)){
             $prf[]="";
         }else{
@@ -47,15 +48,8 @@ if($cursor){
 
 }
 else{
-<<<<<<< HEAD
-    header("refresh:0;url=notfound.html");
-=======
-      
+        header("refresh:0;url=notfound.html");
     
     
-    header("refresh:0;url=notfound.php");
->>>>>>> c10e0a90cbd36519ec22b017bfc5c81aa6e2bbcf
-
-
 }
 ?>

@@ -379,23 +379,51 @@
                 $("#tableParent").fadeIn(200)
                 // ajax call for retriving validate candidate
                 $.ajax({
-                    url:'http://localhost/hrms/api/getinitiateprfDeatils.php',
+                    url:'http://localhost/hrms/api/getinitiatedmembers.php',
                     type:'GET',
                     success:function(para)
                     {
+                        // console.log(para)
+                        // para=para.data
+                        // // give details in this format demo data:
+                        // //para = [['111','222','33','1'],['111','222','33','2'],['111','222','33','5']];
+                        // $("#tableBody").text('')
+                        // var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th></tr></thead>'
+                        // $("#tableBody").append(headings)
+                        // for(let i=0;i<para.length;i++)
+                        // {   
+                        //     var str1 = '<tr><td>'+para[i].prf+'</td><td>'+para[i].pos+'</td><td>'+para[i].iid+'</td><td>'+para[i].rid+'</td></tr>'
+                        //     $('#tableBody').append(str1) 
+                        // }
+                        // $('.modal').modal("open");
+
+
+                        
+                        //console.log(para.data.prf.length)
+                        para=para.data
                         console.log(para)
                         // give details in this format demo data:
-                        //para = [['111','222','33','1'],['111','222','33','2'],['111','222','33','5']];
+                      // para = {prf:['111','222'],pos:['1','2'],iid:['9','8'],rid:['5','6'],interviewer:['Abc','xyz','pqr'],members:[['abc@gmail.com','pqr@gmail.com'],['ac@gmail.com','qr@gmail.com','pr@gmail.com']]};
+                        //console.log(para.members[0].length)
                         $("#tableBody").text('')
                         var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th></tr></thead>'
                         $("#tableBody").append(headings)
-                        for(let i=0;i<para.data.length;i++)
-                        {   
-                            var str1 = '<tr><td>'+para.data[i].prf+'</td><td>'+para.data[i].pos+'</td><td>'+para.data[i].iid+'</td><td>'+para.data[i].rid+'</td></tr>'
+
+                       // $("#tableBody").append(headings)
+                        for(let i=0;i<para.prf.length;i++)
+                        {
+                            var memberlength = para.rid[i].length
+                            var str1 = '<tr><td>'+para.prf[i]+'</td><td>'+para.pos[i]+'</td><td>'+para.iid[i]+'</td><td>'+para.rid[i]+'</td></tr>'
+                          
                             $('#tableBody').append(str1) 
+                            //for(let j=1;j<memberlength;j++)
+                            //{
+                            //    var str2 = '<tr><td>'+para.members[i][j]+'</td></tr>'
+                               // $('#tableBody').append(str2)
+                            //}
                         }
                         $('.modal').modal("open");
-                    }
+                     }
                 })
             }
 
@@ -413,15 +441,41 @@
                     {
                         // give details in this format demo data:
                         //para = [['111','222','33','1'],['111','222','33','2'],['111','222','33','5']];
+                        // $("#tableBody").text('')
+                        // var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th></tr></thead>'
+                        // $("#tableBody").append(headings)
+                        // for(let i=0;i<para.data.length;i++)
+                        // {   
+                        //     var str1 = '<tr><td>'+para.data[i].prf+'</td><td>'+para.data[i].pos+'</td><td>'+para.data[i].iid+'</td><td>'+para.data[i].rid+'</td></tr>'
+                        //     $('#tableBody').append(str1) 
+                        // }
+                        // $('.modal').modal("open");
+
+
+                        para=para.data
+                        console.log(para)
+                        // give details in this format demo data:
+                      // para = {prf:['111','222'],pos:['1','2'],iid:['9','8'],rid:['5','6'],interviewer:['Abc','xyz','pqr'],members:[['abc@gmail.com','pqr@gmail.com'],['ac@gmail.com','qr@gmail.com','pr@gmail.com']]};
+                        //console.log(para.members[0].length)
                         $("#tableBody").text('')
                         var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th></tr></thead>'
                         $("#tableBody").append(headings)
-                        for(let i=0;i<para.data.length;i++)
-                        {   
-                            var str1 = '<tr><td>'+para.data[i].prf+'</td><td>'+para.data[i].pos+'</td><td>'+para.data[i].iid+'</td><td>'+para.data[i].rid+'</td></tr>'
+
+                       // $("#tableBody").append(headings)
+                        for(let i=0;i<para.prf.length;i++)
+                        {
+                            var memberlength = para.rid[i].length
+                            var str1 = '<tr><td>'+para.prf[i]+'</td><td>'+para.pos[i]+'</td><td>'+para.iid[i]+'</td><td>'+para.rid[i]+'</td></tr>'
+                          
                             $('#tableBody').append(str1) 
+                            //for(let j=1;j<memberlength;j++)
+                            //{
+                            //    var str2 = '<tr><td>'+para.members[i][j]+'</td></tr>'
+                               // $('#tableBody').append(str2)
+                            //}
                         }
                         $('.modal').modal("open");
+                    
                     }
                 })
             }
@@ -502,12 +556,15 @@
                       // para = {prf:['111','222'],pos:['1','2'],iid:['9','8'],rid:['5','6'],interviewer:['Abc','xyz','pqr'],members:[['abc@gmail.com','pqr@gmail.com'],['ac@gmail.com','qr@gmail.com','pr@gmail.com']]};
                         //console.log(para.members[0].length)
                         $("#tableBody").text('')
-                        var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Interviewer</th><th>Members</th></tr></thead>'
+                        var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Members</th></tr></thead>'
                         $("#tableBody").append(headings)
+
+                       // $("#tableBody").append(headings)
                         for(let i=0;i<para.prf.length;i++)
                         {
                             var memberlength = para.members[i].length
-                            var str1 = '<tr><td rowspan="'+memberlength+'">'+para.prf[i]+'</td><td rowspan="'+memberlength+'">'+para.pos[i]+'</td><td rowspan="'+memberlength+'">'+para.iid[i]+'</td><td rowspan="'+memberlength+'">'+para.rid[i]+'</td><td rowspan="'+memberlength+'">'+para.interviewer[i]+'</td><td>'+para.members[i][0]+'</td></tr>'
+                            var str1 = '<tr><td rowspan="'+memberlength+'">'+para.prf[i]+'</td><td rowspan="'+memberlength+'">'+para.pos[i]+'</td><td rowspan="'+memberlength+'">'+para.iid[i]+'</td><td rowspan="'+memberlength+'">'+para.rid[i]+'</td><td>'+para.members[i][0]+'</td></tr>'
+                          
                             $('#tableBody').append(str1) 
                             for(let j=1;j<memberlength;j++)
                             {
@@ -528,12 +585,13 @@
                 $("#tableParent").fadeIn(200)
                 // ajax call for retriving re-validation candidate
                 $.ajax({
-                    url:'http://localhost/hrms/api/getongoingmembers.php',
+                    url:'http://localhost/hrms/api/getinterviewerassigned.php',
                     type:'GET',
                     success:function(para)
 
                     {
                         para=para.data
+                        console.log(para)
                         // give details in this format demo data:
                        // para = {prf:['111','222'],pos:['1','2'],iid:['9','8'],rid:['5','6'],interviewer:['Abc','XYZ','PQR'],members:[['abc@gmail.com','pqr@gmail.com'],['ac@gmail.com','qr@gmail.com','pr@gmail.com']]};
                         console.log(para.members[0].length)
@@ -564,7 +622,7 @@
                 $("#tableParent").fadeIn(200)
                 // ajax call for retriving re-validation candidate
                 $.ajax({
-                    url:'http://localhost/hrms/api/getongoingmembers.php',
+                    url:'http://localhost/hrms/api/getintervieweraccepted.php',
                     type:'GET',
                     success:function(para)
 
@@ -603,7 +661,7 @@
                 $("#tableParent").fadeIn(200)
                 // ajax call for retriving validate candidate
                 $.ajax({
-                    url:'demo.txt',
+                    url:'http://localhost/hrms/api/getcompletedprf.php',
                     type:'GET',
                     success:function(para)
                     {
