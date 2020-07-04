@@ -51,7 +51,7 @@ if($cursor)
 
                         //Current user
 
-    $newData=array('$set' => array("status" => "assigned","assign_time"=>$today));
+    $newData=array('$set' => array("status" => "initiated","assign_time"=>$today));
 
     $db->generalized->updateOne(array("prf"=>$digit13[0]),$newData);
 

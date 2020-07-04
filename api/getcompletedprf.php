@@ -19,26 +19,34 @@ if($cursor)
     // $dataforinitiate=array();
 
     // foreach($prfs as $val){
-        $cur_prf=$db->rounds->findOne(array("status"=>"completed","completevalidate"=>"inprocess"));
+        $cur_prf=$db->rounds->find(array("status"=>"completed"));
 
         if($cur_prf){
-            $object=array(
-                "prf"=>$cur_prf->prf,
-                //"position"=>$cur_prf->position,
-                "pos"=>$cur_prf->pos,
-                "iid"=>$cur_prf->iid,
-                "rid"=>$cur_prf->rid
-            );
 
-            $dataforinitiate[]=$object;
-        }
+            $prf=[];
+
+            foreach ($cur_prf as $key => $value) {
+                $prfval="";
+                if(in_array($value->prf,$prf)==FALSE){
+                    $prfval=$value->prf;
+                    $prf[]=$prfval;
+                }
+                $object=array(
+                    "prf"=>$prfval,
+                    //"position"=>$cur_prf->position,
+                    "pos"=>$value->pos,
+                    "iid"=>$value->iid,
+                    "rid"=>$value->rid
+                );
+    
+                $dataforinitiate[]=$object;
+            
+                # code...
+            }
+           }   
     
 
     echo json_encode(array("data"=>$dataforinitiate));
-
-   // echo json_encode(array("general"=>$currentrounds,"initiateddata"=>$initiateddata,"completeddata"=>$completeddata,"para4"=>"ok","para5"=>"ok"));
-
-
 
 }
 else{

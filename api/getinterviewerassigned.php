@@ -3,7 +3,7 @@
 include 'db.php';
 header('Content-Type: application/json');
 
-$cursor=$db->interviews->find(array('accepted'=>'yes','status'=>'0'));
+$cursor=$db->interviews->find(array("accepted"=>"no"));
 
 if($cursor){
 
@@ -25,14 +25,13 @@ if($cursor){
 
         }
 
-        
         if(in_array($val->prf,$prf)){
             $prf[]="";
         }else{
+            
         $prf[]=$val->prf;
         }
-        
-        
+
         $pos[]=$val->pos;
         $iid[]=$val->iid;
         $rid[]=$val->rid;
@@ -40,9 +39,9 @@ if($cursor){
         $allinterviewers[]=$val->intvmail;
 
 
-       }
+        }
 
-       echo json_encode(array("data"=>array("prf"=>$prf,"pos"=>$pos,"iid"=>$iid,"rid"=>$iid,"members"=>$allmembers,"interviewer"=>$allinterviewers)));
+        echo json_encode(array("data"=>array("prf"=>$prf,"pos"=>$pos,"iid"=>$iid,"rid"=>$iid,"members"=>$allmembers,"interviewer"=>$allinterviewers)));
     
 
 }

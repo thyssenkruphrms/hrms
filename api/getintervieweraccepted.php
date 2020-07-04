@@ -3,7 +3,7 @@
 include 'db.php';
 header('Content-Type: application/json');
 
-$cursor=$db->interviews->find(array('accepted'=>'yes','status'=>'0'));
+$cursor=$db->interviews->find(array('status'=>'0','accepted'=>array('$in'=>array('pending','yes'))));
 
 if($cursor){
 
@@ -25,6 +25,7 @@ if($cursor){
 
         }
 
+        
         
         if(in_array($val->prf,$prf)){
             $prf[]="";
