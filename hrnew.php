@@ -357,7 +357,6 @@ if (isset($_COOKIE['sid'])) {
 
 </html>
 <?php
-<<<<<<< HEAD
             }
             else
             {
@@ -373,15 +372,5 @@ if (isset($_COOKIE['sid'])) {
     {
         header("refresh:0;url=notfound.php");
     }  
-=======
-} else {
-            header("refresh:0;url=notfound.html");
-        }
-    } else {
-        header("refresh:0;url=notfound.html");
-    }
-} else {
-    header("refresh:0;url=notfound.html");
-}
->>>>>>> 4d9ed598cc57cf58f1e968305cfc0d6efdbb2853
+
 ?>
