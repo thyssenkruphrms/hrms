@@ -22,21 +22,7 @@ if(isset($_COOKIE['sid']))
 else
 {
 ?>
-if (isset($_COOKIE['sid'])) {
-    include 'api/db.php';
-    $sid = $_COOKIE['sid'];
-    $cursor = $db->session->findOne(array("sid" => $sid));
 
-    if ($cursor) {
-        $cursor = $db->users->findOne(array("uid" => $cursor['uid']));
-        $designation = $cursor['dsg'] . "dash";
-
-        header("refresh:0;url=$designation.php");
-    } else {
-        header("refresh:0;url=notfound.html");
-    }
-} else {
-    ?>
 <!DOCTYPE html>
 <html lang="en">
 
