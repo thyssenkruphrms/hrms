@@ -66,7 +66,7 @@ if(isset($_COOKIE['sid']))
 
   <nav>
   <div class="nav-wrapper blue darken-1">
-  <a href="/hrms/">
+  <a href="http://localhost/hrms/">
       <button class="btn waves-effect blue darken-1" style="float:left;margin-top: 18px;margin-right: 18px "> <- BACK</button>
       </a> 
 
@@ -442,7 +442,7 @@ document.location.replace("http://localhost/hrms/index.php")
 else
 {
 $("#notlogout").show()
-document.location.replace("/hrms/")
+document.location.replace("http://localhost/hrms/")
 }
 } 
 
@@ -468,16 +468,16 @@ document.location.replace("/hrms/")
             }
             else
             {
-                header("refresh:0;url=notfound.php");
+                header("refresh:0;url=notfound.html");
             }
         }
         else
         {
-            header("refresh:0;url=notfound.php");
+            header("refresh:0;url=notfound.html");
         }
     }
     else
     {
-        header("refresh:0;url=notfound.php");
+        header("refresh:0;url=notfound.html");
     }  
 ?>

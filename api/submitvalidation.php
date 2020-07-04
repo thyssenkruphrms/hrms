@@ -85,7 +85,7 @@ if($cursor)
                 $date = strtotime("+7 day");
                 $expdate = date("Y.m.d", $date);
 
-                $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/reupload.php?token='.$mails.'&expdate='.$expdate;
+                $url='http://localhost/hrms/reupload.php?token='.$mails.'&expdate='.$expdate;
                 $mail->Subject = 'Your Application at tkEI - Re-enter the requisite details';
                 $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
                 $mail->isHTML(true); 
@@ -337,6 +337,6 @@ if($cursor)
     }
     else
     {
-         header("refresh:0;url=notfound.php");    
+         header("refresh:0;url=notfound.html");    
     }
    ?>

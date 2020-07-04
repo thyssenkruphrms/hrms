@@ -7,7 +7,7 @@ if($cursor)
 {
     if(isset($_POST))
     {
-        $result = $db->intereval->find();
+        $result = $db->intereval->find(array("offerletter"=>array('$exists'=>true)));
         $i = 0;
         foreach($result as $doc)
         {
@@ -31,7 +31,7 @@ if($cursor)
 }
 else
 {
-    header("refresh:0;url=notfound.php");    
+    header("refresh:0;url=notfound.html");    
 }
 
 ?>

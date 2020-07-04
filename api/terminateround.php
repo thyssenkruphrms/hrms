@@ -56,7 +56,7 @@ if(isset($_POST) and $cursor)
                 $date = strtotime("+7 day");
                 $expdate = date("Y.m.d", $date);                
 
-                $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/post-candidate-selection.php?token='.$d.'&explink='.$expdate;
+                $url='http://localhost/hrms/post-candidate-selection.php?token='.$d.'&explink='.$expdate;
 
                 $mail->Subject = 'Your interview with thyssenkrupp for the '.$q1['position'].' position -Further Details';
                 $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
@@ -215,6 +215,6 @@ if(isset($_POST) and $cursor)
 }
 else
 {
-    header("refresh:0;url=notfound.php");
+    header("refresh:0;url=notfound.html");
 }
 ?>

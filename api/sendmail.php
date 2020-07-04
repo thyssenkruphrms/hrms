@@ -47,7 +47,7 @@ if($cursor)
                 {
                     $mail->addAddress($d);
                     $token=sha1($d);
-                    $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position;
+                    $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
 
                     $mail->Subject = "Invitation to interview with thyssenkrupp for the ". $positionorg." position";
                     $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
@@ -241,7 +241,7 @@ if($cursor)
                 {
                     $mail->addAddress($d);
                     $token=sha1($d);
-                    $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position;
+                    $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
 
                     $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
                     $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
@@ -446,7 +446,7 @@ if($cursor)
                 {
                     $mail->addAddress($d);
                     $token=sha1($d);
-                    $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position;
+                    $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
 
                     $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
                     $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
@@ -645,7 +645,7 @@ if($cursor)
 }
 else
 {
-    header("refresh:0;url=notfound.php");    
+    header("refresh:0;url=notfound.html");    
 }
 
 ?>
