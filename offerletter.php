@@ -91,6 +91,41 @@ width: 350%;
   </div>
 <!-- no data modal ends here -->
 
+  <!-- Modal Structure for Joining -->
+  <div id="datemodal" class="modal">
+    <div class="modal-content">
+      <center><h2>Please Select Date of Joining</h2></center><br>
+      <div class="row">
+        <input type="text" class="datepicker s12 m6" id="joindate" placeholder = "Join date">
+        
+      </div>
+      
+      <br><br><br><br><br><br><br><br><br><br>
+    </div>
+    
+    <div class="modal-footer">
+      <center>
+      <a class="modal-close waves-effect green btn" onclick="confirmDate()">Confirm</a>
+      <a class="modal-close waves-effect red btn" >cancel</a>
+      </center>
+    </div>
+  </div>
+
+<!-- Modal Structure for Rejection -->
+<div id="rejectmodal" class="modal">
+    <div class="modal-content">
+      <center><h2>Are You Sure ?</h2></center><br>
+    
+    </div>
+    
+    <div class="modal-footer">
+      <center>
+      <a class="modal-close waves-effect green btn" onclick="confirmReject()">Confirm</a>
+      <a class="modal-close waves-effect red btn" >cancel</a>
+      </center>
+    </div>
+  </div>
+
 <div id="sidenn" class="w3-sidebar blue w3-bar-block sidemenu" style="z-index: 1000;overflow-y:hidden">
 
   <h3 class="w3-bar-item white"> <center><a href="/hrms/">Home</a>
@@ -238,7 +273,7 @@ function sendmailtoinv(x,name)
 var ctr = 0
 var arr=[]
 $(document).ready(function(){ 
-
+  $('.datepicker').datepicker();
   // functionality for notifications start here
   $('#badge_ongoing').hide();
   $('#badge_rescheduling').hide();
@@ -277,42 +312,107 @@ $(document).ready(function(){
     type:'POST',
     success : function(para)
     {
-      if(para == "No Data")
+      para = JSON.parse(para)
+      console.log(para)
+      for(let i=0;i<para.length;i++)
       {
-        $("#nodatamodal").modal("open");
+        arr[i]=para[i];
       }
-      else
+    
+      for(let j=0;j<arr.length;j++)
       {
-        console.log(para)
-        para = JSON.parse(para)
-        console.log(para)
-        // alert(para.length)
-
-        for(let i=0;i<para.length;i++)
+        if(arr[j][8] == "requested")
         {
-          arr[i]=para[i];
-        }
-      
-        for(let j=0;j<arr.length;j++)
-        {
-          //Changed by sarang - 10/01/2020
           var candidate = arr[j][5];
-          console.log("prf : ",arr[j][0]);
-          console.log("pos : ",arr[j][1]);
-          console.log("iid : ",arr[j][2]);
-          console.log("rid : ",arr[j][3]);
           digit13=arr[j][0]+'-'+arr[j][1]+'-'+arr[j][2]+'-'+arr[j][3];
           console.log("Digit13",digit13)
           var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="pos">'+arr[j][1]+'</td><td id="iid">'+arr[j][2]+'</td><td id="rid">'+arr[j][3]+'</td><td id="'+j+'4" >'+arr[j][4]+'</td><td id="'+j+'5" >'+arr[j][5]+'</td><td id="interviewername">'+arr[j][6]+'</td><td id="interviewermail">'+arr[j][7]+'</td><td><a name="'+arr[j][7]+'" id="'+j+'-'+digit13+'-'+'" class="btn green darken-1" onclick="sendmailtoinv(this.id,this.name)">Send Letter</a></td></tr>'
-        $('#rawdata').append(x);
+          $('#rawdata').append(x);
+        }
+        else if(arr[j][8] == "sent")
+        {
+          var candidate = arr[j][5];
+          digit13=arr[j][0]+'-'+arr[j][1]+'-'+arr[j][2]+'-'+arr[j][3];
+          console.log("Digit13",digit13)
+          var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="pos">'+arr[j][1]+'</td><td id="iid">'+arr[j][2]+'</td><td id="rid">'+arr[j][3]+'</td><td id="'+j+'4" >'+arr[j][4]+'</td><td id="'+j+'5" >'+arr[j][5]+'</td><td id="interviewername">'+arr[j][6]+'</td><td id="interviewermail">'+arr[j][7]+'</td><td><a name="'+arr[j][5]+'" id="'+j+'-'+digit13+'" class="btn green darken-1" onclick="joined(this.id,this.name)">Joined</a><a name="'+arr[j][5]+'" id="'+j+'-'+digit13+'" class="btn red darken-1" onclick="Rejected(this.id,this.name)">Rejected</a></td></tr>'
+          $('#rawdata').append(x);
+        }
       }
-      }
-
-    },
+    }
   })
   
 
 })
+
+function joined(id,email)
+{
+  window.id = id;
+  window.email = email;
+  $("#datemodal").modal("open");
+}
+
+// function on click of confirm after joining
+function confirmDate()
+{
+  if($("#joindate").val() != "")
+  {
+    $.ajax({
+      url:'http://localhost/hrms/api/joined.php',
+      type:'POST',
+      data:{
+        'id' : window.id,
+        'email' : window.email,
+        'date' : $("#joindate").val()
+      },
+      success: function(para)
+      {
+        if(para == "success")
+        {
+          document.location.reload();
+        }
+        else
+        {
+          alert("Some Error Occurred")
+        }
+      }
+    })
+  }
+}  
+
+
+function Rejected(id,email)
+{
+  window.id = id;
+  window.email = email;
+  $("#rejectmodal").modal("open");
+}
+
+
+// function on click of confirm after Rejection by candidate
+function confirmReject()
+{
+  $.ajax({
+    url:'http://localhost/hrms/api/rejectoffer.php',
+    type:'POST',
+    data:{
+      'id' : window.id,
+      'email' : window.email
+    },
+    success: function(para)
+    {
+      if(para == "success")
+      {
+        document.location.reload();
+      }
+      else
+      {
+        alert("Some Error Occurred")
+      }
+    }
+  })
+  
+}  
+
 </script>
 </html>
  
@@ -320,16 +420,16 @@ $(document).ready(function(){
             }
             else
             {
-                header("refresh:0;url=notfound.html");
+                header("refresh:0;url=notfound.php");
             }
         }
         else
         {
-            header("refresh:0;url=notfound.html");
+            header("refresh:0;url=notfound.php");
         }
     }
     else
     {
-        header("refresh:0;url=notfound.html");
+        header("refresh:0;url=notfound.php");
     }  
 ?>

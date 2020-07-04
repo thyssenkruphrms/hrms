@@ -42,7 +42,7 @@ if($cursor)
 
 }
 else{
-    header("refresh:0;url=notfound.html");
+    header("refresh:0;url=notfound.php");
 
 
 }
