@@ -277,16 +277,16 @@ $('#logoutuser').click(function(){
             }
             else
             {
-                header("refresh:0;url=notfound.html");
+                header("refresh:0;url=notfound.php");
             }
         }
         else
         {
-            header("refresh:0;url=notfound.html");
+            header("refresh:0;url=notfound.php");
         }
     }
     else
     {
-        header("refresh:0;url=notfound.html");
+        header("refresh:0;url=notfound.php");
     }  
 ?>

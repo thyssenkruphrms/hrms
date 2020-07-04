@@ -215,6 +215,6 @@ if(isset($_POST) and $cursor)
 }
 else
 {
-    header("refresh:0;url=notfound.html");
+    header("refresh:0;url=notfound.php");
 }
 ?>
