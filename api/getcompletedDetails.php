@@ -41,7 +41,7 @@ if($cursor)
     
                 $dataforinitiate[]=$object;
             
-                # code...
+                
             }
            }   
     

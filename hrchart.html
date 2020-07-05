@@ -889,7 +889,7 @@
             $('#dropiid').append("<option disabled selected>IID</option>")
             // ajax call for getting iid of given prf
             $.ajax({
-                url:'demo.txt',
+                url:'http://localhost/hrms/api/getalliids.php',
                 type:'GET',
                 data:{
                     'digit13':$('#dropprf').val()
@@ -897,7 +897,9 @@
                 success:function(para)
                 {
                     // para will contain IID
-                    para=['123','321']
+                    //para=['123','321']
+                    para=para.data
+                    console.log(para)
                     for(let i=0;i<para.length;i++)
                     {
                         $('#dropiid').append("<option value='"+para[i]+"'>"+para[i]+"</option>")

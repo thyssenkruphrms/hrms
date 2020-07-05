@@ -107,8 +107,10 @@ if($cursor){
             }
 
         }
+        $comp_count=$db->rounds->count(array("status"=>"completed","completevalidate"=>"inprocess"));
 
-        $completeddata=array("compl_not_hr2"=>count($validateprocessprfs),"validated"=>count($validatedprfs),"olrequest"=>count($offerrequestedmem),"completed"=>count($completedprfs),"aborted"=>0);
+
+        $completeddata=array("compl_not_hr2"=>$comp_count,"validated"=>count($validatedprfs),"olrequest"=>count($offerrequestedmem),"completed"=>count($completedprfs),"aborted"=>0);
     }
     else{
 
