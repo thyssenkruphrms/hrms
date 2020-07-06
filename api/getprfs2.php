@@ -1,5 +1,5 @@
 <?php 
-
+error_reporting(0);
 include 'db.php';
 // error_reporting(0);
 
@@ -36,7 +36,16 @@ if($cursor)
         {
             $holdmail=explode(',',$d);
             $getonholdnames =  $db->tokens->findOne(array("prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"email"=> $holdmail[0]));
-            $onhold[$k]=array($d,$getonholdnames['full_name']);
+            if($getonholdnames['reallocate'])
+            {
+                $onhold[$k]=array($d,$getonholdnames['full_name'],$getonholdnames['reallocate']);
+            }
+            else
+            {
+                $onhold[$k]=array($d,$getonholdnames['full_name'],0);
+               
+            }
+
             $k++;
         }
         // $t=0;
