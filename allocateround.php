@@ -36,7 +36,38 @@ if(isset($_COOKIE['sid']))
 
     <script src="public/js/materialize.js"></script>
     <script src="public/js/materialize.min.js"></script>
-
+    <style>
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.96)  url(loader2.gif)  no-repeat center center !important;
+    z-index: 10000;
+  }
+  #loader > #txt{
+          font-size:25;
+          margin-left:35% !important;
+          margin-top:18% !important; 
+  }
+  #accept {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.96)  url(loader2.gif)  no-repeat center center !important;
+    z-index: 10000;
+  }
+  #accept > #txt{
+          font-size:25;
+          margin-left:35% !important;
+          margin-top:18% !important; 
+  }
+</style>
 </head>
 <script>
 
@@ -281,6 +312,17 @@ function abort_round(confr)
   </div> 
 </div>
 
+
+<div id="loader">
+  <div id="txt">
+    <b>Please wait.. while we Complete this Process</b>
+  </div>
+</div>
+<div id="accept">
+  <div id="txt">
+    <b>Please wait.. while we schedule this interview</b>
+  </div>
+</div>
   <!-- modal starts here -->
 
     <!-- modal1 starts here -->
@@ -363,6 +405,8 @@ $(document).ready(function(){
   $('#badge_ongoing').hide();
   $('#badge_rescheduling').hide();
   $('#badge_letter').hide();
+  $('#loader').hide();
+  $('#accept').hide();
   // ajax call for getting notification details
   $.ajax({
     url:'http://localhost/hrms/demo.txt',
@@ -519,7 +563,7 @@ function completeProcess(cnfrm)
     if(hr2mail != "" && hr2name != "" && hr2dept != "" && hr2desg != "")
     {
       $("#pleasewait").fadeIn(600);
-
+      $('#loader').show();
       $('#allocation2').hide(600);
       for(let i=0;i<selectedmailID.length;i++)
       {
@@ -548,6 +592,7 @@ function completeProcess(cnfrm)
       {
         alert(para)
         $("#waiting").hide();
+        $('#loader').hide();
         console.log("This is : ",para)
         if(para == "nomails")
         {
@@ -610,6 +655,7 @@ function allocateSubmit(cnfrm)
   if(cnfrm)
   {
     $("#waiting").fadeIn(600);
+
   console.log("dept - ",window.dept)
   console.log("zone - ",window.zone)
   var groupid=window.groupid
@@ -625,6 +671,7 @@ function allocateSubmit(cnfrm)
   {
     $('#allocation').hide(600);
     $("#pleasewait").fadeIn(600);
+    $('#accept').show();
     for(let i=0;i<selectedmailID.length;i++)
     {
       var b = selectedmailID[i]
@@ -657,7 +704,7 @@ function allocateSubmit(cnfrm)
         },
     success:function(para){
       console.log(para);
-    
+      $('#accept').hide();
       $('#sentsuccess').fadeIn(600)
       for(let i=0;i<selectedmail.length;i++)
       {

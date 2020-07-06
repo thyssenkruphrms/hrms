@@ -38,6 +38,25 @@ if(isset($_COOKIE['sid']))
   <script src="./public/js/materialize.min.js"></script>
 
 <style>
+
+
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.96)  url(loader2.gif)  no-repeat center center !important;
+    z-index: 10000;
+  }
+  #loader > #txt{
+          font-size:25;
+          margin-left:35% !important;
+          margin-top:18% !important; 
+  }
+
+
 @media screen and (min-width: 800px)
 {
   #firsttb{
@@ -366,6 +385,15 @@ width: 350%;
         } /*Color of underline*/
       
   </style>
+
+<div id="loader">
+  <div id="txt">
+    <b>Please wait.. while we schedule this interview</b>
+  </div>
+</div>
+
+
+
     <script src="public/js/common.js"></script>
 
 <script>
@@ -376,9 +404,30 @@ var selectedmailID = []
 var selecteddate = []
 var selecteddate2 = []
 $('#submithold').click(function(){
-  if(selectedmail.length <= 0)
+
+    for(let i = 0;i<selectedmailID.length;i++)
+    {
+      // console.log("id - "+$(selectedmailID[i]+"date").val())
+      if($(selectedmailID[i]+"date").val()!="" || $(selectedmailID[i]+"date2").val()!="" )
+      {
+        flag =0;
+        // alert("Data  present");
+      }
+      else
+      {
+        // alert("Data not present");
+        flag =1;
+        break;
+      }
+    }
+
+    if(selectedmail.length <= 0)
     {
       alert("Please Select Atleast 1 Member")
+    }
+    else if(flag==1)
+    {
+      alert("Please Select date or time")
     }
     else
     {
@@ -597,6 +646,7 @@ $(document).ready(function(){
   $('#badge_ongoing').hide();
   $('#badge_rescheduling').hide();
   $('#badge_letter').hide();
+  $('#loader').hide();
   // ajax call for getting notification details
   $.ajax({
     url:'http://localhost/hrms/demo.txt',
@@ -870,6 +920,7 @@ $('#allocatesubmit').click(function()
   $('#allocation').hide(600);
   if(imail != "" && iname != "" &&  idept != "" && idesg != "" && iperson != "" && iloc != "")
   {
+    $("#loader").show();
     for(let i=0;i<selectedmailID.length;i++)
     {
       var b = selectedmailID[i]
@@ -902,6 +953,7 @@ $('#allocatesubmit').click(function()
         'iid':roundid[2]
       },
       success:function(para){
+       $("#loader").hide();
         console.log(para);
         selectedmail = []
         selecteddate = []
@@ -927,20 +979,11 @@ function selection(umail,mail)
 
   if($(umail).prop("checked") == true)
   {
-    if($(b+"date").val() !="" && $(b+"date2").val() !="" )
-    {
       selectedmail.push($(pmail).text())
       selectedmailID.push(b)
       console.log(selectedmail)
       console.log('mail:'+selectedmail)
       console.log('ID:'+selectedmailID)
-    }
-    else
-    {
-      $(b).prop("checked",false)
-      alert("Date or time not entered");
-    }
-
   }
   else
   {                                               
