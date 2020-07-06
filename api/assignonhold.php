@@ -182,7 +182,6 @@ if($cursor)
 
                 //Query to update round id in token of member
                 $criteria2=array("prf"=>$_POST["prf"],'pos'=>$_POST["pos"],'iid'=>$result['iid'],"email"=>$d); 
-                $r = $db->tokens->updateOne($criteria2,array('$set'=>array("progress"=>"01")));
                 
             }
             // Query to add empty arrays to documents - selected, rejected, onhold

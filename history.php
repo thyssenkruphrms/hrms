@@ -133,7 +133,7 @@ width: 350%;
         Showing <p id="result" style="display:inline;"> </p> PRF of <p id="result1" style="display:inline;"> </p> PRF</div><br>
 
  <div class="row" id="firsttb">
-<div class="col s12  blue lighten-4">
+<div class="col s12 blue lighten-4">
   <table class="striped">
     <thead>
       <tr>
@@ -272,6 +272,7 @@ width: 350%;
           <tr>
               <th>Full Name</th>
               <th>Email ID</th>
+              <th>Progress</th>
               <th>View Evaluation Sheet</th>
               <th>View CV</th>
               
@@ -493,16 +494,16 @@ function xyz(x)
               if(para != "no data")
               {
                 parseddata = JSON.parse(para)
-                var element = parseddata[0].selected
+                var element = parseddata.selected
                 for (let i = 0; i < element.length; i++) 
                 {
-                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td></tr>"
+                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td></tr>"
                   
                   $('#tabledataselect').append(str)
                     
                 } 
 
-                var element = parseddata[0].rejected
+                var element = parseddata.rejected
                 console.log(element)
                 for (let i = 0; i < element.length; i++) 
                 {
@@ -520,9 +521,9 @@ function xyz(x)
                   
                     
                 } 
-                if(parseddata[0].onhold != "")
+                if(parseddata.onhold != "")
                 {
-                  var element = parseddata[0].onhold
+                  var element = parseddata.onhold
                 console.log("element: ",element)
                 elemail = element[0][0].split(",")
                 // var arr=[["Tanmay Kulkarni","tvkulkarni@mitaoe.ac.in"]]

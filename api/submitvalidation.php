@@ -78,7 +78,7 @@ if($cursor)
             
             if(count($arr)>=1)
             {
-                $result=$db->tokens->updateOne(array("email"=>$mails),array('$set'=>array("afterselection"=>"4","validationstatus"=>"1")));
+                $result=$db->tokens->updateOne(array("email"=>$mails),array('$set'=>array("afterselection"=>"4","validationstatus"=>"1","progress"=>"Sent For Revalidation")));
                 $mail->addAddress($mails); 
                 $token=sha1($mails);
 
@@ -209,7 +209,7 @@ if($cursor)
             }
             else if(count($arr)==0)
             {
-                $result=$db->tokens->updateOne(array("email"=>$mails),array('$set'=>array("afterselection"=>"2","validationstatus"=>"0")));
+                $result=$db->tokens->updateOne(array("email"=>$mails),array('$set'=>array("afterselection"=>"2","validationstatus"=>"0","progress"=>"Validation Done")));
             
                 $mail->addAddress($mails);
                 $token=sha1($mails);
