@@ -274,6 +274,8 @@ width: 350%;
               <th>Email ID</th>
               <th>View Evaluation Sheet</th>
               <th>View CV</th>
+              <th>Print Evaluation Sheet</th>
+              <th>Print Application Blank</th>
               
           </tr>
         </thead>
@@ -301,6 +303,8 @@ width: 350%;
               <th>Email ID</th>
               <th>View Evaluation Sheet</th>
               <th>View CV</th>
+              <th>Print Evaluation Sheet</th>
+              <th>Print Application Blank</th>
               
           </tr>
         </thead>
@@ -328,6 +332,8 @@ width: 350%;
       <th>Full Name</th>
       <th>View Evaluation Sheet</th>
       <th>View CV</th>
+      <th>Print Evaluation Sheet</th>
+              <th>Print Application Blank</th>
       <th>Date</th>
       <th>Time</th>
       <th>Select</th>
@@ -495,7 +501,7 @@ function xyz(x)
                 var element = parseddata[0].selected
                 for (let i = 0; i < element.length; i++) 
                 {
-                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td></tr>"
+                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                   
                   $('#tabledataselect').append(str)
                     

@@ -4,7 +4,8 @@ require('../fpdf/fpdf.php');
 require('../api/db.php');
 
 $collection = $db->intereval;
-$cursor = $collection->findOne(array("email"=>"pragatigaikwad280@gmail.com"));
+$cursor = $collection->findOne(array("email"=>$_GET['aid']));
+#$cursor = $collection->findOne(array("email"=>"pragatigaikwad280@gmail.com"));
 $fullname =  $db->tokens->findOne(array("email"=>$cursor['email']));
 
 $pdf = new FPDF();
@@ -17,10 +18,10 @@ $pdf->SetY(30);
 $pdf->SetFont('Arial','B',12);
 $pdf->Cell(150,7,"Evaluation Sheet - ".$fullname['full_name'],0,1,'C');
 
-$pdf->SetFont('Arial','B',12);
-#$image1 = $fullname['userphoto'];
-$image1 = "img.jpg";
-$pdf->Cell( 40, 40, $pdf->Image($image1, 165, 10, 35.78), 0, 0, 'R', false );
+// $pdf->SetFont('Arial','B',12);
+// #$image1 = $fullname['userphoto'];
+// $image1 = "../upload/psgaikwad@mitaoe.ac.in(2020.06.27--03.12.26pm)/4.png";
+// $pdf->Cell( 40, 40, $pdf->Image($image1, 165, 10, 35.78), 0, 0, 'R', false );
 
 $pdf->SetFont('Arial','B',12);
 #$pdf->setFillColor(0,149,216);
