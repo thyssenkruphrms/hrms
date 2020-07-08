@@ -15,26 +15,33 @@ if($cursor)
                 $prfs[]=$docval->prf;
             //var_dump($docval);     
     }
-
+    $duplicateprf=[];
     $dataforinitiate=array();
 
     foreach($prfs as $val){
-        $cur_prf=$db->rounds->findOne(array("prf"=>$val,"rid"=>"00"));
+        $cur_prf=$db->rounds->find(array("prf"=>$val,"rid"=>"00"));
 
         if($cur_prf){
             
             $members=array();
-
-            foreach($cur_prf->members as $member){
+            foreach($cur_prf as $cur){
+            foreach($cur->members as $member){
                 $members[]=$member;
             }
-                
+
+            if(in_array($val,$duplicateprf)){
+                $val='';
+                //echo "true";
+            }
+            else{
+                $duplicateprf[]=$val;
+            }
             $object=array(
                 "prf"=>$val,
-                "position"=>$cur_prf->position,
-                "pos"=>$cur_prf->pos,
-                "iid"=>$cur_prf->iid,
-                "rid"=>$cur_prf->rid,
+                "position"=>$cur->position,
+                "pos"=>$cur->pos,
+                "iid"=>$cur->iid,
+                "rid"=>$cur->rid,
               //  "members"=>$members
 
                 
@@ -42,6 +49,7 @@ if($cursor)
 
             $dataforinitiate[]=$object;
         }
+    }
     }
 
     echo json_encode(array("data"=>$dataforinitiate));

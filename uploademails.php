@@ -142,7 +142,7 @@ if($count==1) //if round collection is present
                                                 padding-bottom: 12px;"> 
                                                 Dear Candidate,<br></br><br></br>
 
-                                                Further to our discussion for the profile of '. $positionorg.' in department - '.$_POST['dept'].' You are required to provide your basic
+                                                Further to our discussion for the profile of '. $position.' in department - '.$dept.' You are required to provide your basic
                                                 details by accessing the below link so that your application could be processed further.
                                                 <br></br><br></br>
                                                 To access the link, please click <a href='.$url.'>here</a>
@@ -236,7 +236,18 @@ if($count==1) //if round collection is present
             {
                 $r = $db->prfs->updateOne(array("prf"=>$prf,"department"=>$dept,"pos"=>$pos,"position"=>$position),array('$set'=>array("progress"=>"initiated")));
                 $emails = json_decode(json_encode($emails), true);
-                $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"position"=>$position,"rg"=>$cursor["rg"],"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));    
+                $getpos_zone = $db->prfs->findOne(array("prf"=>$prf));
+                $db->rounds->insertOne(
+                    array(
+                        "status"=>"bstart",
+                        "prf"=>$prf,
+                        "dept"=>$dept,
+                        "pos"=>$pos,
+                        "poszone"=>$getpos_zone['zone'],
+                        "position"=>$position,
+                        "rid"=>"00",
+                        "iid"=>$instanceid,
+                        "expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));    
                 echo "<script>alert('File Uploaded Successfully')</script>";
                 header("refresh:0;url=http://localhost/hrms/hrnew.php");
             }
@@ -303,7 +314,7 @@ if($count==1) //if round collection is present
                                             padding-bottom: 12px;"> 
                                             Dear Candidate,<br></br><br></br>
 
-                                            Further to our discussion for the profile of '. $positionorg.' in department - '.$_POST['dept'].' You are required to provide your basic
+                                            Further to our discussion for the profile of '. $position.' in department - '.$dept.' You are required to provide your basic
                                             details by accessing the below link so that your application could be processed further.
                                             <br></br><br></br>
                                             To access the link, please click <a href='.$url.'>here</a>
@@ -396,7 +407,8 @@ if($count==1) //if round collection is present
             {
                 $r = $db->prfs->updateOne(array("prf"=>$prf,"department"=>$dept,"pos"=>$pos,"position"=>$position),array('$set'=>array("progress"=>"initiated")));
                 $emails = json_decode(json_encode($emails), true);
-                $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"position"=>$position,"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));    
+                $getpos_zone = $db->prfs->findOne(array("prf"=>$prf));
+                $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"poszone"=>$getpos_zone['zone'],"position"=>$position,"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));    
                 // echo "sent";
                 echo "<script>alert('File Uploade Successfully')</script>";
 
@@ -470,7 +482,7 @@ else
                                                 padding-bottom: 12px;"> 
                                                 Dear Candidate,<br></br><br></br>
 
-                                                Further to our discussion for the profile of '. $positionorg.' in department - '.$_POST['dept'].' You are required to provide your basic
+                                                Further to our discussion for the profile of '. $position.' in department - '.$dept.' You are required to provide your basic
                                                 details by accessing the below link so that your application could be processed further.
                                                 <br></br><br></br>
                                                 To access the link, please click <a href='.$url.'>here</a>
@@ -565,7 +577,8 @@ else
             {
                 $r = $db->prfs->updateOne(array("prf"=>$prf,"department"=>$dept,"pos"=>$pos,"position"=>$position),array('$set'=>array("progress"=>"initiated")));
                 $emails = json_decode(json_encode($emails), true);
-                $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"position"=>$position,"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));
+                $getpos_zone = $db->prfs->findOne(array("prf"=>$prf));
+                $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"position"=>$position,"poszone"=>$getpos_zone["zone"],"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));
                 // echo "sent";
                 echo "<script>alert('File Uploaded Successfully')</script>";
 

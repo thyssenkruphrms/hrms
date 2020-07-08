@@ -90,7 +90,7 @@ input[type="file"]{
                                         
                                 </center> 
                                 
-                                <div class="row">
+                                
                                         <b style="font-size:20px;">Candidate Photo</b><br>
                                         
                                        
@@ -138,6 +138,7 @@ input[type="file"]{
                                               <input id="mid_name" name="mid_name" type="text" class="validate" value="<?php echo $row['mid_name'];?>" readonly required aria-required="true">
                                               <label for="mid_name">Middle Name</label>
                                             </div>
+                                        </div>                                    
 
 
                                             <b class="blue-text" style="font-size:20px;">Present Address</b>

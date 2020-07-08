@@ -15,7 +15,7 @@ if($cursor)
         $i = 0;
         foreach($cursor as $doc)
         {
-            if($doc['afterselection']=="6")
+            if($doc['afterselection']=="6" or $doc['afterselection']=="7" or $doc['afterselection']=="8")
             {
                 $members_arr = array(array());
             }

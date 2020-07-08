@@ -1,5 +1,5 @@
 <?php 
-
+error_reporting(0);
 include 'db.php';
 // error_reporting(0);
 
@@ -21,7 +21,7 @@ if($cursor)
         foreach($selected as $d)
         {
             $getselectednames =  $db->tokens->findOne(array("prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"email"=>$d));
-            $selected[$i]=array($d,$getselectednames['full_name']);
+            $selected[$i]=array($d,$getselectednames['full_name'],$getselectednames['progress']);
             $i++;
         }
          
@@ -36,15 +36,24 @@ if($cursor)
         {
             $holdmail=explode(',',$d);
             $getonholdnames =  $db->tokens->findOne(array("prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"email"=> $holdmail[0]));
-            $onhold[$k]=array($d,$getonholdnames['full_name']);
+            if($getonholdnames['reallocate'])
+            {
+                $onhold[$k]=array($d,$getonholdnames['full_name'],$getonholdnames['reallocate']);
+            }
+            else
+            {
+                $onhold[$k]=array($d,$getonholdnames['full_name'],0);
+               
+            }
+
             $k++;
         }
-        $t=0;
-        foreach($cursor as $doc)
-        {
-            $arr[$t] =array("selected"=>$selected,"rejected"=>$rejected,"onhold"=>$onhold) ;
-            $t++;
-        }
+        // $t=0;
+        // foreach($cursor as $doc)
+        // {
+            $arr =array("selected"=>$selected,"rejected"=>$rejected,"onhold"=>$onhold) ;
+            // $t++;
+        // }
         echo json_encode($arr);
     }
 }

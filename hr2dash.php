@@ -46,7 +46,7 @@ if(isset($_COOKIE['sid']))
         <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
         <br>
         
-        <center><h2>No Data Avilable</h2></center>
+        <center><h2>No Data Available</h2></center>
         
         </div>
         <div class="modal-footer">
@@ -59,11 +59,11 @@ if(isset($_COOKIE['sid']))
 
 <div id="sidenn" class="w3-sidebar blue w3-bar-block sidemenu" style="z-index: 1000;overflow-y:hidden">
 
-<h3 class="w3-bar-item white"> <center><a href="/hrms/">Home</a>
+<h3 class="w3-bar-item white"> <center><a href="http://localhost/hrms/">Home</a>
 <i id="remin" class="material-icons" style="float: right;cursor: pointer;">close</i></center>   
 </a></h3> <br><br>
-<a href="/hrms/" class="w3-bar-item w3-button">To Do List <span class="new badge green" data-badge-caption="New Task(s)" id="badge_todo">4</span></a> <br>
-<a href="/hrms/hr2history.php" class="w3-bar-item w3-button">See History  </a> <br>  
+<a href="http://localhost/hrms/" class="w3-bar-item w3-button">To Do List <span class="new badge green" data-badge-caption="New Task(s)" id="badge_todo">4</span></a> <br>
+<a href="http://localhost/hrms/hr2history.php" class="w3-bar-item w3-button">See History  </a> <br>  
 <a href="#" id="logoutuser" class="w3-bar-item w3-button">Logout</a> <br>
 
 </div>
@@ -73,7 +73,7 @@ if(isset($_COOKIE['sid']))
   <div class="nav-wrapper blue darken-1">
     <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
   </a>
-  <a href="/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+  <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
   </div>
 </nav>
 <br><br>
@@ -91,9 +91,7 @@ if(isset($_COOKIE['sid']))
                             <th>Position Details</th>
                             <th>Zone</th>
                             <th>Department</th>
-                            <th>No. of Positions</th>
-                            <th>Position</th>
-                            <th>Groups</th>
+                           
                             <th>Validate</th>
                         </tr>
                     </thead>
@@ -230,7 +228,7 @@ if(isset($_COOKIE['sid']))
     else
     {
     $("#notlogout").show()
-    document.location.replace("/hrms/")
+    document.location.replace("http://localhost/hrms/")
     }
     } 
     
@@ -300,7 +298,10 @@ $.ajax({
     type:"GET",
     success:function(para)
     {   
+        console.log("1 st ajax: : ",para)
+
         para=JSON.parse(para)
+        
         console.log("1 st ajax: : ",para)
         if(para.length!=0)
         {
@@ -310,8 +311,8 @@ $.ajax({
             
             for(let i=0;i<para.length;i++)
             {
-                var txt1 = '<tr><td>'+para[i][0]+'</td><td>'+para[i][1]+'</td><td>'+para[i][2]+'</td><td>'+para[i][3]+'</td><td>'+para[i][4]+'</td><td>'+para[i][5]+'</td><td><label class="waves-effect blue darken-1 btn">'+para[i][6]+'</label></td>'
-                var txt2 = '<td><button class="btn waves-effect green"  id="'+para[i][6]+'" onclick="displayMail(this.id)">Start Validation' 
+                var txt1 = '<tr><td>'+para[i][0]+'</td><td>'+para[i][1]+'</td><td>'+para[i][2]+'</td><td>'+para[i][3]+'</td>'
+                var txt2 = '<td><button class="btn waves-effect green"  id="'+para[i][0]+'" onclick="displayMail(this.id)">Start Validation' 
                 var txt3 = ' </button></td></tr>'
                 var str = txt1+txt2+txt3;
                 $("#todolistbody").append(str)
@@ -532,7 +533,7 @@ function evaluateMail(x)
     
     localStorage.setItem('currentemail',x)
     // alert(localStorage.getItem('currentemail'))
-     window.open("/hrms/documentvalidation.php?token="+x+"", '_blank');
+     window.open("http://localhost/hrms/documentvalidation.php?token="+x+"", '_blank');
      window.setTimeout(function(){location.reload()},1000)
 
 }

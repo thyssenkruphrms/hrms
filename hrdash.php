@@ -13,7 +13,10 @@ if(isset($_COOKIE['sid']))
   $countOngoing = $db->rounds->count(array("status"=>"invcomplete"));
   $countSchedule = $db->interviews->count(array("invstatus"=>"1"));
   $countInterviews = $db->interviews->count(array("status"=>"0"));
-  $countOffers = $db->intereval->count(array("offerletter"=>"requested"));
+  $req = $db->intereval->count(array("offerletter"=>"requested"));
+  $sent = $db->intereval->count(array("offerletter"=>"sent"));
+  $countOffers = $req+$sent;
+
 
 
 
@@ -70,18 +73,18 @@ if(isset($_COOKIE['sid']))
 <body>
 <div id="sidenn" class="w3-sidebar blue w3-bar-block sidemenu" style="z-index: 1000;overflow-y:hidden;overflow-y:hidden">
 
-  <h3 class="w3-bar-item white"> <center><a href="/hrms/">Home</a>
+  <h3 class="w3-bar-item white"> <center><a href="http://localhost/hrms/">Home</a>
   <i id="remin" class="material-icons" style="float: right;cursor: pointer;">close</i></center>   
   </a></h3> <br><br>
 
-  <a href="/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
-  <a href="/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
-  <a href="/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
-  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge green" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
-  <a href="/hrms/history.php" class="w3-bar-item w3-button">See History</a> <br>
-  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge green" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
-  <a href="/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
-  <a href="/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge green" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
+  <a href="http://localhost/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
+  <a href="http://localhost/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
+  <a href="http://localhost/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
+  <a href="http://localhost/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge green" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
+  <a href="http://localhost/hrms/history.php" class="w3-bar-item w3-button">See History</a> <br>
+  <a href="http://localhost/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge green" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
+  <a href="http://localhost/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
+  <a href="http://localhost/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge green" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
   <a href="#" id="logoutuser" class="w3-bar-item w3-button">Logout</a> <br>
 
 </div>
@@ -91,7 +94,7 @@ if(isset($_COOKIE['sid']))
       <div class="nav-wrapper blue darken-1">
         <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
       </a>
-      <a href="/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+      <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
       </div>
   </nav>
   <br><br>
@@ -102,7 +105,7 @@ if(isset($_COOKIE['sid']))
       <!-- <div class="card white"> -->
       <div class="card-content blue-text">
         <div class="row" id="cardsradius">
-          <a href="/hrms/csvupload.php">
+          <a href="http://localhost/hrms/csvupload.php">
               <div class="col  m6 s6">
                 <div class="card " style="background: #536DFE">
                   <div class="card-content white-text">
@@ -114,7 +117,7 @@ if(isset($_COOKIE['sid']))
               </div>
           </a>
 
-          <a href="/hrms/hrnew.php">
+          <a href="http://localhost/hrms/hrnew.php">
 
               <div class="col  m6 s6">
                 <div class="card " style="background: #EA5455;">
@@ -131,7 +134,7 @@ if(isset($_COOKIE['sid']))
           </a> 
           </div>
           <div class="row" id="cardsradius">
-          <a href="/hrms/initiateround.php">
+          <a href="http://localhost/hrms/initiateround.php">
               <div class="col  m6 s6">
                 <div class="card " style="background: #28C76F;">
                   <div class="card-content white-text">
@@ -143,7 +146,7 @@ if(isset($_COOKIE['sid']))
               </div>
           </a>
           
-          <a href="/hrms/allocateround.php">
+          <a href="http://localhost/hrms/allocateround.php">
 
               <div class="col  m6 s6">
                 <div class="card " style="background: #9F44D3;">
@@ -155,7 +158,7 @@ if(isset($_COOKIE['sid']))
               </div>
           </a>
 
-          <a href="/hrms/history.php">
+          <a href="http://localhost/hrms/history.php">
 
               <div class="col  m6 s6">
                 <div class="card " style="background: #9F44D3;">
@@ -167,7 +170,7 @@ if(isset($_COOKIE['sid']))
               </div>
           </a>
 
-          <a href="/hrms/allocateround2.php">
+          <a href="http://localhost/hrms/allocateround2.php">
 
               <div class="col  m6 s6">
                 <div class="card " style="background: #28C76F; ">
@@ -179,7 +182,7 @@ if(isset($_COOKIE['sid']))
               </div>
           </a>
 
-          <a href="/hrms/interview.php">
+          <a href="http://localhost/hrms/interview.php">
 
               <div class="col  m6 s6">
                 <div class="card " style="background: #677E8C">
@@ -191,7 +194,7 @@ if(isset($_COOKIE['sid']))
               </div>
           </a>
 
-          <a href="/hrms/offerletter.php">
+          <a href="http://localhost/hrms/offerletter.php">
 
               <div class="col  m6 s6">
                 <div class="card " style="background: #EA5455; ">
@@ -259,7 +262,7 @@ $('#logoutuser').click(function(){
       else
       {
         $("#notlogout").show()
-        document.location.replace("/hrms/")
+        document.location.replace("http://localhost/hrms/")
       }
     } 
   })
@@ -287,3 +290,7 @@ $('#logoutuser').click(function(){
         header("refresh:0;url=notfound.html");
     }  
 ?>
+<<<<<<< HEAD
+=======
+
+>>>>>>> c10e0a90cbd36519ec22b017bfc5c81aa6e2bbcf

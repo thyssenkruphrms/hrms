@@ -84,7 +84,7 @@ if(isset($_COOKIE['sid']))
       <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
       <br>
       
-      <center><h2>No Data Avilable</h2></center>
+      <center><h2>No Data Available</h2></center>
       
     </div>
     <div class="modal-footer">
@@ -109,38 +109,38 @@ if(isset($_COOKIE['sid']))
   </div>
 <!-- refresh data modal ends here -->
 
-<!-- modal 1 starts here -->
-  <div id="modal1" class="modal">
+<!-- modal 2 starts here -->
+<div id="modal2" class="modal">
     <div class="modal-content">
       <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
       <br>
       
       <center><h2>Are You Sure ?</h2></center>
-      
-      
+      <center><p>Interview Process Will Be Completed.You Can See These Members in Your History</p></center>
     </div>
     <div class="modal-footer">
       <center>
-      <a onclick="abort_round(true)" class="modal-close waves-effect green btn" >Confirm<i class="material-icons left" >check_box</i></a>
-      <a onclick="abort_round(false)" class="modal-close waves-effect red btn">Cancel<i class="material-icons left">highlight_off</i></a>
+      <a onclick="allocateSubmit(true)" class="modal-close waves-effect green btn" >Confirm<i class="material-icons left" >check_box</i></a>
+      <a onclick="allocateSubmit(false)" class="modal-close waves-effect red btn">Cancel<i class="material-icons left">highlight_off</i></a>
       </center>
     </div>
   </div>
-<!-- modal 1 ends here -->
+<!-- modal 2 ends here -->
+
 <div id="sidenn" class="w3-sidebar blue w3-bar-block sidemenu" style="z-index: 1000;overflow-y:hidden">
 
-  <h3 class="w3-bar-item white"> <center><a href="/hrms/">Home</a>
+  <h3 class="w3-bar-item white"> <center><a href="http://localhost/hrms/">Home</a>
   <i id="remin" class="material-icons" style="float: right;cursor: pointer;">close</i></center>   
   </a></h3> <br><br>
 
-  <a href="/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
-  <a href="/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
-  <a href="/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
-  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge green" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
-  <a href="/hrms/history.php" class="w3-bar-item w3-button">See History</a> <br>
-  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge green" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
-  <a href="/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
-  <a href="/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge green" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
+  <a href="http://localhost/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
+  <a href="http://localhost/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
+  <a href="http://localhost/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
+  <a href="http://localhost/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge green" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
+  <a href="http://localhost/hrms/history.php" class="w3-bar-item w3-button">See History</a> <br>
+  <a href="http://localhost/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge green" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
+  <a href="http://localhost/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
+  <a href="http://localhost/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge green" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
   <a href="#" id="logoutuser" class="w3-bar-item w3-button">Logout</a> <br>
 
 </div>
@@ -150,7 +150,7 @@ if(isset($_COOKIE['sid']))
     <div class="nav-wrapper blue darken-1">
       <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
     </a>
-    <a href="/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+    <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
     </div>
 </nav>
 <br><br>
@@ -437,9 +437,18 @@ $(document).ready(function(){
   })
 
   $('#allocatesubmit').click(function(){
+    $("#modal2").modal("open")
+  })
 
-     
-      var imail = $('#imail').val();
+
+})
+//end of document.ready(function)   
+
+function allocateSubmit(cnfrm)
+{
+  if(cnfrm)
+  {
+    var imail = $('#imail').val();
       var iname = $('#iname').val();
       var idept = $('#idept').val();
       var idesg = $('#idesg').val();
@@ -514,15 +523,8 @@ $(document).ready(function(){
       {
         alert("Please Fill All Data")
       }
-      
-      
-      
-    })
-
-
-})
-//end of document.ready(function)   
-
+  }
+}
 var ctr=0
 function selection(x)
 {
@@ -765,7 +767,7 @@ document.location.replace("http://localhost/hrms/index.php")
 else
 {
 $("#notlogout").show()
-document.location.replace("/hrms/")
+document.location.replace("http://localhost/hrms/")
 }
 } 
 

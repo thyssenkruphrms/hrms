@@ -53,14 +53,14 @@ if(isset($_COOKIE['sid']))
 <body>
 <div class="w3-sidebar blue w3-bar-block" style="width:15%;border: 5px solid white;">
 
-<h3 class="w3-bar-item"><a href="/hrms/"><center>Home</center></a></h3> <br><br>
-  <a href="/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
-  <a href="/hrms/hrnew.php" class="w3-bar-item w3-button white">Create New Instance</a> <br>
-  <a href="/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
-  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button">On going rounds</a> <br>
-  <a href="/hrms/history.php" class="w3-bar-item w3-button">See History  </a> <br>
-  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling</a> <br>
-  <a href="/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
+<h3 class="w3-bar-item"><a href="http://localhost/hrms/"><center>Home</center></a></h3> <br><br>
+  <a href="http://localhost/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
+  <a href="http://localhost/hrms/hrnew.php" class="w3-bar-item w3-button white">Create New Instance</a> <br>
+  <a href="http://localhost/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
+  <a href="http://localhost/hrms/allocateround.php" class="w3-bar-item w3-button">On going rounds</a> <br>
+  <a href="http://localhost/hrms/history.php" class="w3-bar-item w3-button">See History  </a> <br>
+  <a href="http://localhost/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling</a> <br>
+  <a href="http://localhost/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
 
 
 </div>
@@ -68,7 +68,7 @@ if(isset($_COOKIE['sid']))
 
     <nav>
         <div class="nav-wrapper blue darken-1">
-        <a href="/hrms/">
+        <a href="http://localhost/hrms/">
             <button class="btn waves-effect blue darken-1" style="float:left;margin-top: 18px;margin-right: 18px "> <- BACK</button>
             </a> 
       

@@ -47,7 +47,7 @@ if($cursor)
                 {
                     $mail->addAddress($d);
                     $token=sha1($d);
-                    $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position;
+                    $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
 
                     $mail->Subject = "Invitation to interview with thyssenkrupp for the ". $positionorg." position";
                     $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
@@ -205,12 +205,26 @@ if($cursor)
            
                     $today = date("Y-m-d H-i-s");
 
-                     //Current user
+                     
+ 
+                    $countprf=$db->generalized->findOne(array("prf"=>$_POST['prf']));
+                    $count=0;
+                    foreach($countprf as $key){
+                        $count=($countprf->totalinstance)+1;
+                    }
+   
+                       $newData=array('$set' => array("status" => "initiated","init_time"=>$today,"totalinstance"=>$count));
+   
+                       $db->generalized->updateOne(array("prf"=>$_POST['prf']),$newData);
+   
 
-                     $newData=array('$set' => array("status" => "initiated","init_time"=>$today));
-
-                     $db->generalized->updateOne(array("prf"=>$_POST['prf']),$newData);
-
+                       
+                       $db->generalized->updateOne(
+                        ['prf'=> $_POST['prf']],
+                        ['$push'=> ['instances'=>
+                        array("iid"=>"00".($count),"rid"=>"00","status"=>"initiated","init_time"=>$today)
+                        ]]
+                         );
                 }
                 else
                 {
@@ -227,7 +241,7 @@ if($cursor)
                 {
                     $mail->addAddress($d);
                     $token=sha1($d);
-                    $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position;
+                    $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
 
                     $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
                     $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
@@ -353,10 +367,22 @@ if($cursor)
 
                         //Current user
 
-                        $newData=array('$set' => array("status" => "initiated","init_time"=>$today));
+                    $countprf=$db->generalized->findOne(array("prf"=>$_POST['prf']));
+                   $count=0;
+                    foreach($countprf as $key){
+                        $count=($countprf->totalinstance)+1;
+                    }
 
-                        $db->generalized->updateOne(array("prf"=>$_POST['prf']),$newData);
+                    $newData=array('$set' => array("status" => "initiated","init_time"=>$today,"totalinstance"=>$count));
 
+                    $db->generalized->updateOne(array("prf"=>$_POST['prf']),$newData);
+
+                        $db->generalized->updateOne(
+                            ['prf'=> $_POST['prf']],
+                            ['$push'=> ['instances'=>
+                            array("iid"=>"00".($count),"rid"=>"00","status"=>"initiated","init_time"=>$today)
+                            ]]
+                             );
 
                     }
                     
@@ -420,7 +446,7 @@ if($cursor)
                 {
                     $mail->addAddress($d);
                     $token=sha1($d);
-                    $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position;
+                    $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
 
                     $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
                     $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
@@ -583,10 +609,29 @@ if($cursor)
 
                     //Current user
 
-                    $newData=array('$set' => array("status" => "initiated","init_time"=>$today));
+
+                    $countprf=$db->generalized->findOne(array("prf"=>$_POST['prf']));
+                   $count=0;
+                    foreach($countprf as $key){
+                        $count=($countprf->totalinstance)+1;
+                    }
+
+                    $newData=array('$set' => array("status" => "initiated","init_time"=>$today,"totalinstance"=>$count));
 
                     $db->generalized->updateOne(array("prf"=>$_POST['prf']),$newData);
 
+                    if($maincount==0){
+                    $db->generalized->updateOne(
+                        ['prf'=> $_POST['prf']],
+                        ['$push'=> ['instances'=>
+                        array("iid"=>"00".$count,"rid"=>"00","status"=>"initiated","init_time"=>$today)
+                        ]]
+                         );
+                         $maincount++;
+                        }
+                    
+
+                
 
                 }
                 else

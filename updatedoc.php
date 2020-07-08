@@ -111,7 +111,7 @@
 
    if($result)
    {
-     $result=$db->tokens->updateOne(array("email"=>$mail),array('$set'=>array("afterselection"=>"1")));
+     $result=$db->tokens->updateOne(array("email"=>$mail),array('$set'=>array("afterselection"=>"1","progress"=>"Revalidation Form Submitted")));
 
        echo "success";
        header("refresh:0;url=http://localhost/hrms/reupload.php?token=1");

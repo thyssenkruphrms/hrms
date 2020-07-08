@@ -23,7 +23,7 @@ if($cursor)
       $currentdate = date("Y.m.d");
   
       // check current date with expiry and number of documents (after selection inclusive)
-      if(($currentdate < $expdate) and ($count < 70))
+      if(($currentdate < $expdate) and ($count < 85))
       {
         echo "success";
       }

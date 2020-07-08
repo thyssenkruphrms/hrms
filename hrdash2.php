@@ -52,13 +52,13 @@ if(isset($_COOKIE['sid']))
       <div class="card  white">
         <div class="card-content white-text">
           <div class="col s12 ">
-              <a href="/hrms/createdepartment.php"><button>Create Department and PRF</button></a>
+              <a href="http://localhost/hrms/createdepartment.php"><button>Create Department and PRF</button></a>
               <br><br>
-                <a href="/hrms/createiid.php"><button>Create Instance or see Instance history </button></a>
+                <a href="http://localhost/hrms/createiid.php"><button>Create Instance or see Instance history </button></a>
                 <br><br>
-                <a href="/hrms/initiateround.php"><button>Initiate rounds for instances  </button></a>
+                <a href="http://localhost/hrms/initiateround.php"><button>Initiate rounds for instances  </button></a>
                 <br><br>
-                <a href="/hrms/allocateround.php"><button>On going rounds  </button></a>
+                <a href="http://localhost/hrms/allocateround.php"><button>On going rounds  </button></a>
                 <br><br>
             <br><br>
           </div>  
@@ -448,7 +448,7 @@ document.location.replace("http://localhost/hrms/index.php")
 else
 {
 $("#notlogout").show()
-document.location.replace("/hrms/")
+document.location.replace("http://localhost/hrms/")
 }
 } 
 

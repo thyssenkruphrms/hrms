@@ -93,7 +93,6 @@ if($cursor)
 
         //Query to update round id in token of member
         $criteria2=array("prf"=>$digit13[0],"pos"=>$digit13[1],"rid"=>$previousrid,'iid'=>$digit13[2],"email"=>$d); 
-        $db->tokens->updateOne($criteria2,array('$set'=>array("progress"=>$rid)));
         
         //Query to remove members from selectedremove 
         $res=$db->rounds->updateOne(array("rid"=>$previousrid,'iid'=>$digit13[2],"prf"=>$digit13[0],"pos"=>$digit13[1]),array('$pull'=>array('selectedremove'=>$d)),array('safe'=>true,'timeout'=>5000,'upsert'=>true)); 

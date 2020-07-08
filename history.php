@@ -38,6 +38,25 @@ if(isset($_COOKIE['sid']))
   <script src="./public/js/materialize.min.js"></script>
 
 <style>
+
+
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.96)  url(loader2.gif)  no-repeat center center !important;
+    z-index: 10000;
+  }
+  #loader > #txt{
+          font-size:25;
+          margin-left:35% !important;
+          margin-top:18% !important; 
+  }
+
+
 @media screen and (min-width: 800px)
 {
   #firsttb{
@@ -81,7 +100,7 @@ width: 350%;
       <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
       <br>
       
-      <center><h2>No Data Avilable</h2></center>
+      <center><h2>No Data Available</h2></center>
       
     </div>
     <div class="modal-footer">
@@ -93,18 +112,18 @@ width: 350%;
 <!-- no data modal ends here -->
 <div id="sidenn" class="w3-sidebar blue w3-bar-block sidemenu" style="z-index: 1000;overflow-y:hidden">
 
-  <h3 class="w3-bar-item white"> <center><a href="/hrms/">Home</a>
+  <h3 class="w3-bar-item white"> <center><a href="http://localhost/hrms/">Home</a>
   <i id="remin" class="material-icons" style="float: right;cursor: pointer;">close</i></center>   
   </a></h3> <br><br>
 
-  <a href="/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
-  <a href="/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
-  <a href="/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
-  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge green" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
-  <a href="/hrms/history.php" class="w3-bar-item w3-button">See History</a> <br>
-  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge green" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
-  <a href="/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
-  <a href="/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge green" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
+  <a href="http://localhost/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
+  <a href="http://localhost/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
+  <a href="http://localhost/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
+  <a href="http://localhost/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge green" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
+  <a href="http://localhost/hrms/history.php" class="w3-bar-item w3-button">See History</a> <br>
+  <a href="http://localhost/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge green" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
+  <a href="http://localhost/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
+  <a href="http://localhost/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge green" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
   <a href="#" id="logoutuser" class="w3-bar-item w3-button">Logout</a> <br>
 
 </div>
@@ -114,7 +133,7 @@ width: 350%;
     <div class="nav-wrapper blue darken-1">
       <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
     </a>
-    <a href="/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+    <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
     </div>
 </nav>
 <br><br>
@@ -133,7 +152,7 @@ width: 350%;
         Showing <p id="result" style="display:inline;"> </p> PRF of <p id="result1" style="display:inline;"> </p> PRF</div><br>
 
  <div class="row" id="firsttb">
-<div class="col s12  blue lighten-4">
+<div class="col s12 blue lighten-4">
   <table class="striped">
     <thead>
       <tr>
@@ -272,10 +291,9 @@ width: 350%;
           <tr>
               <th>Full Name</th>
               <th>Email ID</th>
+              <th>Progress</th>
               <th>View Evaluation Sheet</th>
               <th>View CV</th>
-              <th>Print Evaluation Sheet</th>
-              <th>Print Application Blank</th>
               
           </tr>
         </thead>
@@ -303,8 +321,7 @@ width: 350%;
               <th>Email ID</th>
               <th>View Evaluation Sheet</th>
               <th>View CV</th>
-              <th>Print Evaluation Sheet</th>
-              <th>Print Application Blank</th>
+           
               
           </tr>
         </thead>
@@ -332,8 +349,7 @@ width: 350%;
       <th>Full Name</th>
       <th>View Evaluation Sheet</th>
       <th>View CV</th>
-      <th>Print Evaluation Sheet</th>
-              <th>Print Application Blank</th>
+     
       <th>Date</th>
       <th>Time</th>
       <th>Select</th>
@@ -371,18 +387,49 @@ width: 350%;
         } /*Color of underline*/
       
   </style>
+
+<div id="loader">
+  <div id="txt">
+    <b>Please wait.. while we schedule this interview</b>
+  </div>
+</div>
+
+
+
     <script src="public/js/common.js"></script>
 
 <script>
+var mydate = new Date();
 var roundid;
 var selectedmail = []
 var selectedmailID = []
 var selecteddate = []
 var selecteddate2 = []
 $('#submithold').click(function(){
-  if(selectedmail.length <= 0)
+
+    for(let i = 0;i<selectedmailID.length;i++)
+    {
+      // console.log("id - "+$(selectedmailID[i]+"date").val())
+      if($(selectedmailID[i]+"date").val()!="" || $(selectedmailID[i]+"date2").val()!="" )
+      {
+        flag =0;
+        // alert("Data  present");
+      }
+      else
+      {
+        // alert("Data not present");
+        flag =1;
+        break;
+      }
+    }
+
+    if(selectedmail.length <= 0)
     {
       alert("Please Select Atleast 1 Member")
+    }
+    else if(flag==1)
+    {
+      alert("Please Select date or time")
     }
     else
     {
@@ -413,7 +460,7 @@ document.location.replace("http://localhost/hrms/index.php")
 else
 {
 $("#notlogout").show()
-document.location.replace("/hrms/")
+document.location.replace("http://localhost/hrms/")
 }
 } 
 
@@ -498,16 +545,16 @@ function xyz(x)
               if(para != "no data")
               {
                 parseddata = JSON.parse(para)
-                var element = parseddata[0].selected
+                var element = parseddata.selected
                 for (let i = 0; i < element.length; i++) 
                 {
-                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td></tr>"
                   
                   $('#tabledataselect').append(str)
                     
                 } 
 
-                var element = parseddata[0].rejected
+                var element = parseddata.rejected
                 console.log(element)
                 for (let i = 0; i < element.length; i++) 
                 {
@@ -525,24 +572,44 @@ function xyz(x)
                   
                     
                 } 
-                if(parseddata[0].onhold != "")
+                if(parseddata.onhold != "")
                 {
-                  var element = parseddata[0].onhold
+                  var element = parseddata.onhold
                 console.log("element: ",element)
                 elemail = element[0][0].split(",")
+                console.log("element: ",element[0][2])
                 // var arr=[["Tanmay Kulkarni","tvkulkarni@mitaoe.ac.in"]]
                 for (let i = 0; i < element.length; i++) 
                 {
                   mailidonly = element[i][0].split(",")
                   if(mailidonly[1] == "absent")
                   {
-                    var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>"+element[i][1]+"</p></td><td><p>Absent</p>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
-                    $('#tabledatahold').append(str)
+                    if(element[i][2] == 1)
+                    {
+                      var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>"+element[i][1]+"</p></td><td><p>Absent</p>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td></td><td><p>Already Initiated</p></td><span></span></label></p></td></tr>"
+                      $('#tabledatahold').append(str)
+                    }
+                    else
+                    {
+                      var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>"+element[i][1]+"</p></td><td><p>Absent</p>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
+                      $('#tabledatahold').append(str)
+                    }
+
+                   
                   }
                   else
                   {
-                    var str = "<tr><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td><p>"+element[i][1]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
-                    $('#tabledatahold').append(str)
+                    if(element[i][2]==1)
+                    {
+                      var str = "<tr><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td><p>"+element[i][1]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td></td><td><p>Already Initiated</p></td><span></span></label></p></td></tr>"
+                      $('#tabledatahold').append(str)
+                    }
+                    else
+                    {
+                      var str = "<tr><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td><p>"+element[i][1]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
+                      $('#tabledatahold').append(str)
+                    }
+                   
                   }
                   $('.timepicker').timepicker();
                   $('.datepicker').datepicker();
@@ -581,6 +648,7 @@ $(document).ready(function(){
   $('#badge_ongoing').hide();
   $('#badge_rescheduling').hide();
   $('#badge_letter').hide();
+  $('#loader').hide();
   // ajax call for getting notification details
   $.ajax({
     url:'http://localhost/hrms/demo.txt',
@@ -854,6 +922,7 @@ $('#allocatesubmit').click(function()
   $('#allocation').hide(600);
   if(imail != "" && iname != "" &&  idept != "" && idesg != "" && iperson != "" && iloc != "")
   {
+    $("#loader").show();
     for(let i=0;i<selectedmailID.length;i++)
     {
       var b = selectedmailID[i]
@@ -886,6 +955,7 @@ $('#allocatesubmit').click(function()
         'iid':roundid[2]
       },
       success:function(para){
+       $("#loader").hide();
         console.log(para);
         selectedmail = []
         selecteddate = []
@@ -911,20 +981,11 @@ function selection(umail,mail)
 
   if($(umail).prop("checked") == true)
   {
-    if($(b+"date").val() !="" && $(b+"date2").val() !="" )
-    {
       selectedmail.push($(pmail).text())
       selectedmailID.push(b)
       console.log(selectedmail)
       console.log('mail:'+selectedmail)
       console.log('ID:'+selectedmailID)
-    }
-    else
-    {
-      $(b).prop("checked",false)
-      alert("Date or time not entered");
-    }
-
   }
   else
   {                                               

@@ -203,6 +203,7 @@ $(document).ready(function(){
                 type : 'POST',
                 data :(data),          
                 success : function(para){
+                        alert(para)
                 if(para == "expired")
                 {
                 console.log("Expired Page");
