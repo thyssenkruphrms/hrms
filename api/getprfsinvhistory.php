@@ -17,9 +17,12 @@ if($cursor)
        
         foreach($result as $doc)
         {
-             $c=$db->prfs->findOne(array("prf"=>$doc['prf']));
-            $arr[$i] =array($doc['prf'],$c['position'],$c['zone'],$c['department'],$doc['pos'],$doc['iid'],$doc['rid']);
-            $i++;
+            if(count($doc['evaluated']) > 0)
+            {
+                $c=$db->prfs->findOne(array("prf"=>$doc['prf']));
+                $arr[$i] =array($doc['prf'],$c['position'],$c['zone'],$c['department'],$doc['pos'],$doc['iid'],$doc['rid']);
+                $i++;
+            }
         }
         if(count($arr)==0)
         {
