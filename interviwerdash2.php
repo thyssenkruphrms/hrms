@@ -367,7 +367,7 @@ if(isset($_COOKIE['sid']))
     else
     {
     $("#notlogout").show()
-    document.location.replace("/hrms/")
+    document.location.replace("http://localhost/hrms/")
     }
     } 
     

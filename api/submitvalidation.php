@@ -78,14 +78,14 @@ if($cursor)
             
             if(count($arr)>=1)
             {
-                $result=$db->tokens->updateOne(array("email"=>$mails),array('$set'=>array("afterselection"=>"4","validationstatus"=>"1")));
+                $result=$db->tokens->updateOne(array("email"=>$mails),array('$set'=>array("afterselection"=>"4","validationstatus"=>"1","progress"=>"Sent For Revalidation")));
                 $mail->addAddress($mails); 
                 $token=sha1($mails);
 
                 $date = strtotime("+7 day");
                 $expdate = date("Y.m.d", $date);
 
-                $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/reupload.php?token='.$mails.'&expdate='.$expdate;
+                $url='http://localhost/hrms/reupload.php?token='.$mails.'&expdate='.$expdate;
                 $mail->Subject = 'Your Application at tkEI - Re-enter the requisite details';
                 $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
                 $mail->isHTML(true); 
@@ -209,7 +209,7 @@ if($cursor)
             }
             else if(count($arr)==0)
             {
-                $result=$db->tokens->updateOne(array("email"=>$mails),array('$set'=>array("afterselection"=>"2","validationstatus"=>"0")));
+                $result=$db->tokens->updateOne(array("email"=>$mails),array('$set'=>array("afterselection"=>"2","validationstatus"=>"0","progress"=>"Validation Done")));
             
                 $mail->addAddress($mails);
                 $token=sha1($mails);

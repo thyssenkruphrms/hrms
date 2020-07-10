@@ -1,50 +1,57 @@
 <?php
 
-
 include 'db.php';
 header('Content-Type: application/json');
 
-$cursor = $db->session->findOne(array("sid" => $_COOKIE['sid'],"dsg"=>"hr"));
-if($cursor)
-{
+$cursor=$db->interviews->find(array('accepted'=>'yes','status'=>'0'));
+
+if($cursor){
+
+    $prf=[];
+    $pos=[];
+    $iid=[];
+    $rid=[];
+    $allmembers=[];
+    $allinterviewers=[];
 
 
-    $initiateprfs=$db->generalized->find(array("status"=>"ongoing"));
-    $prfs=array();
-    foreach($initiateprfs as $doc=>$docval){        
-                $prfs[]=$docval->prf;
-            //var_dump($docval);     
-    }
+    foreach($cursor as $key=>$val){
 
-    $dataforinitiate=array();
+        $members=[];
 
-    foreach($prfs as $val){
-        $cur_prf=$db->rounds->findOne(array("prf"=>$val,"status"=>"ristart"));
+        foreach($val->members as $mem){
 
-        if($cur_prf){
-            $object=array(
-                "prf"=>$val,
-                //"position"=>$cur_prf->position,
-                "pos"=>$cur_prf->pos,
-                "iid"=>$cur_prf->iid,
-                "rid"=>$cur_prf->rid
-            );
+            $members[]=$mem;
 
-            $dataforinitiate[]=$object;
         }
-    }
 
-    echo json_encode(array("data"=>$dataforinitiate));
+        
+        if(in_array($val->prf,$prf)){
+            $prf[]="";
+        }else{
+        $prf[]=$val->prf;
+        }
+        
+        
+        $pos[]=$val->pos;
+        $iid[]=$val->iid;
+        $rid[]=$val->rid;
+        $allmembers[]=$members;
+        $allinterviewers[]=$val->intvmail;
 
-   // echo json_encode(array("general"=>$currentrounds,"initiateddata"=>$initiateddata,"completeddata"=>$completeddata,"para4"=>"ok","para5"=>"ok"));
 
+       }
 
+       echo json_encode(array("data"=>array("prf"=>$prf,"pos"=>$pos,"iid"=>$iid,"rid"=>$iid,"members"=>$allmembers,"interviewer"=>$allinterviewers)));
+    
 
 }
 else{
-    header("refresh:0;url=notfound.html");
+      
+    
+    
+    header("refresh:0;url=notfound.php");
 
 
 }
-
 ?>

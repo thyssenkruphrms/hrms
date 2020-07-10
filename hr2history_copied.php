@@ -81,7 +81,7 @@ width: 350%;
       <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
       <br>
       
-      <center><h2>No Data Avilable</h2></center>
+      <center><h2>No Data Available</h2></center>
       
     </div>
     <div class="modal-footer">
@@ -93,18 +93,18 @@ width: 350%;
 <!-- no data modal ends here -->
 <div id="sidenn" class="w3-sidebar blue w3-bar-block sidemenu" style="z-index: 1000;overflow-y:hidden">
 
-  <h3 class="w3-bar-item white"> <center><a href="/hrms/">Home</a>
+  <h3 class="w3-bar-item white"> <center><a href="http://localhost/hrms/">Home</a>
   <i id="remin" class="material-icons" style="float: right;cursor: pointer;">close</i></center>   
   </a></h3> <br><br>
 
-  <a href="/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
-  <a href="/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
-  <a href="/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
-  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button">On going rounds</a> <br>
-  <a href="/hrms/history.php" class="w3-bar-item w3-button">See History  </a> <br>
-  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling</a> <br>
-  <a href="/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
-  <a href="/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter</a> <br>
+  <a href="http://localhost/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
+  <a href="http://localhost/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
+  <a href="http://localhost/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
+  <a href="http://localhost/hrms/allocateround.php" class="w3-bar-item w3-button">On going rounds</a> <br>
+  <a href="http://localhost/hrms/history.php" class="w3-bar-item w3-button">See History  </a> <br>
+  <a href="http://localhost/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling</a> <br>
+  <a href="http://localhost/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
+  <a href="http://localhost/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter</a> <br>
   <a href="#" id="logoutuser" class="w3-bar-item w3-button">Logout</a> <br>
 
 </div>
@@ -114,7 +114,7 @@ width: 350%;
     <div class="nav-wrapper blue darken-1">
       <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
     </a>
-    <a href="/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+    <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
     </div>
 </nav>
 <br><br>
@@ -409,7 +409,7 @@ document.location.replace("http://localhost/hrms/index.php")
 else
 {
 $("#notlogout").show()
-document.location.replace("/hrms/")
+document.location.replace("http://localhost/hrms/")
 }
 } 
 

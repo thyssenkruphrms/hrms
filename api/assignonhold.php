@@ -164,14 +164,15 @@ if($cursor)
                     if($var2[0] == $d)
                     {
                         $var = explode(",",$q['onhold'][$k]); 
-                        if($var[1] == "absent")
-                        {
-                            $db->rounds->updateOne(array("status"=>"completed","prf"=>$_POST["prf"],'pos'=>$_POST["pos"],'iid'=>$result['iid']),array('$pull'=>array('onhold'=>$d.",absent")),array('safe'=>true,'timeout'=>5000,'upsert'=>true));
-                        }     
-                        else
-                        {
-                            $db->rounds->updateOne(array("status"=>"completed","prf"=>$_POST["prf"],'pos'=>$_POST["pos"],'iid'=>$result['iid']),array('$pull'=>array('onhold'=>$d)),array('safe'=>true,'timeout'=>5000,'upsert'=>true));
-                        }
+                        $db->tokens->updateOne(array('prf'=>$_POST['prf'],'email'=>$d),array('$set'=>array('reallocate'=>'1')));
+                        // if($var[1] == "absent")
+                        // {
+                        //     $db->rounds->updateOne(array("status"=>"completed","prf"=>$_POST["prf"],'pos'=>$_POST["pos"],'iid'=>$result['iid']),array('$pull'=>array('onhold'=>$d.",absent")),array('safe'=>true,'timeout'=>5000,'upsert'=>true));
+                        // }     
+                        // else
+                        // {
+                        //     $db->rounds->updateOne(array("status"=>"completed","prf"=>$_POST["prf"],'pos'=>$_POST["pos"],'iid'=>$result['iid']),array('$pull'=>array('onhold'=>$d)),array('safe'=>true,'timeout'=>5000,'upsert'=>true));
+                        // }
                     }
                 }
                 
@@ -182,7 +183,6 @@ if($cursor)
 
                 //Query to update round id in token of member
                 $criteria2=array("prf"=>$_POST["prf"],'pos'=>$_POST["pos"],'iid'=>$result['iid'],"email"=>$d); 
-                $r = $db->tokens->updateOne($criteria2,array('$set'=>array("progress"=>"01")));
                 
             }
             // Query to add empty arrays to documents - selected, rejected, onhold

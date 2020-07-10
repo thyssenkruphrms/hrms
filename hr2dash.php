@@ -46,7 +46,7 @@ if(isset($_COOKIE['sid']))
         <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
         <br>
         
-        <center><h2>No Data Avilable</h2></center>
+        <center><h2>No Data Available</h2></center>
         
         </div>
         <div class="modal-footer">
@@ -59,11 +59,11 @@ if(isset($_COOKIE['sid']))
 
 <div id="sidenn" class="w3-sidebar blue w3-bar-block sidemenu" style="z-index: 1000;overflow-y:hidden">
 
-<h3 class="w3-bar-item white"> <center><a href="/hrms/">Home</a>
+<h3 class="w3-bar-item white"> <center><a href="http://localhost/hrms/">Home</a>
 <i id="remin" class="material-icons" style="float: right;cursor: pointer;">close</i></center>   
 </a></h3> <br><br>
-<a href="/hrms/" class="w3-bar-item w3-button">To Do List <span class="new badge green" data-badge-caption="New Task(s)" id="badge_todo">4</span></a> <br>
-<a href="/hrms/hr2history.php" class="w3-bar-item w3-button">See History  </a> <br>  
+<a href="http://localhost/hrms/" class="w3-bar-item w3-button">To Do List <span class="new badge green" data-badge-caption="New Task(s)" id="badge_todo">4</span></a> <br>
+<a href="http://localhost/hrms/hr2history.php" class="w3-bar-item w3-button">See History  </a> <br>  
 <a href="#" id="logoutuser" class="w3-bar-item w3-button">Logout</a> <br>
 
 </div>
@@ -73,7 +73,7 @@ if(isset($_COOKIE['sid']))
   <div class="nav-wrapper blue darken-1">
     <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
   </a>
-  <a href="/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+  <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
   </div>
 </nav>
 <br><br>
@@ -83,7 +83,7 @@ if(isset($_COOKIE['sid']))
     <div class="col s12 m12">
         <div class="white-text">
             <div class="card-content blue-text">
-                <span class="card-title">Groups For Document Validation <a class="waves-effect green btn-small" style="float:right" href="http://118.185.100.233/hr2dash.php"><i class="material-icons right">refresh</i>Refresh</a></span>
+                <span class="card-title">Groups For Document Validation <a class="waves-effect green btn-small" style="float:right" href="http://localhost/hrms/hr2dash.php"><i class="material-icons right">refresh</i>Refresh</a></span>
                 <table class="striped">
                     <thead>
                         <tr>
@@ -215,7 +215,7 @@ if(isset($_COOKIE['sid']))
     $('#logoutuser').click(function(){
     
     $.ajax({
-    url:"http://118.185.100.233/api/logout.php",
+    url:"http://localhost/hrms/api/logout.php",
     type:"POST",
     success:function(para){
     
@@ -223,12 +223,12 @@ if(isset($_COOKIE['sid']))
     {
     $("#row").hide()
     $("#logout").show()
-    document.location.replace("http://118.185.100.233/index.php")
+    document.location.replace("http://localhost/hrms/index.php")
     }
     else
     {
     $("#notlogout").show()
-    document.location.replace("/hrms/")
+    document.location.replace("http://localhost/hrms/")
     }
     } 
     
@@ -248,7 +248,7 @@ $(document).ready(function(){
   $('#badge_todo').hide();
   // ajax call for getting notification details
   $.ajax({
-      url:'http://118.185.100.233/demo.txt',
+      url:'http://localhost/hrms/demo.txt',
       type:'GET',
       success:function(para)
       {
@@ -294,7 +294,7 @@ $("#validated").click(function(){
 
 // Ajax Call For Tking data of Grops for validation
 $.ajax({
-    url:"http://118.185.100.233/api/getprfvalidate.php",
+    url:"http://localhost/hrms/api/getprfvalidate.php",
     type:"GET",
     success:function(para)
     {   
@@ -343,7 +343,7 @@ function completeValidation(digit13)
     $("#"+digit13).attr('disabled','disabled')
     id=digit13.split("-");
     $.ajax({
-        url:"http://118.185.100.233/api/completevalidation.php",
+        url:"http://localhost/hrms/api/completevalidation.php",
         type:"POST",
         data:{
             "prf":id[0],
@@ -375,7 +375,7 @@ function displayMail(x)
     alert(x)
     
     $.ajax({
-        url:"http://118.185.100.233/api/getemailvalidate.php",
+        url:"http://localhost/hrms/api/getemailvalidate.php",
         type:"GET",
         data:{
             "id":x
@@ -502,7 +502,7 @@ function rol(para,name)
     // alert(s)
 
     $.ajax({
-        url:"http://118.185.100.233/api/reqofferletter.php",
+        url:"http://localhost/hrms/api/reqofferletter.php",
         type:"POST",
         data:{
             "mail":name,
@@ -533,7 +533,7 @@ function evaluateMail(x)
     
     localStorage.setItem('currentemail',x)
     // alert(localStorage.getItem('currentemail'))
-     window.open("/hrms/documentvalidation.php?token="+x+"", '_blank');
+     window.open("http://localhost/hrms/documentvalidation.php?token="+x+"", '_blank');
      window.setTimeout(function(){location.reload()},1000)
 
 }

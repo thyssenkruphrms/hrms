@@ -1220,6 +1220,7 @@ $.ajax({
     type:"POST",
     success:function(para)
     {
+        alert(para)
        window.name = para 
     }
 })

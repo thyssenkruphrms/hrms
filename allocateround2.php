@@ -36,6 +36,24 @@ if(isset($_COOKIE['sid']))
     <script src="public/js/materialize.js"></script>
     <script src="public/js/materialize.min.js"></script>
 
+<style>
+  #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.96)  url(loader2.gif)  no-repeat center center !important;
+    z-index: 10000;
+  }
+  #loader > #txt{
+          font-size:25;
+          margin-left:35% !important;
+          margin-top:18% !important; 
+  }
+</style>
+
 </head>
 
 <body>
@@ -47,7 +65,7 @@ if(isset($_COOKIE['sid']))
       <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
       <br>
       
-      <center><h2>No Data Avilable</h2></center>
+      <center><h2>No Data Available</h2></center>
       
     </div>
     <div class="modal-footer">
@@ -60,18 +78,18 @@ if(isset($_COOKIE['sid']))
 
 <div id="sidenn" class="w3-sidebar blue w3-bar-block sidemenu" style="z-index: 1000loverflow-y:hidden">
 
-  <h3 class="w3-bar-item white"> <center><a href="/hrms/">Home</a>
+  <h3 class="w3-bar-item white"> <center><a href="http://localhost/hrms/">Home</a>
   <i id="remin" class="material-icons" style="float: right;cursor: pointer;">close</i></center>   
   </a></h3> <br><br>
 
-  <a href="/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
-  <a href="/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
-  <a href="/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
-  <a href="/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge green" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
-  <a href="/hrms/history.php" class="w3-bar-item w3-button">See History</a> <br>
-  <a href="/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge green" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
-  <a href="/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
-  <a href="/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge green" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
+  <a href="http://localhost/hrms/csvupload.php" class="w3-bar-item w3-button">Create new Department and PRF</a> <br>
+  <a href="http://localhost/hrms/hrnew.php" class="w3-bar-item w3-button">Create New Instance</a> <br>
+  <a href="http://localhost/hrms/initiateround.php" class="w3-bar-item w3-button">Initiate rounds for instances</a> <br>
+  <a href="http://localhost/hrms/allocateround.php" class="w3-bar-item w3-button"> <span class="new badge green" data-badge-caption="New Round(s)" id="badge_ongoing">4</span>On going rounds</a> <br>
+  <a href="http://localhost/hrms/history.php" class="w3-bar-item w3-button">See History</a> <br>
+  <a href="http://localhost/hrms/allocateround2.php" class="w3-bar-item w3-button">Rescheduling<span class="new badge green" data-badge-caption="Request(s)" id="badge_rescheduling">4</span></a> <br>
+  <a href="http://localhost/hrms/interview.php" class="w3-bar-item w3-button">Update Interviews</a> <br>
+  <a href="http://localhost/hrms/offerletter.php" class="w3-bar-item w3-button">Offer Letter<span class="new badge green" data-badge-caption="Request(s)" id="badge_letter">4</span></a> <br>
   <a href="#" id="logoutuser" class="w3-bar-item w3-button">Logout</a> <br>
 
 </div>
@@ -81,7 +99,7 @@ if(isset($_COOKIE['sid']))
     <div class="nav-wrapper blue darken-1">
       <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
     </a>
-    <a href="/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+    <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
     </div>
 </nav>
 <br><br>
@@ -199,6 +217,15 @@ if(isset($_COOKIE['sid']))
 <center>
 <p id="nodata"><b style="color:red;margin-left:12%">No Data Available..!</b></p>
 </center>
+
+
+<div id="loader">
+  <div id="txt">
+    <b>Please wait.. while we schedule this interview</b>
+  </div>
+</div>
+
+
 <script src="public/js/common.js"></script>
 <script>
 
@@ -210,6 +237,7 @@ $(document).ready(function(){
   $('#badge_ongoing').hide();
   $('#badge_rescheduling').hide();
   $('#badge_letter').hide();
+  $('#loader').hide();
   // ajax call for getting notification details
   $.ajax({
     url:'http://localhost/hrms/demo.txt',
@@ -313,6 +341,7 @@ $(document).ready(function(){
     $('#allocation').show(600);
     $('#allocatesubmit').click(function(){
       console.log(iid);
+      $('#loader').show();
       // alert("Old " +oldintv);
       var imail = $('#imail').val();
       var iname = $('#iname').val();
@@ -356,7 +385,8 @@ $(document).ready(function(){
               $("#pleasewait").hide();
             }
             selectedmail = []
-            // window.setTimeout(function(){location.reload()},1000)
+            $('#loader').hide();
+            window.setTimeout(function(){location.reload()},1000)
 
         }
       })
@@ -488,7 +518,7 @@ document.location.replace("http://localhost/hrms/index.php")
 else
 {
 $("#notlogout").show()
-document.location.replace("/hrms/")
+document.location.replace("http://localhost/hrms/")
 }
 } 
 

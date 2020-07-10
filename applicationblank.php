@@ -109,7 +109,7 @@ $_SESSION['positionapplied'] = $position;
                           <div class="card white">
                             <div class="card-content blue-text darken-1" id="form">
                       
-                         <form method="POST" id="myform" name="applicationblank" enctype='multipart/form-data' action="./api/submitapplication.php" >
+                         <form method="POST" id="myform"  name="applicationblank" enctype='multipart/form-data' action="./api/submitapplication.php" >
                                  
 
                                 <!-- form starts -->
@@ -182,7 +182,11 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
                                                 
                                             <div class="input-field col s4">
+<<<<<<< HEAD
                                               <input   id="street" name="street" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
+=======
+                                              <input   id="street" name="street" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" >
+>>>>>>> c7defaf78010c1498d377db72bfc677d6274b28c
                                               <label for="street">Street</label>
                                             </div>
 
@@ -226,7 +230,7 @@ $_SESSION['positionapplied'] = $position;
                                           </div>
                                           <div class="row">
                                             <div class="input-field col s6">
-                                              <input id="uemail" name="uemail" type="email" class="validate" required aria-required="true">
+                                              <input id="uemail" name="uemail" type="email" class="validate" onchange="ValidateEmail(document.applicationblank.uemail)" required aria-required="true">
                                               <label for="uemail">Email</label>
                                             </div>
 
@@ -284,7 +288,7 @@ $_SESSION['positionapplied'] = $position;
                                                                         <div class="file-field input-field">
                                                                                 <div class="btn blue darken-1">
                                                                                         <span>Upload Documents</span>
-                                                                                        <input id="alldocs" name="alldocs" type="file"  required accept=".png, .jpg, .jpeg, .pdf">
+                                                                                        <input id="alldocs" name="alldocs" type="file"  required accept=".pdf">
                                                                                 </div>
                                                                                 <div class="file-path-wrapper">
                                                                                         <input class="file-path validate" type="text">
@@ -340,7 +344,7 @@ $_SESSION['positionapplied'] = $position;
                                                         </div> 
                                                               
                                                         <div class="input-field col s6">
-                                                                <input id="managermail0" name="managermail0[]" type="email" class="validate"  aria-required="true">
+                                                                <input id="managermail0" name="managermail0[]" type="email"  class="validate"  aria-required="true">
                                                                 <label for="managermail0" style="font-size: 11px">Enter Manager Email</label>
                                                         </div> 
                                                         <div class="row" id="addnextexp"x>
@@ -707,7 +711,7 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
 
                                                 <div class="input-field col s6">
-                                                        <input id="mailref0" name="mailref0[]" type="email" class="validate" required aria-required="true">
+                                                        <input id="mailref0" name="mailref0[]" type="email"  class="validate" required aria-required="true">
                                                         <label for="mailref0">Reference</label>
                                                 </div>
 
@@ -801,6 +805,7 @@ function checkpincode(x)
 }
 function mytextvalid(e)
 {
+<<<<<<< HEAD
         var keyCode = (e.which) ? e.which : e.keyCode
         if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
         {
@@ -827,6 +832,35 @@ function mytextvalid(e)
 
 // }
 
+=======
+        // var id="#"+x;
+        // var elementtext=$(id).val();
+        // var mytxt = /^[a-z]+$/;
+        // if(!elementtext.match(mytxt))
+        // {
+        //         alert("Please Enter Valid Details");
+        //         $(id).val(" ");
+        // }
+
+}
+
+function ValidateEmail(inputText)
+{
+        var mailformat =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(inputText.value.match(mailformat))
+        {
+                   //The pop up alert for a valid email address
+        document.applicationblank.uemail.focus();
+        return true;
+        }
+        else
+        {
+        alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
+        document.applicationblank.uemail.focus();
+        return false;
+        }
+}
+>>>>>>> c7defaf78010c1498d377db72bfc677d6274b28c
 function checknotice(x)
 {
         var id="#"+x;
