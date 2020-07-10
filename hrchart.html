@@ -756,7 +756,7 @@
                     success:function(para)
                     {
                         // give details in this format demo data:
-                        para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
+                      //  para = [['111111','222','33','11'],['111111','222','33','12'],['111111','222','33','13']];
                         
                         $("#tableBody").text('')
                         var headings = '<thead><tr><th>PRF</th><th>POSITION</th><th>IID</th><th>RID</th><th>Details</th></tr></thead>'
@@ -811,25 +811,28 @@
         function callDescriptiveModal(label)
         {
             console.log("this is label:",label)
-            var prf = window.myLine.options.title.text
-            prf = prf.split(':')
+            var prf1 = window.myLine.options.title.text
+            prf = prf1.split(':')
             prf = prf[1]
             console.log("this is prf:",prf)
             $.ajax({
-                url:'demo.txt',
+                url:'http://localhost/hrms/api/providestatedata.php',
                 type:'GET',
                 data:{
                     'label':label,
-                    'digit13':prf
+                    'digit13':(prf1.split(":"))[1],
+                    'prf':prf
                 },
                 success:function(para)
                 {
+                   //para=para.data
+                   console.log(para)
                     $("#cardTitle").text(label)
                     $("#tableParent").fadeOut()
                     $("#tableParent").fadeIn(200)
                     // give details in this format demo data:
-                    para = {digit13:['123456-12-123-12'],start:['12 apr 2019-5.02am'],end:['13 apr 2019-5.02am'],invname:['ABC'],members:[['abc@gmail.com','pqr@gmail.com']]};
-                    console.log(para.members[0].length)
+                   // para = {digit13:['123456-12-123-12'],start:['12 apr 2019-5.02am'],end:['13 apr 2019-5.02am'],invname:['ABC'],members:[['abc@gmail.com','pqr@gmail.com']]};
+                   // console.log(para.members[0].length)
                     $("#tableBody").text('')
                     var headings = '<thead><tr><th>ID</th><th>Initiated On</th><th>Completed On</th><th>Interviewer</th><th>Members</th></tr></thead>'
                     $("#tableBody").append(headings)
@@ -854,19 +857,28 @@
         function getPrf(x)
         {
             $('.modal').modal("close");
-            var myprf = x.toString()
-            console.log(x)
-            console.log(myprf.slice(6,8))
+            var myprf = x.toString();
+            console.log(myprf)
+          // console.log(iid)
+           
+         
+
+            
             $.ajax({
-                url:'demo.txt',
+                url:'http://localhost/hrms/api/providealldata.php',
                 type:'GET',
                 data:{
-                    'Prf13':x
+                    'prf':myprf,
+                     
                 },
                 success:function(para)
                 {
+                    //console.log(iid+"hi")
+                   //console.log(para.prf+" "+para.iid)
                     // (this will be used for line chart) provide in following format
-                    para = ['Initiated', 'Round 1 Completed', 'Round 2 completed', 'Instance Ended']
+                   // para = [ 'Round 2 completed', 'Instance Ended']
+                   para=para.data
+                   console.log(para)
                     dataArray = [];
                     for(let i=0;i<para.length;i++)
                     {
@@ -877,6 +889,9 @@
                     window.myLine.update();
                     
                     
+                },
+                error:function(data){
+                    console.data
                 }
             })
         }
@@ -914,7 +929,7 @@
         {
             // ajax call for line chart
             $.ajax({
-                url:'demo.txt',
+                url:'http://localhost/hrms/api/notfound.php',
                 type:'GET',
                 data:{
                     'prf':$('#dropprf').val(),
@@ -922,7 +937,9 @@
                 },
                 success:function(para)
                 {
-                    para = ['Initiated', 'Round 1 Completed', 'Round 2 completed', 'Instance Ended','HR2 validation']
+                    console.log(para+"hi")
+                  
+                    para = [ 'Instance Ended','HR2 validation']
                     dataArray = [];
                     for(let i=0;i<para.length;i++)
                     {
