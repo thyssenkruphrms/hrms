@@ -21,7 +21,7 @@ if($cursor["status"] == "withdraw")
     
     foreach($members as $member){
         $mail->addAddress($member);
-        $mail->Subject = 'Regarding your application at thyssenkrupp';
+        $mail->Subject = 'Your Application at tkEI ';
         $mail->Body    = nl2br('Dear Candidate,
 
                  The position that you have applied for is withdrawn and applications are no longer accepted or processed further.
@@ -39,7 +39,7 @@ if($cursor["status"] == "withdraw")
 
     foreach($members2 as $member){
         $mail->addAddress($member);
-        $mail->Subject = 'Regarding your application at thyssenkrupp';
+        $mail->Subject = 'Your Application at tkEI ';
         $mail->Body    = nl2br('Dear Candidate,
 
                  The position that you have applied for is withdrawn and applications are no longer accepted or processed further.

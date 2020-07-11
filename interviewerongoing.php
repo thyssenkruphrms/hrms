@@ -17,7 +17,7 @@ foreach($_POST['emails'] as $d)
    
     $mail->addAddress($d);
     //"Invitation to interview with thyssenkrupp for the ". $position." position";
-    $mail->Subject = 'Invitation to interview at thyssenkrupp';
+    $mail->Subject = 'Your Application at tkEI – Interview Schedule';
     $mail->Body    = 'You have been shortlisted for the interview. 
     You have an interview on this '.$date.'Time : '.$time.' by '.$invname;
     

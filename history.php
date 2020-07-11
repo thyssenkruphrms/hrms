@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 
 if(isset($_COOKIE['sid']))
 {
@@ -294,6 +294,8 @@ width: 350%;
               <th>Progress</th>
               <th>View Evaluation Sheet</th>
               <th>View CV</th>
+              <th>Print Evaluation Sheet</th>
+              <th>Print Application</th>
               
           </tr>
         </thead>
@@ -321,6 +323,8 @@ width: 350%;
               <th>Email ID</th>
               <th>View Evaluation Sheet</th>
               <th>View CV</th>
+              <th>Print Evaluation Sheet</th>
+              <th>Print Application</th>
            
               
           </tr>
@@ -548,7 +552,7 @@ function xyz(x)
                 var element = parseddata.selected
                 for (let i = 0; i < element.length; i++) 
                 {
-                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td></tr>"
+                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                   
                   $('#tabledataselect').append(str)
                     
@@ -565,7 +569,7 @@ function xyz(x)
                   }
                   else
                   {
-                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>"+element[i][0]+"</a> </td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i]+"' target='_blank'>View CV</a></td></tr>"
+                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>"+element[i][0]+"</a> </td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                   
                   $('#tabledatareject').append(str)
                   }

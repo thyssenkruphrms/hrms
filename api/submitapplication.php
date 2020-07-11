@@ -151,8 +151,8 @@ include 'db.php';
                     $mail->addReplyTo(Email, 'Information');
                     $mail->isHTML(true);   
                     $mail->addAddress($result1['email']);
-
-                    $mail->Subject = 'Update on your application at thyssenkrupp for '.$res['position'].'position';
+                    $mail->Subject = 'Your Application at tkEI ';
+                   // $mail->Subject = 'Update on your application at thyssenkrupp for '.$res['position'].'position';
                     $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
                     $mail->isHTML(true); 
                     $mail->Body ='
