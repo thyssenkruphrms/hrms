@@ -166,15 +166,15 @@ $_SESSION['positionapplied'] = $position;
                                         <div class="row">
 
                                             <div class="input-field col s4">
-                                              <input id="last_name" name="last_name" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                              <input id="last_name" name="last_name" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
                                               <label for="last_name">Last Name</label>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="first_name" name="first_name" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                              <input id="first_name" name="first_name" type="text" class="validate" required aria-required="true"  onkeypress="return mytextvalid(event)">
                                               <label for="first_name">First Name</label>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="mid_name" name="mid_name" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                              <input id="mid_name" name="mid_name" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
                                               <label for="mid_name">Middle Name</label>
                                             </div>
                                           </div>
@@ -182,24 +182,26 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
                                                 
                                             <div class="input-field col s4">
+<<<<<<< HEAD
+                                              <input   id="street" name="street" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
+=======
                                               <input   id="street" name="street" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" >
+>>>>>>> c7defaf78010c1498d377db72bfc677d6274b28c
                                               <label for="street">Street</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="Locality" name="Locality" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                              <input   id="Locality" name="Locality" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
                                               <label for="Locality">Locality</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="City" name="City" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                              <input   id="City" name="City" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
                                               <label for="City">City</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="State" name="State" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                              <input   id="State" name="State" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
                                               <label for="State">State</label>
                                             </div>
 
@@ -249,8 +251,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
     
                                                 
                                                 <div class="input-field col s6">
-                                                    <input id="location" name="location" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                    <input id="location" name="location" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
                                                     <label for="location">Location</label>
                                                 </div>
                            
@@ -260,7 +261,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                           <div class="row">
                                             
                                                 <div class="input-field col s12">
-                                                  <input id="passport" name="passport" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)">
+                                                  <input id="passport" name="passport" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
                                                   <label for="passport">Passport Availability/Validity</label>
                                                 </div>
                                           </div>
@@ -269,8 +270,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                           <div class="row">
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="qualification" name="qualification" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                        <input id="qualification" name="qualification" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
                                                         <label for="qualification">Highest Qualification</label>
                                                       </div>
           
@@ -318,14 +318,13 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                   <div class="col s12" id="myexpdiv">
                                                           
                                                         <div class="input-field col s6">
-                                                                <input id="orgname0" name="orgname0[]" type="text" class="validate"  aria-required="true" onchange="validtext(this.id)">
+                                                                <input id="orgname0" name="orgname0[]" type="text" class="validate"  aria-required="true">
                                                                 <label for="orgname0" style="font-size: 11px">Current Organization Name</label>
                                                         </div>
                                   
                                                                               
                                                         <div class="input-field col s6">
-                                                                <input id="olddesignation0" name="olddesignation0[]" type="text"class="validate"  aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                                <input id="olddesignation0" name="olddesignation0[]" type="text"class="validate"  aria-required="true" onkeypress="return mytextvalid(event)">
                                                                 <label for="olddesignation0" style="font-size: 11px">Designation</label>
                                                         </div>
                                                         
@@ -340,8 +339,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                         </div> 
 
                                                         <div class="input-field col s6">
-                                                                <input id="managername0" name="managername0[]" type="text" class="validate"  aria-required="true" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                                <input id="managername0" name="managername0[]" type="text" class="validate"  aria-required="true" onkeypress="return mytextvalid(event)">
                                                                 <label for="managername0" style="font-size: 11px">Reporting Manager Name</label>
                                                         </div> 
                                                               
@@ -386,7 +384,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                                                 <label class="col s12">
                                                         <input type="checkbox" id="other" name="other" class="filled-in">
                                                         <span>Other</span>
-                                                        <input placeholder="Enter Specific Details" id="otherdetails" name="otherdetails" type="text" class="validate" onchange="validtext(this.id)">                                                        
+                                                        <input placeholder="Enter Specific Details" id="otherdetails" name="otherdetails" type="text" class="validate">                                                        
                                                 </label>
                                                 
                                             
@@ -409,14 +407,12 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
 
                                                 
                                                 <div class="input-field col s6" >
-                                                        <input id="manager" name="manager" type="text"  required onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                        <input id="manager" name="manager" type="text" required onkeypress="return mytextvalid(event)">
                                                         <label for="manager" style="font-size: 11px">Reporting Manager Name & Designation</label>
                                                 </div>
 
                                                 <div class="input-field col s6" >
-                                                        <input id="ifselectposition" name="ifselectposition" type="text"  required onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                        <input id="ifselectposition" name="ifselectposition" type="text"  required onkeypress="return mytextvalid(event)">
                                                         <label for="ifselectposition" style="font-size: 11px">Current Position</label>
                                                 </div>
 
@@ -479,8 +475,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
 
                                                 
                                             <div class="input-field col s6">
-                                                    <input id="father" name="father" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                    <input id="father" name="father" type="text" onkeypress="return mytextvalid(event)">
                                                     <label for="father">Father Name</label>
                                             </div>
 
@@ -493,8 +488,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="mother" name="mother" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                    <input id="mother" name="mother" type="text" onkeypress="return mytextvalid(event)">
                                                     <label for="mother">Mother Name</label>
                                             </div>
 
@@ -507,8 +501,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="spouse" name="spouse" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                    <input id="spouse" name="spouse" type="text" onkeypress="return mytextvalid(event)">
                                                     <label for="spouse">Spouse Name</label>
                                             </div>
 
@@ -532,8 +525,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="child1" name="child1" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                    <input id="child1" name="child1" type="text" onkeypress="return mytextvalid(event)">
                                                     <label for="child1">Child1 Name</label>
                                             </div>
 
@@ -556,8 +548,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="child2" name="child2" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                    <input id="child2" name="child2" type="text" onkeypress="return mytextvalid(event)">
                                                     <label for="child2">Child2 Name</label>
                                             </div>
 
@@ -653,8 +644,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="nameref0" name="nameref0[]" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                        <input id="nameref0" name="nameref0[]" type="text" onkeypress="return mytextvalid(event)">
                                                         <label for="nameref0">Reference</label>
                                                 </div>
                                                 
@@ -668,8 +658,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="designationref0" name="designationref0[]" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                        <input id="designationref0" name="designationref0[]" type="text" onkeypress="return mytextvalid(event)">
                                                         <label for="designationref0">Reference</label>
                                                 </div>
                                                 
@@ -682,8 +671,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="cmpnmref0" name="cmpnmref0[]" type="text" onchange="validtext(this.id)" onkeypress="return (event.charCode > 64 && 
-event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                                                        <input id="cmpnmref0" name="cmpnmref0[]" type="text" onkeypress="return mytextvalid(event)">
                                                         <label for="cmpnmref0">Reference </label>
                                                 </div>
                                                 
@@ -698,7 +686,7 @@ event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="contref0" name="contref0[]" type="number" class="validate" onchange="checkcont(this.id)" required aria-required="true"/>
+                                                        <input id="contref0" name="contref0[]" type="number" class="validate" required aria-required="true"/>
                                                         <label for="contref0">Reference</label>
                                                 </div>
 
@@ -815,9 +803,36 @@ function checkpincode(x)
                 $(id).val(" ")
         }
 }
-
-function validtext(x)
+function mytextvalid(e)
 {
+<<<<<<< HEAD
+        var keyCode = (e.which) ? e.which : e.keyCode
+        if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
+        {
+                return false;
+        }
+        else
+        {
+                return true;
+        }
+        
+        //return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)
+}
+
+// function validtext(x)
+// {
+//         var id="#"+x;
+//         var elementtext=$(id).val();
+//         var mytxt = /^[a-z]+$/;
+//         if(!elementtext.match(mytxt))
+//         {
+//                 alert("Please Enter Valid Details");
+//                 $(id).val(" ");
+//         }
+
+// }
+
+=======
         // var id="#"+x;
         // var elementtext=$(id).val();
         // var mytxt = /^[a-z]+$/;
@@ -845,6 +860,7 @@ function ValidateEmail(inputText)
         return false;
         }
 }
+>>>>>>> c7defaf78010c1498d377db72bfc677d6274b28c
 function checknotice(x)
 {
         var id="#"+x;
@@ -861,7 +877,7 @@ function addnewexp(x)
         //var str = 'myexpdiv'+ctr
 
 
-        var txt='<div class="col s12" id="myexpdiv"><div class="input-field col s6"><input name="orgname0[]" id="orgname'+expctr+'" type="text" class="validate" onchange="validtext(this.id)" aria-required="true" ><label for="orgname'+expctr+'" style="font-size: 11px">Current Organization Name</label></div><div class="input-field col s6"><input name="olddesignation0[]" id="olddesignation'+expctr+'" type="text" class="validate" onchange="validtext(this.id)" aria-required="true"><label for="olddesignation'+expctr+'" style="font-size: 11px">Designation</label></div><div class="input-field col s6"><input name="fromdate0[]" id="fromdate'+expctr+'" type="text" class="datepicker" ><label for="fromdate'+expctr+'" style="font-size: 11px;">From</label></div><div class="input-field col s6"><input name="todate0[]" id="todate'+expctr+'" type="text" class="datepicker"><label for="todate'+expctr+'" style="font-size: 11px;">To</label></div><div class="input-field col s6"><input name="managername0[]" id="managername'+expctr+'" type="text" class="validate" onchange="validtext(this.id)" aria-required="true"><label for="managername'+expctr+'" style="font-size: 11px">Reporting Manager Name</label></div><div class="input-field col s6"><input name="managermail0[]" id="managermail'+expctr+'" type="email" class="validate"   aria-required="true"><label for="managermail'+expctr+'" style="font-size: 11px">Enter Manager Email</label></div><div class="row" id="addnextexp"><a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a></div></div>'
+        var txt='<div class="col s12" id="myexpdiv"><div class="input-field col s6"><input name="orgname0[]" id="orgname'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true" ><label for="orgname'+expctr+'" style="font-size: 11px">Current Organization Name</label></div><div class="input-field col s6"><input name="olddesignation0[]" id="olddesignation'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="olddesignation'+expctr+'" style="font-size: 11px">Designation</label></div><div class="input-field col s6"><input name="fromdate0[]" id="fromdate'+expctr+'" type="text" class="datepicker" ><label for="fromdate'+expctr+'" style="font-size: 11px;">From</label></div><div class="input-field col s6"><input name="todate0[]" id="todate'+expctr+'" type="text" class="datepicker"><label for="todate'+expctr+'" style="font-size: 11px;">To</label></div><div class="input-field col s6"><input name="managername0[]" id="managername'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="managername'+expctr+'" style="font-size: 11px">Reporting Manager Name</label></div><div class="input-field col s6"><input name="managermail0[]" id="managermail'+expctr+'" type="email" class="validate"   aria-required="true"><label for="managermail'+expctr+'" style="font-size: 11px">Enter Manager Email</label></div><div class="row" id="addnextexp"><a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a></div></div>'
         $("#mainexpdiv").append(txt);
         $('.datepicker').datepicker({
                         //dateFormat:"dd/mm/yy",
@@ -878,7 +894,7 @@ function addnewref(x)
 {
 
         ctr2 = ctr2+1
-        var txt='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onchange="validtext(this.id)"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onchange="validtext(this.id)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onchange="validtext(this.id)"><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email"><label for="mailref'+ctr2+'">Reference</label></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)"><i class="material-icons">add</i></a></div></div>'
+        var txt='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email"><label for="mailref'+ctr2+'">Reference</label></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)"><i class="material-icons">add</i></a></div></div>'
         $("#mainref").append(txt);
 }
 
