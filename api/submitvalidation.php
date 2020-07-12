@@ -86,7 +86,7 @@ if($cursor)
                 $expdate = date("Y.m.d", $date);
 
                 $url='http://localhost/hrms/reupload.php?token='.$mails.'&expdate='.$expdate;
-                $mail->Subject = 'Your Application at tkEI - Re-enter the requisite details';
+                $mail->Subject = 'Your Application at tkEI – Re-enter the requisite details ';
                 $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
                 $mail->isHTML(true); 
                 $mail->Body ='

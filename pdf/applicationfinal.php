@@ -4,7 +4,7 @@ require('../fpdf/fpdf.php');
 require('../api/db.php');
 
 $collection = $db->tokens;
-$row = $collection->findOne(array("email"=>"pragatigaikwad280@gmail.com"));
+$row = $collection->findOne(array("email"=>$_GET['aid']));
 
 
 $pdf = new FPDF();
@@ -17,10 +17,10 @@ $pdf->SetY(30);
 $pdf->SetFont('Arial','B',12);
 $pdf->Cell(150,7,"Application Blank - ".$row['full_name'],0,1,'C');
 
-$pdf->SetFont('Arial','B',12);
-#$image1 = $fullname['userphoto'];
-$image1 = "img.jpg";
-$pdf->Cell( 40, 40, $pdf->Image($image1, 165, 10, 35.78), 0, 0, 'R', false );
+// $pdf->SetFont('Arial','B',12);
+// #$image1 = $fullname['userphoto'];
+// $image1 = "img.jpg";
+// $pdf->Cell( 40, 40, $pdf->Image($image1, 165, 10, 35.78), 0, 0, 'R', false );
 
 $pdf->SetFont('Arial','B',12);
 $pdf->setFillColor(230,230,230);

@@ -97,8 +97,8 @@ if($count==1) //if round collection is present
                 $mail->addAddress($d);
                 $token=sha1($d);
                 $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position2;
-
-                $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
+                $mail->Subject = "Your Application at tkEI";
+           //$mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
                 $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
                 $mail->isHTML(true); 
                 $mail->Body ='
@@ -270,7 +270,8 @@ if($count==1) //if round collection is present
                 $token=sha1($d);
                 $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position2;
 
-                $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
+                $mail->Subject = "Your Application at tkEI";
+                //$mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
                 $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
                 $mail->isHTML(true); 
                 $mail->Body ='
@@ -438,7 +439,8 @@ else
                 $token=sha1($d);
                 $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position2;
 
-                $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
+                $mail->Subject = "Your Application at tkEI";
+                //$mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
                 $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
                 $mail->isHTML(true); 
                 $mail->Body ='

@@ -5,6 +5,10 @@ include 'db.php';
     if($_POST)
     {
             include 'maildetails.php';
+
+            $date_6months = date_default_timezone_set('Asia/Kolkata');
+            $date_6months = strtotime("+6 months");
+            $expdate_6months = date("Y.m.d", $date_6months); 
             
             $fullname = $_POST["last_name"]." ".$_POST["first_name"]." ".$_POST["mid_name"];
             $token = $_SESSION['token'];
@@ -128,7 +132,8 @@ include 'db.php';
                     "todate" => $todate,
                     "managername" => $managername,
                     "managermail" => $managermail,
-                    "postfilled" => ""
+                    "postfilled" => "",
+                    "expdate_6month"=> $expdate_6months
                     
                 );
                 $result = $collection->updateOne(array("token" => $token),array('$set'=>$values));
@@ -151,8 +156,8 @@ include 'db.php';
                     $mail->addReplyTo(Email, 'Information');
                     $mail->isHTML(true);   
                     $mail->addAddress($result1['email']);
-
-                    $mail->Subject = 'Update on your application at thyssenkrupp for '.$res['position'].'position';
+                    $mail->Subject = 'Your Application at tkEI ';
+                   // $mail->Subject = 'Update on your application at thyssenkrupp for '.$res['position'].'position';
                     $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
                     $mail->isHTML(true); 
                     $mail->Body ='
