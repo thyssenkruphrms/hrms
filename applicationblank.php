@@ -100,6 +100,18 @@ $_SESSION['positionapplied'] = $position;
                                 </div>
                         </div>
                 </div>
+
+                <div class="row" id="warn3">
+                        <div class="col s12 m6 offset-m3">
+                                <div class="card white">
+                                        <div class="card-content ">
+                                        
+                                                <center><h1><p style="color:red;font-size: 25px"><b> Attention</b><br>
+                                                If you are re-applying, please make sure it has been six months since your previous application.</p></h5></center>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
                 <!-- warning ends here -->
 
 
@@ -182,11 +194,7 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
                                                 
                                             <div class="input-field col s4">
-<<<<<<< HEAD
-                                              <input   id="street" name="street" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
-=======
                                               <input   id="street" name="street" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" >
->>>>>>> c7defaf78010c1498d377db72bfc677d6274b28c
                                               <label for="street">Street</label>
                                             </div>
 
@@ -805,34 +813,6 @@ function checkpincode(x)
 }
 function mytextvalid(e)
 {
-<<<<<<< HEAD
-        var keyCode = (e.which) ? e.which : e.keyCode
-        if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
-        {
-                return false;
-        }
-        else
-        {
-                return true;
-        }
-        
-        //return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)
-}
-
-// function validtext(x)
-// {
-//         var id="#"+x;
-//         var elementtext=$(id).val();
-//         var mytxt = /^[a-z]+$/;
-//         if(!elementtext.match(mytxt))
-//         {
-//                 alert("Please Enter Valid Details");
-//                 $(id).val(" ");
-//         }
-
-// }
-
-=======
         // var id="#"+x;
         // var elementtext=$(id).val();
         // var mytxt = /^[a-z]+$/;
@@ -860,7 +840,6 @@ function ValidateEmail(inputText)
         return false;
         }
 }
->>>>>>> c7defaf78010c1498d377db72bfc677d6274b28c
 function checknotice(x)
 {
         var id="#"+x;
@@ -915,8 +894,15 @@ $("#otherdetails").hide();
 $(document).ready(function(){
         $('#warn').hide()
         $('#warn2').hide()
+        $('#warn3').hide()
 
         $('#loader').hide()
+
+//         $("#aadharno").on("input", function(){
+//                 console.log(text($(this).val());
+//         // Print entered value in a div box
+//         //$("#result").text($(this).val());
+//     });
         function getUrlVars() {
             var vars = {};
             var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -1037,6 +1023,36 @@ $( "#aadharno" ).change(function() {
                 $('#aadharno').val(" ")
 
         }
+        var data={"aadharno":addharnumber};
+        //console.log(addharnumber);
+
+
+
+        $.ajax({
+                url: "http://localhost/hrms/api/check.php",
+                type : 'POST',
+                data :(data), 
+                success: function(result){
+                        result=JSON.parse(result);
+                        console.log(result["res"]);
+                        //result=result.trim();
+                        if(result=="2020.07.122​"){
+                                 console.log("Aadhar number already exists");
+                                 $('#form').hide()
+                                 $('#warn3').show()
+                                }
+                    
+
+                         
+                        
+    }});
+
+  
+ 
+  
+
+
+        
 
 });
 
