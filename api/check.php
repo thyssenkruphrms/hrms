@@ -12,16 +12,16 @@ if($result["aadharno"])
 {
 
     if($currentdate>$expdate){
-        echo json_encode(array("res"=>"notexpired"));
+        echo "notexpired";
       
       }
       else{
-        echo json_encode(array("res"=>"expired"));
+        echo "expired";
       }
 
 }
 else{
-  echo json_encode(array("res"=>"continue"));
+  echo "continue";
 }
   
 ?>

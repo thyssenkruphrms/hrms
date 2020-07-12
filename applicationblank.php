@@ -1033,10 +1033,10 @@ $( "#aadharno" ).change(function() {
                 type : 'POST',
                 data :(data), 
                 success: function(result){
-                        result=JSON.parse(result);
-                        console.log(result["res"]);
-                        //result=result.trim();
-                        if(result=="2020.07.122​"){
+                        // result1=JSON.parse(result);
+                        console.log(result);
+                        // result=result.trim();
+                        if(result == "expired"){
                                  console.log("Aadhar number already exists");
                                  $('#form').hide()
                                  $('#warn3').show()
