@@ -1,5 +1,4 @@
-​
-<?php
+​<?php
 include 'db.php';
 //error_reporting(0);
 $result = $db->tokens->findOne(array("aadharno"=>$_POST["aadharno"]));
@@ -10,19 +9,17 @@ $expdate = date($result['expdate_6month']);
 //echo($expdate);
 if($result["aadharno"])
 {
-
-    if($currentdate>$expdate){
-        echo "notexpired";
-      
-      }
-      else{
-        echo "expired";
-      }
-
+  if($currentdate>$expdate)
+    {
+      echo("expired");
+    }
+    else
+    {
+      echo("notexpired");
+    }
 }
 else{
-  echo "continue";
+  echo("continue");
 }
-  
 ?>
 ​

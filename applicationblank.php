@@ -1034,13 +1034,18 @@ $( "#aadharno" ).change(function() {
                 data :(data), 
                 success: function(result){
                         // result1=JSON.parse(result);
-                        console.log(result);
-                        // result=result.trim();
-                        if(result == "expired"){
-                                 console.log("Aadhar number already exists");
-                                 $('#form').hide()
-                                 $('#warn3').show()
-                                }
+                        result = $.trim(result)
+                        if(result=="​expired​"){
+                                console.log("Aadhar number already exists");
+                                $('#form').hide()
+                                $('#warn3').show()
+                                
+                        
+                        }
+                        else
+                        {
+                                console.log("ok")
+                        }
                     
 
                          
