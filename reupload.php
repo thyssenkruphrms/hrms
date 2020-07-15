@@ -2,7 +2,9 @@
 <?php
 include 'api/db.php';
 $result = $db->tokens->findOne(array('email'=>$_GET['token']));
-//echo $_GET['token'];
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +68,7 @@ input[type="file"]
                             <td>
                                 <div class="input-field col s12 m12" id="rcv1">
                                     <input id="rcv" type="text" class="validate" value="<?php echo $result['cvreason'];?> " readonly>
-                                    <label for="rcv">Specify Reason</label>
+                                    <label for="rcv"> Reason Specified</label>
                                  </div>
                             </td>
                         </tr>
@@ -85,7 +87,7 @@ input[type="file"]
                             <td>
                                 <div class="input-field col s12 m12" id="rpan1">
                                     <input id="rpan" type="text" class="validate" value="<?php echo $result['pancardreason'];?>" readonly>
-                                    <label for="rpan">Specify Reason</label>
+                                    <label for="rpan">Reason Specified</label>
                                  </div>
                             </td>
                         </tr>
@@ -100,7 +102,7 @@ input[type="file"]
                             <td>
                                 <div class="input-field col s12 m12" id="rAdhaar1">
                                     <input id="rAdhaar" type="text" class="validate" value="<?php echo $result['adhaarreason'];?>" readonly>
-                                    <label for="rAdhaar">Specify Reason</label>
+                                    <label for="rAdhaar">Reason Specified</label>
                                  </div>
                             </td>
                         </tr>
@@ -116,7 +118,7 @@ input[type="file"]
                             <td>
                                 <div class="input-field col s12 m12" id="rPhoto1" >
                                     <input id="rPhoto" type="text" class="validate" value="<?php echo $result['photoreason'];?>" readonly>
-                                    <label for="rPhoto">Specify Reason</label>
+                                    <label for="rPhoto">Reason Specified</label>
                                 </div>
                             </td>
                         </tr>
@@ -131,7 +133,7 @@ input[type="file"]
                             <td>
                                 <div class="input-field col s12 m12" id="rgraduation1">
                                     <input id="rgraduation" type="text" class="validate" value="<?php echo $result['graduatereason'];?>" readonly>
-                                    <label for="rgraduation">Specify Reason</label>
+                                    <label for="rgraduation">Reason Specified</label>
                                 </div>
                             </td>
                         </tr>
@@ -145,7 +147,7 @@ input[type="file"]
                             <td>
                                 <div class="input-field col s12 m12" id="rap1">
                                     <input id="rap" type="text" class="validate" value="<?php echo $result['addressreason'];?>" readonly>
-                                    <label for="rap">Specify Reason</label>
+                                    <label for="rap">Reason Specified</label>
                                 </div>
                             </td>
                         </tr>
@@ -160,7 +162,7 @@ input[type="file"]
                             <td>
                                 <div class="input-field col s12 m12" id="ral1">
                                     <input id="ral" type="text" class="validate" value="<?php echo $result['appletterreason'];?>" readonly>
-                                    <label for="ral">Specify Reason</label>
+                                    <label for="ral">Reason Specified</label>
                                 </div>
                             </td>
                         </tr>
@@ -175,7 +177,7 @@ input[type="file"]
                             <td>
                                 <div class="input-field col s12 m12" id="rrl1">
                                     <input id="rrl" type="text" class="validate" value="<?php echo $result['relletterreason'];?>" readonly>
-                                    <label for="rrl">Specify Reason</label>
+                                    <label for="rrl">Reason Specified</label>
                                 </div>
                             </td>
                         </tr>
@@ -190,7 +192,7 @@ input[type="file"]
                             <td>
                                 <div class="input-field col s12 m12" id="rpayslip1">
                                     <input id="rpayslip" type="text" class="validate" value="<?php echo $result['pastpayslipreason'];?>" readonly>
-                                    <label for="rpayslip">Specify Reason</label>
+                                    <label for="rpayslip">Reason Specified</label>
                                 </div>
                             </td>
                         </tr>
@@ -205,7 +207,7 @@ input[type="file"]
                             <td>
                                 <div class="input-field col s12 m12" id="rcc1">
                                     <input id="rcc" type="text" class="validate" value="<?php echo $result['cancheckreason'];?>" readonly>
-                                    <label for="rcc">Specify Reason</label>
+                                    <label for="rcc">Reason Specified</label>
                                 </div>
                             </td>
                         </tr>
@@ -251,7 +253,18 @@ input[type="file"]
     </div>
 
   </div>
-
+   <!-- details submitted warning starts here -->
+   <div class="row" id="details">
+                <div class="col s12 m6 offset-m3">
+                        <div class="card white">
+                                <div class="card-content ">
+                                        <center><i class="material-icons large" style="color: green;">check_circle</i></center>
+                                        <center><h1><p  style="color:green">Documents Submitted Successfully.</p></h5></center>
+                                </div>
+                        </div>
+                </div>
+        </div>
+    <!-- details submitted warning ends here -->
 
 <!-- Script Starts Here -->
 <script type="text/javascript">
@@ -333,6 +346,39 @@ $('#letter11').replaceWith(f);
 
 
 $(document).ready(function(){
+    $("#details").hide();
+    function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+        var token = getUrlVars()["token"];
+        var expiry = getUrlVars()["expdate"];
+        var data={"token":token, "expdate":expiry};
+       console.log(expiry);
+        $.ajax({
+                url : 'http://localhost/hrms/api/checkExpiry3.php',
+                type : 'POST',
+                data :(data),          
+                success : function(para){
+                       // alert(para)
+                if(para == "expired")
+                {
+                console.log("Expired Page");
+                $("#formdiv").hide()  
+                $("#details").show();           
+                }
+                else if(para=='success')
+                {
+                console.log("You are welcome");
+                }
+
+                },
+                error : function(err){        
+                }
+                 });
 
     if(token == "1")
     {
