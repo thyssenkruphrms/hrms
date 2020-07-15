@@ -38,7 +38,7 @@ $_SESSION['mailid'] = $_GET['token'];
 }
 input[type="file"]
 {
-    display: none;
+    display:none;
 }
 input[id="uan"]
 {
@@ -77,7 +77,7 @@ input[id="uan"]
                     <div class="row">
                             <div class="input-field col s12" id="appoint">
                                     <label class="custom-file-upload">
-                                            <a class="btn blue darken-1"> <input id="appletter" name="appletter" type="file" accept=".pdf" class="validate" required="" aria-required="true"/> <p id='letter1'>Appointment Letter</p></a>
+                                            <a class="btn blue darken-1"> <input id="appletter" name="appletter" type="file" accept=".pdf" class="validate" required="true" aria-required="true"/> <p id='letter1'>Appointment Letter</p></a>
                                     </label>
                             </div>                        
                     </div><br><br>
@@ -86,7 +86,7 @@ input[id="uan"]
                     <div class="row">
                             <div class="input-field col s12" id="relieving">
                                     <label class="custom-file-upload">
-                                            <a class="btn blue darken-1"> <input id="relletter" name="relletter" type="file" accept=".pdf" required="" aria-required="true"> <p id='letter2'>Relieving Letter</p></a>
+                                            <a class="btn blue darken-1"> <input id="relletter" name="relletter" type="file" accept=".pdf" required="true" aria-required="true"> <p id='letter2'>Relieving Letter</p></a>
                                     </label>
                             </div>                        
                     </div><br><br>  
@@ -95,7 +95,7 @@ input[id="uan"]
                     <div class="row">
                             <div class="input-field col s12">
                                     <label class="custom-file-upload" id="salrybreak">
-                                            <a class="btn blue darken-1"> <input id="salarybreak" name="salarybreak" type="file" accept=".pdf" > <p id='letter3'>Salary Breakup Letter</p></a>
+                                            <a class="btn blue darken-1"><input id="salarybreak" name="salarybreak" type="file" accept=".pdf" required="true"> <p id='letter3'>Salary Breakup Letter</p></a>
                                     </label>
                             </div>                        
                     </div><br><br>
@@ -105,14 +105,14 @@ input[id="uan"]
                     <div class="row">
                             <div class="input-field col s12">
                                     <label class="custom-file-upload" id="pastslip">
-                                            <a class="btn blue darken-1"> <input id="pastpayslip" name="pastpayslip" type="file" accept=".pdf" > <p id='letter4'>Pay Slip</p></a>
+                                            <a class="btn blue darken-1"> <input id="pastpayslip" name="pastpayslip" type="file" accept=".pdf" required="true"> <p id='letter4'>Pay Slip</p></a>
                                     </label>
                             </div>                        
                     </div><br><br>
                     
                     <div class="row">
                             <div class="input-field col s6">
-                                    <input id="uan" name="uan" type="text" class="validate" required="" aria-required="true" onchange=this.value.toLocaleUpperCase();>
+                                    <input id="uan" name="uan" type="text" class="validate" required="" aria-required="true" onkeypress="return validuan(event)" onchange=this.value.toLocaleUpperCase();>
                                     <label for="uan">UAN</label>
                                   </div>            
                     </div><br>
@@ -122,7 +122,7 @@ input[id="uan"]
                     <div class="row">
                             <div class="input-field col s12">
                                     <label class="custom-file-upload">
-                                            <a class="btn blue darken-1"> <input id="cancelcheck" name="cancelcheck" type="file" accept=".pdf" > <p id='letter5'>Cancelled Cheque</p></a>
+                                            <a class="btn blue darken-1"> <input id="cancelcheck" name="cancelcheck" type="file" accept=".pdf" required="true"> <p id='letter5'>Cancelled Cheque</p></a>
                                     </label>
                             </div>                        
                     </div><br><br>
@@ -131,22 +131,22 @@ input[id="uan"]
                     <b>Name of Nominnes</b>
                     <div class="row">
                             <div class="input-field col s6">
-                                    <input id="nom1" name="nom1" type="text" required="" aria-required="true">
+                                    <input id="nom1" name="nom1" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
                                     <label for="nom1">Nominne 1</label>
                             </div>
 
                             <div class="input-field col s6">
-                                    <input id="nom2" name="nom2" type="text" required="" aria-required="true">
+                                    <input id="nom2" name="nom2" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
                                     <label for="nom2">Nominne 2</label>
                             </div>
 
                             <div class="input-field col s6">
-                                    <input id="nom3" name="nom3" type="text" required="" aria-required="true">
+                                    <input id="nom3" name="nom3" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
                                     <label for="nom3">Nominne 3</label>
                             </div>  
 
                             <div class="input-field col s6">
-                                    <input id="nom4" name="nom4" type="text" required="" aria-required="true">
+                                    <input id="nom4" name="nom4" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
                                     <label for="nom4">Nominne 4</label>
                             </div>                      
                     </div>
@@ -184,6 +184,31 @@ $("#myform").submit(function(){
         window.location.href="documentsubmittedsuccesfully.html"
 
 })
+
+function validuan(e)
+{
+        //Written by Tanmay
+        var charCode = event.keyCode;
+        //Gets ASCII code of character
+        if ((charCode > 48 && charCode < 57) || charCode == 8)
+                return true;
+        else
+                return false;
+}
+
+
+function mytextvalid(e)
+{
+        //Written by Tanmay
+        var charCode = event.keyCode;
+        //Gets ASCII code of character
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8)
+                return true;
+        else
+                return false;
+
+}
+
 $(document).ready(function(){
         $("#details").hide();
         $("#loader").hide()
