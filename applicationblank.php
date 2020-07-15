@@ -813,14 +813,13 @@ function checkpincode(x)
 }
 function mytextvalid(e)
 {
-        // var id="#"+x;
-        // var elementtext=$(id).val();
-        // var mytxt = /^[a-z]+$/;
-        // if(!elementtext.match(mytxt))
-        // {
-        //         alert("Please Enter Valid Details");
-        //         $(id).val(" ");
-        // }
+        //Written by Tanmay
+        var charCode = event.keyCode;
+        //Gets ASCII code of character
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8)
+                return true;
+        else
+                return false;
 
 }
 
@@ -829,7 +828,7 @@ function ValidateEmail(inputText)
         var mailformat =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if(inputText.value.match(mailformat))
         {
-                   //The pop up alert for a valid email address
+        //The pop up alert for a valid email address
         document.applicationblank.uemail.focus();
         return true;
         }
@@ -1034,13 +1033,18 @@ $( "#aadharno" ).change(function() {
                 data :(data), 
                 success: function(result){
                         // result1=JSON.parse(result);
-                        console.log(result);
-                        // result=result.trim();
-                        if(result == "expired"){
-                                 console.log("Aadhar number already exists");
-                                 $('#form').hide()
-                                 $('#warn3').show()
-                                }
+                        result = $.trim(result)
+                        if(result=="​expired​"){
+                                console.log("Aadhar number already exists");
+                                $('#form').hide()
+                                $('#warn3').show()
+                                
+                        
+                        }
+                        else
+                        {
+                                console.log("ok")
+                        }
                     
 
                          
