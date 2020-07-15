@@ -26,13 +26,13 @@ if($cursor)
             $prf=[];
 
             foreach ($cur_prf as $key => $value) {
-                $prfval="";
-                if(in_array($value->prf,$prf)==FALSE){
-                    $prfval=$value->prf;
-                    $prf[]=$prfval;
-                }
+                //$prfval="";
+                //if(in_array($value->prf,$prf)==FALSE){
+                //    $prfval=$value->prf;
+                //    $prf[]=$prfval;
+                //}
                 $object=array(
-                    $prfval,
+                    $value->prf,
                     //"position"=>$cur_prf->position,
                     $value->pos,
                     $value->iid,

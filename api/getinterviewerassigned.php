@@ -41,7 +41,7 @@ if($cursor){
 
         }
 
-        echo json_encode(array("data"=>array("prf"=>$prf,"pos"=>$pos,"iid"=>$iid,"rid"=>$iid,"members"=>$allmembers,"interviewer"=>$allinterviewers)));
+        echo json_encode(array("data"=>array("prf"=>$prf,"pos"=>$pos,"iid"=>$iid,"rid"=>$rid,"members"=>$allmembers,"interviewer"=>$allinterviewers)));
     
 
 }
