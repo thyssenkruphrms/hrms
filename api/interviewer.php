@@ -15,6 +15,10 @@ if($cursor)
     $time=$_POST['time'];
     $digit13 = explode("/", $_POST['prf']);
 
+    // //Server Side Validation - Added by Sarang
+    // $validationRes = Validation::validateData($digit13,$_POST['emails'],$_POST['times'],$_POST['dates']);
+    // $validateIntv = Validation::validateInterviewer($_POST['iname'],$_POST['idesg'],$_POST['idept']);
+
     //getting the latest round from DB
     $result = $db->rounds->find(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2]),array('sort' => array('_id' => -1)));
 
