@@ -248,15 +248,18 @@ $(document).ready(function(){
   $('#badge_todo').hide();
   // ajax call for getting notification details
   $.ajax({
-      url:'http://localhost/hrms/demo.txt',
+      url:'http://localhost/hrms/api/getprfvalidate.php',
       type:'GET',
       success:function(para)
       {
           // dummy data : give notification count, if no new notification please give 0 ex todo:0
-          para = {'todo':10} 
-          if(para.todo > 0)
+         // para = {'todo':para.length} 
+         para=JSON.parse(para)
+         console.log("this"+para)
+          
+          if(para.length > 0)
           {
-              $('#badge_todo').text(para.todo);
+              $('#badge_todo').text(para.length);
               $('#badge_todo').show();
           }
 

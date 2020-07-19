@@ -54,7 +54,11 @@ if($cursor){
     
    // $initiated=$collection->count(array('uid'=>$uid,'status'=>'initiated'));
     
-    $currentrounds=array("uid"=>$uid,"ongoing"=>$ongoingcount,"avail"=>$avail,"completed"=>$completed,"initiated"=>$initcount);
+
+   $countOngoing = $db->rounds->count(array("status"=>"invcomplete"));
+   $countSchedule = $db->interviews->count(array("invstatus"=>"1"));
+  
+    $currentrounds=array("uid"=>$uid,"ongoing_round"=>$countOngoing,"schdule_count"=>$countSchedule,"ongoing"=>$ongoingcount,"avail"=>$avail,"completed"=>$completed,"initiated"=>$initcount);
 
     //about initiated rounds
 
@@ -64,10 +68,14 @@ if($cursor){
      
      $accepted=$db->interviews->count(array('status'=>'0','accepted'=>array('$in'=>array('pending','yes'))));
  
-     $initiateddata=array("init"=>$initcount,"assigned"=>$assigned,"accepted"=>$accepted);
+     $countInterviews = $db->interviews->count(array("status"=>"0"));
+  
+     $initiateddata=array("init"=>$initcount,"assigned"=>$assigned,"accepted"=>$accepted,"interview_count"=>$countInterviews);
         
-
+  
     //about completed rounds
+
+
 
     $collection=$db->tokens;
 

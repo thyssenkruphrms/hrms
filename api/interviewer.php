@@ -53,7 +53,7 @@ if($cursor)
            
     $today = date("Y-m-d H-i-s");
 
-                        //Current user
+    //Current user
 
     $newData=array('$set' => array("status" => "initiated","assign_time"=>$today));
 

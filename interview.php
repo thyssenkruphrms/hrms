@@ -397,25 +397,25 @@ $(document).ready(function(){
   $('#badge_letter').hide();
   // ajax call for getting notification details
   $.ajax({
-    url:'http://localhost/hrms/demo.txt',
+    url:'http://localhost/hrms/api/getGeneralizedData.php',
     type:'GET',
     success:function(para)
     {
       // dummy data : give notification count, if no new notification please give 0 ex offerletter:0
-      para = {'ongoing':10,'rescheduling':5,"offerletter":0} 
-      if(para.ongoing > 0)
+      //para = {'ongoing':10,'rescheduling':5,"offerletter":0} 
+      if(para.general.ongoing_round > 0)
       {
-        $('#badge_ongoing').text(para.ongoing);
+        $('#badge_ongoing').text(para.general.ongoing_round);
         $('#badge_ongoing').show();
       }
-      if(para.rescheduling > 0)
+      if(para.general.schdule_count > 0)
       {
-        $('#badge_rescheduling').text(para.rescheduling);
+        $('#badge_rescheduling').text(para.general.schdule_count);
         $('#badge_rescheduling').show();
       }
-      if(para.offerletter > 0)
+      if(para.completeddata.olrequest+para.completeddata.completed > 0)
       {
-        $('#badge_letter').text(para.offerletter);
+        $('#badge_letter').text(para.completeddata.olrequest+para.completeddata.completed);
         $('#badge_letter').show();
       }
     }

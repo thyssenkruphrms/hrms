@@ -700,15 +700,18 @@ function submit_interview(cnfrm){
         $('#badge_todo').hide();
         // ajax call for getting notification details
         $.ajax({
-            url:'http://localhost/hrms/demo.txt',
-            type:'GET',
+            url:"http://localhost/hrms/api/getGeneralizedData.php",
+            type:"GET",
+            
             success:function(para)
             {
                 // dummy data : give notification count, if no new notification please give 0 ex todo:0
-                para = {'todo':10} 
-                if(para.todo > 0)
+               // para = {'todo':totalButtons} 
+              // para = JSON.parse(para)
+               console.log(para)
+                if(para.initiateddata.accepted+para.initiateddata.assigned > 0)
                 {
-                    $('#badge_todo').text(para.todo);
+                    $('#badge_todo').text(para.initiateddata.accepted+para.initiateddata.assigned);
                     $('#badge_todo').show();
                 }
 
