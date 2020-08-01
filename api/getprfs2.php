@@ -48,12 +48,10 @@ if($cursor)
 
             $k++;
         }
-        // $t=0;
-        // foreach($cursor as $doc)
-        // {
-            $arr =array("selected"=>$selected,"rejected"=>$rejected,"onhold"=>$onhold) ;
-            // $t++;
-        // }
+            $query = $db->prfs->findOne(array("prf"=>$_POST['prf']));
+            $prfdata = array($query['prf'],$query['position'],$query['zone'],$query['department'],$query['pos']);
+            $arr =array("selected"=>$selected,"rejected"=>$rejected,"onhold"=>$onhold,"prfdata"=>$prfdata) ;
+            
         echo json_encode($arr);
     }
 }

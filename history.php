@@ -270,17 +270,22 @@ width: 350%;
                           </div>
   
       <div id="mytabs" >
-  
+      <table class="responsive-table">
+      <tr id="prfdata">
+      </tr>
+      </table>
+      <br><br><br>
       <ul class="tabs" >
       <li id="select"  class="tab col s2">  <a> <b style="color: green;cursor: pointer;" >Selected</b></a></li>
       <li id="reject" class="tab col s2"><a ><b style="color: red;cursor: pointer;" >Rejected</b></a></li>
-  
       <li id="hld" class="tab col s2"><a ><b style="color: orangered;cursor: pointer;" >Hold</b></a></li>
       <li id="exp_eval"  class="tab col s2"> <button class="btn btn-primary" onclick="location.href='excel/final_excel_evaluationForm.php'">Export Evaluations</button></li>
       <li id="exp_app"  class="tab col s2"> <button class="btn btn-primary" onclick="location.href='excel/final_excel_applicationBlank.php'">Export Applications </button></li>
       <li id="exp"  class="tab col s2"> <button class="btn btn-primary" onclick="location.href='excel/final_selected_rejected_onhold.php'">Export </button></li>  
+      
+      
       </ul>
-  
+      
       <div class="row" id="selected">
       <div class="col s12 ">
       <div class="card white">
@@ -525,7 +530,7 @@ function xyz(x)
   roundid = x.split("*");
   
 
-      console.log(roundid)
+      console.log("RID"+roundid)
 
       $('#tabledataselect').empty()
 
@@ -544,11 +549,18 @@ function xyz(x)
                 
                 console.log("para : ",para)
                 
+                
                 $("#select").click()
               //  console.log( JSON.parse(para))
               if(para != "no data")
               {
                 parseddata = JSON.parse(para)
+
+                var prfdata = parseddata.prfdata
+                var space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                var str_prf = "<td><b style='color:green;'>PRF</b> : "+prfdata[0]+"</td>"+"<td><b style='color:green;'>Position</b> : "+prfdata[1]+"</td>"+"<td><b style='color:green;'>Zone</b> : "+prfdata[2]+"</td>"+"<td><b style='color:green;'>Department</b> : "+prfdata[3]+"</td>"+"<td><b style='color:green;'>No. of Positions</b> : "+prfdata[4]+"</td>"
+                $('#prfdata').append(str_prf)
+
                 var element = parseddata.selected
                 for (let i = 0; i < element.length; i++) 
                 {
