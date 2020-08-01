@@ -318,11 +318,11 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
                                                 
                                                 <div class="input-field col s12">
-                                                        <a class="btn blue darken-1" id='myexperience'>Add Experience</a>
+                                                        <a class="btn blue darken-1" id='myexperience' onclick="$('#mainexpdiv').show(300)">Add Experience</a>
                                                         <!--<input id="experience" type="text" >
                                                         <label for="experience">Professional Experience</label>-->
                                                 </div>
-                                                <div class=" col s12" id="mainexpdiv">
+                                                <div class="col s12" id="mainexpdiv">
                                                   <div class="col s12" id="myexpdiv">
                                                           
                                                         <div class="input-field col s6">
@@ -355,9 +355,12 @@ $_SESSION['positionapplied'] = $position;
                                                                 <input id="managermail0" name="managermail0[]" type="email"  class="validate"  aria-required="true">
                                                                 <label for="managermail0" style="font-size: 11px">Enter Manager Email</label>
                                                         </div> 
-                                                        <div class="row" id="addnextexp"x>
-                                                                <a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a>                                                    
+                                                        <div class="row" id="addnextexp">
+                                                                <a class="btn-floating btn" id="addbtn" onclick="addnewexp(this)"><i class="material-icons">add</i></a>                                                    
+                                                                <a class="btn-floating btn" onclick="$('#mainexpdiv').hide(300)" style="float:right;"><i class="material-icons">remove</i></a>                                                    
                                                         </div>
+
+                                                        
                                                                                                                         
                                                   </div>
                                                 </div>
@@ -724,7 +727,7 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
 
                                                 <div class="col s6" id="addnextref">
-                                                        <a class="btn-floating btn" onclick="addnewref(this)"><i class="material-icons">add</i></a>                                                    
+                                                        <a class="btn-floating btn" onclick="addnewref(this)"><i class="material-icons">add</i></a>
                                                 </div>
                                         </div>
                                         </div>
@@ -855,7 +858,7 @@ function addnewexp(x)
         //var str = 'myexpdiv'+ctr
 
 
-        var txt='<div class="col s12" id="myexpdiv"><div class="input-field col s6"><input name="orgname0[]" id="orgname'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true" ><label for="orgname'+expctr+'" style="font-size: 11px">Current Organization Name</label></div><div class="input-field col s6"><input name="olddesignation0[]" id="olddesignation'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="olddesignation'+expctr+'" style="font-size: 11px">Designation</label></div><div class="input-field col s6"><input name="fromdate0[]" id="fromdate'+expctr+'" type="text" class="datepicker" ><label for="fromdate'+expctr+'" style="font-size: 11px;">From</label></div><div class="input-field col s6"><input name="todate0[]" id="todate'+expctr+'" type="text" class="datepicker"><label for="todate'+expctr+'" style="font-size: 11px;">To</label></div><div class="input-field col s6"><input name="managername0[]" id="managername'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="managername'+expctr+'" style="font-size: 11px">Reporting Manager Name</label></div><div class="input-field col s6"><input name="managermail0[]" id="managermail'+expctr+'" type="email" class="validate"   aria-required="true"><label for="managermail'+expctr+'" style="font-size: 11px">Enter Manager Email</label></div><div class="row" id="addnextexp"><a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a></div></div>'
+        var $txt='<div class="col s12" id="myexpdiv"><div class="input-field col s6"><input name="orgname0[]" id="orgname'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true" ><label for="orgname'+expctr+'" style="font-size: 11px">Current Organization Name</label></div><div class="input-field col s6"><input name="olddesignation0[]" id="olddesignation'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="olddesignation'+expctr+'" style="font-size: 11px">Designation</label></div><div class="input-field col s6"><input name="fromdate0[]" id="fromdate'+expctr+'" type="text" class="datepicker" ><label for="fromdate'+expctr+'" style="font-size: 11px;">From</label></div><div class="input-field col s6"><input name="todate0[]" id="todate'+expctr+'" type="text" class="datepicker"><label for="todate'+expctr+'" style="font-size: 11px;">To</label></div><div class="input-field col s6"><input name="managername0[]" id="managername'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="managername'+expctr+'" style="font-size: 11px">Reporting Manager Name</label></div><div class="input-field col s6"><input name="managermail0[]" id="managermail'+expctr+'" type="email" class="validate" aria-required="true"><label for="managermail'+expctr+'" style="font-size: 11px">Enter Manager Email</label></div><div class="row" id="addnextexp"><a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a><a class="btn-floating btn" style="float:right" onclick="removenewexp(this.id)" id="rembtn"><i class="material-icons">remove</i></a></div></div>'
         $("#mainexpdiv").append(txt);
         $('.datepicker').datepicker({
                         //dateFormat:"dd/mm/yy",
@@ -866,6 +869,13 @@ function addnewexp(x)
                
         });            
 
+}
+
+function removenewexp(x)
+{
+        var id="#"+x;
+        $(id).closest("#myexpdiv").remove();
+        
 }
 
 function addnewref(x)
@@ -883,7 +893,7 @@ $("#myform").submit(function(){
 
 })
 $("#image_upload_preview").hide()
-$("#myexpdiv").hide();
+
 $("#otherdetails").hide();
 //$("#uploadotherdoc").hide();
 //$("#showaddharupload").hide();
@@ -896,7 +906,7 @@ $(document).ready(function(){
         $('#warn3').hide()
 
         $('#loader').hide()
-
+        $("#mainexpdiv").hide();
 //         $("#aadharno").on("input", function(){
 //                 console.log(text($(this).val());
 //         // Print entered value in a div box
@@ -948,7 +958,8 @@ $(document).ready(function(){
 
         $('.datepicker').datepicker
         ({
-                yearRange:[1919,cyear],
+                
+                yearRange:[1950,cyear],
                 changeMonth:true,
                 
         });            
@@ -986,10 +997,10 @@ $("#noforaadhar").click(function(){
 
 
 
-$("#myexperience").click(function(){
-        $("#myexpdiv").fadeIn(300);
+// $("#myexperience").click(function(){
+//         $("#myexpdiv").fadeIn(300);
         
-})
+// })
 
 
 $("#addnextexp").click(function(){
