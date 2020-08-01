@@ -32,7 +32,7 @@ if($cursor)
     );
     $result = $db->intereval->insertOne($values);
     $result1 = $db->interviews->find(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3]));
-    $criteria=array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3]);
+    $criteria=array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3],"intvmail"=>$cursor['mail']);
     if($result1)
     {
         //push evaluated candidates in evaluated array 

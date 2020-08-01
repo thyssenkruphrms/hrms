@@ -267,6 +267,9 @@ $.ajax({
     }
 })
 
+<?php 
+    $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
+?>
 
 
 $("#submit").click(function(){
@@ -283,7 +286,7 @@ $("#submit").click(function(){
     var candidateexperience = experience
     var candidatestrength = $("#strength").val()
     var candidateweakness = $("#weakness").val()
-  
+    
     var candidatespecial = $("#special").val()
     var candidatereasonhold = $("#reasonhold").val()
     var candidatedesignation = $("#designation").val()
