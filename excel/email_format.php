@@ -10,6 +10,7 @@ $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
 $sheet->setCellValue('A1', 'Sr No');
+$sheet->setCellValue('B1', 'Name');
 $sheet->setCellValue('B1', 'Email');
 
 
