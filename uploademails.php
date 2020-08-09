@@ -14,16 +14,12 @@ $ctr = 0;
 
 $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
 $arr = [];
-$self = $_SERVER["REQUEST_URI"];
- //echo "PRF".$host.$self;
- $url_components = parse_url($self); 
- parse_str($url_components['query'], $params); 
 
-$prf=$params['prf'];
-$pos=$params['pos'];
-$dept=$params['dept'];
-$position = $params['position'];
-$position2 = str_replace(' ', '%20', $params['position']);
+$prf=$_POST['prf'];
+$pos=$_POST['pos']; //no
+$dept=$_POST['dept'];
+$position = $_POST['positiond']; //pos details
+$position2 = str_replace(' ', '%20', $_POST['positiond']);
 
 
 
@@ -97,9 +93,9 @@ if($count==1) //if round collection is present
                 $mail->addAddress($d);
                 $token=sha1($d);
                 $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position2;
-                $mail->Subject = "Your Application at tkEI";
-           //$mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
-                $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
+                // $mail->Subject = "Your Application at tkEI";
+                $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
+                $mail->AddEmbeddedImage("./public/logo.png", "logoimg", "./public/logo.png");
                 $mail->isHTML(true); 
                 $mail->Body ='
                     <body style="background-color:white;"> 
@@ -248,14 +244,15 @@ if($count==1) //if round collection is present
                         "rid"=>"00",
                         "iid"=>$instanceid,
                         "expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));    
-                echo "<script>alert('File Uploaded Successfully')</script>";
-                header("refresh:0;url=http://localhost/hrms/hrnew.php");
+                // echo "<script>alert('File Uploaded Successfully')</script>";
+                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
+                echo "success";
             }
             else
             {
-                
-                echo "<script>alert('File Upload Failed')</script>";
-                header("refresh:0;url=http://localhost/hrms/hrnew.php");
+                echo "fail";
+                // echo "<script>alert('File Upload Failed')</script>";
+                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
             }
         }
         else
@@ -270,9 +267,9 @@ if($count==1) //if round collection is present
                 $token=sha1($d);
                 $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position2;
 
-                $mail->Subject = "Your Application at tkEI";
-                //$mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
-                $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
+                // $mail->Subject = "Your Application at tkEI";
+                $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
+                $mail->AddEmbeddedImage("./public/logo.png", "logoimg", "./public/logo.png");
                 $mail->isHTML(true); 
                 $mail->Body ='
                 <body style="background-color:white;"> 
@@ -411,16 +408,18 @@ if($count==1) //if round collection is present
                 $getpos_zone = $db->prfs->findOne(array("prf"=>$prf));
                 $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"poszone"=>$getpos_zone['zone'],"position"=>$position,"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));    
                 // echo "sent";
-                echo "<script>alert('File Uploade Successfully')</script>";
+                // echo "<script>alert('File Uploade Successfully')</script>";
 
-                header("refresh:0;url=http://localhost/hrms/hrnew.php");
+                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
+                echo "success";
             }
             else
             {
+                echo "fail";
                 // echo "notsent2";
-                echo "<script>alert('File Upload Failed')</script>";
+                // echo "<script>alert('File Upload Failed')</script>";
 
-                header("refresh:0;url=http://localhost/hrms/hrnew.php");
+                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
             }
            
         
@@ -439,9 +438,9 @@ else
                 $token=sha1($d);
                 $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position2;
 
-                $mail->Subject = "Your Application at tkEI";
-                //$mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
-                $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
+                // $mail->Subject = "Your Application at tkEI";
+                $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
+                $mail->AddEmbeddedImage("./public/logo.png", "logoimg", "./public/logo.png");
                 $mail->isHTML(true); 
                 $mail->Body ='
                     <body style="background-color:white;"> 
@@ -582,16 +581,18 @@ else
                 $getpos_zone = $db->prfs->findOne(array("prf"=>$prf));
                 $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"position"=>$position,"poszone"=>$getpos_zone["zone"],"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));
                 // echo "sent";
-                echo "<script>alert('File Uploaded Successfully')</script>";
+                echo "success";
+                // echo "<script>alert('File Uploaded Successfully')</script>";
 
-                header("refresh:0;url=http://localhost/hrms/hrnew.php");
+                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
             }
             else
             {
+                echo "fail";
                 // echo "notsent3";
-                echo "<script>alert('File Upload Failed')</script>";
+                // echo "<script>alert('File Upload Failed')</script>";
 
-                header("refresh:0;url=http://localhost/hrms/hrnew.php");
+                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
             }
    
 
