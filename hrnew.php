@@ -524,7 +524,8 @@ function xyz(x)
     </div>
     <center><b class="red-text">Please ensure that the file to be uploaded must have above columns only</b></center>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="color:red">Close</a>
+    <a href="excel/email_format.php" class="modal-close waves-effect waves-green btn-flat" style="color:green">Download</a>
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="color:red">Close</a>
     </div>
   </div>
   

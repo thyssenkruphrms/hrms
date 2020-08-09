@@ -153,7 +153,8 @@
       
     </div>
     <div class="modal-footer">
-    <b class="red-text">Please ensure that the CSV file to be uploaded must have above columns only</b>   
+    <b class="red-text">Please ensure that the CSV file to be uploaded must have above columns only</b>   <br>
+    <a href="excel/prf_format.php" class="modal-close waves-effect waves-green btn-flat" style="color:green">Download</a>
     </div>
     
    
@@ -189,7 +190,11 @@ $(document).ready(function(){
         $('#badge_ongoing').text(para.general.ongoing_round);
         $('#badge_ongoing').show();
       }
+<<<<<<< HEAD
       if((para.general.schdule_count > 0))
+=======
+      if(para.general.schdule_count > 0)
+>>>>>>> a76b47e31eb53504aeae25ff46c13dd7569ca46f
       {
         $('#badge_rescheduling').text(para.general.schdule_count);
         $('#badge_rescheduling').show();
@@ -200,7 +205,7 @@ $(document).ready(function(){
         $('#badge_letter').show();
       }
     }
-  })
+  });
   // functionality for notification ends here
   $(".modal").modal();
 
