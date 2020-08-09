@@ -69,7 +69,7 @@
 <!-- nav and side menu ended -->
 
     <!-- card stars -->
-    <div class="row">
+    <div class="row" id="forms">
         <div class="col s12 m6 offset-m3">
             <div class="card white">
                 <div class="card-content blue-text">
@@ -80,9 +80,8 @@
                  cannot be changed.   
                 </p>
 
-                <form method="POST" id="myform" action="importExcel.php"  enctype="multipart/form-data">
+                <form method="post" action="" enctype="multipart/form-data" id="myform">
                             
-                         
                     <div class="input-field col s12 offset-m4" id="uphoto">
                             
                             <label class="custom-file-upload" id="prof">
@@ -90,8 +89,9 @@
                                 <input id="uploadcsv" required type="file" accept=".csv" name="uploadcsv" onchange="readURL(this)"><p id='myfile0'> Select file<i class="material-icons right">open_in_browser</i> </p></a>
                             </label>
                             <br><br><br> &nbsp;&nbsp;&nbsp;
-                    <button type="submit" class="btn blue darken-1" name="submit" id="submit" value="Upload"><i class="material-icons right">send</i>Upload</button>
-
+                    <!-- <button type="submit" class="btn blue darken-1" name="submit" id="formsub" value="Upload"><i class="material-icons right">send</i>Upload</button> -->
+                    <!-- <button  class="btn blue darken-1"  name="submit" id="formsub">Upload<i class="material-icons right">send</i></button> -->
+                    <input type="button" class="btn blue darken-1" value="Upload" id="but_upload"> </input>
                     </div>
                 </form>
                 <br><br><br><br><br>
@@ -102,7 +102,9 @@
   </div>
     <!-- card ends -->
     </div>
+<div class="success">
 
+</div>
     <div id="loader">
       <div id="txt">
               <b>Please wait while we add entries to the system</b>
@@ -187,7 +189,7 @@ $(document).ready(function(){
         $('#badge_ongoing').text(para.general.ongoing_round);
         $('#badge_ongoing').show();
       }
-      if((para.general.schdule_count > 0)
+      if((para.general.schdule_count > 0))
       {
         $('#badge_rescheduling').text(para.general.schdule_count);
         $('#badge_rescheduling').show();
@@ -204,12 +206,57 @@ $(document).ready(function(){
 
   console.log("Hello document");
   $("#loader").hide();
+
+
+
+//Form Submit
+  $("#but_upload").click(function(){
+    $("#loader").show();
+
+  console.log("This is form submit")
+  var fd = new FormData();
+        var files = $('#uploadcsv')[0].files[0];
+        fd.append('uploadcsv',files);
+        console.log("This is  - ",fd)
+        $.ajax({
+            url: 'importExcel.php',
+            type: 'post',
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function(response){
+              console.log("Response",response)
+                if(response != "error"){
+                  $("#loader").hide();
+                  $('#forms').hide()
+                    s1 = '<div class="row">'
+                    s2 = '<div class="col s12 m6 offset-m3">'
+                    s3 = '<div class="card white">'
+                    s4 = ' <div class="card-content blue-text">'
+                    s5 = '<span class="card-title">Upload Dump Status :'+response+'Entries added </span>'
+                    s7 = '</div></div></div></div>'
+                    s8 = s1+s2+s3+s4+s4+s5+s7;
+                    $('.success').append(s8)
+                    window.setTimeout(function(){location.reload()},1000)
+                }
+                else if(response == "error"){
+                    alert('file not uploaded');
+                }
+            },
+        });
+})
+  
+
+
+
+
+
 })
 
-  $("#myform").submit(function(){
-        console.log("Hello")
-        $('#loader').show()
-})
+//   $("#myform").submit(function(){
+//         console.log("Hello")
+       
+// })
 function readURL(input) {
   var f = $('#uploadcsv').val().split('.')
       var x=f[1]
@@ -248,7 +295,8 @@ document.location.replace("http://localhost/hrms/")
 })
 
 });
-  
+
+
   </script>
     
 </body>
