@@ -29,20 +29,24 @@ if($cursor)
         {
             $d = explode(",",$d);
             $getrejectednames =  $db->tokens->findOne(array("prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"email"=>$d[0]));
-            $rejected[$j]=array($d,$getrejectednames['full_name']);
+            $reason_reject =  $db->intereval->findOne(array("prf"=>$_POST['prf'],"iid"=>$_POST['iid'],"rid"=>$_POST['rid'],"result"=>"rejected","email"=> $d[0]));
+
+            $rejected[$j]=array($d,$getrejectednames['full_name'],$reason_reject['remark']);
             $j++;
         }
         foreach($onhold as $d)
         {
             $holdmail=explode(',',$d);
             $getonholdnames =  $db->tokens->findOne(array("prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"email"=> $holdmail[0]));
+            $reason_hold =  $db->intereval->findOne(array("prf"=>$_POST['prf'],"iid"=>$_POST['iid'],"rid"=>$_POST['rid'],"result"=>"onhold","email"=> $holdmail[0]));
+
             if($getonholdnames['reallocate'])
             {
-                $onhold[$k]=array($d,$getonholdnames['full_name'],$getonholdnames['reallocate']);
+                $onhold[$k]=array($d,$getonholdnames['full_name'],$getonholdnames['reallocate'],$reason_hold['remark']);
             }
             else
             {
-                $onhold[$k]=array($d,$getonholdnames['full_name'],0);
+                $onhold[$k]=array($d,$getonholdnames['full_name'],0,$reason_hold['remark']);
                
             }
 
