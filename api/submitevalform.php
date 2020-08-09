@@ -16,10 +16,10 @@ include "db.php";
             $tempappletter = $_FILES["appletter"]['tmp_name'];
             move_uploaded_file($tempappletter,"../upload/".$folder."/".$nameappletter);
             $nameappletter = "upload/".$folder."/".$nameappletter;
-            $namerelletter = $_FILES['relletter']['name'];
-            $temprelletter = $_FILES["relletter"]['tmp_name'];
-            move_uploaded_file($temprelletter,"../upload/".$folder."/".$namerelletter);
-            $namerelletter = "upload/".$folder."/".$namerelletter;
+            //$namerelletter = $_FILES['relletter']['name'];
+            // $temprelletter = $_FILES["relletter"]['tmp_name'];
+            // move_uploaded_file($temprelletter,"../upload/".$folder."/".$namerelletter);
+            //$namerelletter = "upload/".$folder."/".$namerelletter;
             $namesalarybreak = $_FILES['salarybreak']['name'];
             $tempsalarybreak = $_FILES["salarybreak"]['tmp_name'];
             move_uploaded_file($tempsalarybreak,"../upload/".$folder."/".$namesalarybreak);
@@ -40,7 +40,7 @@ include "db.php";
             echo $namecancelcheck;
             echo "<br>".$mailid;
             $criteria=array("email"=>$mailid);
-            $info=array("appletter"=>$nameappletter,"relletter"=>$namerelletter,"salarybreakup"=>$namesalarybreak,"uan"=>$uan,"pastpayslip"=>$namepastpayslip,"cancelledcheck"=>$namecancelcheck,"nom1"=>$nom1,"nom2"=>$nom2,"nom3"=>$nom3,"nom4"=>$nom4,"postfilled"=>"filled","progress"=>"Post Selection Form Submitted");
+            $info=array("appletter"=>$nameappletter,"salarybreakup"=>$namesalarybreak,"uan"=>$uan,"pastpayslip"=>$namepastpayslip,"cancelledcheck"=>$namecancelcheck,"nom1"=>$nom1,"nom2"=>$nom2,"nom3"=>$nom3,"nom4"=>$nom4,"postfilled"=>"filled","progress"=>"Post Selection Form Submitted");
             $queryInsert=$db->tokens->updateOne($criteria,array('$set'=>$info));
 
 

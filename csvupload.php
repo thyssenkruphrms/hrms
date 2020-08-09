@@ -264,12 +264,12 @@ $(document).ready(function(){
 // })
 function readURL(input) {
   var f = $('#uploadcsv').val().split('.')
+  
       var x=f[1]
       if(x=='csv')
       {
-        var f = $('#uploadcsv').val()
-      
-      $('#myfile0').text(f)
+        var filename = $('#uploadcsv').val().replace(/^.*[\\\/]/, '')
+        $('#myfile0').text(filename)
       }
       else
       {

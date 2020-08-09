@@ -669,3 +669,14 @@ Pragati Gaikwad	psgaikwad@mitaoe.ac.in	sales		27/06/2020	12:32:14 PM	Login
 Pragati Gaikwad	psgaikwad@mitaoe.ac.in	sales		27/06/2020	12:32:28 PM	Logout
 Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		27/06/2020	12:34:21 PM	Login
 Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		12/07/2020	01:33:54 PM	Login
+Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		09/08/2020	11:01:17 PM	Login
+Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		09/08/2020	11:02:07 PM	Logout
+Sarang Barshikar	skbarshikar@mitaoe.ac.in	sales		09/08/2020	11:02:12 PM	Login
+Sarang Barshikar	skbarshikar@mitaoe.ac.in	sales		09/08/2020	11:02:19 PM	Logout
+Pragati Gaikwad	psgaikwad@mitaoe.ac.in	sales		09/08/2020	11:02:24 PM	Login
+Pragati Gaikwad	psgaikwad@mitaoe.ac.in	sales		09/08/2020	11:02:43 PM	Logout
+Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		09/08/2020	11:02:49 PM	Login
+Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		09/08/2020	11:06:06 PM	Logout
+Sarang Barshikar	skbarshikar@mitaoe.ac.in	sales		09/08/2020	11:06:12 PM	Login
+Sarang Barshikar	skbarshikar@mitaoe.ac.in	sales		09/08/2020	11:07:19 PM	Logout
+Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		09/08/2020	11:07:23 PM	Login
