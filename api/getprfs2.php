@@ -7,7 +7,7 @@ $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
 
 if($cursor)
 {
-    $cursor = $db->rounds->findOne(array("status"=>"completed","prf"=>$_POST['prf'],"iid"=>$_POST['iid'],"pos"=>$_POST['pos']));
+    $cursor = $db->rounds->findOne(array("rid"=>$_POST['rid'],"prf"=>$_POST['prf'],"iid"=>$_POST['iid'],"pos"=>$_POST['pos']));
     if($cursor)
     {
         $i = 0;
@@ -49,7 +49,8 @@ if($cursor)
             $k++;
         }
             $query = $db->prfs->findOne(array("prf"=>$_POST['prf']));
-            $prfdata = array($query['prf'],$query['position'],$query['zone'],$query['department'],$query['pos']);
+            $roundcount = $db->rounds->count(array("prf"=>$_POST['prf'],"iid"=>$_POST['iid']));
+            $prfdata = array($query['prf'],$query['position'],$query['zone'],$query['department'],$query['pos'],$roundcount-1,$_POST['rid']);
             $arr =array("selected"=>$selected,"rejected"=>$rejected,"onhold"=>$onhold,"prfdata"=>$prfdata) ;
             
         echo json_encode($arr);

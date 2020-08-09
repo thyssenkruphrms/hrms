@@ -527,6 +527,7 @@ var flag0 = 0
 
 function xyz(x)
 {
+
   roundid = x.split("*");
   
 
@@ -540,8 +541,9 @@ function xyz(x)
               type : 'POST',
               data : {
                 'prf':roundid[0],
-                'pos':roundid[1],
-                'iid':roundid[2]
+                'pos':roundid[1], 
+                'iid':roundid[2],
+                'rid':roundid[3]
                   },
 
               success:function(para)
@@ -557,10 +559,17 @@ function xyz(x)
                 parseddata = JSON.parse(para)
 
                 var prfdata = parseddata.prfdata
-                var space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                var str_prf = "<td><b style='color:green;'>PRF</b> : "+prfdata[0]+"</td>"+"<td><b style='color:green;'>Position</b> : "+prfdata[1]+"</td>"+"<td><b style='color:green;'>Zone</b> : "+prfdata[2]+"</td>"+"<td><b style='color:green;'>Department</b> : "+prfdata[3]+"</td>"+"<td><b style='color:green;'>No. of Positions</b> : "+prfdata[4]+"</td>"
-                $('#prfdata').append(str_prf)
-
+                var str_prf = "<td><b style='color:green;'>PRF</b> : "+prfdata[0]+"</td>"+"<td><b style='color:green;'>Position</b> : "+prfdata[1]+"</td>"+"<td><b style='color:green;'>Zone</b> : "+prfdata[2]+"</td>"+"<td><b style='color:green;'>Department</b> : "+prfdata[3]+"</td>"+"<td><b style='color:green;'>No. of Positions</b> : "+prfdata[4]+"</td><td><b style='color:green;'>Round</b> : "
+                
+                var rounds_dropdown = " <select class='dropdown-trigger btn blue darken-1' id='round_selected'><option value="+prfdata[5]+">"+prfdata[5]+"</option>"
+                for(let i=prfdata[5]-1;i>=0;i--)
+                {
+                  rounds_dropdown += "<option value="+i+">"+i+"</option>"
+                }
+                var endtag = "</select></td>"
+                $('#prfdata').append(str_prf+rounds_dropdown+endtag)
+                
+                
                 var element = parseddata.selected
                 for (let i = 0; i < element.length; i++) 
                 {
@@ -569,7 +578,6 @@ function xyz(x)
                   $('#tabledataselect').append(str)
                     
                 } 
-
                 var element = parseddata.rejected
                 console.log(element)
                 for (let i = 0; i < element.length; i++) 
@@ -637,10 +645,133 @@ function xyz(x)
 
               }
 
-                
-                
+
+                $('#round_selected').change(function(){
+                  console.log('0'+$('#round_selected').val())
+                  
+                  $.ajax({
+
+                      url : 'http://localhost/hrms/api/getprfs2.php',
+                      type : 'POST',
+                      data : {
+                        'prf':roundid[0],
+                        'pos':roundid[1], 
+                        'iid':roundid[2],
+                        'rid': '0'+$('#round_selected').val()
+                        },
+
+                      success:function(para)
+                      {
+
+                        if(para != "no data")
+                        {
+                          $('#tabledataselect').empty()
+                          $('#tabledatareject').empty()
+                          $('#tabledatahold').empty()
+
+                          parseddata = JSON.parse(para)     
+                          var element = parseddata.selected
+                          var prfdata = parseddata.prfdata
+
+                          for (let i = 0; i < element.length; i++) 
+                          {
+                            console.log(prfdata[5])
+                            console.log(prfdata[6])
+                            if('0'+prfdata[5] == prfdata[6])
+                            {
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                              $('#tabledataselect').append(str)
+                            }
+                            else if(prfdata[6] == 00)
+                            {
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td style='color:black;'> NA </td><td style='color:black;'> NA </td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td style='color:black;'> NA </td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                              $('#tabledataselect').append(str)
+                            }
+                            else
+                            {
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td style='color:black;'> NA </td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                              $('#tabledataselect').append(str)
+                            }
+                              
+                          } 
+                          var element = parseddata.rejected
+                          console.log(element)
+                          for (let i = 0; i < element.length; i++) 
+                          {
+                            if(element[i][0][1] == "Aborted")
+                            {
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>"+element[i][0][0]+"</a> </td><td>Aborted</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i]+"' target='_blank'>View CV</a></td></tr>"
+                              $('#tabledatareject').append(str)
+                            }
+                            else
+                            {
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>"+element[i][0]+"</a> </td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                            
+                            $('#tabledatareject').append(str)
+                            }
+                            
+                              
+                          } 
+                          if(parseddata.onhold != "")
+                          {
+                            var element = parseddata.onhold
+                          console.log("element: ",element)
+                          elemail = element[0][0].split(",")
+                          console.log("element: ",element[0][2])
+                          // var arr=[["Tanmay Kulkarni","tvkulkarni@mitaoe.ac.in"]]
+                          for (let i = 0; i < element.length; i++) 
+                          {
+                            mailidonly = element[i][0].split(",")
+                            if(mailidonly[1] == "absent")
+                            {
+                              if(element[i][2] == 1)
+                              {
+                                var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>"+element[i][1]+"</p></td><td><p>Absent</p>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td></td><td><p>Already Initiated</p></td><span></span></label></p></td></tr>"
+                                $('#tabledatahold').append(str)
+                              }
+                              else
+                              {
+                                var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>"+element[i][1]+"</p></td><td><p>Absent</p>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
+                                $('#tabledatahold').append(str)
+                              }
+
+                            
+                            }
+                            else
+                            {
+                              if(element[i][2]==1)
+                              {
+                                var str = "<tr><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td><p>"+element[i][1]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td></td><td><p>Already Initiated</p></td><span></span></label></p></td></tr>"
+                                $('#tabledatahold').append(str)
+                              }
+                              else
+                              {
+                                var str = "<tr><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td><p>"+element[i][1]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
+                                $('#tabledatahold').append(str)
+                              }
+                            
+                            }
+                            $('.timepicker').timepicker();
+                            $('.datepicker').datepicker();
+                            
+                              
+                          } 
+                          }
+                          
+
+                        }
+                        
+                      }
+                  })
+
+                  
+                })
+
+                  
                 $('#mytabs').fadeIn(900); 
                 $('#select').click()
+                $(document).scrollTop($(document).height());
+
                 flag0 = 1
               },
               error:function(err)
@@ -912,7 +1043,7 @@ $('#zonechoice').change(function(){
 
         for(let j=0;j<arr.length;j++)
         {
-          var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="position">'+arr[j][1]+'</td><td id="zone">'+arr[j][2]+'</td><td id="dept">'+arr[j][3]+'</td><td id="posno">'+arr[j][4]+'</td><td id="iid">'+arr[j][5]+'</td><td id="status">'+arr[j][6]+'</td><td>'+arr[j][7]+'</td><td width="25%"><a id="'+arr[j][0]+"*"+arr[j][4]+"*"+arr[j][5]+'" class="btn small green darken-1" onclick="xyz(this.id)">View Details</a></td></tr>'
+          var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="position">'+arr[j][1]+'</td><td id="zone">'+arr[j][2]+'</td><td id="dept">'+arr[j][3]+'</td><td id="posno">'+arr[j][4]+'</td><td id="iid">'+arr[j][5]+'</td><td id="status">'+arr[j][6]+'</td><td>'+arr[j][7]+'</td><td width="25%"><a id="'+arr[j][0]+"*"+arr[j][4]+"*"+arr[j][5]+"*"+arr[j][7]+'" class="btn small green darken-1" onclick="xyz(this.id)">View Details</a></td></tr>'
         $('#rawdata').append(x);
         }
       }
