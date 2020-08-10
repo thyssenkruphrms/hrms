@@ -853,7 +853,7 @@ function checknotice(x)
 {
         var id="#"+x;
         var noticeperiod=$(id).val();
-        if(noticeperiod.length!=3)
+        if(!(noticeperiod.length>=1 && noticeperiod.length<=3))
         {
                 alert("Enter Valid Notice Period")
                 $(id).val(" ")
