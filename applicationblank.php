@@ -41,9 +41,15 @@ session_start();
         margin-top:18% !important; 
 }
  
-input[type="text"] {
+/* input[type="text"] {
   text-transform: uppercase;
-} 
+}  */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 @media screen and (max-width: 360px){
     #std,#stdref
@@ -178,15 +184,15 @@ $_SESSION['positionapplied'] = $position;
                                         <div class="row">
 
                                             <div class="input-field col s4">
-                                              <input id="last_name" name="last_name" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
+                                              <input id="last_name" name="last_name" type="text" class="validate"  onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)">
                                               <label for="last_name">Last Name</label>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="first_name" name="first_name" type="text" class="validate" required aria-required="true"  onkeypress="return mytextvalid(event)">
+                                              <input id="first_name" name="first_name" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true"  onkeypress="return mytextvalid(event)">
                                               <label for="first_name">First Name</label>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="mid_name" name="mid_name" type="text" onkeypress="return mytextvalid(event)">
+                                              <input id="mid_name" name="mid_name" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
                                               <label for="mid_name">Middle Name</label>
                                             </div>
                                           </div>
@@ -194,27 +200,27 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
                                                 
                                             <div class="input-field col s4">
-                                              <input   id="street" name="street" type="text" class="validate" required aria-required="true" onchange="validtext(this.id)" >
+                                              <input   id="street" name="street" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onchange="validtext(this.id)" >
                                               <label for="street">Street</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="Locality" name="Locality" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
+                                              <input   id="Locality" name="Locality" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)">
                                               <label for="Locality">Locality</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="City" name="City" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
+                                              <input   id="City" name="City" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)">
                                               <label for="City">City</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="State" name="State" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
+                                              <input   id="State" name="State" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)">
                                               <label for="State">State</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="Pincode" name="Pincode" type="number" class="validate" onchange="checkpincode(this.id)" required aria-required="true">
+                                              <input   id="Pincode" name="Pincode" type="number" class="validate"  onchange="checkpincode(this.id)" required aria-required="true">
                                               <label for="Pincode">Pincode</label>
                                             </div>
                                           </div>
@@ -253,13 +259,13 @@ $_SESSION['positionapplied'] = $position;
 
                                           <div class="row">
                                                 <div class="input-field col s6">
-                                                  <input id="position" name="position" type="text" value="<?php echo $position ?>" style="color:black" class="validate" required disabled>
+                                                  <input id="position" name="position" type="text" value="<?php echo $position ?>" style="color:black" onkeyup="this.value=this.value.toUpperCase();" class="validate" required disabled>
                                                   <label for="position">Position Applied For</label>
                                                 </div>
     
                                                 
                                                 <div class="input-field col s6">
-                                                    <input id="location" name="location" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
+                                                    <input id="location" name="location" type="text" class="validate" required aria-required="true" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
                                                     <label for="location">Location</label>
                                                 </div>
                            
@@ -269,7 +275,7 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
                                             
                                                 <div class="input-field col s12">
-                                                  <input id="passport" name="passport" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
+                                                  <input id="passport" name="passport" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)">
                                                   <label for="passport">Passport Availability/Validity</label>
                                                 </div>
                                           </div>
@@ -325,13 +331,13 @@ $_SESSION['positionapplied'] = $position;
                                                   <div class="col s12" id="myexpdiv">
                                                           
                                                         <div class="input-field col s6">
-                                                                <input id="orgname0" name="orgname0[]" type="text" class="validate"  aria-required="true">
+                                                                <input id="orgname0" name="orgname0[]" type="text" class="validate"  onkeyup="this.value=this.value.toUpperCase();" aria-required="true">
                                                                 <label for="orgname0" style="font-size: 11px">Current Organization Name</label>
                                                         </div>
                                   
                                                                               
                                                         <div class="input-field col s6">
-                                                                <input id="olddesignation0" name="olddesignation0[]" type="text"class="validate"  aria-required="true" onkeypress="return mytextvalid(event)">
+                                                                <input id="olddesignation0" name="olddesignation0[]" type="text"class="validate" onkeyup="this.value=this.value.toUpperCase();" aria-required="true" onkeypress="return mytextvalid(event)">
                                                                 <label for="olddesignation0" style="font-size: 11px">Designation</label>
                                                         </div>
                                                         
@@ -346,7 +352,7 @@ $_SESSION['positionapplied'] = $position;
                                                         </div> 
 
                                                         <div class="input-field col s6">
-                                                                <input id="managername0" name="managername0[]" type="text" class="validate"  aria-required="true" onkeypress="return mytextvalid(event)">
+                                                                <input id="managername0" name="managername0[]" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" aria-required="true" onkeypress="return mytextvalid(event)">
                                                                 <label for="managername0" style="font-size: 11px">Reporting Manager Name</label>
                                                         </div> 
                                                               
@@ -394,7 +400,7 @@ $_SESSION['positionapplied'] = $position;
                                                 <label class="col s12">
                                                         <input type="checkbox" id="other" name="other" class="filled-in">
                                                         <span>Other</span>
-                                                        <input placeholder="Enter Specific Details" id="otherdetails" name="otherdetails" type="text" class="validate">                                                        
+                                                        <input placeholder="Enter Specific Details" id="otherdetails" name="otherdetails" type="text" onkeyup="this.value=this.value.toUpperCase();" class="validate">                                                        
                                                 </label>
                                                 
                                             
@@ -417,7 +423,7 @@ $_SESSION['positionapplied'] = $position;
 
                                                 
                                                 <div class="input-field col s6" >
-                                                        <input id="manager" name="manager" type="text" required onkeypress="return mytextvalid(event)">
+                                                        <input id="manager" name="manager" type="text" onkeyup="this.value=this.value.toUpperCase();" required onkeypress="return mytextvalid(event)">
                                                         <label for="manager" style="font-size: 11px">Reporting Manager Name & Designation</label>
                                                 </div>
 
@@ -483,7 +489,7 @@ $_SESSION['positionapplied'] = $position;
 
                                                 
                                             <div class="input-field col s6">
-                                                    <input id="father" name="father" type="text" onkeypress="return mytextvalid(event)">
+                                                    <input id="father" name="father" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
                                                     <label for="father">Father Name</label>
                                             </div>
 
@@ -496,7 +502,7 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="mother" name="mother" type="text" onkeypress="return mytextvalid(event)">
+                                                    <input id="mother" name="mother" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
                                                     <label for="mother">Mother Name</label>
                                             </div>
 
@@ -509,7 +515,7 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="spouse" name="spouse" type="text" onkeypress="return mytextvalid(event)">
+                                                    <input id="spouse" name="spouse" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
                                                     <label for="spouse">Spouse Name</label>
                                             </div>
 
@@ -533,7 +539,7 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="child1" name="child1" type="text" onkeypress="return mytextvalid(event)">
+                                                    <input id="child1" name="child1" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
                                                     <label for="child1">Child1 Name</label>
                                             </div>
 
@@ -556,7 +562,7 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="child2" name="child2" type="text" onkeypress="return mytextvalid(event)">
+                                                    <input id="child2" name="child2" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
                                                     <label for="child2">Child2 Name</label>
                                             </div>
 
@@ -971,8 +977,8 @@ $(document).ready(function(){
         $('.datepicker').datepicker
         ({
                 
-                yearRange:[1950,cyear],
-                changeMonth:true,
+                yearRange:[1990,cyear],
+                
                 
         });
 
@@ -1070,8 +1076,6 @@ $( "#aadharno" ).change(function() {
                                 console.log("Aadhar number already exists");
                                 $('#form').hide()
                                 $('#warn3').show()
-                                
-                        
                         }
                         else
                         {
