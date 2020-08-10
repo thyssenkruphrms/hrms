@@ -36,14 +36,16 @@ $_SESSION['mailid'] = $_GET['token'];
   margin-left:33% !important;
   margin-top:18% !important; 
 }
-input[type="file"]
-{
-    display:none;
-}
+
 input[id="uan"]
 {
     text-transform: uppercase;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}       
 
 </style>
 <body>
@@ -75,12 +77,16 @@ input[id="uan"]
                     <form action="#">
                     <b>Upload Latest Company Appointment Letter</b>
                     <div class="row">
-                            <div class="input-field col s12" id="appoint">
-                                    <label class="custom-file-upload">
-                                            <a class="btn blue darken-1"> <input id="appletter" name="appletter" type="file" accept=".pdf" class="validate" required="true" aria-required="true"/> <p id='letter1'>Appointment Letter</p></a>
-                                    </label>
-                            </div>                        
-                    </div><br><br>
+                        <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                        <span>Appointment Letter</span>
+                                                <input id="appletter" name="appletter" type="file"  required accept=".pdf">
+                                </div>
+                                <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                </div>
+                        </div>                             
+                    </div>
 
                     <!-- <b>Upload Relieving Letter</b>
                     <div class="row">
@@ -92,40 +98,52 @@ input[id="uan"]
                     </div><br><br>   -->
                     
                     <b>Current Company's Latest Letter Indicating Salary Breakup</b>
-                    <div class="row">
-                            <div class="input-field col s12">
-                                    <label class="custom-file-upload" id="salrybreak">
-                                            <a class="btn blue darken-1"><input id="salarybreak" name="salarybreak" type="file" accept=".pdf" required="true"> <p id='letter3'>Salary Breakup Letter</p></a>
-                                    </label>
-                            </div>                        
-                    </div><br><br>
+                    <div class="row">  
+                        <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                        <span>Salary Breakup Letter</span>
+                                                <input id="salarybreak" name="salarybreak" type="file"  required accept=".pdf">
+                                </div>
+                                <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                </div>
+                        </div>                                                   
+                    </div>
                                       
                     
                     <b>Past Three Months Pay Slip</b>
                     <div class="row">
-                            <div class="input-field col s12">
-                                    <label class="custom-file-upload" id="pastslip">
-                                            <a class="btn blue darken-1"> <input id="pastpayslip" name="pastpayslip" type="file" accept=".pdf" required="true"> <p id='letter4'>Pay Slip</p></a>
-                                    </label>
-                            </div>                        
-                    </div><br><br>
+                        <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                        <span>Past Pay Slip</span>
+                                                <input id="pastpayslip" name="pastpayslip" type="file"  required accept=".pdf">
+                                </div>
+                                <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                </div>
+                        </div> 
+                     </div>
                     
                     <div class="row">
                             <div class="input-field col s6">
                                     <input id="uan" name="uan" type="text" class="validate" maxlength="12" required="" aria-required="true" onkeypress="return validuan(event)" onchange=this.value.toLocaleUpperCase();>
                                     <label for="uan">UAN</label>
                                   </div>            
-                    </div><br>
+                    </div>
 
 
                     <b>Cancelled Cheque</b>
                     <div class="row">
-                            <div class="input-field col s12">
-                                    <label class="custom-file-upload">
-                                            <a class="btn blue darken-1"> <input id="cancelcheck" name="cancelcheck" type="file" accept=".pdf" required="true"> <p id='letter5'>Cancelled Cheque</p></a>
-                                    </label>
-                            </div>                        
-                    </div><br><br>
+                            <div class="file-field input-field">
+                                                <div class="btn blue darken-1">
+                                                        <span>Cancelled Cheque</span>
+                                                        <input id="cancelcheck" name="cancelcheck" type="file"  required accept=".pdf">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text">
+                                                </div>
+                                </div>                       
+                    </div>
 
 
                     <b>Name of Nominnees</b>
@@ -151,7 +169,61 @@ input[id="uan"]
                             </div>                      
                     </div>
 
-                    <div class="row">
+                        <div class="row">
+                                <div class="col s12">
+                                <b style="font-size:15px;color:red">Please Upload all Documents until Highest Qualification</b>
+                                        <div class="file-field input-field">
+                                                <div class="btn blue darken-1">
+                                                        <span>Upload Documents</span>
+                                                        <input id="alldocs" name="alldocs" type="file"  required accept=".pdf">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text">
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+
+                        <b style="font-size:15px;">Upload your Aadhar Card as Proof Of Identity</b>
+                        <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                <span>Upload File</span>
+                                        <input id="proof_identity_addhar" name="proof_identity_addhar" type="file" accept=".png, .jpg, .jpeg, .pdf" required>
+                                        </div>
+                                <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                </div>
+                        </div>
+
+
+                        <div id="uploadotherdoc">
+                        <b style="font-size:15px;">Proof Of Identity(PAN/Voter ID/Driving Licence/Passport)</b>
+                                <div class="file-field input-field">
+                                        <div class="btn blue darken-1">
+                                        <span>Upload File</span>
+                                                <input id="proof_otherthanadhar" name="proof_otherthanadhar" type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text">
+                                        </div>
+                                </div>
+                        </div>
+
+
+                        <b style="font-size:15px;">Proof Of Address(Rent Agreement/Voter ID/Driving Licence/Passport)</b>
+                        <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                <span>Upload File</span>
+                                        <input id="proof_address" name="proof_address" required type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                </div>
+                                <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                </div>
+                        </div>
+                     
+
+                        <div class="row">
                                         <div class=" col s6 offset-s3 center" id="submitform">
                                         <!-- id="submitformdata" -->
                                               <button class="btn blue darken-2" id="submitbtn" type="submit" name="action" >Submit
@@ -253,55 +325,74 @@ $(document).ready(function(){
 
 $("#postsubmit").hide();   
 $("#details").fadeIn();
-$('#appletter').change(function(){
-      
-        var x = $('#appletter').val().split('.')
-        var fileex=x[1]
-        if(fileex=='pdf' || fileex=='jpeg'|| fileex=='jpg'|| fileex=='png')
-        {
-           
-                var f = $('#appletter').val()
-                $('#letter1').text(f)     
-        }
-        else
-        {
-                alert("Invalid File")
-        }
-        // if($.inArray(ext,['gif','jpeg','pdf'])==-1)
-        // {
-        //         alert("Invalid")
-        // }
+
+
+$('#alldocs').change(function(){
+      var f = $('#alldocs').val().split('.')
+      var x=f[1]
+      if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
+      {
+        alert('Invalid File\n Only PDF/IMAGES accepted')
+        document.getElementById("alldocs").value=null
+      }
+        
 })
 
-$('#relletter').change(function(){
-        var x = $('#relletter').val().split('.')
-        var fileex=x[1]
-        if(fileex=='pdf' || fileex=='jpeg'|| fileex=='jpg'|| fileex=='png')
-        {
-           
-                var f = $('#relletter').val()
-                $('#letter2').text(f)     
-        }
-        else
-        {
-                alert("Invalid File")
-        }        
-     
+
+$('#proof_address').change(function(){
+      var f = $('#proof_address').val().split('.')
+      var x=f[1]
+      if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
+      {
+        alert('Invalid File\n Only PDF/IMAGES accepted')
+        document.getElementById("proof_address").value=null
+      }
+        
 })
+
+
+$('#proof_otherthanadhar').change(function(){
+      var f = $('#proof_otherthanadhar').val().split('.')
+      var x=f[1]
+      if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
+      {
+        alert('Invalid File\n Only PDF/IMAGES accepted')
+        document.getElementById("proof_otherthanadhar").value=null
+      }
+        
+})
+
+
+$('#proof_identity_addhar').change(function(){
+      var f = $('#proof_identity_addhar').val().split('.')
+      var x=f[1]
+      if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
+      {
+        alert('Invalid File\n Only PDF/IMAGES accepted')
+        document.getElementById("proof_identity_addhar").value=null
+      }
+})
+
+$('#appletter').change(function(){
+      
+        var f = $('#appletter').val().split('.');
+        var x=f[1]
+        
+        if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
+        {
+                alert('Invalid File\n Only PDF/IMAGES accepted')
+                document.getElementById("appletter").value=null
+        }
+ })
 
 
 $('#salarybreak').change(function(){
-        var x = $('#salarybreak').val().split('.')
-        var fileex=x[1]
-        if(fileex=='pdf' || fileex=='jpeg'|| fileex=='jpg'|| fileex=='png')
+        var f = $('#salarybreak').val().split('.');
+        var x=f[1]
+        if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
         {
-           
-                var f = $('#salarybreak').val()
-                $('#letter3').text(f)     
-        }
-        else
-        {
-                alert("Invalid File")
+                alert('Invalid File\n Only PDF/IMAGES accepted')
+                document.getElementById("salarybreak").value=null
         }
 
    
@@ -309,34 +400,25 @@ $('#salarybreak').change(function(){
 
 
 $('#pastpayslip').change(function(){
-        var x = $('#pastpayslip').val().split('.')
-        var fileex=x[1]
-        if(fileex=='pdf' || fileex=='jpeg'|| fileex=='jpg'|| fileex=='png')
+        var f = $('#pastpayslip').val().split('.')
+        var x=f[1]
+        if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
         {
-           
-                var f = $('#pastpayslip').val()
-                $('#letter4').text(f)     
+                alert('Invalid File\n Only PDF/IMAGES accepted')
+                document.getElementById("pastpayslip").value=null
         }
-        else
-        {
-                alert("Invalid File")
-        }        
+  
 
 })
 
 $('#cancelcheck').change(function(){
-        var x = $('#cancelcheck').val().split('.')
-        var fileex=x[1]
-        if(fileex=='pdf' || fileex=='jpeg'|| fileex=='jpg'|| fileex=='png')
+        var f = $('#cancelcheck').val().split('.')
+        var x=f[1]
+        if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
         {
-           
-                var f = $('#cancelcheck').val()
-                $('#letter5').text(f)     
-        }
-        else
-        {
-                alert("Invalid File")
-        }        
+                alert('Invalid File\n Only PDF/IMAGES accepted')
+                document.getElementById("cancelcheck").value=null
+        }   
  
 })
 
