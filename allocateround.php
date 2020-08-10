@@ -826,7 +826,8 @@ function createnextround(id)
          
     success:function(para)
     {
-      // alert(para)  
+      // alert(para)
+      console.log(para)  
       para = JSON.parse(para)
       
       window.allmembers = para

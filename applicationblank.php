@@ -186,7 +186,7 @@ $_SESSION['positionapplied'] = $position;
                                               <label for="first_name">First Name</label>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="mid_name" name="mid_name" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
+                                              <input id="mid_name" name="mid_name" type="text" onkeypress="return mytextvalid(event)">
                                               <label for="mid_name">Middle Name</label>
                                             </div>
                                           </div>
@@ -288,7 +288,7 @@ $_SESSION['positionapplied'] = $position;
                                                           <label for="passing">Passing Year</label>
                                                       </div>
                                                 </div>
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                                
                                                       <div class="col s12">
                                                                 <b style="font-size:20px;color:red">Please Upload all Documents until Highest Qualification</b>
@@ -301,10 +301,9 @@ $_SESSION['positionapplied'] = $position;
                                                                                 <div class="file-path-wrapper">
                                                                                         <input class="file-path validate" type="text">
                                                                                 </div>
-                                        </div>
-                                                                    
+                                                                        </div>
                                                         </div>
-                                                </div>
+                                                </div> -->
 
                                                       
 
@@ -435,7 +434,7 @@ $_SESSION['positionapplied'] = $position;
 
 
                                           
-                                          <b style="font-size:20px;">Upload your Aadhar Card as Proof Of Identity</b>
+                                          <!-- <b style="font-size:20px;">Upload your Aadhar Card as Proof Of Identity</b>
                                                                                                                                   
                                                 
                                                 <div class="file-field input-field">
@@ -446,9 +445,9 @@ $_SESSION['positionapplied'] = $position;
                                                         <div class="file-path-wrapper">
                                                                 <input class="file-path validate" type="text">
                                                         </div>
-                                                </div>
+                                                </div> -->
                                                 <br>
-                                         <div id="uploadotherdoc">
+                                         <!-- <div id="uploadotherdoc">
                                                         <b style="font-size:20px;">Proof Of Identity(PAN/Voter ID/Driving Licence/Passport)</b>
 
 
@@ -461,11 +460,9 @@ $_SESSION['positionapplied'] = $position;
                                                                                 <input class="file-path validate" type="text">
                                                                         </div>
                                                                 </div>
-                                         </div>
-                                         
-                                            <br>
+                                         </div> -->
 
-                                            <b style="font-size:20px;">Proof Of Address(Rent Agreement/Voter ID/Driving Licence/Passport)</b>
+                                            <!-- <b style="font-size:20px;">Proof Of Address(Rent Agreement/Voter ID/Driving Licence/Passport)</b>
                                                 
                                          
                                           <div class="file-field input-field">
@@ -476,9 +473,9 @@ $_SESSION['positionapplied'] = $position;
                                                 <div class="file-path-wrapper">
                                                         <input class="file-path validate" type="text">
                                                 </div>
-                                        </div>
+                                        </div> -->
 
-                                          <br><br>
+                                          
 
                                             <b style="font-size:20px;">Family Details :</b>
                                                 
@@ -644,7 +641,11 @@ $_SESSION['positionapplied'] = $position;
 
 
                                          
-                                          <b style="font-size:20px;">References :</b>
+                                          <b style="font-size:20px;">References :
+                                          <br>
+                                                <span class="red-text">*Minimum Two Reference Required*</span>
+                                          </b>
+
                                           <div class="row" id="mainref">
                                                   <div id="ref" class="col">
 
@@ -655,7 +656,7 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="nameref0" name="nameref0[]" type="text" onkeypress="return mytextvalid(event)">
+                                                        <input id="nameref0" name="nameref0[]" class="validate" type="text" onkeypress="return mytextvalid(event)">
                                                         <label for="nameref0">Reference</label>
                                                 </div>
                                                 
@@ -669,7 +670,7 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="designationref0" name="designationref0[]" type="text" onkeypress="return mytextvalid(event)">
+                                                        <input id="designationref0" name="designationref0[]" class="validate" type="text" onkeypress="return mytextvalid(event)">
                                                         <label for="designationref0">Reference</label>
                                                 </div>
                                                 
@@ -682,7 +683,7 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="cmpnmref0" name="cmpnmref0[]" type="text" onkeypress="return mytextvalid(event)">
+                                                        <input id="cmpnmref0" name="cmpnmref0[]" class="validate" type="text" onkeypress="return mytextvalid(event)">
                                                         <label for="cmpnmref0">Reference </label>
                                                 </div>
                                                 
@@ -707,11 +708,11 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
     
                                                 <div class="input-field col s3">
-                                                        <input id="stdcoderef0" name="stdcoderef0[]" type="number"/>
+                                                        <input id="stdcoderef0" name="stdcoderef0[]" class="validate" type="number"/>
                                                         <label for="stdcoderef0" id="stdref" >STD Code</label>
                                                 </div>
                                                 <div class="input-field col s3">
-                                                        <input id="phoneref0" name="phoneref0[]" type="number"/>
+                                                        <input id="phoneref0" name="phoneref0[]" class="validate" type="number"/>
                                                         <label for="phoneref0" id="teleref">Phone Number</label>
                                                 </div>
                                                 
@@ -846,7 +847,7 @@ function checknotice(x)
 {
         var id="#"+x;
         var noticeperiod=$(id).val();
-        if(noticeperiod.length!=2)
+        if(noticeperiod.length!=3)
         {
                 alert("Enter Valid Notice Period")
                 $(id).val(" ")
@@ -858,8 +859,8 @@ function addnewexp(x)
         //var str = 'myexpdiv'+ctr
 
 
-        var $txt='<div class="col s12" id="myexpdiv"><div class="input-field col s6"><input name="orgname0[]" id="orgname'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true" ><label for="orgname'+expctr+'" style="font-size: 11px">Current Organization Name</label></div><div class="input-field col s6"><input name="olddesignation0[]" id="olddesignation'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="olddesignation'+expctr+'" style="font-size: 11px">Designation</label></div><div class="input-field col s6"><input name="fromdate0[]" id="fromdate'+expctr+'" type="text" class="datepicker" ><label for="fromdate'+expctr+'" style="font-size: 11px;">From</label></div><div class="input-field col s6"><input name="todate0[]" id="todate'+expctr+'" type="text" class="datepicker"><label for="todate'+expctr+'" style="font-size: 11px;">To</label></div><div class="input-field col s6"><input name="managername0[]" id="managername'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="managername'+expctr+'" style="font-size: 11px">Reporting Manager Name</label></div><div class="input-field col s6"><input name="managermail0[]" id="managermail'+expctr+'" type="email" class="validate" aria-required="true"><label for="managermail'+expctr+'" style="font-size: 11px">Enter Manager Email</label></div><div class="row" id="addnextexp"><a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a><a class="btn-floating btn" style="float:right" onclick="removenewexp(this.id)" id="rembtn"><i class="material-icons">remove</i></a></div></div>'
-        $("#mainexpdiv").append(txt);
+        var exptxt='<div class="col s12" id="myexpdiv"><div class="input-field col s6"><input name="orgname0[]" id="orgname'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true" ><label for="orgname'+expctr+'" style="font-size: 11px">Current Organization Name</label></div><div class="input-field col s6"><input name="olddesignation0[]" id="olddesignation'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="olddesignation'+expctr+'" style="font-size: 11px">Designation</label></div><div class="input-field col s6"><input name="fromdate0[]" id="fromdate'+expctr+'" type="text" class="datepicker" ><label for="fromdate'+expctr+'" style="font-size: 11px;">From</label></div><div class="input-field col s6"><input name="todate0[]" id="todate'+expctr+'" type="text" class="datepicker"><label for="todate'+expctr+'" style="font-size: 11px;">To</label></div><div class="input-field col s6"><input name="managername0[]" id="managername'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="managername'+expctr+'" style="font-size: 11px">Reporting Manager Name</label></div><div class="input-field col s6"><input name="managermail0[]" id="managermail'+expctr+'" type="email" class="validate" aria-required="true"><label for="managermail'+expctr+'" style="font-size: 11px">Enter Manager Email</label></div><div class="row" id="addnextexp"><a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a><a class="btn-floating btn" style="float:right" onclick="removenewexp(this.id)" id="rembtn"><i class="material-icons">remove</i></a></div></div>'
+        $("#mainexpdiv").append(exptxt);
         $('.datepicker').datepicker({
                         //dateFormat:"dd/mm/yy",
                         yearRange:[1960,cyear],
@@ -898,6 +899,17 @@ $("#otherdetails").hide();
 //$("#uploadotherdoc").hide();
 //$("#showaddharupload").hide();
 //$("#myphoto").hide();
+
+$("#passing").change(function()
+{
+        var pas = $("#passing").val();
+        if(pas.length!=4)
+        {
+                alert("Please Passing Year as 4-Digit Year");
+                $("#passing").val("");
+        }        
+        
+})
 
 
 $(document).ready(function(){
@@ -960,6 +972,15 @@ $(document).ready(function(){
         ({
                 
                 yearRange:[1950,cyear],
+                changeMonth:true,
+                
+        });
+
+        $('#jdate').datepicker
+        ({
+                
+                yearRange:[1950,cyear],
+                minDate:new Date(),
                 changeMonth:true,
                 
         });            
@@ -1060,14 +1081,7 @@ $( "#aadharno" ).change(function() {
 
                          
                         
-    }});
-
-  
- 
-  
-
-
-        
+    }});        
 
 });
 

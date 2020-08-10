@@ -145,8 +145,9 @@ if(isset($_COOKIE['sid']))
         </div>
         <div class="modal-footer">
             <center>
-            <a onclick="submit_interview(true)" class="modal-close waves-effect green btn" >Confirm<i class="material-icons left" >check_box</i></a>
-            <a onclick="submit_interview(false)" class="modal-close waves-effect red btn">Cancel<i class="material-icons left">highlight_off</i></a>
+            
+            <a onclick="submit_interview(true,this.id)" class="modal-close waves-effect green btn compCnfrm" >Confirm<i class="material-icons left" >check_box</i></a>
+            <a onclick="submit_interview(false,0)" class="modal-close waves-effect red btn ">Cancel<i class="material-icons left">highlight_off</i></a>
             </center>
         </div>
         </div>
@@ -462,7 +463,7 @@ if(isset($_COOKIE['sid']))
         var acbtnid="#"+x;
         x1 = x.slice(3);
         // alert(x1)
-        
+       
         var rjbtnid="#"+x+'1';
         // alert(rjbtnid)
         
@@ -470,7 +471,8 @@ if(isset($_COOKIE['sid']))
         {
             $("#accept").show()
             $(acbtnid).attr('disabled','disabled')
-            $(rjbtnid).attr('disabled','disabled')     
+            $(rjbtnid).attr('disabled','disabled')  
+            console.log("This is id - "+x1)   
             $.ajax({
                 url:"http://localhost/hrms/api/accepted.php",
                 type:"POST",
@@ -533,6 +535,12 @@ function modifyMail(id,name)
     }
     else
     {
+        if ($('.cnfrmod').prop('disabled')) 
+        {
+            $('.cnfrmod').prop('disabled', false);
+        }
+       
+       
         console.log("Not Equal")
         $.ajax({
         url:"http://localhost/hrms/api/invmodifytime.php",
@@ -607,14 +615,8 @@ function displayreadonlymail(id)
                         $('.datepicker').datepicker();
                     }
 
-                    var modifyAllButton = '<button  class="btn waves-effect green" id="'+id[0]+'" onclick="confirmmodifyAllMails(this.id)">Confirm Modification<i class="material-icons right">send</i></button></td></tr>'
+                    var modifyAllButton = '<button  class="btn waves-effect green cnfrmod" id="'+id[0]+'" onclick="confirmmodifyAllMails(this.id)" disabled>Confirm Modification<i class="material-icons right">send</i></button></td></tr>'
                     $("#cnfrmMod").append(modifyAllButton)
-                },
-                complete: function() {
-                    setTimeout(function(){
-                        displayreadonlymail(recurrID)
-                    },5000)
-                   
                 }
                        
               
@@ -665,7 +667,7 @@ function confirmmodifyAllMails(id)
     
 }
 
-function submit_interview(cnfrm){
+function submit_interview(cnfrm,id){
         console.log("Status - "+cnfrm)
         if(cnfrm)
         {
@@ -673,7 +675,7 @@ function submit_interview(cnfrm){
                 url:"http://localhost/hrms/api/endinterview.php",
                 type:"POST",
                 data:{
-                    "id": id13digit 
+                    "id": id 
                 },
                 success:function(para)
                 {
@@ -693,7 +695,11 @@ function submit_interview(cnfrm){
         }
     }
 
-
+    function subint(id)
+    {
+        $('.compCnfrm').attr('id', id);
+        $("#modal2").modal("open") 
+    }
 
 // function for modifying all ends
 
@@ -739,8 +745,8 @@ function submit_interview(cnfrm){
 
     //submitting complete interview
     
-
-        
+  
+    
     
 
     $("#emailrow").hide()
@@ -777,7 +783,7 @@ function submit_interview(cnfrm){
                     }
                     console.log("Status - ",temparr[3])
                     
-                    var status = temparr[1]=="yes" ||temparr[1]=="pending"?"disabled":" ";
+                    var status = temparr[1]=="yes" ||temparr[1] =="pending" || temparr[1]=="alleval"?"disabled":" ";
                     var txt1 = '<tr><td><b>'+temparr[0]+'</b></td><td>'+temparr[3]+'</td><td>'+temparr[4]+'</td><td>'+temparr[5]+'</td>'
                     var txt6 = '<td><button class="btn waves-effect green"  id="'+temparr[0]+'*2" onclick="displayreadonlymail(this.id)">See Members<i class="material-icons right">send</i></td>'                       
                     var txt5 = '<td><button class="btn waves-effect green"  id="act'+temparr[0]+'" onclick="openmodal3(this.id)" '+status+'>Accept<i class="material-icons right">send</i></button></td>' 
@@ -845,21 +851,26 @@ function submit_interview(cnfrm){
                         {
                             $("#status").hide()
                         
-                                var txt3 = '<td><button class="btn waves-effect green"  id="'+temparr[0]+'" onclick="displayMail(this.id)">Conduct Interview<i class="material-icons right">send</i>'                       
+                                var txt3 = '<td><button class="btn waves-effect green"  id="'+temparr[0]+'" onclick="displayMail(this.id)">Conduct Interview<i class="material-icons right">send</i></td>'                       
                                 console.log("valid");
-                        
+
                         }
                         else if(temparr[1]=="pending")
                         {
-                                var txt3 = '<td><button disabled class="btn waves-effect green"  id="'+temparr[0]+'" onclick="displayMail(this.id)">Conduct Interview<i class="material-icons right">send</i>'                       
+                                var txt3 = '<td><button disabled class="btn waves-effect green"  id="'+temparr[0]+'" onclick="displayMail(this.id)">Conduct Interview<i class="material-icons right">send</i></td>'                       
                                 console.log("valid");
                         }
                         else if(temparr[1]=="no")
                         {
-                            var txt3 = '<td><button disabled class="btn waves-effect green"  id="'+temparr[0]+'" onclick="displayMail(this.id)">Start<i class="material-icons right">send</i>'                       
+                            var txt3 = '<td><button disabled class="btn waves-effect green"  id="'+temparr[0]+'" onclick="displayMail(this.id)">Start<i class="material-icons right">send</i></td>'                       
 
                         }
-                        
+                        else if(temparr[1]=="alleval")
+                        {
+                            // var txt3 = '<td><button disabled class="btn waves-effect green"  id="'+temparr[0]+'" onclick="displayMail(this.id)">Complete Interview<i class="material-icons right">send</i></td>'                       
+                            var txt3 = '<td><button class="btn waves-effect blue darken-1" id="'+temparr[0]+'" onclick="subint(this.id)">Complete Interview</button></td>'
+
+                        }
                         
                     
                     
