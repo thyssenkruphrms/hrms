@@ -190,7 +190,9 @@ $(document).ready(function(){
         $('#badge_ongoing').text(para.general.ongoing_round);
         $('#badge_ongoing').show();
       }
-      if((para.general.schdule_count > 0))
+
+      if(para.general.schdule_count > 0)
+
       {
         $('#badge_rescheduling').text(para.general.schdule_count);
         $('#badge_rescheduling').show();
