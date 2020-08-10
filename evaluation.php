@@ -31,7 +31,7 @@ if(isset($_COOKIE['sid']))
     <script src="public/js/materialize.min.js"></script>
 
 </head>
-<body>
+<body >
 
 <nav>
     <div class="nav-wrapper blue darken-1">
@@ -319,15 +319,15 @@ $("#submit").click(function(){
         success:function(para)
         {
             //alert(para)
-            console.log(para)
+            console.log("This is - ",para)
             if(para == "success")
             {
+
                 $("#submitting").hide()
                 $("#submitted").show(600)
                 alert("Details Submitted..!!")
-
-                window.close()
-                
+                self.opener.location.reload(); 
+                window.close()   
             }
         }
         

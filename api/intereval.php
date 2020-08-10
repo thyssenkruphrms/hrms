@@ -32,38 +32,47 @@ if($cursor)
     );
     $result = $db->intereval->insertOne($values);
     $result1 = $db->interviews->find(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3]));
-    $criteria=array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3],"intvmail"=>$cursor['mail']);
+    $interviewcriteria=array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3],"intvmail"=>$cursor['mail']);
+    $roundcriteria=array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3]);
+    
     if($result1)
     {
         //push evaluated candidates in evaluated array 
-        $db->interviews->updateOne($criteria,array('$push'=>array('evaluated'=>$_GET["name"])),array('safe'=>true,'timeout'=>5000,'upsert'=>true));
+        $db->interviews->updateOne($interviewcriteria,array('$push'=>array('evaluated'=>$_GET["name"])),array('safe'=>true,'timeout'=>5000,'upsert'=>true));
 
         
         //pull candidates from members array 
-        $db->interviews->updateOne($criteria,array('$pull'=>array('members'=>$_GET["name"])),array('safe'=>true,'timeout'=>5000,'upsert'=>true));
-
-          $selectedcandidate = ($selection=="selected") ? $_GET['name']:"false";
+        $db->interviews->updateOne($interviewcriteria,array('$pull'=>array('members'=>$_GET["name"])),array('safe'=>true,'timeout'=>5000,'upsert'=>true));
+        
+        //check if all our evaluated START
+        $membercount = $db->interviews->findOne($interviewcriteria,array('projection' => array('members' => 1)));
+        $membercount =count( iterator_to_array($membercount['members']));
+        if($membercount == 0)
+        {
+           $db->interviews->updateOne($interviewcriteria,array('$set'=>array('accepted'=>'alleval')));    
+        }
+        
+         //check if all our evaluated END
+        $selectedcandidate = ($selection=="selected") ? $_GET['name']:"false";
         if($selectedcandidate=="false")
         {
                 //enter logic for rejected
-                $db->rounds->updateOne($criteria,array('$push'=>array($selection=>$_GET["name"]),'$pull'=>array("members"=>$_GET["name"])),array('safe'=>true,'timeout'=>5000,'upsert'=>true));  
+                $db->rounds->updateOne($roundcriteria,array('$push'=>array($selection=>$_GET["name"]),'$pull'=>array("members"=>$_GET["name"])),array('safe'=>true,'timeout'=>5000,'upsert'=>true));  
     
         }
         else
         {
             //push selected/rejected/onhold candidates into array and pull members from members array
             //push only selected candidates in the selected remove array
-            $db->rounds->updateOne($criteria,array('$push'=>array($selection=>$_GET["name"],"selectedremove"=>$selectedcandidate),'$pull'=>array("members"=>$_GET["name"])),array('safe'=>true,'timeout'=>5000,'upsert'=>true));  
+            $db->rounds->updateOne($roundcriteria,array('$push'=>array($selection=>$_GET["name"],"selectedremove"=>$selectedcandidate),'$pull'=>array("members"=>$_GET["name"])),array('safe'=>true,'timeout'=>5000,'upsert'=>true));  
             
         }
-       
-
-    }
-
-    if($result)
-    {
         echo "success";
+
     }
+
+      
+    
 }
 
 else{
