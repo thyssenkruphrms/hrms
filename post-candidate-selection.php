@@ -73,7 +73,7 @@ input[id="uan"]
             <div class="card white">
                 <div class="card-content blue-text darken-1" id="main">
                     <form action="#">
-                    <b>Upload Appointment Letter</b>
+                    <b>Upload Latest Company Appointment Letter</b>
                     <div class="row">
                             <div class="input-field col s12" id="appoint">
                                     <label class="custom-file-upload">
@@ -82,14 +82,14 @@ input[id="uan"]
                             </div>                        
                     </div><br><br>
 
-                    <b>Upload Relieving Letter</b>
+                    <!-- <b>Upload Relieving Letter</b>
                     <div class="row">
                             <div class="input-field col s12" id="relieving">
                                     <label class="custom-file-upload">
                                             <a class="btn blue darken-1"> <input id="relletter" name="relletter" type="file" accept=".pdf" required="true" aria-required="true"> <p id='letter2'>Relieving Letter</p></a>
                                     </label>
                             </div>                        
-                    </div><br><br>  
+                    </div><br><br>   -->
                     
                     <b>Current Company's Latest Letter Indicating Salary Breakup</b>
                     <div class="row">
@@ -112,7 +112,7 @@ input[id="uan"]
                     
                     <div class="row">
                             <div class="input-field col s6">
-                                    <input id="uan" name="uan" type="text" class="validate" required="" aria-required="true" onkeypress="return validuan(event)" onchange=this.value.toLocaleUpperCase();>
+                                    <input id="uan" name="uan" type="text" class="validate" maxlength="12" required="" aria-required="true" onkeypress="return validuan(event)" onchange=this.value.toLocaleUpperCase();>
                                     <label for="uan">UAN</label>
                                   </div>            
                     </div><br>
@@ -128,26 +128,26 @@ input[id="uan"]
                     </div><br><br>
 
 
-                    <b>Name of Nominnes</b>
+                    <b>Name of Nominnees</b>
                     <div class="row">
                             <div class="input-field col s6">
                                     <input id="nom1" name="nom1" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
-                                    <label for="nom1">Nominne 1</label>
+                                    <label for="nom1">Nominnee 1</label>
                             </div>
 
                             <div class="input-field col s6">
                                     <input id="nom2" name="nom2" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
-                                    <label for="nom2">Nominne 2</label>
+                                    <label for="nom2">Nominnee 2</label>
                             </div>
 
                             <div class="input-field col s6">
                                     <input id="nom3" name="nom3" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
-                                    <label for="nom3">Nominne 3</label>
+                                    <label for="nom3">Nominnee 3</label>
                             </div>  
 
                             <div class="input-field col s6">
                                     <input id="nom4" name="nom4" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
-                                    <label for="nom4">Nominne 4</label>
+                                    <label for="nom4">Nominnee 4</label>
                             </div>                      
                     </div>
 
@@ -188,12 +188,12 @@ $("#myform").submit(function(){
 function validuan(e)
 {
         //Written by Tanmay
-        var charCode = event.keyCode;
+        var charCode = event.keyCode;  
         //Gets ASCII code of character
-        if ((charCode > 48 && charCode < 57) || charCode == 8)
+        if ((charCode >= 48 && charCode <=57))
                 return true;
         else
-                return false;
+                return false;                        
 }
 
 

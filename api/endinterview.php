@@ -37,6 +37,7 @@ if($cursor)
     {
         
        $db->rounds->updateOne(array("rid"=>$digit13[3],'iid'=>$digit13[2],"prf"=>$digit13[0],"pos"=>$digit13[1]),array('$set'=>array("status"=>"invcomplete")));
+       
        $db->rounds->aggregate([
         ['$match'=>['prf'=>$digit13[0],'iid'=>$digit13[2],'rid'=>$digit13[3]]],
         ['$addFields'=>["inv_ctime"=>$today]]]);

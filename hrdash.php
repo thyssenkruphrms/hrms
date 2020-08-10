@@ -290,4 +290,8 @@ $('#logoutuser').click(function(){
     {
         header("refresh:0;url=notfound.html");
     }  
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> c3b4908c31eb0a50c2b63907bc3e609f08a6889d
