@@ -182,16 +182,16 @@ if(isset($_COOKIE['sid']))
               <i class="material-icons prefix">lock</i>
               <input id="cnfrmpassword" type="password" class="validate" placeholder="Confirm Password" required>               
             </div>
-
+            <center>
             <div class="input-field col s12">
 
               <button class="btn waves-effect waves-light blue darken-1" id="checkprf">Update if exist or create
                 <i class="material-icons right">send</i>
               </button>
-
-              <button class="btn waves-effect waves-light blue darken-1" id="checkprf">Delete
+            </center>
+             <!-- <button class="btn waves-effect waves-light blue darken-1" id="deluser">Delete
                 <i class="material-icons right">send</i>
-              </button>
+              </button>-->
 
             </div>
 
@@ -365,13 +365,16 @@ $('#creatinggrp').fadeIn(500);
 
  var department = $('#deptchoice').val()
  var region=$('#rgchoice').val()
+ if(region==undefined){
+   region=""
+ }
  var dsg = $('#dsgchoice').val()
  var mail=$('#pos').val()
  var username=$('#username').val()
  var password=$('#password').val()
  var cnfrmpassword=$('#cnfrmpassword').val()
 console.log("p "+department+" "+region+ " "+dsg)
-if(password==cnfrmpassword && (password!=''  && username!='' && mail!='' && department!=null && region!=null && dsg!=null)){
+if(password==cnfrmpassword && (password!=''  && username!='' && mail!='' && department!=null &&  dsg!=null)){
 $.ajax({
 url : 'http://localhost/hrms/api/users.php',
 type : 'POST',
@@ -440,6 +443,16 @@ else{
 }
 $('#notexist').fadeIn(600);
 });
+
+
+//deleting user code
+
+
+
+
+
+
+
 });
 
 

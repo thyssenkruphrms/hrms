@@ -31,7 +31,7 @@ function addUser($db,$uid,$password,$mail,$dsg,$rg,$dept){
     
     }
     else{
-        $db->users->insertOne(["uid"=>$uid,"password"=>$password,"mail"=>$mail,"dsg"=>$dsg,"rg"=>$rg,"dept"=>$dept]);
+        $db->users->insertOne(["uid"=>$dsg,"name"=>$uid,"password"=>$password,"mail"=>$mail,"dsg"=>$dsg,"rg"=>$rg,"dept"=>$dept]);
         echo json_encode(array("status"=>"true","message"=>"User Added Successfully"));
     
     }   
