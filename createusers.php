@@ -102,10 +102,11 @@ if(isset($_COOKIE['sid']))
                     <div class="input-field col s12 offset-m4" id="uphoto">
                             <label class="custom-file-upload" id="prof">
                                 <a class="btn blue darken-1">
-                                <input id="uploadcsv" required type="file" accept=".csv" name="uploadcsv" onchange="readURL(this)"><p id='myfile0'> Select file<i class="material-icons right">open_in_browser</i> </p></a>
+                                <input id="uploadcsv" required type="file" accept=".csv" name="uploadcsv" onchange="readURL(this)"><p id='myfile0'><i class="material-icons right">open_in_browser</i> </p></a>
                             </label>
-                            <br><br><br> &nbsp;&nbsp;&nbsp;
-                    <button type="submit" class="btn blue darken-1" name="submit" id="submit" value="Upload"><i class="material-icons right">send</i>Upload</button>
+                            <br><br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn blue darken-1" name="submit" id="submit" value="Upload">
+                      <i class="material-icons right">send</i>Upload</button>
 
                     </div>
                 </form>
@@ -131,8 +132,8 @@ if(isset($_COOKIE['sid']))
           </div>
           
           <div class="input-field col s11 blue-text ">
-          <select id='dsgchoice' class="dropdown-trigger btn blue darken-1" >
-              <option value="" disabled selected style="color: white">Select Designation</option>
+          <select id='dsgchoice' class="dropdown-trigger btn blue darken-1" required>
+              <option value="0" disabled selected style="color: white">Select Designation</option>
               <option value="hod">Head of Department for all Regions</option>
               <option value="rghead">Head of Region</option>
               <option value="hr">HR</option>
@@ -147,8 +148,8 @@ if(isset($_COOKIE['sid']))
 
           
           <div class="input-field col s11 blue-text">
-                     <select id='rgchoice' class="dropdown-trigger btn blue darken-1" >
-              <option value="" disabled selected style="color: white">Select Region</option>
+                     <select id='rgchoice' class="dropdown-trigger btn blue darken-1"  required>
+              <option value="0" disabled selected style="color: white">Select Region</option>
             </select>
             </div>
 
@@ -157,29 +158,29 @@ if(isset($_COOKIE['sid']))
           </div>
 
           <div class="input-field col s11  blue-text">
-          <select id='deptchoice' class="dropdown-trigger btn blue darken-1" >
-              <option value="" disabled selected style="color: white">Select Department</option>
+          <select id='deptchoice' class="dropdown-trigger btn blue darken-1"  required>
+              <option value="0" disabled selected style="color: white">Select Department</option>
             </select>
             </div>
                         
             <div class="input-field col s11  blue-text">
               <i class="material-icons prefix">email</i>
-              <input id="pos" type="text" class="validate" placeholder="Enter Mail">               
+              <input id="pos" type="text" class="validate" placeholder="Enter Mail"  required>               
             </div>
             
                         <div class="input-field col s11  blue-text">
               <i class="material-icons prefix">account_circle</i>
-              <input id="username" type="text" class="validate" placeholder="Enter Username">               
+              <input id="username" type="text" class="validate" placeholder="Enter Username" required>               
             </div>
 
             <div class="input-field col s11  blue-text">
               <i class="material-icons prefix">vpn_key</i>
-              <input id="password" type="password" class="validate" placeholder="Enter Password">               
+              <input id="password" type="password" class="validate" placeholder="Enter Password" required>               
             </div>
 
             <div class="input-field col s11  blue-text">
               <i class="material-icons prefix">lock</i>
-              <input id="cnfrmpassword" type="password" class="validate" placeholder="Confirm Password">               
+              <input id="cnfrmpassword" type="password" class="validate" placeholder="Confirm Password" required>               
             </div>
 
             <div class="input-field col s12">
@@ -195,16 +196,17 @@ if(isset($_COOKIE['sid']))
             </div>
 
           </div>  
-          
-          </div>
-         
-<div class="row" >
+          <div class="row" >
 <center>
 <p style="color: green" id="creatinggrp"> Inserting Details ...</p>
 <p style="color: green" id="groupcreated"> Details inserted Successfully</p>
 <p style="color: red" id="groupnotcreated"> These Details already exist</p>
 </center>
 </div>
+          
+          </div>
+         
+
 
 </div>
 
@@ -305,7 +307,7 @@ for(let i =0;i<para2.length;i++)
 
 $('#dsgchoice').change(function(){
   var dsg = $('#dsgchoice').val();
-  alert(dsg)
+ // alert(dsg)
 
   console.log(dsg);
   if(dsg == 'hod')
@@ -358,70 +360,86 @@ $('#groupnotcreated').hide()
 
 $('#creatinggrp').hide()
 
-$('#creatinggrp').fadeIn(600);
+$('#creatinggrp').fadeIn(500);
 
 
-department = $('#deptname').val();
-prfno = $('#prfno').val();
-if(prfno.length == 6)
-pos=$("#pos").val();
-
-//prfno = $('#prfno').val();
-
-var data = {'deptchoice':department,"prfno":prfno,"pos":pos}
-console.log(data)
-
-
+ var department = $('#deptchoice').val()
+ var region=$('#rgchoice').val()
+ var dsg = $('#dsgchoice').val()
+ var mail=$('#pos').val()
+ var username=$('#username').val()
+ var password=$('#password').val()
+ var cnfrmpassword=$('#cnfrmpassword').val()
+console.log("p "+department+" "+region+ " "+dsg)
+if(password==cnfrmpassword && (password!=''  && username!='' && mail!='' && department!=null && region!=null && dsg!=null)){
 $.ajax({
-url : 'http://localhost/hrms/api/createprf.php',
+url : 'http://localhost/hrms/api/users.php',
 type : 'POST',
-data : {'deptchoice':department,"prfno":prfno,"pos":pos},
-
-
+//data : {'deptchoice':department,"prfno":prfno,"pos":pos},
+data:{
+  "action":1,
+  "mail":mail,
+  "department":department,
+  "dsg":dsg,
+  "region":region,
+  "dept":department,
+  "username":username,
+  "password":password
+}
+,
 success : function(para){
+  console.log(para)
+  $('#creatinggrp').empty()
+  if(para.status=="true"){
+    $('#creatinggrp').css('color','green')
+  
+  }
+  else{
+    $('#creatinggrp').css('color','red')
+  
+  }
+  $('#creatinggrp').append(para.message);
+  
+  //$('#creatinggrp').height()=300;
 
-  $('#creatinggrp').hide(600);
+  $('#creatinggrp').fadeOut(15000);
+  
 
-if(para == '404')
-{
+// if(para == '404')
+// {
 
-  $('#groupnotcreated').fadeIn(600)
+//   $('#groupnotcreated').fadeIn(600)
 
-  console.log("PRF ALREADY EXISTS")
-$('#notexist').hide()
-groupStatus=1
-var txt = '<b style="color: green" id="Exist">This PRF Number Already Exist</b>'
-$('#exist').append(txt)
-$('#histbtn').show()
-
-
-}
-else if(para == 'success')
-{
-
-  $('#groupcreated').fadeIn(600)
-
-groupStatus=0;
-$('#Exist').hide()
-console.log("INSERTED")
-var txt = '<b style="color: red" id="notexist">This PRF Number Does Not Exist</b> '
-$('#exist').append(txt)
-}
+//   console.log("PRF ALREADY EXISTS")
+// $('#notexist').hide()
+// groupStatus=1
+// var txt = '<b style="color: green" id="Exist">This PRF Number Already Exist</b>'
+// $('#exist').append(txt)
+// $('#histbtn').show()
 
 
+// }
+// else if(para == 'success')
+// {
+
+//   $('#groupcreated').fadeIn(600)
+
+// groupStatus=0;
+// $('#Exist').hide()
+// console.log("INSERTED")
+// var txt = '<b style="color: red" id="notexist">This PRF Number Does Not Exist</b> '
+// $('#exist').append(txt)
+// }
 },
-
-
-
 });
-
-
+}
+else{
+  $('#creatinggrp').empty()
+  $('#creatinggrp').css('color','red');
+  $('#creatinggrp').append("password should match and fill all details");
+}
 $('#notexist').fadeIn(600);
-
 });
-
-
-
 });
 
 
