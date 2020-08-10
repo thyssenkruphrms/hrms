@@ -15,7 +15,8 @@ if(isset($_COOKIE['sid']))
     if($designation == "hr" || $designation == "inv")
     {
         $mailid = $_GET['aid'];
-          $result = $db->intereval->find(array("email"=>$mailid));
+        $round_id = "0".$_GET['rid'];
+          $result = $db->intereval->find(array("email"=>$mailid,"prf"=>$_GET['prf'],"rid"=>$round_id,"iid"=>$_GET['iid']));
           $cursor2 = $db->tokens->findOne(array("email"=>$mailid));
           
           $temp;
