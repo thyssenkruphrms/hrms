@@ -562,10 +562,6 @@ function modifyMail(id,name)
     
 }
 
-
-
-
-
 //global variable for counting number of records
 
 var totalButtons = 0;
@@ -573,6 +569,7 @@ var totalButtons = 0;
 //Changed by Sarang - 15/03/2020
 function displayreadonlymail(id)
 {
+    recurrID=id;
     id = id.split("*");
     console.log("This is : "+id[0])
     $("#cnfrmMod").empty()
@@ -612,7 +609,14 @@ function displayreadonlymail(id)
 
                     var modifyAllButton = '<button  class="btn waves-effect green" id="'+id[0]+'" onclick="confirmmodifyAllMails(this.id)">Confirm Modification<i class="material-icons right">send</i></button></td></tr>'
                     $("#cnfrmMod").append(modifyAllButton)
-                    }   
+                },
+                complete: function() {
+                    setTimeout(function(){
+                        displayreadonlymail(recurrID)
+                    },5000)
+                   
+                }
+                       
               
             
             })
@@ -864,7 +868,8 @@ function submit_interview(cnfrm){
                 }
             }
                        
-        }    
+        },
+            
 
     })
     // end of page loading ajax call

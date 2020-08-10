@@ -445,12 +445,12 @@ function xyz(x)
   $('#submitmail').fadeIn();
   $(document).scrollTop($(document).height());
   positionapp = encodeURIComponent(window.position.trim())
-  document.getElementById('forms').action = 'uploademails.php?prf='+window.prf+'&'+'position='+window.position+'&'+'pos='+window.pos+"&"+'dept='+window.dept;
+  // document.getElementById('forms').action = 'uploademails.php?prf='+window.prf+'&'+'position='+window.position+'&'+'pos='+window.pos+"&"+'dept='+window.dept;
 
   }
 </script>
           <center>
-          <form id="forms" method="POST" enctype="multipart/form-data">
+          <form id="forms" method="POST" action="" enctype="multipart/form-data">
                             
                          <br><br>
                                     
@@ -461,8 +461,9 @@ function xyz(x)
                                     <a class="btn red" id="fileformatmodal" style="margin-left:2%" onclick="mymodalopen()"><i class="material-icons right">format_align_justify</i>FILE FORMAT</a>
                                     <br><br><br>
                                     
-                            <button type="submit" onclick="showupdump()" class="btn blue darken-1" name="submit" id="submit" value="Upload"><i class="material-icons right">send</i>Upload</button>
-                            
+                            <!-- <button type="submit" onclick="showupdump()" class="btn blue darken-1" name="submit" id="submit" value="Upload"><i class="material-icons right">send</i>Upload</button> -->
+                            <input type="button" class="btn blue darken-1" onclick="showupdump()" value="Upload" id="but_upload"> </input>
+
                         </form>
                         <br>
                       
@@ -524,7 +525,8 @@ function xyz(x)
     </div>
     <center><b class="red-text">Please ensure that the file to be uploaded must have above columns only</b></center>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="color:red">Close</a>
+    <a href="excel/email_format.php" class="modal-close waves-effect waves-green btn-flat" style="color:green">Download</a>
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="color:red">Close</a>
     </div>
   </div>
   
@@ -541,6 +543,33 @@ function xyz(x)
 
 <script>
 
+$("#but_upload").click(function(){
+    // $("#loader").show();
+
+  console.log("This is form submit",window.prf)
+
+  var fd = new FormData();
+        var files = $('#uploadcsv')[0].files[0];
+        fd.append('uploadcsv',files);
+        fd.append('prf',window.prf);
+        fd.append('pos',window.pos);
+        fd.append('positiond',window.position);
+        fd.append('dept',window.dept);
+        console.log("This is  - ",fd)
+        $.ajax({
+            url: 'http://localhost/hrms/uploademails.php',
+            type: 'post',
+            data: 
+                fd,
+            contentType: false,
+            processData: false,
+            success: function(response){
+              console.log("Response",response)
+      
+            },
+        });
+})
+  
 
   function readURL(input) {
   var f = $('#uploadcsv').val().split('.')
