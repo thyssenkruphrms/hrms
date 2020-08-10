@@ -27,7 +27,10 @@ if($cursor)
         "pos"=>$digit13[1],
         "iid"=>$digit13[2],
         "rid"=>$digit13[3],
-        "interviewer"=>$cursor['mail']
+        "interviewer"=>$cursor['mail'],
+        "inv_dept"=>$cursor['dept'],
+        "inv_name"=>$cursor['name'],
+        "inv_dsg"=>$cursor['dsg']
             
     );
     $result = $db->intereval->insertOne($values);

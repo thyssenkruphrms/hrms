@@ -805,6 +805,9 @@ function createnextround(id)
   console.log("This is my - "+id[0])
   window.dept = id[4]
   window.zone = id[5]
+  window.prf = id[0]
+  window.iid = id[2]
+  window.rid = id[3]
   console.log("Department : "+id[4])
   console.log("Zone : "+id[5])
   id = id[0]+"-"+id[1]+"-"+id[2]+"-"+id[3]
@@ -852,8 +855,8 @@ function createnextround(id)
         {
           allmail[i] = arr[i]
           var s1='<tr id="check'+i+'row">'
-          var s2='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'" target="_blank" "><p >'+arr[i][0]+'</p></a></td>'
-          var s3='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'" target="_blank" "><p id="check'+i+'mail">'+arr[i][1]+'</p></a></td>'
+          var s2='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'&prf='+window.prf+'&iid='+window.iid+'&rid='+window.rid+'&s=1" target="_blank" "><p >'+arr[i][0]+'</p></a></td>'
+          var s3='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'&prf='+window.prf+'&iid='+window.iid+'&rid='+window.rid+'&s=1" target="_blank" "><p id="check'+i+'mail">'+arr[i][1]+'</p></a></td>'
           var s4='<td><input id="check'+i+'date" class="timepicker" ></td>'
           var s5 ='<td><input id="check'+i+'date2" class="datepicker" ></td>'
           var s6='<td><label><input type="checkbox" class="filled-in" id="check'+i+'" onclick="selection(this.id)">'

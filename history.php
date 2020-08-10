@@ -562,7 +562,7 @@ function xyz(x)
                 var prfdata = parseddata.prfdata
                 var str_prf = "<td><b style='color:green;'>PRF</b> : "+prfdata[0]+"</td>"+"<td><b style='color:green;'>Position</b> : "+prfdata[1]+"</td>"+"<td><b style='color:green;'>Zone</b> : "+prfdata[2]+"</td>"+"<td><b style='color:green;'>Department</b> : "+prfdata[3]+"</td>"+"<td><b style='color:green;'>No. of Positions</b> : "+prfdata[4]+"</td><td><b style='color:green;'>Round</b> : "
                 
-                var rounds_dropdown = " <select class='dropdown-trigger btn blue darken-1' id='round_selected'><option value="+prfdata[5]+">"+prfdata[5]+"</option>"
+                var rounds_dropdown = " <select class='dropdown-trigger btn blue darken-1' id='round_selected'>"
                 for(let i=prfdata[5]-1;i>=0;i--)
                 {
                   rounds_dropdown += "<option value="+i+">"+i+"</option>"
