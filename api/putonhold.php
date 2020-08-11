@@ -20,9 +20,22 @@ if($cursor)
         $q2 = $db->interviews->updateOne($criteria2,array('$pull'=>array('members'=>$mail)),array('safe'=>true,'timeout'=>5000,'upsert'=>true));
         $q3 = $db->interviews->updateOne($criteria2,array('$addToSet'=>array("evaluated"=>$m)));
 
+        $response = array();
+        $res = $db->interviews->findOne($criteria2,array('projection' => array('members' => 1)));
+        $count = count(iterator_to_array($res['members']));
+        if($count == 0)
+        {
+             $q4 = $db->interviews->updateOne($criteria2,array('$set'=>array("accepted"=>"alleval")));
+             $response[1] = "alleval";
+        }
+        else
+        {
+            $response[1] = "noeval";
+        }
         if($q1 and $q2 and $q3)
         {
-            echo "success";
+            $response[0] = "success";
+            echo json_encode($response);
         }
         else
         {
