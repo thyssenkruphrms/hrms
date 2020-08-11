@@ -563,7 +563,7 @@ function xyz(x)
                 var str_prf = "<td><b style='color:green;'>PRF</b> : "+prfdata[0]+"</td>"+"<td><b style='color:green;'>Position</b> : "+prfdata[1]+"</td>"+"<td><b style='color:green;'>Zone</b> : "+prfdata[2]+"</td>"+"<td><b style='color:green;'>Department</b> : "+prfdata[3]+"</td>"+"<td><b style='color:green;'>No. of Positions</b> : "+prfdata[4]+"</td><td><b style='color:green;'>Round</b> : "
                 
                 var rounds_dropdown = " <select class='dropdown-trigger btn blue darken-1' id='round_selected'>"
-                for(let i=prfdata[5]-1;i>=0;i--)
+                for(let i=prfdata[5];i>=0;i--)
                 {
                   rounds_dropdown += "<option value="+i+">"+i+"</option>"
                 }
@@ -575,7 +575,7 @@ function xyz(x)
                 for (let i = 0; i < element.length; i++) 
                 {
                   var round_evaluation = $('#round_selected').val()
-                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                   
                   $('#tabledataselect').append(str)
                     
@@ -593,7 +593,7 @@ function xyz(x)
                   else
                   {
                     var round_evaluation = $('#round_selected').val()
-                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td><p>"+element[i][2]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td><p>"+element[i][2]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                   
                   $('#tabledatareject').append(str)
                   }
@@ -686,7 +686,7 @@ function xyz(x)
                             if('0'+prfdata[5] == prfdata[6])
                             {
                               var round_evaluation = $('#round_selected').val()
-                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                               $('#tabledataselect').append(str)
                             }
                             else if(prfdata[6] == 00)
@@ -698,7 +698,7 @@ function xyz(x)
                             else
                             {
                               var round_evaluation = $('#round_selected').val()
-                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td style='color:black;'> NA </td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td style='color:black;'> NA </td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                               $('#tabledataselect').append(str)
                             }
                               
@@ -716,7 +716,7 @@ function xyz(x)
                             else
                             {
                               var round_evaluation = $('#round_selected').val()
-                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td><p>"+element[i][2]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td><p>"+element[i][2]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                             
                             $('#tabledatareject').append(str)
                             }

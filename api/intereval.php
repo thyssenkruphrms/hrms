@@ -8,7 +8,15 @@ if($cursor)
 {
     $digit13 = $_GET['id'];
     $digit13 = explode("-",$digit13);
-    
+    $interviews = $db->interviews->findOne(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3],"intvmail"=>$cursor['mail']));
+    for($i=0;$i<count($interviews['members']);$i++)
+    {
+        if($_GET["name"] == $interviews['members'][$i])
+        {
+            $time = $interviews['times'][$i];
+            $date = $interviews['dates'][$i];
+        }
+    }
     $selection=$_GET['result'];
     //  echo $selection;
     $values=array(
@@ -30,7 +38,11 @@ if($cursor)
         "interviewer"=>$cursor['mail'],
         "inv_dept"=>$cursor['dept'],
         "inv_name"=>$cursor['name'],
-        "inv_dsg"=>$cursor['dsg']
+        "inv_dsg"=>$cursor['dsg'],
+        "inv_date"=>$date,
+        "inv_time"=>$time,
+        "inv_place"=>$interviews['iperson'],
+        "inv_cperson"=>$interviews['iperson']
             
     );
     $result = $db->intereval->insertOne($values);

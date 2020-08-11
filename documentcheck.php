@@ -25,6 +25,7 @@ if(isset($_COOKIE['sid']))
         }
           $result = $db->intereval->find(array("email"=>$mailid,"prf"=>$_GET['prf'],"rid"=>$round_id,"iid"=>$_GET['iid']));
           $cursor2 = $db->tokens->findOne(array("email"=>$mailid));
+
           
           $temp;
           foreach($result as $doc)
@@ -343,6 +344,14 @@ $("#submit").click(function(){
                     <tr>
                     <td><b style="color: green;font-size: 20px">Department :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_dept']; ?></b></td>
                     <td><b style="color: green;font-size: 20px">Designation :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_dsg']; ?></b></td>
+                    </tr>
+                    <tr>
+                    <td><b style="color: green;font-size: 20px">Date :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_date']; ?></b></td>
+                    <td><b style="color: green;font-size: 20px">Time :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_time']; ?></b></td>
+                    </tr>
+                    <tr>
+                    <td><b style="color: green;font-size: 20px">Place :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_place']; ?></b></td>
+                    <td><b style="color: green;font-size: 20px">Contact Person :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_cperson']; ?></b></td>
                     </tr>
                     </table>
                 </div>

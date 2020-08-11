@@ -15,7 +15,8 @@ if(isset($_COOKIE['sid']))
     if($designation == "hr" || $designation == "inv")
     {
         $mailid = $_GET['aid'];
-          $result = $db->intereval->find(array("email"=>$mailid));
+        $round_id = "0".$_GET['rid'];
+          $result = $db->intereval->find(array("email"=>$mailid,"prf"=>$_GET['prf'],"iid"=>$_GET['iid'],"rid"=>$round_id));
           $cursor2 = $db->tokens->findOne(array("email"=>$mailid));
           
           $temp;
@@ -247,23 +248,7 @@ x.document.close();
                 </div>
 
                 <br><br>
-                <div class="row">
-                    <div class="input-field col s12">
-                    <b><label for="remark">Remark if any</label></b>
-                    <br><br>
-                   
-                        <label><?php echo $doc['remark']; ?></label>
-                    </div>
-                </div>
-
-                </div>
                 
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- Script Starts Here -->
 <script>
 
@@ -346,7 +331,37 @@ document.tite='My Print';window.print();
 </html>
 <?php
           }
+          ?>
+<div class="row">
+                    <div class="input-field col s12">
+                    <b><label for="remark">Remark if any</label></b>
+                    <br><br>
+                   
+                        <label><?php echo $doc['remark']; ?></label>
+                    </div> <br><br><br><br><br><br>
+                </div>
+                    <b><center style="color: green;font-size: 30px">Interviewer Details</center> </b><br><br>
+                    <table class="responsive-table">
+                    <tr>
+                    <td><b style="color: green;font-size: 20px">Name :</b> <b style="color:blue darken-1;font-size: 20px"><?php echo $doc['inv_name']; ?></b></td>
+                    <td><b style="color: green;font-size: 20px">Email ID :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['interviewer']; ?></b></td>
+                    </tr>
+                    <tr>
+                    <td><b style="color: green;font-size: 20px">Department :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_dept']; ?></b></td>
+                    <td><b style="color: green;font-size: 20px">Designation :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_dsg']; ?></b></td>
+                    </tr>
+                    </table>
+                </div>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+          <?php
+          
             }
+
             else
             {
                 header("refresh:0;url=notfound.html");
