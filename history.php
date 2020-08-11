@@ -528,7 +528,7 @@ var flag0 = 0
 
 function xyz(x)
 {
-
+  $('#prfdata').empty()
   roundid = x.split("*");
   
 

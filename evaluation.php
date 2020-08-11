@@ -41,6 +41,9 @@ if(isset($_COOKIE['sid']))
 <br><br>
 <center>
  <p id="candidatename" style="color: green;font-size: 20px"></p>
+</center>       
+<center>
+ <p id="previousrounds" style="color: green;font-size: 20px"></p>
 </center>        
 <div class="row">
     <div class="col s12 m6 offset-m3">
@@ -261,8 +264,28 @@ $.ajax({
         {
             var id=localStorage.getItem('id')
             window.digit13=id
+            round = id.split("-")[3]
+            prf_ = id.split("-")[0]
+            iid_ = id.split("-")[2]
+
+            if(round > "01")
+            {
+                var str1 = "<b>Previous Evaluation Sheets : </b> ";
+                var str2 = ""
+                for(let i=1;i<round;i++)
+                {
+                    str2 += "<a href='http://localhost/hrms/documentcheck.php?aid="+name+"&prf="+prf_+"&iid="+iid_+"&rid="+i+"' target='_blank'><button class='btn waves-effect white darken-1'><b>Round 0"+i+"</b></a>    "
+                }
+                $("#previousrounds").append(str1+str2)
+            }
+            else
+            {
+                var str = "<b>Previous Evaluation Sheets : </b> This is the First Round for this Candidate";
+                $("#previousrounds").append(str)
+            }
             var str = "<b>PRF ID:</b> "+id+"<br><b>Candidate  Name:</b> "+para;
             $("#candidatename").append(str)
+            
         }
     }
 })

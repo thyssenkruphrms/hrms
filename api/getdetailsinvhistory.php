@@ -49,8 +49,10 @@ if($cursor1)
                     $h++;
                 } 
             }
-            $arr[$i] =array("selected"=>$selected,"rejected"=>$rejected,"onhold"=>$onhold) ;
-            $i++; 
+            $query = $db->prfs->findOne(array("prf"=>$_POST['prf']));
+            $prfdata = array($query['prf'],$query['position'],$query['zone'],$query['department'],$query['pos'],$_POST['rid']);
+            $arr =array("selected"=>$selected,"rejected"=>$rejected,"onhold"=>$onhold,"prfdata"=>$prfdata) ;
+        
         }
 
         if(count($arr)==0)

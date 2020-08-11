@@ -251,7 +251,11 @@ width: 350%;
                           </div>
   
       <div id="mytabs" >
-  
+      <table class="responsive-table">
+      <tr id="prfdata">
+      </tr>
+      </table>
+      <br><br><br>
       <ul class="tabs" >
       <li id="select"  class="tab col s2">  <a> <b style="color: green;cursor: pointer;" >Selected</b></a></li>
       <li id="reject" class="tab col s2"><a ><b style="color: red;cursor: pointer;" >Rejected</b></a></li>
@@ -454,6 +458,8 @@ var flag0 = 0
 
 function xyz(x)
 {
+  $('#prfdata').empty()
+
   roundid = x.split("*");
   
       console.log(roundid)
@@ -479,7 +485,11 @@ function xyz(x)
               if(para != "no data")
               {
                 parseddata = JSON.parse(para)
-                var element = parseddata[0].selected
+                var prfdata = parseddata.prfdata
+                console.log(prfdata)
+                var str_prf = "<td><b style='color:green;'>PRF</b> : "+prfdata[0]+"</td>"+"<td><b style='color:green;'>Position</b> : "+prfdata[1]+"</td>"+"<td><b style='color:green;'>Zone</b> : "+prfdata[2]+"</td>"+"<td><b style='color:green;'>Department</b> : "+prfdata[3]+"</td>"+"<td><b style='color:green;'>No. of Positions</b> : "+prfdata[4]+"</td><td><b style='color:green;'>Round</b> : "+prfdata[5]
+                $('#prfdata').append(str_prf)
+                var element = parseddata.selected
                 if(element != null)
                 {
                   for (let i = 0; i < element.length; i++) 
@@ -490,7 +500,7 @@ function xyz(x)
                       
                   } 
                 }
-                var element = parseddata[0].rejected
+                var element = parseddata.rejected
                 if(element != null)
                 {
                   console.log(element)
@@ -511,9 +521,9 @@ function xyz(x)
                       
                   }
                 } 
-                if(parseddata[0].onhold != null)
+                if(parseddata.onhold != null)
                 {
-                  var element = parseddata[0].onhold
+                  var element = parseddata.onhold
                 console.log("element: ",element)
                 elemail = element[0][0].split(",")
                 // var arr=[["Tanmay Kulkarni","tvkulkarni@mitaoe.ac.in"]]
