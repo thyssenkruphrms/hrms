@@ -202,8 +202,7 @@ if($cursor)
                     $dept = $_POST['dept'];
                     fwrite($fp, "\n".$d."\t".$prf."\t".$m."\t".$dept);
                     fclose($fp);  
-                    echo "sent";
-
+                   
                     $date = date_default_timezone_set('Asia/Kolkata');
            
                     $today = date("Y-m-d H-i-s");
@@ -228,6 +227,10 @@ if($cursor)
                         array("iid"=>"00".($count),"rid"=>"00","status"=>"initiated","init_time"=>$today)
                         ]]
                          );
+
+
+                         echo "sent";
+
                 }
                 else
                 {
@@ -419,7 +422,6 @@ if($cursor)
                     $dept = $_POST['dept'];
                     fwrite($fp, "\n".$d."\t".$prf."\t".$m."\t".$dept);
                     fclose($fp);  
-                    echo "sent";
 
                     $date = date_default_timezone_set('Asia/Kolkata');
            
@@ -430,6 +432,7 @@ if($cursor)
                     $newData=array('$set' => array("status" => "initiated","init_time"=>$today));
 
                     $db->generalized->updateOne(array("prf"=>$_POST['prf']),$newData);
+                    echo "sent";
 
 
                 }
@@ -637,6 +640,7 @@ if($cursor)
                     
 
                 
+                    echo "sent";
 
                 }
                 else

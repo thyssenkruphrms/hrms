@@ -800,7 +800,7 @@ $('#submitmail').click(function()
     success : function(para)
     {
       // para=JSON.parse(para);
-      console.log("this is ",para[0]);
+      console.log("this is ",para);
       
       if(para == "sent")
       {

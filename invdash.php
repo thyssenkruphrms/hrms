@@ -298,9 +298,9 @@ if(isset($_COOKIE['sid']))
                     </table>
                     <center>
                     <br><br>
-                    <b style="color:green;">You Can Click the Below Button only if all the candidates are evaluated</b><br><br>
+                    <!-- <b style="color:green;">You Can Click the Below Button only if all the candidates are evaluated</b><br><br>
                     <button class="btn waves-effect blue darken-1" id="submitinterview" onclick='$("#modal2").modal("open")'>Complete Interview</button>
-                    
+                     -->
                     
                     </center>
                 </div>
@@ -869,7 +869,7 @@ function submit_interview(cnfrm,id){
                         {
                             // var txt3 = '<td><button disabled class="btn waves-effect green"  id="'+temparr[0]+'" onclick="displayMail(this.id)">Complete Interview<i class="material-icons right">send</i></td>'                       
                             var txt3 = '<td><button class="btn waves-effect blue darken-1" id="'+temparr[0]+'" onclick="subint(this.id)">Complete Interview</button></td>'
-
+                            $('#'+temparr[0]+'*2').prop('disabled',true)
                         }
                         
                     

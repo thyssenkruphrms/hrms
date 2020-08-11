@@ -5,6 +5,7 @@ include 'maildetails.php';
 
 $cnt = 0;
 $restmembers = array();
+
 for($i=0;$i<count($_POST['allmembers']);$i++)
 {
     $allmembers[$i] = $_POST['allmembers'][$i][1];
@@ -183,10 +184,7 @@ if(isset($_POST) and $cursor)
                 $result3 = $db->rounds->updateOne(array("prf"=>$digit13[0],"pos"=>$digit13[1],'iid'=>$digit13[2],"rid"=>$digit13[3]),array('$set'=>array("hr2name"=>$_POST['hr2name'],"hr2mail"=>$_POST['hr2mail'],"hr2desg"=>$_POST['hr2desg'],"hr2dept"=>$_POST['hr2dept'])));
                 
                  //Query to update round id in token of member
-                 $criteria2=array("prf"=>$digit13[0],"pos"=>$digit13[1],'iid'=>$digit13[2],"rid"=>$digit13[3],"email"=>$d); 
-
-
-                 
+                $criteria2=array("prf"=>$digit13[0],"pos"=>$digit13[1],'iid'=>$digit13[2],"rid"=>$digit13[3],"email"=>$d); 
 
                 if(!$mail->send()) 
                 {
