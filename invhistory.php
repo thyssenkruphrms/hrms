@@ -484,7 +484,7 @@ function xyz(x)
                 {
                   for (let i = 0; i < element.length; i++) 
                   {
-                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td></tr>"
+                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+roundid[0]+"&iid="+roundid[2]+"&rid="+roundid[3]+"&s=1' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td></tr>"
                     
                     $('#tabledataselect').append(str)
                       
@@ -498,12 +498,12 @@ function xyz(x)
                   {
                     if(element[i][0][1] == "Aborted")
                     {
-                      var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>"+element[i][0][0]+"</a> </td><td>Aborted</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i]+"' target='_blank'>View CV</a></td></tr>"
+                      var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0][0]+"</td><td>Aborted</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td></tr>"
                       $('#tabledatareject').append(str)
                     }
                     else
                     {
-                      var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>"+element[i][0]+"</a> </td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i]+"' target='_blank'>View CV</a></td></tr>"
+                      var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+roundid[0]+"&iid="+roundid[2]+"&rid="+roundid[3]+"&s=1' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td></tr>"
                     
                     $('#tabledatareject').append(str)
                     }
@@ -527,7 +527,7 @@ function xyz(x)
                   }
                   else
                   {
-                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td></tr>"
+                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"&prf="+roundid[0]+"&iid="+roundid[2]+"&rid="+roundid[3]+"&s=1' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td></tr>"
                   $('#tabledatahold').append(str)
                   }
                   

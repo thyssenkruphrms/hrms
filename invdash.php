@@ -1049,7 +1049,6 @@ function submit_interview(cnfrm,id){
 
     function onholdMail(p)
     {   
-        
         var x = $('#bid4').attr('name')
     
         if(p)

@@ -283,6 +283,40 @@ function mymodalopen()
   $("#modal3").modal('open');
 }
 
+function deleteUser(){
+
+  //  console.log("id: "+id);  
+  var id=event.toElement.id
+  var name=event.toElement.name
+ // console.log(id+" "+name)
+
+  
+$.ajax({
+url:"http://localhost/hrms/api/users.php",
+type:"POST",
+data:{
+
+  "action":2,
+  "mail":id,
+  "username":name
+},
+success:function(para){
+
+  console.log(para.status)
+  if(para.status=="true"){
+    console.log('inside me')
+    location.reload().delay(5000);
+  }
+  
+
+} 
+
+})
+
+
+}
+
+
  
 var arr=[]
 var dept=[]
@@ -315,16 +349,21 @@ $(document).ready(function(){
        
         for(let j=0;j<arr.length-1;j++)
         {
-            
-            var x='<tr id="rows" style=""><td id="uid" value="'+arr[j].uid+' id="'+arr[j].name+'>'+arr[j].uid+'</b></td><td id="name">'+arr[j].name+'</td><td id="zone">'+arr[j].mail+'</td><td id="dept">'+arr[j].dept+'</td><td id="posno">'+arr[j].dsg+'</td><td id="status">'+arr[j].rg+'</td><td id="up"><button id='+arr[j].email+'  class="btn green darken-1">Update</button></td>'+'</td><td id="del"><button id='+arr[j].email+'  class="btn red darken-1">DELETE</button></td>'
+            var btnid=""+arr[j].email+"";
+            var x='<tr id="rows" style=""><td id="uid" value="'+arr[j].uid+' id="'+arr[j].name+'>'+arr[j].uid+'</b></td><td id="name">'+arr[j].name+'</td><td id="zone">'+arr[j].mail+'</td><td id="dept">'+arr[j].dept+'</td><td id="posno">'+arr[j].dsg+'</td><td id="status">'+arr[j].rg+'</td>'
+            var btns='<td><button id="'+(arr[j].email)+'"  class="btn green darken-1">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()">DELETE</button></td></tr>'
             //var x="hi"
-        $('#rawdata').append(x);
+        $('#rawdata').append(x+btns);
         }
       }    
     },
   })
 
 })
+
+
+
+
 
 </script>
 </html>

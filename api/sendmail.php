@@ -50,7 +50,7 @@ if($cursor)
                     $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
 
                     
-                    $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
+                    $mail->Subject = "Update on your application at thyssenkrupp for ". $positionorg." position";
 
                     //$mail->Subject = "Invitation to interview with thyssenkrupp for the ". $positionorg." position";
                     $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
@@ -250,7 +250,7 @@ if($cursor)
                     $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
 
                     // $mail->Subject = "Your Application at tkEI";
-                    $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
+                    $mail->Subject = "Update on your application at thyssenkrupp for ". $positionorg." position";
                     $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
                     $mail->isHTML(true); 
                     $mail->Body ='
@@ -456,7 +456,7 @@ if($cursor)
                     $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
 
                     // $mail->Subject = "Your Application at tkEI";
-                    $mail->Subject = "Update on your application at thyssenkrupp for ". $position." position";
+                    $mail->Subject = "Update on your application at thyssenkrupp for ". $positionorg." position";
                     $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
                     $mail->isHTML(true); 
                     $mail->Body ='
