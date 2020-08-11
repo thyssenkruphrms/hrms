@@ -74,13 +74,15 @@ if(isset($_COOKIE['sid']))
                                             <div class="col  m6 s6">
                                               <div class="card " style="background: orange">
                                                 <div class="card-content white-text">
-                                                  <span class="card-title">Create or delete or update Users</span>
+                                                  <span class="card-title">Create Users</span>
                                                   <br><br>   <p></p>
                                                 </div>
                                                 
                                               </div>
                                             </div>
                                         </a>
+
+
 
                                         <a href="http://localhost/hrms/createdepartment.php">
                                             <div class="col  m6 s6">
@@ -143,6 +145,19 @@ if(isset($_COOKIE['sid']))
                                                   <span class="card-title">Rescheduling  </span>
                                                   <br><br>             <p></p>
                                                 </div>
+                                              </div>
+                                            </div>
+                                        </a>
+
+                                         
+                                    <a href="http://localhost/hrms/showusers.php">
+                                            <div class="col  m6 s6">
+                                              <div class="card " style="background: orange">
+                                                <div class="card-content white-text">
+                                                  <span class="card-title">Show Users</span>
+                                                  <br><br>   <p></p>
+                                                </div>
+                                                
                                               </div>
                                             </div>
                                         </a>
