@@ -15,7 +15,15 @@ if(isset($_COOKIE['sid']))
     if($designation == "hr" || $designation == "inv")
     {
         $mailid = $_GET['aid'];
-          $result = $db->intereval->find(array("email"=>$mailid));
+        if(isset($_GET['s']))
+        {
+            $round_id = $_GET['rid'];
+        }
+        else
+        {
+            $round_id = "0".$_GET['rid'];
+        }
+          $result = $db->intereval->find(array("email"=>$mailid,"prf"=>$_GET['prf'],"rid"=>$round_id,"iid"=>$_GET['iid']));
           $cursor2 = $db->tokens->findOne(array("email"=>$mailid));
           
           $temp;
@@ -200,19 +208,9 @@ if(isset($_COOKIE['sid']))
                 </div>
 
           
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="remark" type="text" value="<?php echo $doc['remark'];?>">
-                        <label for="remark">Remark if any</label>
-                    </div>
-                </div>
-
-                </div>
                 
-            </div>
-        </div>
-    </div>
-</div>
+
+               
 
 <div id="modal1" class="modal">
     <div class="modal-content">
@@ -330,6 +328,32 @@ $("#submit").click(function(){
 </html>
 <?php
           }
+          ?>
+<div class="row">
+                    <div class="input-field col s12">
+                        <input id="remark" type="text" value="<?php echo $doc['remark'];?>">
+                        <label for="remark">Remark if any</label>
+                    </div>
+                    <b><center style="color: green;font-size: 30px">Interviewer Details</center> </b><br><br>
+                    <table class="responsive-table">
+                    <tr>
+                    <td><b style="color: green;font-size: 20px">Name :</b> <b style="color:blue darken-1;font-size: 20px"><?php echo $doc['inv_name']; ?></b></td>
+                    <td><b style="color: green;font-size: 20px">Email ID :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['interviewer']; ?></b></td>
+                    </tr>
+                    <tr>
+                    <td><b style="color: green;font-size: 20px">Department :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_dept']; ?></b></td>
+                    <td><b style="color: green;font-size: 20px">Designation :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_dsg']; ?></b></td>
+                    </tr>
+                    </table>
+                </div>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+          <?php
+          
             }
             else
             {

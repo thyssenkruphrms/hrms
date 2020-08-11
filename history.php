@@ -562,7 +562,7 @@ function xyz(x)
                 var prfdata = parseddata.prfdata
                 var str_prf = "<td><b style='color:green;'>PRF</b> : "+prfdata[0]+"</td>"+"<td><b style='color:green;'>Position</b> : "+prfdata[1]+"</td>"+"<td><b style='color:green;'>Zone</b> : "+prfdata[2]+"</td>"+"<td><b style='color:green;'>Department</b> : "+prfdata[3]+"</td>"+"<td><b style='color:green;'>No. of Positions</b> : "+prfdata[4]+"</td><td><b style='color:green;'>Round</b> : "
                 
-                var rounds_dropdown = " <select class='dropdown-trigger btn blue darken-1' id='round_selected'><option value="+prfdata[5]+">"+prfdata[5]+"</option>"
+                var rounds_dropdown = " <select class='dropdown-trigger btn blue darken-1' id='round_selected'>"
                 for(let i=prfdata[5]-1;i>=0;i--)
                 {
                   rounds_dropdown += "<option value="+i+">"+i+"</option>"
@@ -574,7 +574,8 @@ function xyz(x)
                 var element = parseddata.selected
                 for (let i = 0; i < element.length; i++) 
                 {
-                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                  var round_evaluation = $('#round_selected').val()
+                  var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                   
                   $('#tabledataselect').append(str)
                     
@@ -585,12 +586,14 @@ function xyz(x)
                 {
                   if(element[i][0][1] == "Aborted")
                   {
-                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>"+element[i][0][0]+"</a> </td><td><p>"+element[i][2]+"</p></td><td>Aborted</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i]+"' target='_blank'>View CV</a></td></tr>"
+                    var round_evaluation = $('#round_selected').val()
+                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0][0]+"</td><td><p>"+element[i][2]+"</p></td><td>Aborted</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td></tr>"
                     $('#tabledatareject').append(str)
                   }
                   else
                   {
-                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>"+element[i][0]+"</a> </td><td><p>"+element[i][2]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                    var round_evaluation = $('#round_selected').val()
+                    var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td><p>"+element[i][2]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                   
                   $('#tabledatareject').append(str)
                   }
@@ -626,12 +629,14 @@ function xyz(x)
                   {
                     if(element[i][2]==1)
                     {
-                      var str = "<tr><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td><p>"+element[i][1]+"</p></td><td><p>"+element[i][3]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td></td><td><p>Already Initiated</p></td><span></span></label></p></td></tr>"
+                      var round_evaluation = $('#round_selected').val()
+                      var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>"+element[i][1]+"</p></td><td><p>"+element[i][3]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td></td><td><p>Already Initiated</p></td><span></span></label></p></td></tr>"
                       $('#tabledatahold').append(str)
                     }
                     else
                     {
-                      var str = "<tr><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td><p>"+element[i][1]+"</p></td><td><p>"+element[i][3]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
+                      var round_evaluation = $('#round_selected').val()
+                      var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p> </td><td><p>"+element[i][1]+"</p></td><td><p>"+element[i][3]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
                       $('#tabledatahold').append(str)
                     }
                    
@@ -680,17 +685,20 @@ function xyz(x)
                             console.log(prfdata[6])
                             if('0'+prfdata[5] == prfdata[6])
                             {
-                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                              var round_evaluation = $('#round_selected').val()
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td>"+element[i][2]+"</td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                               $('#tabledataselect').append(str)
                             }
                             else if(prfdata[6] == 00)
                             {
+                              var round_evaluation = $('#round_selected').val()
                               var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td style='color:black;'> NA </td><td style='color:black;'> NA </td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td style='color:black;'> NA </td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                               $('#tabledataselect').append(str)
                             }
                             else
                             {
-                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>"+element[i][0]+"</a></td><td style='color:black;'> NA </td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                              var round_evaluation = $('#round_selected').val()
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td style='color:black;'> NA </td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/printevaluation.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/applicationblank_print.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                               $('#tabledataselect').append(str)
                             }
                               
@@ -701,12 +709,14 @@ function xyz(x)
                           {
                             if(element[i][0][1] == "Aborted")
                             {
-                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>"+element[i][0][0]+"</a> </td><td><p>"+element[i][2]+"</p></td><td>Aborted</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i]+"' target='_blank'>View CV</a></td></tr>"
+                              var round_evaluation = $('#round_selected').val()
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0][0]+"</td><td><p>"+element[i][2]+"</p></td><td>Aborted</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td></tr>"
                               $('#tabledatareject').append(str)
                             }
                             else
                             {
-                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td><a href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>"+element[i][0]+"</a> </td><td><p>"+element[i][2]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i]+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
+                              var round_evaluation = $('#round_selected').val()
+                              var str = "<tr><td><p>"+element[i][1]+"</p></td><td>"+element[i][0]+"</td><td><p>"+element[i][2]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+element[i][0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+element[i][0]+"' target='_blank'>View CV</a></td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/evaluationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Evaluation</a></td><td><a  class='waves-effect waves-light btn' href='http://localhost/hrms/pdf/applicationfinal.php?aid="+element[i][0]+"' target='_blank'>Print Application</a></td</tr>"
                             
                             $('#tabledatareject').append(str)
                             }
@@ -742,12 +752,14 @@ function xyz(x)
                             {
                               if(element[i][2]==1)
                               {
-                                var str = "<tr><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td><p>"+element[i][1]+"</p></td><td><p>"+element[i][3]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td></td><td><p>Already Initiated</p></td><span></span></label></p></td></tr>"
+                                var round_evaluation = $('#round_selected').val()
+                                var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>"+element[i][1]+"</p></td><td><p>"+element[i][3]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td></td><td><p>Already Initiated</p></td><span></span></label></p></td></tr>"
                                 $('#tabledatahold').append(str)
                               }
                               else
                               {
-                                var str = "<tr><td><a href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'><p id='"+i+"mail'>"+mailidonly[0]+"</p></a> </td><td><p>"+element[i][1]+"</p></td><td><p>"+element[i][3]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
+                                var round_evaluation = $('#round_selected').val()
+                                var str = "<tr><td><p id='"+i+"mail'>"+mailidonly[0]+"</p></td><td><p>"+element[i][1]+"</p></td><td><p>"+element[i][3]+"</p></td><td> <a class='waves-effect waves-light btn' href='http://localhost/hrms/documentcheck.php?aid="+mailidonly[0]+"&prf="+prfdata[0]+"&iid="+roundid[2]+"&rid="+round_evaluation+"' target='_blank'>Evaluation Sheet</a>&nbsp;&nbsp;</td><td><a class='waves-effect waves-light btn' href='http://localhost/hrms/viewcv.php?aid="+mailidonly[0]+"' target='_blank'>View CV</a></td><td><input id='"+i+"checkdate' class='datepicker' ></td><td><input id='"+i+"checkdate2' class='timepicker'></td><td><p><label><input type='checkbox' class='filled-in' id='"+i+"check' name='"+i+"mail' onclick='selection(this.id,this.name)' /><span></span></label></p></td></tr>"
                                 $('#tabledatahold').append(str)
                               }
                             
