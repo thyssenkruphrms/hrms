@@ -8,11 +8,11 @@ if(isset($_COOKIE['sid']))
   $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
   
   if($cursor)
-  {
+  { global $designation;
     $cursor = $db->users->findOne(array("uid" => $cursor['uid']));
     $designation = $cursor['dsg'];
     
-    if($designation == "hr" || $designation == "ceo")
+    if($designation == "ceo")
     {
 ?>
 
@@ -304,7 +304,7 @@ success:function(para){
 
   console.log(para.status)
   if(para.status=="true"){
-    console.log('inside me')
+  //  console.log('inside me')
     location.reload().delay(5000);
   }
   
@@ -351,7 +351,13 @@ $(document).ready(function(){
         {
             var btnid=""+arr[j].email+"";
             var x='<tr id="rows" style=""><td id="uid" value="'+arr[j].uid+' id="'+arr[j].name+'>'+arr[j].uid+'</b></td><td id="name">'+arr[j].name+'</td><td id="zone">'+arr[j].mail+'</td><td id="dept">'+arr[j].dept+'</td><td id="posno">'+arr[j].dsg+'</td><td id="status">'+arr[j].rg+'</td>'
-            var btns='<td><button id="'+(arr[j].email)+'"  class="btn green darken-1">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()">DELETE</button></td></tr>'
+            if((arr[j].dsg=='ceo')){
+            var btns='<td><button id="'+(arr[j].email)+'"  class="btn green darken-1">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()" disabled>DELETE</button></td></tr>'
+            }
+            else{
+              var btns='<td><button id="'+(arr[j].email)+'"  class="btn green darken-1">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()">DELETE</button></td></tr>'
+            
+            }
             //var x="hi"
         $('#rawdata').append(x+btns);
         }

@@ -13,7 +13,7 @@ if(isset($_COOKIE['sid']))
     $cursor = $db->users->findOne(array("uid" => $cursor['uid']));
     $designation = $cursor['dsg'];
     
-    if($designation == "hr" || $designation == "ceo")
+    if($designation == "ceo")
     {
 
         $users=$db->users->find();
@@ -29,8 +29,11 @@ if(isset($_COOKIE['sid']))
             $newuser["dept"]=$val->dept;
             $newuser["rg"]=$val->rg;
             $newuser["dsg"]=$val->dsg;
-            
+
+            //if($val->dsg!="ceo"){
             $userstoshow[]=$newuser;
+            //}
+            
         }
 
         echo json_encode(["status"=>"true","users"=>$userstoshow,"message"=>"Users Founds"]);
