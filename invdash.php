@@ -1071,14 +1071,26 @@ function submit_interview(cnfrm,id){
                 // para = JSON.parse(para)
                  console.log(para)
                 // console.log(para)
-                if(para=="success")
+                
+        
+                if(para=="error")
                 {
-                    $(document.getElementById(x)).remove()
-                    // alert("Success")
+                    alert("Fail")
+                }
+                else if(para=="fail")
+                {
+                    alert("Fail")
                 }
                 else
                 {
-                    alert("Fail")
+                    para = JSON.parse(para);
+                    $(document.getElementById(x)).remove()
+                    console.log("This is result - ",para)
+                    if(para[0]=="success" && para[1]=="alleval")
+                    {
+                        window.setTimeout(function(){location.reload()},1000)
+                    }
+                   
                 }
               
             }
