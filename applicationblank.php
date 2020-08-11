@@ -127,7 +127,7 @@ $_SESSION['positionapplied'] = $position;
                           <div class="card white">
                             <div class="card-content blue-text darken-1" id="form">
                       
-                         <form method="POST" id="myform"  name="applicationblank" enctype='multipart/form-data' action="./api/submitapplication.php" >
+                         <!-- <form method="POST" id="myform"  name="applicationblank" enctype='multipart/form-data' action="./api/submitapplication.php" > -->
                                  
 
                                 <!-- form starts -->
@@ -141,7 +141,7 @@ $_SESSION['positionapplied'] = $position;
                                         <b style="font-size:20px;">Candidate Photo</b><br>
                                         
                                        
-                                                        <img name="photo"  required id="image_upload_preview" src="" alt="your image" width="150" height="150"/>
+                                                        <img name="photo" id="image_upload_preview" src="" alt="your image" width="150" height="150"/>
                                        
                                 </div>
                                 <div class="row"> 
@@ -149,7 +149,7 @@ $_SESSION['positionapplied'] = $position;
                                         <div class="file-field input-field">
                                                 <div class="btn blue darken-1">
                                                         <span>Upload Photo</span>
-                                                        <input id="photo"  required  name='photo' type="file" accept=".png, .jpg, .jpeg">
+                                                        <input id="photo"  required  name='photo' type="file" accept=".png, .jpg, .jpeg" required="true">
                                                 </div>
                                                 <div class="file-path-wrapper">
                                                         <input class="file-path validate" type="text">
@@ -195,7 +195,7 @@ $_SESSION['positionapplied'] = $position;
                                               <input id="mid_name" name="mid_name" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
                                               <label for="mid_name">Middle Name</label>
                                             </div>
-                                          </div>
+                                        </div>
                                           <b class="blue-text" style="font-size:20px;">Present Address</b>
                                           <div class="row">
                                                 
@@ -280,10 +280,103 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
                                           </div>
 
-                                          <b style="font-size:20px;">Academic Professional Qualification</b>
-                                          <div class="row">
+                                          <b style="font-size:20px;">Academic Professional Qualification (Highest Qualification)</b>
+                                          <br><br>
+                                          <div class="row">                                          
+                                          
+                                             <div class="col s6">
+                                                <b style="font-size:15px;color:red">Select for Under Graduate</b>
+                                                <select class="dropdown-trigger btn blue darken-2" id="selectug">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="ITI">ITI</option>
+                                                <option value="Diploma">Diploma</option>
+                                                <option value="B.Tech/B.E">B.Tech/B.E</option>
+                                                <option value="Bsc">Bsc</option>
+                                                <option value="B.A">B.A</option>
+                                                <option value="B.COM">B.COM</option>
+                                                <option value="LLB">LLB</option>
+                                                <option value="BBA">BBA</option>
+                                                <option value="Others">Others</option>
+                                                </select>
+                                              </div>
                                                 
-                                                <div class="input-field col s6">
+
+                                           
+                                             <div class="col s6">
+                                                <b style="font-size:15px;color:red">Select Specialization for UG</b>
+                                                <select class="dropdown-trigger btn blue darken-2" id="specialug">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="Mechanical">Mechanical</option>
+                                                <option value="Civil">Civil</option>
+                                                <option value="Computer/IT">Computer/IT</option>
+                                                <option value="Electronics">Electronics</option>
+                                                <option value="Electrical">Electrical</option>
+                                                <option value="Sales/Marketing">Sales/Marketing</option>
+                                                <option value="HR">HR</option>
+                                                <option value="Finance">Finance</option>
+                                                <option value="Systems">Systems</option>
+                                                <option value="Operations">Operations</option>
+                                                <option value="Systems">Systems</option>
+                                                <option value="Others">Others</option>
+                                                </select> 
+                                              </div>
+
+                                                                                             
+                                                
+                                             <div class="col s6" style="margin-top:20px">
+                                                <b style="font-size:15px;color:red">Select for Post Graduate</b>
+                                                <select class="dropdown-trigger btn blue darken-2" id="selectpg">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="MBA">MBA</option>
+                                                <option value="ICWA">ICWA</option>
+                                                <option value="CA">CA</option>
+                                                <option value="CS">CS</option>
+                                                <option value="LLM">LLM</option>
+                                                <option value="M.TECH/M.E">M.TECH/M.E</option>
+                                                <option value="PG DIPLOMA">PG DIPLOMA</option>
+                                                <option value="Others">Others</option>
+                                                </select> 
+                                              </div> 
+
+                                              <div class="col s6" style="margin-top:20px">
+                                                <b style="font-size:15px;color:red">Select Specialization for PG</b>
+                                                <select class="dropdown-trigger btn blue darken-2" id="specialpg">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="Mechanical">Mechanical</option>
+                                                <option value="Civil">Civil</option>
+                                                <option value="Computer/IT">Computer/IT</option>
+                                                <option value="Electronics">Electronics</option>
+                                                <option value="Electrical">Electrical</option>
+                                                <option value="Others">Others</option>
+                                                </select> 
+                                              </div> 
+                                        </div>   
+
+
+                                        
+                                        <div class="file-field input-field">
+                                                <div class="btn">
+                                                        <span>Upload PG Certificate</span>
+                                                        <input id="pgcert" name="mypg" required type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text">
+                                                </div>
+                                        </div>
+
+                                          <div class="file-field input-field">
+                                                <div class="btn">
+                                                        <span>Upload UG Certificate</span>
+                                                        <input id="ugcert" name="myug" required type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text">
+                                                </div>
+                                        </div> 
+                                 
+                                                                          
+                                                
+                                                <!-- <div class="input-field col s6">
                                                         <input id="qualification" name="qualification" type="text" class="validate" required aria-required="true" onkeypress="return mytextvalid(event)">
                                                         <label for="qualification">Highest Qualification</label>
                                                       </div>
@@ -293,7 +386,7 @@ $_SESSION['positionapplied'] = $position;
                                                           <input id="passing" name="passing" type="number" class="validate" required aria-required="true">
                                                           <label for="passing">Passing Year</label>
                                                       </div>
-                                                </div>
+                                                </div> -->
                                                 <!-- <div class="row">
                                                                
                                                       <div class="col s12">
@@ -311,12 +404,7 @@ $_SESSION['positionapplied'] = $position;
                                                         </div>
                                                 </div> -->
 
-                                                      
-
-
-                                                      
-                                          
-
+                                                
                                           <b style="font-size:20px;">Professional Experience (Mention Company Name And Designation)</b>
                                           <br>
                                           <b style="font-size:20px;color:red">If you are Experienced,hit the below button...!</b>
@@ -452,7 +540,7 @@ $_SESSION['positionapplied'] = $position;
                                                                 <input class="file-path validate" type="text">
                                                         </div>
                                                 </div> -->
-                                                <br>
+                                                
                                          <!-- <div id="uploadotherdoc">
                                                         <b style="font-size:20px;">Proof Of Identity(PAN/Voter ID/Driving Licence/Passport)</b>
 
@@ -557,7 +645,7 @@ $_SESSION['positionapplied'] = $position;
                                                             <option value="Other">Other</option>
                                                           </select>
                                                           <br><br>
-                                                    </div> 
+                                                </div> 
 
 
                                             
@@ -582,7 +670,7 @@ $_SESSION['positionapplied'] = $position;
                                                             <option value="Other">Other</option>
                                                           </select>
                                                           <br><br>
-                                                    </div> 
+                                                </div> 
 
 
 
@@ -771,7 +859,7 @@ $_SESSION['positionapplied'] = $position;
 
 
 
-                        </form>
+                        <!-- </form> -->
 
                         </div>
                            
@@ -893,12 +981,199 @@ function addnewref(x)
         $("#mainref").append(txt);
 }
 
-$("#myform").submit(function(){
-        $("#submitformdata").prop('disabled',true);
-        $('#loader').show()
-        $("#pleasewait").show()
+/******************AJAX CALL STARTS************************ */
+$("#submitformdata").on("submit", function (event) 
+{
+        
+        
+        var photo=$("photo").val();
+        var mycv=$("#mycv").val();
+        var aadhar=$("#aadharno").val();
+        var lastname=$('#last_name').val();
+        var firstname=$('#first_name').val();
+        var midname=$('#middle_name').val();
+        var street=$('#street').val();
+        var locality=$('#Locality').val();
+        var city=$('#City').val();
+        var pincode=$('#Pincode').val();
+        var mynumber=$('#unumber').val();
+        var mystd=$('#stdcode').val();
+        var mypnumber=$('#pnumber').val();
+        var mymail=$('#uemail').val();
+        var dob=$('#udob').val();
+        var mypos=$('#position').val();
+        var loc=$('#location').val();
+        var passport=$('#passport').val();
+        var selectug=$("#selectug").val();
+        var specialug=$("#specialug").val();
+        var selectpg=$("#selectpg").val();
+        var specialpg=$("#specialpg").val();
+        var pgcert=$("#pgcert").val();
+        var ugcert=$("#ugcert").val();
+        var referalchoice;
+
+
+        // check_internet=$('#internet').val();
+        // check_emp=$('#empref').val();
+        // check_walkin=$('#walkin').val();
+        // check_web=$('#website').val();
+        // check_other=$('#other').val();
+        var joindate=$('#jdate').val();
+        var notice=$('#notice').val();
+        var manager=$('#manager').val();
+        var posifselect=$('#ifselectposition').val();
+        // proof_identity_addhar=$("#proof_identity_addhar").val();
+        // proof_otherthanadhar=$("#proof_otherthanadhar").val();
+        // proofaddress=$('#proof_address').val();
+        var fathername=$('#father').val();
+        var fdob=$('#fdob').val();
+        var mothername=$('#mother').val();
+        var mdob=$('#mdob').val();
+        var spousename=$('#spouse').val();
+        var spdob=$('#spdob').val();
+        var spgender=$('#sgender').val();
+        var ch1=$('#child1').val();
+        var ch1dob=$('#c1dob').val();
+        var ch1gender=$('#c2gender').val();
+        var ch2=$('#child2').val();
+        var ch2dob=$('#c2dob').val();
+        var ch2gender=$('#c2gender').val();
+        var homepresent=$('#homepresent').val();
+        var homeexpect=$('#homeexp').val();
+        var grosspresent=$('#grosspresent').val();
+        var grossexpect=$('#grossexp').val();
+        var ypresent=$('#yearpresent').val();
+        var yexpect=$('#yearexp').val();
+
+        if($('#internet').prop("checked") == true)
+        {
+                referalchoice=$('#internet').val();
+        }
+
+        if($('#empref').prop("checked") == true)
+        {
+                referalchoice=$('#empref').val();
+        }
+        if($('#walkin').prop("checked") == true)
+        {
+                referalchoice=$('#walkin').val();
+        }
+        if($('#website').prop("checked") == true)
+        {
+                referalchoice=$('#website').val();
+        }
+        if($('#other').prop("checked") == true)
+        {
+                referalchoice=$('#other').val();
+        
+        }
+        var exparr1=[];
+        var refarr1=[];
+        for(let i=0;i<=expctr;i++)
+        {
+                var str1=$("#orgname"+i).val()
+                var str2=$("#olddesignation"+i).val()
+                var str3=$("#fromdate"+i).val()
+                var str4=$("#todate"+i).val()
+                var str5=$("#managername"+i).val()
+                var str6=$("#managermail"+i).val()
+                exparr1[i] = [str1,str2,str3,str4,str5,str6];
+        }
+        
+        for(let i=0; i<=ctr2; i++)
+        {
+                var str1 = $("#nameref"+i).val()
+                var str2 = $("#designationref"+i).val()
+                var str3 = $("#cmpnmref"+i).val()
+                var str4 = $("#contref"+i).val()
+                var str5 = $("#mailref"+i).val()
+                refarr1[i]=[str1,str2,str3,str4,str5];
+        }
+
+        // $("#myform").submit(function(){
+        //         $("#submitformdata").prop('disabled',true);
+        //         $('#loader').show()
+        //         $("#pleasewait").show()
+
+        // })
+
+
+
+
+        $.ajax({
+        
+                url:'./api/submitapplication.php',
+                type:'POST',
+               
+                data:
+                {
+                "userphoto":photo,
+                "cv":mycv,
+                "aadharno":aadhar,
+                "last_name":lastname,
+                "first_name":firstname,
+                "mid_name":midname,
+                "Street":street,
+                "Locality":locality,
+                "City":city,
+                "Pincode":pincode,
+                "number":mynumber,
+                "std":mystd,
+                "phonenum":mypnumber,
+                "mail":mymail,
+                "dob":dob,
+                "position":mypos,
+                "location":loc,
+                "passport":passport,
+                "selectug":selectug,            //NEWFIELD
+                "specialug":specialug,          //NEWFIELD
+                "selectpg":selectpg,            //NEWFIELD
+                "specialpg":specialpg,          //NEWFIELD
+                // "internet":check_internet,
+                // "checkemp":check_emp,
+                // "walk":check_walkin,
+                // "web":check_web,
+                // "other":check_other,
+                "jdate":joindate,
+                "notice":notice,
+                "manger":manager,
+                "ifselectposition":posifselect,
+                "fathersname":fathername,
+                "fdob":fdob,
+                "mother":mothername,
+                "mdob":mdob,
+                "spousename":spousename,
+                "spdob":spdob,
+                "sgender":spgender,
+                "child1":ch1,
+                "ch1dob":ch1dob,
+                "ch2gender":ch1gender,
+                "child2":ch2,
+                "ch2dob":ch2dob,
+                "ch2gender":ch2gender,
+                "homepresent":homepresent,
+                "homeexpect":homeexpect,
+                "grosspresent":grosspresent,
+                "grossexpect":grossexpect,
+                "ypresent":ypresent,
+                "yexpect":yexpect,
+                "refarr1":refarr1,
+                "exparr1":exparr1,
+                "otherdetails":otherdetails,
+                },
+    
+        success:function(para)
+        {
+                $("#submitformdata").prop('disabled',true);
+                $('#loader').show()
+                $("#pleasewait").show()
+                alert("Form Submitted")
+        },
+        })
 
 })
+
+/**********************AJAX CALL ENDED************************* */
 $("#image_upload_preview").hide()
 
 $("#otherdetails").hide();
@@ -918,7 +1193,12 @@ $("#passing").change(function()
 })
 
 
+
+
+
+
 $(document).ready(function(){
+        // $('select').formSelect();
         $('#warn').hide()
         $('#warn2').hide()
         $('#warn3').hide()
@@ -1224,6 +1504,25 @@ $('#mycv').change(function(){
 })
 
 
+$('#ugcert').change(function(){ 
+        var f =$('#ugcert').val().split('.')
+        var x=f[1]
+        if(x!='pdf')
+        {         
+                alert('Invalid File \n Only PDF accepted')
+                document.getElementById("ugcert").value=null
+        }
+})
+
+$('#pgcert').change(function(){ 
+        var f =$('#pgcert').val().split('.')
+        var x=f[1]
+        if(x!='pdf')
+        {         
+                alert('Invalid File \n Only PDF accepted')
+                document.getElementById("pgcert").value=null
+        }
+})
 
 </script>
 </body>
