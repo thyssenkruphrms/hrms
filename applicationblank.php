@@ -984,86 +984,93 @@ function addnewref(x)
 /******************AJAX CALL STARTS************************ */
 $("#submitformdata").on("submit", function (event) 
 {
-        
-        
-        var photo=$("photo").val();
-        var mycv=$("#mycv").val();
-        var aadhar=$("#aadharno").val();
-        var lastname=$('#last_name').val();
-        var firstname=$('#first_name').val();
-        var midname=$('#middle_name').val();
-        var street=$('#street').val();
-        var locality=$('#Locality').val();
-        var city=$('#City').val();
-        var pincode=$('#Pincode').val();
-        var mynumber=$('#unumber').val();
-        var mystd=$('#stdcode').val();
-        var mypnumber=$('#pnumber').val();
-        var mymail=$('#uemail').val();
-        var dob=$('#udob').val();
-        var mypos=$('#position').val();
-        var loc=$('#location').val();
-        var passport=$('#passport').val();
-        var selectug=$("#selectug").val();
-        var specialug=$("#specialug").val();
-        var selectpg=$("#selectpg").val();
-        var specialpg=$("#specialpg").val();
-        var pgcert=$("#pgcert").val();
-        var ugcert=$("#ugcert").val();
+        var files = $('#photo')[0].files[0];
+        fd.append('userphoto',files);
+
+        var files = $('#mycv')[0].files[0];
+        fd.append('mycv',files);pgcert
+
+        var files = $('#pgcert')[0].files[0];
+        fd.append('pgcert',files);
+
+        var files = $('#ugcert')[0].files[0];
+        fd.append('ugcert',files);
+
+        fd.append("aadharno",$("#aadharno").val())
+        fd.append("last_name",$("#last_name").val())
+        fd.append("first_name",$("#first_name").val())
+        fd.append("mid_name",$("#middle_name").val())
+        fd.append("street",$("#street").val())
+        fd.append("Locality",$("#Locality").val())
+        fd.append("City",$("#City").val())
+        fd.append("Pincode",$("#Pincode").val())
+        fd.append("unumber",$("#unumber").val())
+        fd.append("stdcode",$("#stdcode").val())
+        fd.append("pnumber",$("#pnumber").val())
+        fd.append("uemail",$("#uemail").val())
+        fd.append("udob",$("#udob").val())
+        fd.append("position",$("#position").val())
+        fd.append("location",$("#location").val())
+        fd.append("selectug",$("#selectug").val())
+        fd.append("specialug",$("#specialug").val())
+        fd.append("selectpg",$("#selectpg").val())
+        fd.append("specialpg",$("#specialpg").val())
+        fd.append("jdate",$("#jdate").val())
+        fd.append("notice",$("#notice").val())
+        fd.append("manager",$("#manager").val())
+        fd.append("ifselectposition",$("#ifselectposition").val())
+        fd.append("father",$("#father").val())
+        fd.append("fdob",$("#fdob").val())
+        fd.append("mother",$("#mother").val())
+        fd.append("mdob",$("#mdob").val())
+        fd.append("spouse",$("#spouse").val())
+        fd.append("spdob",$("#spdob").val())
+        fd.append("sgender",$("#sgender").val())
+        fd.append("child1",$("#child1").val())
+        fd.append("c1dob",$("#c1dob").val())
+        fd.append("c1gender",$("#c2gender").val())
+        fd.append("child2",$("#child2").val())
+        fd.append("c2dob",$("#c2dob").val())
+        fd.append("c2gender",$("#c2gender").val())
+        fd.append("homepresent",$("#homepresent").val())
+        fd.append("homeexp",$("#homeexp").val())
+        fd.append("grosspresent",$("#grosspresent").val())
+        fd.append("grossexp",$("#grossexp").val())
+        fd.append("yearpresent",$("#yearpresent").val())
+        fd.append("yearexp",$("#yearexp").val())
+       
+
+      
         var referalchoice;
-
-
-        // check_internet=$('#internet').val();
-        // check_emp=$('#empref').val();
-        // check_walkin=$('#walkin').val();
-        // check_web=$('#website').val();
-        // check_other=$('#other').val();
-        var joindate=$('#jdate').val();
-        var notice=$('#notice').val();
-        var manager=$('#manager').val();
-        var posifselect=$('#ifselectposition').val();
-        // proof_identity_addhar=$("#proof_identity_addhar").val();
-        // proof_otherthanadhar=$("#proof_otherthanadhar").val();
-        // proofaddress=$('#proof_address').val();
-        var fathername=$('#father').val();
-        var fdob=$('#fdob').val();
-        var mothername=$('#mother').val();
-        var mdob=$('#mdob').val();
-        var spousename=$('#spouse').val();
-        var spdob=$('#spdob').val();
-        var spgender=$('#sgender').val();
-        var ch1=$('#child1').val();
-        var ch1dob=$('#c1dob').val();
-        var ch1gender=$('#c2gender').val();
-        var ch2=$('#child2').val();
-        var ch2dob=$('#c2dob').val();
-        var ch2gender=$('#c2gender').val();
-        var homepresent=$('#homepresent').val();
-        var homeexpect=$('#homeexp').val();
-        var grosspresent=$('#grosspresent').val();
-        var grossexpect=$('#grossexp').val();
-        var ypresent=$('#yearpresent').val();
-        var yexpect=$('#yearexp').val();
 
         if($('#internet').prop("checked") == true)
         {
-                referalchoice=$('#internet').val();
+                // referalchoice=$('#internet').val();
+                fd.append("internet",$("#internet").val())
+
         }
 
         if($('#empref').prop("checked") == true)
         {
-                referalchoice=$('#empref').val();
+                // referalchoice=$('#empref').val();
+                fd.append("empref",$("#empref").val())
+
         }
         if($('#walkin').prop("checked") == true)
         {
-                referalchoice=$('#walkin').val();
+                // referalchoice=$('#walkin').val();
+                fd.append("walkin",$("#walkin").val())
+
         }
         if($('#website').prop("checked") == true)
         {
-                referalchoice=$('#website').val();
+                fd.append("website",$("#website").val())
+                
+                // referalchoice=$('#website').val();
         }
         if($('#other').prop("checked") == true)
         {
+                fd.append("other",$("#other").val())
                 referalchoice=$('#other').val();
         
         }
@@ -1079,6 +1086,8 @@ $("#submitformdata").on("submit", function (event)
                 var str6=$("#managermail"+i).val()
                 exparr1[i] = [str1,str2,str3,str4,str5,str6];
         }
+        exparr1 = JSON.stringify(exprr1);
+        fd.append("exparr1",exparr1)
         
         for(let i=0; i<=ctr2; i++)
         {
@@ -1089,87 +1098,25 @@ $("#submitformdata").on("submit", function (event)
                 var str5 = $("#mailref"+i).val()
                 refarr1[i]=[str1,str2,str3,str4,str5];
         }
-
-        // $("#myform").submit(function(){
-        //         $("#submitformdata").prop('disabled',true);
-        //         $('#loader').show()
-        //         $("#pleasewait").show()
-
-        // })
+        exparr1 = JSON.stringify(refarr1);
+        fd.append("refarr1",refarr1)
 
 
 
 
         $.ajax({
         
-                url:'./api/submitapplication.php',
+                url:'http://localhost/hrms/api/submitapplication.php',
                 type:'POST',
-               
-                data:
+                data:fd,
+                success:function(para)
                 {
-                "userphoto":photo,
-                "cv":mycv,
-                "aadharno":aadhar,
-                "last_name":lastname,
-                "first_name":firstname,
-                "mid_name":midname,
-                "Street":street,
-                "Locality":locality,
-                "City":city,
-                "Pincode":pincode,
-                "number":mynumber,
-                "std":mystd,
-                "phonenum":mypnumber,
-                "mail":mymail,
-                "dob":dob,
-                "position":mypos,
-                "location":loc,
-                "passport":passport,
-                "selectug":selectug,            //NEWFIELD
-                "specialug":specialug,          //NEWFIELD
-                "selectpg":selectpg,            //NEWFIELD
-                "specialpg":specialpg,          //NEWFIELD
-                // "internet":check_internet,
-                // "checkemp":check_emp,
-                // "walk":check_walkin,
-                // "web":check_web,
-                // "other":check_other,
-                "jdate":joindate,
-                "notice":notice,
-                "manger":manager,
-                "ifselectposition":posifselect,
-                "fathersname":fathername,
-                "fdob":fdob,
-                "mother":mothername,
-                "mdob":mdob,
-                "spousename":spousename,
-                "spdob":spdob,
-                "sgender":spgender,
-                "child1":ch1,
-                "ch1dob":ch1dob,
-                "ch2gender":ch1gender,
-                "child2":ch2,
-                "ch2dob":ch2dob,
-                "ch2gender":ch2gender,
-                "homepresent":homepresent,
-                "homeexpect":homeexpect,
-                "grosspresent":grosspresent,
-                "grossexpect":grossexpect,
-                "ypresent":ypresent,
-                "yexpect":yexpect,
-                "refarr1":refarr1,
-                "exparr1":exparr1,
-                "otherdetails":otherdetails,
+                        $("#submitformdata").prop('disabled',true);
+                        $('#loader').show()
+                        $("#pleasewait").show()
+                        alert("Form Submitted")
                 },
-    
-        success:function(para)
-        {
-                $("#submitformdata").prop('disabled',true);
-                $('#loader').show()
-                $("#pleasewait").show()
-                alert("Form Submitted")
-        },
-        })
+                })
 
 })
 

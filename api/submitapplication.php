@@ -29,22 +29,16 @@ include 'db.php';
             $tempcv = $_FILES["mycv"]['tmp_name'];
             move_uploaded_file($tempcv,"../upload/".$folder."/".$namecv);
             $namecv = "upload/".$folder."/".$namecv;
-            $namealldocs = $_FILES['alldocs']['name'];
-            $tempalldocs = $_FILES["alldocs"]['tmp_name'];
-            move_uploaded_file($tempalldocs,"../upload/".$folder."/".$namealldocs);
-            $namealldocs =  "upload/".$folder."/".$namealldocs;
-            $nameaadhar = $_FILES['proof_identity_addhar']['name'];
-            $tempaadhar = $_FILES["proof_identity_addhar"]['tmp_name'];
-            move_uploaded_file($tempaadhar,"../upload/".$folder."/".$nameaadhar);
-            $nameaadhar = "upload/".$folder."/".$nameaadhar;
-            $nameotheraadhar = $_FILES['proof_otherthanadhar']['name'];
-            $tempotheraadhar = $_FILES["proof_otherthanadhar"]['tmp_name'];
-            move_uploaded_file($tempotheraadhar,"../upload/".$folder."/".$nameotheraadhar);
-            $nameotheraadhar =  "upload/".$folder."/".$nameotheraadhar;
-            $nameaddr = $_FILES['proof_address']['name'];
-            $tempaddr = $_FILES["proof_address"]['tmp_name'];
-            move_uploaded_file($tempaddr,"../upload/".$folder."/".$nameaddr);
-            $nameaddr =  "upload/".$folder."/".$nameaddr;
+            
+            $namepgcert = $_FILES['pgcert']['name'];
+            $temppgcert = $_FILES["pgcert"]['tmp_name'];
+            move_uploaded_file($temppgcert,"../upload/".$folder."/".$namepgcert);
+            
+            $nameugcert = $_FILES['ugcert']['name'];
+            $tempugcert = $_FILES["ugcert"]['tmp_name'];
+            move_uploaded_file($tempugcert,"../upload/".$folder."/".$nameugcert);
+ 
+
             if($result1)
             {
                 $refname = $_POST['nameref0']?$_POST['nameref0']:"NA";
@@ -83,7 +77,11 @@ include 'db.php';
                     "dob" => $_POST["udob"],
                     "position" => $_SESSION['positionapplied'],
                     "location" => $_POST["location"],
-                    "passport" => $_POST["passport"],
+                    "selectug" => $_POST["selectug"],
+                    "specialug" => $_POST["specialug"],
+                    "selectpg" => $_POST["selectpg"],
+                    "specialpg" => $_POST["specialpg"],
+
                     // "qualification" => $_POST["qualification"],
                     // "passing" => $_POST["passing"],
                     
