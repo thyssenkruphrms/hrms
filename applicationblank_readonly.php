@@ -231,8 +231,8 @@ input[type="file"]{
                                                 </div>
                                           </div>
 
-                                          <b style="font-size:20px;">Academic professional Qualification</b>
-                                          <div class="row">
+                                          <b style="font-size:20px;">Academic Professional Qualification (Highest Qualification)</b>
+                                          <!-- <div class="row">
                                                 
                                                 <div class="input-field col s6">
                                                         <input id="qualification" type="text" class="validate"  value = "<?php echo $row["qualification"]; ?>" readonly required="" aria-required="true">
@@ -251,10 +251,56 @@ input[type="file"]{
                                                 <div class="input-field col s12" >
                                                 <a class="waves-effect blue darken-1 btn" href ="<?php echo $row["alldocs"]; ?>" target="_blank" >Qualifications</a>
                                                 </div>
-                                                </div>
+                                                </div> -->
+                                                <br><br>
+                                          <div class="row">                                          
+                                          
+                                             <div class="col s6">
+                                                <b style="font-size:15px;color:red">Select for Under Graduate</b>
+                                                <select class="dropdown-trigger btn blue darken-2" id="selectug">
+                                                <option value="<?php echo $row['selectug']; ?>" disabled selected><?php echo $row['selectug']; ?></option>
+                                                </select>
+                                              </div>
+                                                
 
-                                                      
+                                           
+                                             <div class="col s6">
+                                                <b style="font-size:15px;color:red">Select Specialization for UG</b>
+                                                <select class="dropdown-trigger btn blue darken-2" id="specialug">
+                                                <option value="<?php echo $row['specialug']; ?>" disabled selected><?php echo $row['specialug']; ?></option>
+                                                </select> 
+                                              </div>
 
+                                                                                             
+                                                
+                                             <div class="col s6" style="margin-top:20px">
+                                                <b style="font-size:15px;color:red">Select for Post Graduate</b>
+                                                <select class="dropdown-trigger btn blue darken-2" id="selectpg">
+                                                <option value="<?php echo $row['selectpg']; ?>" disabled selected><?php echo $row['selectpg']; ?></option>
+                                                </select> 
+                                              </div> 
+
+                                              <div class="col s6" style="margin-top:20px">
+                                                <b style="font-size:15px;color:red">Select Specialization for PG</b>
+                                                <select class="dropdown-trigger btn blue darken-2" id="specialpg">
+                                                <option value="<?php echo $row['specialpg']; ?>" readonly><?php echo $row['specialpg']; ?></option>
+                                                </select> 
+                                              </div> 
+                                        </div>
+
+                                        <div class="row">
+                                        <div class="input-field col s12">
+                                        <a class="waves-effect blue darken-1 btn" href ="<?php echo $row["ugcert"]; ?>" target="_blank" >View UG Certificate</a>
+                                        </div>                                       
+                                        </div>
+
+                                        <div class="row">
+                                        <div class="input-field col s12">
+                                        <a class="waves-effect blue darken-1 btn" href ="<?php echo $row["pgcert"]; ?>" target="_blank" >View PG Certificate</a>
+                                        </div>                                       
+                                        </div>                                          
+
+                                        
 
                                                       
                                           
@@ -383,14 +429,14 @@ input[type="file"]{
 
 
                                           
-                                          <b style="font-size:20px;">Aadhar Card as Proof Of Identity</b>
+                                          <!-- <b style="font-size:20px;">Aadhar Card as Proof Of Identity</b>
                                           <div class="row">
-                                                <!-- <div class="input-field col s12">
+                                                <div class="input-field col s12">
                                                         <a class="btn green" id="yesforaadhar">YES</a>                                                                                                               
                                                         <a class="btn red" id="noforaadhar">NO</a>
                                                 </div> -->
                                                                                         
-                                                <div class="input-field col s12" id="showaddharupload">
+                                                <!-- <div class="input-field col s12" id="showaddharupload">
 
                                                 <a class="waves-effect blue darken-1 btn" href ="<?php echo $row['proofaadhar']; ?>" target="_blank" >Adhaar Card</a>
 
@@ -420,7 +466,7 @@ input[type="file"]{
                                                     <a class="waves-effect blue darken-1 btn" href ="<?php echo $row['proofaddr']; ?>" target="_blank" >Proof Of Address</a>
 
                                                 </div>
-                                          </div>
+                                          </div> -->
 
                                           <br><br>
 
