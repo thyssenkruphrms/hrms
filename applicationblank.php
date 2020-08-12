@@ -127,7 +127,7 @@ $_SESSION['positionapplied'] = $position;
                           <div class="card white">
                             <div class="card-content blue-text darken-1" id="form">
                       
-                         <!-- <form method="POST" id="myform"  name="applicationblank" enctype='multipart/form-data' action="./api/submitapplication.php" > -->
+                          <form method="POST" id="myform"  name="applicationblank" enctype='multipart/form-data'  > 
                                  
 
                                 <!-- form starts -->
@@ -200,7 +200,7 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
                                                 
                                             <div class="input-field col s4">
-                                              <input   id="street" name="street" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onchange="validtext(this.id)" >
+                                              <input   id="street" name="street" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onchange="return mytextvalid(event)" >
                                               <label for="street">Street</label>
                                             </div>
 
@@ -835,10 +835,8 @@ $_SESSION['positionapplied'] = $position;
                                             
                                 <div class="row">
                                         <div class=" col s6 offset-s3 center" id="submitform">
+                                             <input type="button" class="btn blue darken-1" value="Upload" id="submitformdata"> </input>
                                         
-                                              <button class="btn blue darken-2" type="submit" id="submitformdata" name="action" value="Submit">Submit
-                                                <i class="material-icons right">send</i>
-                                              </button>
                                               <br>
                                               <b style="color:green" id="pleasewait">Submitting Your Form .. Please Wait</b>
                                              
@@ -982,8 +980,9 @@ function addnewref(x)
 }
 
 /******************AJAX CALL STARTS************************ */
-$("#submitformdata").on("submit", function (event) 
+$("#submitformdata").click(function () 
 {
+        var fd = new FormData();
         var files = $('#photo')[0].files[0];
         fd.append('userphoto',files);
 
@@ -999,7 +998,8 @@ $("#submitformdata").on("submit", function (event)
         fd.append("aadharno",$("#aadharno").val())
         fd.append("last_name",$("#last_name").val())
         fd.append("first_name",$("#first_name").val())
-        fd.append("mid_name",$("#middle_name").val())
+        fd.append("mid_name",$("#mid_name").val())
+        fd.append("State",$("#State").val())
         fd.append("street",$("#street").val())
         fd.append("Locality",$("#Locality").val())
         fd.append("City",$("#City").val())
@@ -1086,7 +1086,7 @@ $("#submitformdata").on("submit", function (event)
                 var str6=$("#managermail"+i).val()
                 exparr1[i] = [str1,str2,str3,str4,str5,str6];
         }
-        exparr1 = JSON.stringify(exprr1);
+        exparr1 = JSON.stringify(exparr1);
         fd.append("exparr1",exparr1)
         
         for(let i=0; i<=ctr2; i++)
@@ -1109,6 +1109,8 @@ $("#submitformdata").on("submit", function (event)
                 url:'http://localhost/hrms/api/submitapplication.php',
                 type:'POST',
                 data:fd,
+                contentType: false,
+                processData: false,
                 success:function(para)
                 {
                         $("#submitformdata").prop('disabled',true);

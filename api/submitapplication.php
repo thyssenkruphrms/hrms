@@ -60,6 +60,8 @@ include 'db.php';
                 $values = array(
                     "userphoto" => $namephoto,
                     "usercv" => $namecv,
+                    "ugcert" => $nameugcert,
+                    "pgcert" => $namepgcert,
                     "aadharno" => $_POST["aadharno"],
                     "first_name"=> $_POST['first_name'],
                     "mid_name"=>$_POST['mid_name'],
