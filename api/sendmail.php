@@ -213,7 +213,7 @@ if($cursor)
                     $countprf=$db->generalized->findOne(array("prf"=>$_POST['prf']));
                     $count=0;
                     foreach($countprf as $key){
-                        $count=($countprf->totalinstance)+1;
+                        $count=($countprf['totalinstance'])+1;
                     }
    
                        $newData=array('$set' => array("status" => "initiated","init_time"=>$today,"totalinstance"=>$count));
@@ -378,7 +378,8 @@ if($cursor)
                     $countprf=$db->generalized->findOne(array("prf"=>$_POST['prf']));
                    $count=0;
                     foreach($countprf as $key){
-                        $count=($countprf->totalinstance)+1;
+                        
+                        $count=($countprf['totalinstance'])+1;
                     }
 
                     $newData=array('$set' => array("status" => "initiated","init_time"=>$today,"totalinstance"=>$count));
@@ -622,7 +623,7 @@ if($cursor)
                     $countprf=$db->generalized->findOne(array("prf"=>$_POST['prf']));
                    $count=0;
                     foreach($countprf as $key){
-                        $count=($countprf->totalinstance)+1;
+                        $count=($countprf['totalinstance'])+1;
                     }
 
                     $newData=array('$set' => array("status" => "initiated","init_time"=>$today,"totalinstance"=>$count));

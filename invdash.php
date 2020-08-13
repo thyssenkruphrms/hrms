@@ -869,7 +869,9 @@ function submit_interview(cnfrm,id){
                         {
                             // var txt3 = '<td><button disabled class="btn waves-effect green"  id="'+temparr[0]+'" onclick="displayMail(this.id)">Complete Interview<i class="material-icons right">send</i></td>'                       
                             var txt3 = '<td><button class="btn waves-effect blue darken-1" id="'+temparr[0]+'" onclick="subint(this.id)">Complete Interview</button></td>'
-                            $('#'+temparr[0]+'*2').prop('disabled',true)
+                            
+                            seeid = '#'+temparr[0]+'*2'
+                            $(seeid).prop('disabled', true);
                         }
                         
                     
