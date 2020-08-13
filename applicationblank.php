@@ -352,11 +352,19 @@ $_SESSION['positionapplied'] = $position;
                                               </div> 
                                         </div>   
 
-
+                                        <div class="file-field input-field">
+                                                <div class="btn">
+                                                        <span>Upload Under Graduate Certificate</span>
+                                                        <input id="ugcert" name="myug" required type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text">
+                                                </div>
+                                        </div> 
                                         
                                         <div class="file-field input-field">
                                                 <div class="btn">
-                                                        <span>Upload PG Certificate</span>
+                                                        <span>Upload Post Graduate Certificate</span>
                                                         <input id="pgcert" name="mypg" required type="file" accept=".png, .jpg, .jpeg, .pdf">
                                                 </div>
                                                 <div class="file-path-wrapper">
@@ -364,15 +372,7 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
                                         </div>
 
-                                          <div class="file-field input-field">
-                                                <div class="btn">
-                                                        <span>Upload UG Certificate</span>
-                                                        <input id="ugcert" name="myug" required type="file" accept=".png, .jpg, .jpeg, .pdf">
-                                                </div>
-                                                <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text">
-                                                </div>
-                                        </div> 
+                                          
                                  
                                                                           
                                                 
@@ -984,7 +984,7 @@ $("#submitformdata").click(function ()
 {
         var fd = new FormData();
         var files = $('#photo')[0].files[0];
-        fd.append('userphoto',files);
+        fd.append('photo',files);
 
         var files = $('#mycv')[0].files[0];
         fd.append('mycv',files);pgcert
@@ -1011,6 +1011,8 @@ $("#submitformdata").click(function ()
         fd.append("udob",$("#udob").val())
         fd.append("position",$("#position").val())
         fd.append("location",$("#location").val())
+        fd.append("passport",$("#passport").val())
+
         fd.append("selectug",$("#selectug").val())
         fd.append("specialug",$("#specialug").val())
         fd.append("selectpg",$("#selectpg").val())
@@ -1072,36 +1074,40 @@ $("#submitformdata").click(function ()
         {
                 fd.append("other",$("#other").val())
                 referalchoice=$('#other').val();
+                fd.append("otherdetails",$("#otherdetails").val())
+
         
         }
-        var exparr1=[];
-        var refarr1=[];
-        for(let i=0;i<=expctr;i++)
-        {
-                var str1=$("#orgname"+i).val()
-                var str2=$("#olddesignation"+i).val()
-                var str3=$("#fromdate"+i).val()
-                var str4=$("#todate"+i).val()
-                var str5=$("#managername"+i).val()
-                var str6=$("#managermail"+i).val()
-                exparr1[i] = [str1,str2,str3,str4,str5,str6];
-        }
-        exparr1 = JSON.stringify(exparr1);
-        fd.append("exparr1",exparr1)
+        var orgname=$('input[name="orgname0[]"]').map(function(){return this.value; }).get();
+        var olddesignation=$('input[name="olddesignation0[]"]').map(function(){return this.value; }).get();
+        var fromdate=$('input[name="fromdate0[]"]').map(function(){return this.value; }).get();
+        var todate=$('input[name="todate0[]"]').map(function(){return this.value; }).get();
+        var managername=$('input[name="managername0[]"]').map(function(){return this.value; }).get();
+        var managermail=$('input[name="managermail0[]"]').map(function(){return this.value; }).get();
         
-        for(let i=0; i<=ctr2; i++)
-        {
-                var str1 = $("#nameref"+i).val()
-                var str2 = $("#designationref"+i).val()
-                var str3 = $("#cmpnmref"+i).val()
-                var str4 = $("#contref"+i).val()
-                var str5 = $("#mailref"+i).val()
-                refarr1[i]=[str1,str2,str3,str4,str5];
-        }
-        exparr1 = JSON.stringify(refarr1);
-        fd.append("refarr1",refarr1)
+        fd.append("orgname0",orgname)
+        fd.append("olddesignation0",olddesignation)
+        fd.append("fromdate0",fromdate)
+        fd.append("todate0",todate)
+        fd.append("managername0",managername)
+        fd.append("managermail0",managermail)
+
+        
+        var nameref = $('input[name="nameref0[]"]').map(function(){return this.value; }).get();
+        var designationref = $('input[name="designationref0[]"]').map(function(){return this.value; }).get();
+        var cmpnmref = $('input[name="cmpnmref0[]"]').map(function(){return this.value; }).get();
+        var contref = $('input[name="contref0[]"]').map(function(){return this.value; }).get();
+        var mailref = $('input[name="mailref0[]"]').map(function(){return this.value; }).get();
+        
+        fd.append("refarr0",nameref)
+        fd.append("designationref0",designationref)
+        fd.append("cmpnmref0",cmpnmref)
+        fd.append("contref0",contref)
+        fd.append("mailref0",mailref)
 
 
+
+        $('#loader').show()
 
 
         $.ajax({
@@ -1114,9 +1120,10 @@ $("#submitformdata").click(function ()
                 success:function(para)
                 {
                         $("#submitformdata").prop('disabled',true);
-                        $('#loader').show()
+                        $('#loader').hide()
                         $("#pleasewait").show()
-                        alert("Form Submitted")
+                    window.setTimeout(function(){location.reload()},1000)
+                        
                 },
                 })
 
