@@ -41,20 +41,21 @@ include 'db.php';
 
             if($result1)
             {
-                $refname = $_POST['nameref0']?$_POST['nameref0']:"NA";
-                $refdsg = $_POST['designationref0']?$_POST['designationref0']:"NA";
-                $refcn = $_POST['cmpnmref0']?$_POST['cmpnmref0']:"NA";
-                $refcontact = $_POST['contref0']?$_POST['contref0']:"NA";
-                $refmail = $_POST['mailref0']?$_POST['mailref0']:"NA";
-                $refstd = $_POST['stdcoderef0']?$_POST['stdcoderef0']:"NA";
-                $refphone = $_POST['phoneref0']?$_POST['phoneref0']:"NA";
+                $refname = $_POST['nameref0']?json_decode($_POST['nameref0']):"NA";
+                $refdsg = $_POST['designationref0']?json_decode($_POST['designationref0']):"NA";
+                $refcn = $_POST['cmpnmref0']?json_decode($_POST['cmpnmref0']):"NA";
+                $refcontact = $_POST['contref0']?json_decode($_POST['contref0']):"NA";
+                $refmail = $_POST['mailref0']?json_decode($_POST['mailref0']):"NA";
+                $refstd = $_POST['stdcoderef0']?json_decode($_POST['stdcoderef0']):"NA";
+                $refphone = $_POST['phoneref0']?json_decode($_POST['phoneref0']):"NA";
 
-                $orgname = $_POST['orgname0']?$_POST['orgname0']:"NA";
-                $olddesignation0 = $_POST['olddesignation0']?$_POST['olddesignation0']:"NA";
-                $fromdate = $_POST['fromdate0']?$_POST['fromdate0']:"NA";
-                $todate = $_POST['todate0']?$_POST['todate0']:"NA";
-                $managername = $_POST['managername0']?$_POST['managername0']:"NA";
-                $managermail = $_POST['managermail0']?$_POST['managermail0']:"NA";
+                
+                $orgname = $_POST['orgname0']?json_decode($_POST['orgname0']):"NA";
+                $olddesignation0 = $_POST['olddesignation0']?json_decode($_POST['olddesignation0']):"NA";
+                $fromdate = $_POST['fromdate0']?json_decode($_POST['fromdate0']):"NA";
+                $todate = $_POST['todate0']?json_decode($_POST['todate0']):"NA";
+                $managername = $_POST['managername0']?json_decode($_POST['managername0']):"NA";
+                $managermail = $_POST['managermail0']?json_decode($_POST['managermail0']):"NA";
 
 
                 $values = array(

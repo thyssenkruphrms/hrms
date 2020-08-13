@@ -422,8 +422,7 @@ $_SESSION['positionapplied'] = $position;
                                                                 <input id="orgname0" name="orgname0[]" type="text" class="validate"  onkeyup="this.value=this.value.toUpperCase();" aria-required="true">
                                                                 <label for="orgname0" style="font-size: 11px">Current Organization Name</label>
                                                         </div>
-                                  
-                                                                              
+                                                                             
                                                         <div class="input-field col s6">
                                                                 <input id="olddesignation0" name="olddesignation0[]" type="text"class="validate" onkeyup="this.value=this.value.toUpperCase();" aria-required="true" onkeypress="return mytextvalid(event)">
                                                                 <label for="olddesignation0" style="font-size: 11px">Designation</label>
@@ -857,7 +856,7 @@ $_SESSION['positionapplied'] = $position;
 
 
 
-                        <!-- </form> -->
+                        </form>
 
                         </div>
                            
@@ -882,6 +881,19 @@ var ctr2=0
 
 var cdate=new Date();
 var cyear=cdate.getFullYear();
+
+nameref0 = []
+designationref0 = []
+cmpnmref0 = []
+contref0 = []
+mailref0 = []
+
+orgname0=[]
+olddesignation0=[]
+fromdate0 = []
+todate0=[]
+managername0=[]
+managermail0=[]
 
 function checkcont(x)
 {
@@ -950,7 +962,7 @@ function addnewexp(x)
         expctr = expctr+1
         //var str = 'myexpdiv'+ctr
 
-
+                                                       
         var exptxt='<div class="col s12" id="myexpdiv"><div class="input-field col s6"><input name="orgname0[]" id="orgname'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true" ><label for="orgname'+expctr+'" style="font-size: 11px">Current Organization Name</label></div><div class="input-field col s6"><input name="olddesignation0[]" id="olddesignation'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="olddesignation'+expctr+'" style="font-size: 11px">Designation</label></div><div class="input-field col s6"><input name="fromdate0[]" id="fromdate'+expctr+'" type="text" class="datepicker" ><label for="fromdate'+expctr+'" style="font-size: 11px;">From</label></div><div class="input-field col s6"><input name="todate0[]" id="todate'+expctr+'" type="text" class="datepicker"><label for="todate'+expctr+'" style="font-size: 11px;">To</label></div><div class="input-field col s6"><input name="managername0[]" id="managername'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="managername'+expctr+'" style="font-size: 11px">Reporting Manager Name</label></div><div class="input-field col s6"><input name="managermail0[]" id="managermail'+expctr+'" type="email" class="validate" aria-required="true"><label for="managermail'+expctr+'" style="font-size: 11px">Enter Manager Email</label></div><div class="row" id="addnextexp"><a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a><a class="btn-floating btn" style="float:right" onclick="removenewexp(this.id)" id="rembtn"><i class="material-icons">remove</i></a></div></div>'
         $("#mainexpdiv").append(exptxt);
         $('.datepicker').datepicker({
@@ -1078,32 +1090,58 @@ $("#submitformdata").click(function ()
 
         
         }
-        var orgname=$('input[name="orgname0[]"]').map(function(){return this.value; }).get();
-        var olddesignation=$('input[name="olddesignation0[]"]').map(function(){return this.value; }).get();
-        var fromdate=$('input[name="fromdate0[]"]').map(function(){return this.value; }).get();
-        var todate=$('input[name="todate0[]"]').map(function(){return this.value; }).get();
-        var managername=$('input[name="managername0[]"]').map(function(){return this.value; }).get();
-        var managermail=$('input[name="managermail0[]"]').map(function(){return this.value; }).get();
-        
-        fd.append("orgname0",orgname)
-        fd.append("olddesignation0",olddesignation)
-        fd.append("fromdate0",fromdate)
-        fd.append("todate0",todate)
-        fd.append("managername0",managername)
-        fd.append("managermail0",managermail)
+        // orgname0olddesignation0fromdate0todate0managername0managermail0
+                   
+            $('input[name^="orgname0"]').each(function() {
+                orgname0.push($(this).val());
+                alert($(this).val())
+            });
+            $('input[name^="olddesignation0"]').each(function() {
+                olddesignation0.push($(this).val());
+            });
+            $('input[name^="fromdate0"]').each(function() {
+                fromdate0.push($(this).val());
+            });
+            $('input[name^="todate0"]').each(function() {
+                todate0.push($(this).val());
+            });
+            $('input[name^="managername0"]').each(function() {
+                managername0.push($(this).val());
+            });
+             $('input[name^="managermail0"]').each(function() {
+                managermail0.push($(this).val());
+            });
+        fd.append("orgname0",JSON.stringify(orgname0))
+        fd.append("olddesignation0",JSON.stringify(olddesignation0))
+        fd.append("fromdate0",JSON.stringify(fromdate0))
+        fd.append("todate0",JSON.stringify(todate0))
+        fd.append("managername0",JSON.stringify(managername0))
+        fd.append("managermail0",JSON.stringify(managermail0))
 
+     
+       
+            $('input[name^="nameref0"]').each(function() {
+                nameref0.push($(this).val());
+            });
+            $('input[name^="designationref0"]').each(function() {
+                designationref0.push($(this).val());
+            });
+            $('input[name^="cmpnmref0"]').each(function() {
+                cmpnmref0.push($(this).val());
+            });
+            $('input[name^="contref0"]').each(function() {
+                contref0.push($(this).val());
+            });
+            $('input[name^="mailref0"]').each(function() {
+                mailref0.push($(this).val());
+            });
         
-        var nameref = $('input[name="nameref0[]"]').map(function(){return this.value; }).get();
-        var designationref = $('input[name="designationref0[]"]').map(function(){return this.value; }).get();
-        var cmpnmref = $('input[name="cmpnmref0[]"]').map(function(){return this.value; }).get();
-        var contref = $('input[name="contref0[]"]').map(function(){return this.value; }).get();
-        var mailref = $('input[name="mailref0[]"]').map(function(){return this.value; }).get();
-        
-        fd.append("refarr0",nameref)
-        fd.append("designationref0",designationref)
-        fd.append("cmpnmref0",cmpnmref)
-        fd.append("contref0",contref)
-        fd.append("mailref0",mailref)
+               
+        fd.append("nameref0",JSON.stringify(nameref0))
+        fd.append("designationref0",JSON.stringify(designationref0))
+        fd.append("cmpnmref0",JSON.stringify(cmpnmref0))
+        fd.append("contref0",JSON.stringify(contref0))
+        fd.append("mailref0",JSON.stringify(mailref0))
 
 
 
@@ -1122,7 +1160,7 @@ $("#submitformdata").click(function ()
                         $("#submitformdata").prop('disabled',true);
                         $('#loader').hide()
                         $("#pleasewait").show()
-                    window.setTimeout(function(){location.reload()},1000)
+                        window.setTimeout(function(){location.reload()},1000)
                         
                 },
                 })
