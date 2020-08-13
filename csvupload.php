@@ -214,39 +214,49 @@ $(document).ready(function(){
 
 //Form Submit
   $("#but_upload").click(function(){
-    $("#loader").show();
+  
 
   console.log("This is form submit")
-  var fd = new FormData();
-        var files = $('#uploadcsv')[0].files[0];
-        fd.append('uploadcsv',files);
-        console.log("This is  - ",fd)
-        $.ajax({
-            url: 'importExcel.php',
-            type: 'post',
-            data: fd,
-            contentType: false,
-            processData: false,
-            success: function(response){
-              console.log("Response",response)
-                if(response != "error"){
-                  $("#loader").hide();
-                  $('#forms').hide()
-                    s1 = '<div class="row">'
-                    s2 = '<div class="col s12 m6 offset-m3">'
-                    s3 = '<div class="card white">'
-                    s4 = ' <div class="card-content blue-text">'
-                    s5 = '<span class="card-title">Upload Dump Status :'+response+'Entries added </span>'
-                    s7 = '</div></div></div></div>'
-                    s8 = s1+s2+s3+s4+s4+s5+s7;
-                    $('.success').append(s8)
-                    window.setTimeout(function(){location.reload()},1000)
-                }
-                else if(response == "error"){
-                    alert('file not uploaded');
-                }
-            },
-        });
+
+
+        if( document.getElementById("uploadcsv").files.length == 0 ){
+          alert("Please select a file");
+        }
+        else
+        {
+              $("#loader").show();
+              var fd = new FormData();
+              var files = $('#uploadcsv')[0].files[0];
+              fd.append('uploadcsv',files);
+              console.log("This is  - ",fd)
+              $.ajax({
+                  url: 'importExcel.php',
+                  type: 'post',
+                  data: fd,
+                  contentType: false,
+                  processData: false,
+                  success: function(response){
+                    console.log("Response",response)
+                      if(response != "error"){
+                        $("#loader").hide();
+                        $('#forms').hide()
+                          s1 = '<div class="row">'
+                          s2 = '<div class="col s12 m6 offset-m3">'
+                          s3 = '<div class="card white">'
+                          s4 = ' <div class="card-content blue-text">'
+                          s5 = '<span class="card-title">Upload Dump Status :'+response+'Entries added </span>'
+                          s7 = '</div></div></div></div>'
+                          s8 = s1+s2+s3+s4+s4+s5+s7;
+                          $('.success').append(s8)
+                          window.setTimeout(function(){location.reload()},1000)
+                      }
+                      else if(response == "error"){
+                          alert('file not uploaded');
+                      }
+                  },
+              });
+        }
+        
 })
   
 
