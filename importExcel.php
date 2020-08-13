@@ -98,7 +98,7 @@ if(isset($_FILES))
            
                     $today = date("Y-m-d H-i-s");
 
-                    $db->generalized->insertOne(array("prf"=>$csv[$i][0],"uid"=>$uid,"init_time"=>"NA","comp_time"=>"NA","assign_time"=>"NA","accepted_time"=>"NA","creation_time"=>$today,"status"=>"avail","totalinstances"=>0));
+                    $db->generalized->insertOne(array("prf"=>$csv[$i][0],"uid"=>$uid,"init_time"=>"NA","comp_time"=>"NA","assign_time"=>"NA","accepted_time"=>"NA","creation_time"=>$today,"status"=>"avail","totalinstance"=>0));
       
             
         

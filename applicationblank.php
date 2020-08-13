@@ -45,20 +45,16 @@ session_start();
   text-transform: uppercase;
 }  */
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0; 
 }
 
 input[type=number] {
     -moz-appearance:textfield;
 }
+
 @media screen and (max-width: 360px){
     #std,#stdref
     {
@@ -85,11 +81,11 @@ $_SESSION['positionapplied'] = $position;
 
 
 
-              <nav>
+                <nav>
                     <div class="nav-wrapper blue darken-1">
                       <a href="#!" class="brand-logo center">thyssenkrupp Elevators</a>
                      </div>
-                  </nav>
+                </nav>
                   <br><br>
 
                 <!-- warnings starts here -->
@@ -184,7 +180,7 @@ $_SESSION['positionapplied'] = $position;
                                         <b style="font-size:20px;margin-left:2%;">Aadhaar Card Number</b><br>
 
                                                 <div class="input-field col s6">
-                                                        <input id="aadharno" name="aadharno" type="number" class="validate" required aria-required="true">
+                                                        <input id="aadharno" name="aadharno" type="number" class="validate" required aria-required="true" >
                                                         <label for="aadharno">Aadhaar Card Number</label>
                                                 </div> 
                                           </div>                                           
@@ -294,7 +290,7 @@ $_SESSION['positionapplied'] = $position;
                                           
                                              <div class="col s6">
                                                 <b style="font-size:15px;color:red">Select for Under Graduate</b>
-                                                <select class="dropdown-trigger btn blue darken-2" id="selectug">
+                                                <select class="dropdown-trigger btn blue darken-1" id="selectug">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <option value="ITI">ITI</option>
                                                 <option value="Diploma">Diploma</option>
@@ -312,7 +308,7 @@ $_SESSION['positionapplied'] = $position;
                                            
                                              <div class="col s6">
                                                 <b style="font-size:15px;color:red">Select Specialization for UG</b>
-                                                <select class="dropdown-trigger btn blue darken-2" id="specialug">
+                                                <select class="dropdown-trigger btn blue darken-1" id="specialug">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <option value="Mechanical">Mechanical</option>
                                                 <option value="Civil">Civil</option>
@@ -333,7 +329,7 @@ $_SESSION['positionapplied'] = $position;
                                                 
                                              <div class="col s6" style="margin-top:20px">
                                                 <b style="font-size:15px;color:red">Select for Post Graduate</b>
-                                                <select class="dropdown-trigger btn blue darken-2" id="selectpg">
+                                                <select class="dropdown-trigger btn blue darken-1" id="selectpg">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <option value="MBA">MBA</option>
                                                 <option value="ICWA">ICWA</option>
@@ -348,7 +344,7 @@ $_SESSION['positionapplied'] = $position;
 
                                               <div class="col s6" style="margin-top:20px">
                                                 <b style="font-size:15px;color:red">Select Specialization for PG</b>
-                                                <select class="dropdown-trigger btn blue darken-2" id="specialpg">
+                                                <select class="dropdown-trigger btn blue darken-1" id="specialpg">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <option value="Mechanical">Mechanical</option>
                                                 <option value="Civil">Civil</option>
@@ -361,7 +357,7 @@ $_SESSION['positionapplied'] = $position;
                                         </div>   
 
                                         <div class="file-field input-field">
-                                                <div class="btn">
+                                                <div class="btn blue darken-1">
                                                         <span>Upload Under Graduate Certificate</span>
                                                         <input id="ugcert" name="myug" required type="file" accept=".png, .jpg, .jpeg, .pdf">
                                                 </div>
@@ -371,7 +367,7 @@ $_SESSION['positionapplied'] = $position;
                                         </div> 
                                         
                                         <div class="file-field input-field">
-                                                <div class="btn">
+                                                <div class="btn blue darken-1">
                                                         <span>Upload Post Graduate Certificate</span>
                                                         <input id="pgcert" name="mypg" required type="file" accept=".png, .jpg, .jpeg, .pdf">
                                                 </div>
@@ -513,7 +509,7 @@ $_SESSION['positionapplied'] = $position;
                                                 
                                                 <div class="input-field col s6">
                                                     <input id="notice" name="notice" type="number" required onchange="checknotice(this.id)">
-                                                    <label for="notice" style="font-size: 11px">Notice Period In Current Oraganization</label>
+                                                    <label for="notice" style="font-size: 11px">Notice Period In Current Oraganization (IN DAYS)</label>
                                                 </div>
 
                                                 
@@ -748,7 +744,8 @@ $_SESSION['positionapplied'] = $position;
                                           </b>
 
                                           <div class="row" id="mainref">
-                                                  <div id="ref" class="col">
+                                          <div id="ref" class="col">
+                                          
 
                                                 <div class="input-field col s6">
                                                         <input id="refname" type="text" disabled value="Name" style="color: black">
@@ -757,7 +754,7 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="nameref0" name="nameref0[]" class="validate" type="text" onkeypress="return mytextvalid(event)">
+                                                        <input id="nameref0" name="nameref0[]" required class="validate" type="text" onkeypress="return mytextvalid(event)">
                                                         <label for="nameref0">Reference</label>
                                                 </div>
                                                 
@@ -771,7 +768,7 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="designationref0" name="designationref0[]" class="validate" type="text" onkeypress="return mytextvalid(event)">
+                                                        <input id="designationref0" name="designationref0[]" required class="validate" type="text" onkeypress="return mytextvalid(event)">
                                                         <label for="designationref0">Reference</label>
                                                 </div>
                                                 
@@ -784,16 +781,12 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="cmpnmref0" name="cmpnmref0[]" class="validate" type="text" onkeypress="return mytextvalid(event)">
+                                                        <input id="cmpnmref0" name="cmpnmref0[]" required class="validate" type="text" onkeypress="return mytextvalid(event)">
                                                         <label for="cmpnmref0">Reference </label>
                                                 </div>
-                                                
-                                               
 
-
-                                                
                                                 <div class="input-field col s6">
-                                                        <input id="cnoref" type="text" disabled value="Contact Number" style="color: black">
+                                                        <input id="cnoref" type="text" disabled value="Contact Number" style="color: black" >
        
                                                 </div>
     
@@ -809,11 +802,11 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
     
                                                 <div class="input-field col s3">
-                                                        <input id="stdcoderef0" name="stdcoderef0[]" class="validate" type="number"/>
+                                                        <input id="stdcoderef0" name="stdcoderef0[]" class="validate" type="number" required class="validate"/>
                                                         <label for="stdcoderef0" id="stdref" >STD Code</label>
                                                 </div>
                                                 <div class="input-field col s3">
-                                                        <input id="phoneref0" name="phoneref0[]" class="validate" type="number"/>
+                                                        <input id="phoneref0" name="phoneref0[]" class="validate" type="number" required/>
                                                         <label for="phoneref0" id="teleref">Phone Number</label>
                                                 </div>
                                                 
@@ -829,10 +822,11 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
 
                                                 <div class="col s6" id="addnextref">
-                                                        <a class="btn-floating btn" onclick="addnewref(this)"><i class="material-icons">add</i></a>
+                                                        <a class="btn-floating btn" onclick="addnewref(this)" id="refaddbtn"><i class="material-icons">add</i></a>
                                                 </div>
                                         </div>
                                         </div>
+                                        
 
                                               
         
@@ -880,6 +874,8 @@ $_SESSION['token'] = $_GET['token'];
 ?>
                         
 <script>
+
+
 
 $("#pleasewait").hide()
 
@@ -993,10 +989,35 @@ function removenewexp(x)
 
 function addnewref(x)
 {
-
+        
         ctr2 = ctr2+1
+        
         var txt='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email"><label for="mailref'+ctr2+'">Reference</label></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)"><i class="material-icons">add</i></a></div></div>'
-        $("#mainref").append(txt);
+        if(ctr2==1)
+        {
+                $("#mainref").append(txt);
+        }
+        
+        if(ctr2==2)
+        {
+          var addclosebtn='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email"><label for="mailref'+ctr2+'">Reference</label></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)"><i class="material-icons">add</i></a><a class="btn-floating btn" id="refrembtn" style="float:right" onclick="removelastref(this.id)"><i class="material-icons">close</i></a></div></div>'      
+          $("#mainref").append(addclosebtn);
+          
+        }
+        if(ctr2==3)
+        {
+                alert("Maximum Three Reference can be added")
+        }
+        
+        
+        
+}
+
+function removelastref(x)
+{
+        var id="#"+x;
+        $(id).closest("#ref").remove();
+        
 }
 
 /******************AJAX CALL STARTS************************ */
@@ -1294,15 +1315,15 @@ $(document).ready(function(){
 
 
 
-$("#yesforaadhar").click(function(){
-        $("#uploadotherdoc").fadeOut("slow");
-        $("#showaddharupload").fadeIn("slow");
-})
+// $("#yesforaadhar").click(function(){
+//         $("#uploadotherdoc").fadeOut("slow");
+//         $("#showaddharupload").fadeIn("slow");
+// })
 
-$("#noforaadhar").click(function(){
-        $("#showaddharupload").fadeOut("slow");
-        $("#uploadotherdoc").fadeIn("slow");
-})
+// $("#noforaadhar").click(function(){
+//         $("#showaddharupload").fadeOut("slow");
+//         $("#uploadotherdoc").fadeIn("slow");
+// })
 
 
 
