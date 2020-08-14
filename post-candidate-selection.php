@@ -119,8 +119,9 @@ input::-webkit-inner-spin-button {
                     
                     <div class="row">
                             <div class="input-field col s6">
-                                    <input id="uan" name="uan" type="text" class="validate" maxlength="12" required="" aria-required="true" onkeypress="return validuan(event)" onchange=this.value.toLocaleUpperCase();>
+                                    <input id="uan" name="uan" type="text" class="validate" maxlength="12" required="" aria-required="true" onkeypress="return validuan(event)" onchange="uanlength(this.id);">
                                     <label for="uan">UAN</label>
+                                    <b id="checkuan"></b>
                                   </div>            
                     </div>
 
@@ -252,15 +253,36 @@ $("#myform").submit(function(){
 
 function validuan(e)
 {
-        //Written by Tanmay
-        var charCode = event.keyCode;  
-        //Gets ASCII code of character
+        
+        var charCode = e.which; 
         if ((charCode >= 48 && charCode <=57))
+        {
                 return true;
+        }
         else
-                return false;                        
+        {
+                return false;
+        } 
+      
 }
+function uanlength(x) 
+{
+        var id="#"+x;
+        var myuan=$(id).val();
 
+        if(myuan.length!=12)
+        {
+                $("#checkuan").css("color","red")
+                $("#checkuan").html("Invalid UAN...!")
+                $("#uan").val(" ");
+        }
+        else
+        {
+                $("#checkuan").css("color","green")
+                $("#checkuan").text("Valid UAN...!")
+        }
+           
+}
 
 function mytextvalid(e)
 {
