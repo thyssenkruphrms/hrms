@@ -33,6 +33,28 @@ include "db.php";
             $tempcancelcheck = $_FILES["cancelcheck"]['tmp_name'];
             move_uploaded_file($tempcancelcheck,"../upload/".$folder."/".$namecancelcheck);
             $namecancelcheck = "upload/".$folder."/".$namecancelcheck;
+            
+            $namealldocs = $_FILES['alldocs']['name'];
+            $tempalldocs = $_FILES["alldocs"]['tmp_name'];
+            move_uploaded_file($tempalldocs,"../upload/".$folder."/".$namealldocs);
+            $namealldocs = "upload/".$folder."/".$namealldocs;
+            
+            $nameadhaar = $_FILES['adhaar']['name'];
+            $tempadhaar = $_FILES["adhaar"]['tmp_name'];
+            move_uploaded_file($tempadhaar,"../upload/".$folder."/".$nameadhaar);
+            $nameadhaar = "upload/".$folder."/".$nameadhaar;
+
+            $namepancard = $_FILES['pancard']['name'];
+            $temppancard = $_FILES["pancard"]['tmp_name'];
+            move_uploaded_file($temppancard,"../upload/".$folder."/".$namepancard);
+            $namepancard = "upload/".$folder."/".$namepancard;
+
+            $nameproof_address = $_FILES['proof_address']['name'];
+            $tempproof_address = $_FILES["proof_address"]['tmp_name'];
+            move_uploaded_file($tempproof_address,"../upload/".$folder."/".$nameproof_address);
+            $nameproof_address = "upload/".$folder."/".$nameproof_address;
+
+
             $nom1=$_POST['nom1'];
             $nom2=$_POST['nom2'];
             $nom3=$_POST['nom3'];
@@ -40,7 +62,22 @@ include "db.php";
             echo $namecancelcheck;
             echo "<br>".$mailid;
             $criteria=array("email"=>$mailid);
-            $info=array("appletter"=>$nameappletter,"salarybreakup"=>$namesalarybreak,"uan"=>$uan,"pastpayslip"=>$namepastpayslip,"cancelledcheck"=>$namecancelcheck,"nom1"=>$nom1,"nom2"=>$nom2,"nom3"=>$nom3,"nom4"=>$nom4,"postfilled"=>"filled","progress"=>"Post Selection Form Submitted");
+            $info=array(
+                "appletter"=>$nameappletter,
+                "salarybreakup"=>$namesalarybreak,
+                "uan"=>$uan,
+                "pastpayslip"=>$namepastpayslip,
+                "pancard"=>$namepancard,
+                "proof_address"=>$nameproof_address,
+                "adhaar"=>$nameadhaar,
+                "cancelledcheck"=>$namecancelcheck,
+                "alldocs"=>$namealldocs,
+                "nom1"=>$nom1,
+                "nom2"=>$nom2,
+                "nom3"=>$nom3,
+                "nom4"=>$nom4,
+                "postfilled"=>"filled",
+                "progress"=>"Post Selection Form Submitted");
             $queryInsert=$db->tokens->updateOne($criteria,array('$set'=>$info));
 
 

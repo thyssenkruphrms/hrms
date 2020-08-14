@@ -88,14 +88,7 @@ input::-webkit-inner-spin-button {
                         </div>                             
                     </div>
 
-                    <!-- <b>Upload Relieving Letter</b>
-                    <div class="row">
-                            <div class="input-field col s12" id="relieving">
-                                    <label class="custom-file-upload">
-                                            <a class="btn blue darken-1"> <input id="relletter" name="relletter" type="file" accept=".pdf" required="true" aria-required="true"> <p id='letter2'>Relieving Letter</p></a>
-                                    </label>
-                            </div>                        
-                    </div><br><br>   -->
+
                     
                     <b>Current Company's Latest Letter Indicating Salary Breakup</b>
                     <div class="row">  
@@ -435,35 +428,50 @@ var nom4
 
 
 // $('#submitformdata').click(function(){
-//         var filepath = document.getElementById('appletter').value;
-//         // alert(filepath)  
-// appletter=$("#appletter").val();
-// relletter=$("#relletter").val();
-// uan=$("#uan").val();
-// console.log(uan)
-// pastpayslip=$("#pastpayslip").val();
-// nom1=$("#nom1").val();
-// nom2=$("#nom2").val();
-// nom3=$("#nom3").val();
-// nom4=$("#nom4").val();
+//         var fd = new FormData();
+//         var files = $('#appletter')[0].files[0];
+//         fd.append('appletter',files)
 
+      
+//         var files = $('#pastpayslip')[0].files[0];
+//         fd.append('pastpayslip',files)
+
+//         var files = $('#salarybreak')[0].files[0];
+//         fd.append('salarybreak',files)
+
+//         var files = $('#cancelcheck')[0].files[0];
+//         fd.append('cancelcheck',files)
+
+//         var files = $('#alldocs')[0].files[0];
+//         fd.append('alldocs',files)
+
+//         var files = $('#proof_identity_addhar')[0].files[0];
+//         fd.append('adhaar',files)
+
+        
+
+//         var files = $('#proof_otherthanadhar')[0].files[0];
+//         fd.append('pancard',files)
+
+//         var files = $('#proof_address')[0].files[0];
+//         fd.append('proof_address',files)
+
+//         fd.append('uan',$("#uan").val())
+//         fd.append('nom1',$("#nom1").val())
+//         fd.append('nom2',$("#nom2").val())
+//         fd.append('nom3',$("#nom3").val())
+//         fd.append('nom4',$("#nom4").val())
+//         fd.append('mail',token)
+       
 // $.ajax({
 
 
 //     url:'http://localhost/hrms/api/submitevalform.php',
 //     type:"POST",
 //     data:
-//     {
-//         "appletter":appletter,
-//         "relletter":relletter,
-//         "uan":uan,
-//         "pastpayslip":pastpayslip,
-//         "nom1":nom1,
-//         "nom2":nom2,
-//         "nom3":nom3,
-//         "nom4":nom4,
-//         "mail":token
-//     },
+//     fd,
+//     contentType: false,
+//     processData: false,
 //     success:function(para)
 //     {
 //             console.log("hello this is me : ",para)
