@@ -283,6 +283,7 @@ function abort_round(confr)
                 <tr>
                   <th>Name</th>
                   <th>Mail ID</th>
+                  <th>Status</th>
                   <th>Time</th>
                   <th>Date</th>
                   <th>Select</th>
@@ -673,8 +674,7 @@ function completepro(id)
               var s6='<td><label><input type="checkbox" class="filled-in" id="finalcheck'+i+'" onclick="finalselection(this.id)">'
               var s7='<span class="blue-text darken-1" ></span></label></td></tr>'
               
-           
-
+        
               var str=s1+s2+s3+s6+s7
               $('#finalcands').append(str)
             }
@@ -688,10 +688,10 @@ function completepro(id)
         {
             var s1 = "<p style ='color:red;'>There are no candidates selected you can complete this round</p>"
             var foot1 = '<center>'
-            var foot2 = '<a id='+id+' onclick="terminateround(this.id,false)" class="modal-open waves-effect green btn openhr2" >Confirm<i class="material-icons left" >check_box</i></a> &nbsp;&nbsp;&nbsp;'
+            var foot2 = '<a id='+id+' onclick="terminateround(this.id,false)" class="modal-open waves-effect green btn openhr2" >Complete Process<i class="material-icons left" >check_box</i></a> &nbsp;&nbsp;&nbsp;'
             var foot3 = '<a  onclick="cancelModal()"class="modal-close waves-effect red btn">Cancel<i class="material-icons left">highlight_off</i></a>'
             var foot4 = '</center>'
-            $('#finalcands').append(str)
+            $('#finalcands').append(s1)
             $('.openhr2').append(foot1+foot2+foot3+foot4)
         }
       
@@ -851,14 +851,6 @@ function completeProcess(cnfrm)
   }
   
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -1106,12 +1098,23 @@ function createnextround(id)
           var s1='<tr id="check'+i+'row">'
           var s2='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'&prf='+window.prf+'&iid='+window.iid+'&rid='+window.rid+'&s=1" target="_blank" "><p >'+arr[i][0]+'</p></a></td>'
           var s3='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'&prf='+window.prf+'&iid='+window.iid+'&rid='+window.rid+'&s=1" target="_blank" "><p id="check'+i+'mail">'+arr[i][1]+'</p></a></td>'
-          var s4='<td><input id="check'+i+'date" class="timepicker" ></td>'
-          var s5 ='<td><input id="check'+i+'date2" class="datepicker" ></td>'
-          var s6='<td><label><input type="checkbox" class="filled-in" id="check'+i+'" onclick="selection(this.id)">'
-          var s7='<span class="blue-text darken-1" ></span></label></td></tr>'
+          var s4='<td><p >'+arr[i][2]+'</p></td>'
+          if(arr[i][2] == "Selected")
+          {
+            var s5='<td><input id="check'+i+'date" class="timepicker" ></td>'
+            var s6 ='<td><input id="check'+i+'date2" class="datepicker" ></td>'
+            var s7='<td><label><input type="checkbox" class="filled-in" id="check'+i+'" onclick="selection(this.id)">'
+            var s8='<span class="blue-text darken-1" ></span></label></td></tr>'
           
-          var str=s1+s2+s3+s4+s5+s6+s7
+          }
+          else
+          {
+            var s5='<td><b>NA</b></td>'
+            var s6 ='<td><b>NA</b></td>'
+            var s7='<td><b>NA</b></td>'
+            var s8='</tr>'
+          }
+          var str=s1+s2+s3+s4+s5+s6+s7+s8
           $('#adddetail').append(str)
           $('.timepicker').timepicker();
           $('.datepicker').datepicker();
