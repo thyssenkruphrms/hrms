@@ -148,7 +148,7 @@ width: 350%;
   <table class="striped">
     <thead>
       <tr>
-          <th>Role</th>
+          <th>User Id</th>
           <th>Name</th>
           <th>Mail</th>
           <th>Department</th>
@@ -166,6 +166,47 @@ width: 350%;
   </table>
 </div> 
 </div>
+
+<div class="row" id="userupdate">
+  <div class="col s12 m12" style="border: solid 5p">
+        <div class="card white">
+        <div class="card-content blue-text">
+        <div class="row">
+        <div class="input-field col s4 m4 " >
+       <strong> Name:<input id="uname" type="text" class="text" required>
+       </strong> </div>           
+        <div class="input-field col s4 m4" >
+        <strong>  Mail:<input id="umail" type="text" required readonly>
+        </strong>   </div> 
+        <div class="input-field col s4 m4 " >
+        <strong>  User Id:<input id="urole" type="text" class="text" required>
+        </strong>  </div>
+        </div>
+        <div class="row">
+        <div class="input-field col s4 m4 " >
+        <strong> Region:<input id="uregion" type="text" class="text" required>
+        </strong>  </div>
+             
+       
+      <div class="input-field col s4 m4 " >
+      <strong>Department: <input id="udept" type="text" class="text" required>
+      </strong>    </div>                                    
+      <div class="input-field col s4 m4 " >
+      <strong>  Designation: <input id="udsg" type="text" class="text" required>
+      </strong>   </div>
+    </div>          
+
+                                
+          <div class="row">
+          <button class="btn waves-effect blue darken-1 col m3 s3 offset-m4" id='allocatesubmit' onclick="subupdate()">Update
+          <i class="material-icons right">send</i>
+          </button>
+                                            
+    </div>
+   </div>
+    </div>
+    </div>
+  </div>
 
 <br>
           
@@ -285,10 +326,8 @@ function mymodalopen()
 
 function deleteUser(){
 
-  //  console.log("id: "+id);  
   var id=event.toElement.id
   var name=event.toElement.name
- // console.log(id+" "+name)
 
   
 $.ajax({
@@ -316,11 +355,86 @@ success:function(para){
 
 }
 
+function updateUser(){
+
+  //console.log("update click"+event.toElement.name);
+  
+  var id=event.toElement.id
+  var myarr=id.split("-")
+  console.log(myarr)
+ // console.log(id)
+
+ document.getElementById("userupdate").style.display="block";
+
+ document.getElementById("uname").value=myarr[1];
+ 
+ document.getElementById("umail").value=myarr[2];
+ document.getElementById("urole").value=myarr[0];
+ document.getElementById("uregion").value=myarr[5];
+ document.getElementById("udept").value=myarr[3];
+ document.getElementById("udsg").value=myarr[4];
+ if(myarr[4]=="ceo"){
+    document.getElementById("udsg").readOnly=true;
+  }
+ //document.getElementById("userupdate").visibility;
+
+
+ }
+
+ function subupdate(){
+   
+var name=document.getElementById("uname").value;
+ 
+ var mail2=document.getElementById("umail").value;
+ var uid=document.getElementById("urole").value;
+  var region=document.getElementById("uregion").value;
+  var dept=document.getElementById("udept").value;
+  var dsg=document.getElementById("udsg").value;
+  
+ console.log(typeof(mail2))
+   
+ $.ajax({
+ url:"http://localhost/hrms/api/users.php",
+ type:"POST",
+ data:{
+ 
+   "action":3,
+   "username":name,
+   "uid":uid,
+   "region":region,
+   "dsg":dsg,
+   "dept":dept,
+   "mail":mail2
+ },
+ success:function(para){
+ 
+   console.log(para.status+" "+para.message)
+   if(para.status==true){
+  //  console.log('inside me')
+    location.reload().delay(5000);
+  }
+   
+   
+ 
+ } 
+ 
+ })
+ 
+ 
+ }
+
 
  
 var arr=[]
 var dept=[]
 $(document).ready(function(){
+
+  $('#userupdate').hide();
+  
+
+
+
+
 
  
  $.ajax({
@@ -349,13 +463,14 @@ $(document).ready(function(){
        
         for(let j=0;j<arr.length-1;j++)
         {
-            var btnid=""+arr[j].email+"";
+            //var usid=arr[j].email+"-"+arr[j].email;
+            //console.log(usid)
             var x='<tr id="rows" style=""><td id="uid" value="'+arr[j].uid+' id="'+arr[j].name+'>'+arr[j].uid+'</b></td><td id="name">'+arr[j].name+'</td><td id="zone">'+arr[j].mail+'</td><td id="dept">'+arr[j].dept+'</td><td id="posno">'+arr[j].dsg+'</td><td id="status">'+arr[j].rg+'</td>'
             if((arr[j].dsg=='ceo')){
-            var btns='<td><button id="'+(arr[j].email)+'"  class="btn green darken-1">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()" disabled>DELETE</button></td></tr>'
+            var btns='<td><button id="'+(arr[j].uid+"-"+arr[j].name+"-"+arr[j].mail+"-"+arr[j].dept+"-"+arr[j].dsg+"-"+arr[j].rg)+'"   class="btn green darken-1" onclick="updateUser()">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()" disabled>DELETE</button></td></tr>'
             }
             else{
-              var btns='<td><button id="'+(arr[j].email)+'"  class="btn green darken-1">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()">DELETE</button></td></tr>'
+              var btns='<td><button id="'+(arr[j].uid+"-"+arr[j].name+"-"+arr[j].mail+"-"+arr[j].dept+"-"+arr[j].dsg+"-"+arr[j].rg)+'"  class="btn green darken-1" onclick="updateUser()">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()">DELETE</button></td></tr>'
             
             }
             //var x="hi"

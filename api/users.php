@@ -6,8 +6,8 @@ header('Content-Type: application/json');
 $action=$_POST['action'];
 $mail=$_POST['mail'];
 $username=$_POST['username'];
-if(isset($_POST['password']) && isset($_POST['password']) && isset($_POST['password']) && isset($_POST['password'])){
 
+if($action=='1'){
 $password=$_POST['password'];
 $region=$_POST['region'];
 $dsg=$_POST['dsg'];
@@ -15,12 +15,13 @@ $dept=$_POST['dept'];
 }
 
 
-// if($_POST['action']){
-//     echo json_encode("set");
-// }
-// else{
-//     echo json_encode("not set");
-// }
+if($action=='3'){
+    $uid=$_POST['uid'];
+    $region=$_POST['region'];
+    $dsg=$_POST['dsg'];
+    $dept=$_POST['dept'];
+}
+
 function checkByUID($db,$uid){
     return $db->users->count(["uid"=>$uid]);
    }
@@ -63,10 +64,25 @@ function deleteUser($db,$name,$mail){
 
 
 
-function UpdateUser(){
+function UpdateUser($db,$uid,$name,$mail,$dsg,$region,$dept){
+        $criteria=array('mail'=>$mail);
+        if(checkByMail($db,$mail)){
+       if( $db->users->updateOne($criteria,array('$set'=>array("rg"=>$region,"name"=>$name,"uid"=>$uid,"dsg"=>$dsg,"dept"=>$dept)))){
 
+       echo json_encode(["status"=>true,"message"=>"user updated successfully"]);
+       }
+     else{
+        echo json_encode(["status"=>false,"message"=>"user not updated"]);
+    
+    }
 }
+   
+    else{
+       echo json_encode(["status"=>false,"message"=>"user not found here"]);
+    
 
+    }
+}
 
 switch($action){
     case "1": addUser($db,$username,$password,$mail,$dsg,$region,$dept);
@@ -74,7 +90,11 @@ switch($action){
     case "2":
             deleteUser($db,$username,$mail);
             break;
-    default: echo json_encode(["status"=>"false","message"=>"invalid action"]); 
+    case "3":
+            UpdateUser($db,$uid,$username,$mail,$dsg,$region,$dept);
+            break;
+
+    default: echo json_encode(["status"=>"false","message"=>"invalid action","dept"=>$dept]); 
 }
 
 
