@@ -43,16 +43,26 @@
         $tempphoto = $_FILES['Adhaar']['tmp_name'];
         move_uploaded_file($tempphoto,"upload/".$folder."/".$namephoto);
         $adhar = "upload/".$folder."/".$namephoto;
-        $result=$db->tokens->updateOne(array("email"=>$mail),array('$set'=>array("Adhaar"=>$adhar)));
+        $result=$db->tokens->updateOne(array("email"=>$mail),array('$set'=>array("adhaar"=>$adhar)));
    }
 
-   if(isset($_FILES['graduation']))
+   if(isset($_FILES['ugcert']))
    {
-        $namephoto = $_FILES['graduation']['name'];
-        $tempphoto = $_FILES['graduation']['tmp_name'];
-        move_uploaded_file($tempphoto,"upload/".$folder."/".$namephoto);
-        $graduation = "upload/".$folder."/".$namephoto;
-        $result=$db->tokens->updateOne(array("email"=>$mail),array('$set'=>array("alldocs"=>$graduation)));
+        $nameugcert = $_FILES['ugcert']['name'];
+        $tempugcert = $_FILES['ugcert']['tmp_name'];
+        move_uploaded_file($tempugcert,"upload/".$folder."/".$nameugcert);
+        $ugcert = "upload/".$folder."/".$nameugcert;
+        $result=$db->tokens->updateOne(array("email"=>$mail),array('$set'=>array("ugcert"=>$ugcert)));
+   
+   }
+
+   if(isset($_FILES['pgcert']))
+   {
+        $namepgcert = $_FILES['pgcert']['name'];
+        $temppgcert = $_FILES['pgcert']['tmp_name'];
+        move_uploaded_file($temppgcert,"upload/".$folder."/".$namepgcert);
+        $pgcert = "upload/".$folder."/".$namepgcert;
+        $result=$db->tokens->updateOne(array("email"=>$mail),array('$set'=>array("pgcert"=>$pgcert)));
    
    }
    if(isset($_FILES['ap']))
@@ -73,15 +83,7 @@
         $result=$db->tokens->updateOne(array("email"=>$mail),array('$set'=>array("appletter"=>$al)));
    
    }
-   if(isset($_FILES['rl']))
-   {
-        $namephoto = $_FILES['rl']['name'];
-        $tempphoto = $_FILES['rl']['tmp_name'];
-        move_uploaded_file($tempphoto,"upload/".$folder."/".$namephoto);
-        $rl = "upload/".$folder."/".$namephoto;
-        $result=$db->tokens->updateOne(array("email"=>$mail),array('$set'=>array("relletter"=>$rl)));
    
-   }
    if(isset($_FILES['ccl']))
    {
         $namephoto = $_FILES['ccl']['name'];

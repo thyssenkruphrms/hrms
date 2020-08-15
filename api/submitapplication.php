@@ -25,6 +25,7 @@ include 'db.php';
             $tempphoto = $_FILES["photo"]['tmp_name'];
             move_uploaded_file($tempphoto,"../upload/".$folder."/".$namephoto);
             $namephoto = "upload/".$folder."/".$namephoto;
+            
             $namecv = $_FILES['mycv']['name'];
             $tempcv = $_FILES["mycv"]['tmp_name'];
             move_uploaded_file($tempcv,"../upload/".$folder."/".$namecv);
@@ -33,10 +34,14 @@ include 'db.php';
             $namepgcert = $_FILES['pgcert']['name'];
             $temppgcert = $_FILES["pgcert"]['tmp_name'];
             move_uploaded_file($temppgcert,"../upload/".$folder."/".$namepgcert);
+            $namepgcert = "upload/".$folder."/".$namepgcert;
+
             
             $nameugcert = $_FILES['ugcert']['name'];
             $tempugcert = $_FILES["ugcert"]['tmp_name'];
             move_uploaded_file($tempugcert,"../upload/".$folder."/".$nameugcert);
+            $nameugcert = "upload/".$folder."/".$nameugcert;
+
  
 
             if($result1)

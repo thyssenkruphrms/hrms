@@ -163,20 +163,7 @@ input::-webkit-inner-spin-button {
                             </div>                      
                     </div>
 
-                        <div class="row">
-                                <div class="col s12">
-                                <b style="font-size:15px;color:red">Please Upload all Documents until Highest Qualification</b>
-                                        <div class="file-field input-field">
-                                                <div class="btn blue darken-1">
-                                                        <span>Upload Documents</span>
-                                                        <input id="alldocs" name="alldocs" type="file"  required accept=".pdf">
-                                                </div>
-                                                <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text">
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
+        
 
 
                         <b style="font-size:15px;">Upload your Aadhar Card as Proof Of Identity</b>
@@ -342,16 +329,6 @@ $("#postsubmit").hide();
 $("#details").fadeIn();
 
 
-$('#alldocs').change(function(){
-      var f = $('#alldocs').val().split('.')
-      var x=f[1]
-      if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
-      {
-        alert('Invalid File\n Only PDF/IMAGES accepted')
-        document.getElementById("alldocs").value=null
-      }
-        
-})
 
 
 $('#proof_address').change(function(){
@@ -438,7 +415,6 @@ $('#cancelcheck').change(function(){
 })
 
 var appletter
-var relletter 
 var uan
 var salarybreak
 var pastpayslip

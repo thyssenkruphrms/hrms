@@ -10,7 +10,7 @@ if(isset($_COOKIE['sid']))
   {
     $cursor = $db->users->findOne(array("uid" => $cursor['uid']));
     $designation = $cursor['dsg'];
-    if($designation == "hr" || $designation == "ceo" || $designation == "hod" || $designation == "inv" )
+    if($designation == "hr" || $designation == "ceo" || $designation == "hod" || $designation == "inv" || $designation == "hr2" )
     {
         $mailid = $_GET['aid'];
           $result = $db->tokens->find(array("email"=>$mailid));

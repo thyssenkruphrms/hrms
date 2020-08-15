@@ -12,7 +12,7 @@ if(isset($_COOKIE['sid']))
     
     $designation = $cursor['dsg'];
     
-    if($designation == "hr" || $designation == "inv" )
+    if($designation == "hr" || $designation == "inv" || $designation == "hr2" )
     {
         $mailid = $_GET['aid'];
           $result = $db->intereval->find(array("email"=>$mailid));

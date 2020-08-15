@@ -230,7 +230,7 @@ $(document).ready(function(){
               var files = $('#uploadcsv')[0].files[0];
               fd.append('uploadcsv',files);
               console.log("This is  - ",fd)
-              $.ajax({3
+              $.ajax({
                   url: 'http://localhost/hrms/importExcel.php',
                   type: 'post',
                   data: fd,
@@ -262,7 +262,7 @@ $(document).ready(function(){
                               s2 = '<div class="col s12 m6 offset-m3">'
                               s3 = '<div class="card white">'
                               s4 = ' <div class="card-content blue-text">'
-                              s5 = '<span class="card-title">Upload Dump Status :'+response+'New Entries added </span>'
+                              s5 = '<span class="card-title">Upload Dump Status :'+response+' New Entries added </span>'
                               s7 = '</div></div></div></div>'
                               s8 = s1+s2+s3+s4+s4+s5+s7;
                               $('.success').append(s8)

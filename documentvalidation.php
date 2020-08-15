@@ -51,12 +51,11 @@ $cursor = $db->tokens->find();
         <div class="card white">
             <div class="card-content blue-text">
                 <span class="card-title"><p id="mail" style="color: green"></p></span> <br>
-                <input type="text" value="" id="uan" name="uan" disabled style="color:green;text-align:center;font-weight: bold;font-size:30px;">
-               
+                <input type="text" value="" id="uan" name="uan" disabled style="color:green;text-align:center;font-weight: bold;font-size:30px;"><br>
                 <table class="striped">
                     <thead>
                       <tr>
-                          <th>Document</th>
+                          <th>Uploaded Documents</th>
                           <th>Valid</th>
                           <th>Invalid</th>
 
@@ -104,7 +103,7 @@ $cursor = $db->tokens->find();
 
                         <tr id="tdpan">
                             <td>
-                                 <a class="waves-effect blue darken-1  btn modal-trigger col s12 m6" value=""  href="#modal1" onclick="clicked(this)" id="pan">PAN Card</a>
+                                 <a class="waves-effect blue darken-1  btn modal-trigger col s12 m6" value=""  href="#modal1" onclick="clicked(this)" id="pan">Identity Proof</a>
                             </td>
 
                             <td>
@@ -198,37 +197,7 @@ $cursor = $db->tokens->find();
                         
 
 
-                        <tr id="tdgraduation">
-                            <td>
-                                <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="graduation">Qualification</a>
-                            </td>
-
-                            <td>
-                                <label style="color:green;">
-                                    <input class="with-gap" name="ggraduation" type="radio"  value="valid" id="graduationv"/>
-                                    <span>Valid</span>
-                                </label>
-                            </td> 
-
-                            <td>
-                                <label style="color:red;">
-                                    <input class="with-gap" name="ggraduation" type="radio" value="invalid" id="graduationi"/>
-                                    <span>Invalid</span>
-                                </label>
-                            </td>
-                           
-                            <td>
-                                <div class="input-field col s12 m12" id="rgraduation1">
-                                    <input id="rgraduation" type="text" class="validate" style="color:black" placeholder="Specify Reason">
-                                    <label for="rgraduation">Specify Reason</label>
-                                </div>
-                            </td>
-
-                            <td>
-                            <a class="waves-effect green btn" name="d5" id="graduationf" onclick=freez(this.id) ><i class="material-icons right">done</i>Freez</a>
-                            </td>
-                        </tr>
-
+                        
                         <tr id="tdap">
                             <td>
                                 <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="ap">Address Proof</a>
@@ -291,37 +260,7 @@ $cursor = $db->tokens->find();
                             </td>
                         </tr>
 
-                        <tr id="tdrl">
-                            <td>
-                                <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6"value="" href="#modal1" onclick="clicked(this)" id="rl">Relieving Letter</a>
-                            </td>
-                            
-                            <td>
-                                <label style="color:green;">
-                                    <input class="with-gap" name="grl" type="radio"  value="valid" id="rlv"/>
-                                    <span>Valid</span>
-                                </label>
-                            </td> 
-
-                            <td>
-                                <label style="color:red;">
-                                    <input class="with-gap" name="grl" type="radio" value="invalid" id="rli"/>
-                                    <span>Invalid</span>
-                                </label>
-                            </td>
-
-                            <td>
-                                <div class="input-field col s12 m12" id="rrl1">
-                                    <input id="rrl" type="text" class="validate" style="color:black" placeholder="Specify Reason">
-                                    <label for="rrl">Specify Reason</label>
-                                </div>
-                            </td>
-
-                            <td>
-                            <a class="waves-effect green btn" name="d8" id="rlf" onclick=freez(this.id) ><i class="material-icons right">done</i>Freez</a>
-                            </td>
-                        </tr>
-
+                        
                         
                         <tr id="tdpayslip">
                             <td>
@@ -386,6 +325,66 @@ $cursor = $db->tokens->find();
                             </td>
                         </tr>
 
+                        <tr id="tdugcert">
+                            <td>
+                                <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="ugcert">Under Graduate Certificate</a>
+                            </td>
+
+                            <td>
+                                <label style="color:green;">
+                                    <input class="with-gap" name="gugcert" type="radio"  value="valid" id="ugcertv"/>
+                                    <span>Valid</span>
+                                </label>
+                            </td> 
+
+                            <td>
+                                <label style="color:red;">
+                                    <input class="with-gap" name="gugcert" type="radio" value="invalid" id="ugcerti"/>
+                                    <span>Invalid</span>
+                                </label>
+                            </td>
+
+                            <td>
+                                <div class="input-field col s12 m12" id="rugcert1">
+                                    <input id="rugcert" type="text" class="validate" style="color:black" placeholder="Specify Reason">
+                                    <label for="rugcert">Specify Reason</label>
+                                </div>
+                            </td>
+
+                            <td>
+                            <a class="waves-effect green btn" name="d11" id="ugcertf" onclick=freez(this.id) ><i class="material-icons right">done</i>Freez</a>
+                            </td>
+                        </tr>
+                        <tr id="tdpgcert">
+                            <td>
+                                <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="pgcert">Post Graduate Certificate</a>
+                            </td>
+
+                            <td>
+                                <label style="color:green;">
+                                    <input class="with-gap" name="gpgcert" type="radio"  value="valid" id="pgcertv"/>
+                                    <span>Valid</span>
+                                </label>
+                            </td> 
+
+                            <td>
+                                <label style="color:red;">
+                                    <input class="with-gap" name="gpgcert" type="radio" value="invalid" id="pgcerti"/>
+                                    <span>Invalid</span>
+                                </label>
+                            </td>
+
+                            <td>
+                                <div class="input-field col s12 m12" id="rpgcert1">
+                                    <input id="rpgcert" type="text" class="validate" style="color:black" placeholder="Specify Reason">
+                                    <label for="rpgcert">Specify Reason</label>
+                                </div>
+                            </td>
+
+                            <td>
+                            <a class="waves-effect green btn" name="d12" id="pgcertf" onclick=freez(this.id) ><i class="material-icons right">done</i>Freez</a>
+                            </td>
+                        </tr>
                         <tr>
                             <td>
 
@@ -413,7 +412,7 @@ $cursor = $db->tokens->find();
                   </table>
 
             </div>
-            <a class="waves-effect blue darken-1 btn col s12 m12" id="submit">Submit</a>
+            <center><a class="waves-effect blue darken-1 btn" id="submit">Submit Validation</a></center>
         </div>
     </div>
 </div>
@@ -535,6 +534,9 @@ function freezall()
     $("a[name='d8']").click();
     $("a[name='d9']").click();
     $("a[name='d10']").click();
+    $("a[name='d11']").click();
+    $("a[name='d12']").click();
+
 }
 
 function clicked(x)
@@ -756,34 +758,6 @@ $("#Photov").click(function(){
         }
 });
 
-$("#graduationv").click(function(){
-        var r = $("input[name='ggraduation']:checked").attr('id');
-        if(r=="graduationi"){
-            
-            r = r.substring(0, r.length - 1);
-            var btn = r
-            btn = '#'+btn+'f'
-            r = '#r'+r+'1' 
-            $(r).fadeIn(600)
-            r = r.substring(0, r.length - 1);
-            //$("#rgraduation").val("")
-            $(r).prop("disabled", false)
-                    
-        }
-        else
-        {
-            
-            r = r.substring(0, r.length - 1);
-            var btn = r
-            btn = '#'+btn+'f'
-            r = '#r'+r+'1' 
-            $(r).fadeIn(600)
-            r = r.substring(0, r.length - 1);
-            $(r).val("Validated")
-            $(r).prop("disabled", true)
-        }
-});
-
 $("#apv").click(function(){
         var r = $("input[name='gap']:checked").attr('id');
         if(r=="api"){
@@ -823,34 +797,6 @@ $("#alv").click(function(){
             $(r).fadeIn(600)
             r = r.substring(0, r.length - 1);
             //$("#ral").val("")
-            $(r).prop("disabled", false)
-                    
-        }
-        else
-        {
-            
-            r = r.substring(0, r.length - 1);
-            var btn = r
-            btn = '#'+btn+'f'
-            r = '#r'+r+'1' 
-            $(r).fadeIn(600)
-            r = r.substring(0, r.length - 1);
-            $(r).val("Validated")
-            $(r).prop("disabled", true)
-        }
-});
-
-$("#rlv").click(function(){
-        var r = $("input[name='grl']:checked").attr('id');
-        if(r=="rli"){
-            
-            r = r.substring(0, r.length - 1);
-            var btn = r
-            btn = '#'+btn+'f'
-            r = '#r'+r+'1' 
-            $(r).fadeIn(600)
-            r = r.substring(0, r.length - 1);
-            //$("#rrl").val("")
             $(r).prop("disabled", false)
                     
         }
@@ -1037,34 +983,6 @@ $("#Photoi").click(function(){
         }
 });
 
-$("#graduationi").click(function(){
-        var r = $("input[name='ggraduation']:checked").attr('id');
-        if(r=="graduationi"){
-            
-            r = r.substring(0, r.length - 1);
-            var btn = r
-            btn = '#'+btn+'f'
-            r = '#r'+r+'1' 
-            $(r).fadeIn(600)
-            r = r.substring(0, r.length - 1);
-            //$("#rgraduation").val("")
-            $(r).prop("disabled", false)
-                    
-        }
-        else
-        {
-            
-            r = r.substring(0, r.length - 1);
-            var btn = r
-            btn = '#'+btn+'f'
-            r = '#r'+r+'1' 
-            $(r).fadeIn(600)
-            r = r.substring(0, r.length - 1);
-            $(r).val("Validated")
-            $(r).prop("disabled", true)
-        }
-});
-
 $("#api").click(function(){
         var r = $("input[name='gap']:checked").attr('id');
         if(r=="api"){
@@ -1205,6 +1123,116 @@ $("#cci").click(function(){
         }
 });
 
+$("#ugcerti").click(function(){
+        var r = $("input[name='gugcert']:checked").attr('id');
+        if(r=="ugcerti"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            //$("#rcc").val("")
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
+$("#ugcertv").click(function(){
+        var r = $("input[name='gugcert']:checked").attr('id');
+        if(r=="ugcerti"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
+$("#pgcerti").click(function(){
+        var r = $("input[name='gpgcert']:checked").attr('id');
+        if(r=="pgcerti"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            //$("#rcc").val("")
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
+$("#pgcertv").click(function(){
+        var r = $("input[name='gpgcert']:checked").attr('id');
+        if(r=="pgcerti"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
 
 
 $("#bwaiting").hide()
@@ -1220,12 +1248,12 @@ $.ajax({
     type:"POST",
     success:function(para)
     {
-        alert(para)
+        // alert(para)
        window.name = para 
     }
 })
 
-var str = "<center><b>Candidate Name : "+window.name+"</b></center>"
+var str = "<center><b>Candidate Name : "+window.name+"</b></center><br><center><b>Candidate Application Blank : <b><a href='http://localhost/hrms/applicationblank_readonly.php?aid="+m+"' target='_blank'><button class='btn waves-effect white darken-1'><b>View Form</b></a></center>"
 $("#mail").append(str)
 $("#rcv1").hide()
 $("#raf1").hide()
@@ -1234,14 +1262,15 @@ $("#rAdhaar1").hide()
 $("#rPhoto1").hide()
 $("#rssc1").hide()
 $("#rhsc1").hide()
-$("#rgraduation1").hide()
 $("#rap1").hide()
 $("#ral1").hide()
 $("#rrl1").hide()
 $("#rpayslip1").hide()
 $("#ruan1").hide()
 $("#rcc1").hide()
-$("#rdiploma1").hide()
+$("#rugcert1").hide()
+$("#rpgcert1").hide()
+
 
 $.ajax({
     url:"http://localhost/hrms/api/getdocuments.php",
@@ -1265,13 +1294,14 @@ $.ajax({
         $("#pan").attr("value",para[0][1])
         $("#Adhaar").attr("value",para[0][2])
         $("#Photo").attr("value",para[0][3])
-        $("#graduation").attr("value",para[0][4])
-        $("#ap").attr("value",para[0][5])
-        $("#al").attr("value",para[0][6])
-        $("#rl").attr("value",para[0][7])
-        $("#payslip").attr("value",para[0][8])
-        $("#uan").attr("value","UAN:  "+para[0][9])
-        $("#cc").attr("value",para[0][10])  
+        $("#ap").attr("value",para[0][4])
+        $("#al").attr("value",para[0][5])
+        $("#payslip").attr("value",para[0][6])
+        $("#uan").attr("value","UAN:  "+para[0][7])
+        $("#cc").attr("value",para[0][8]) 
+        $("#ugcert").attr("value",para[0][9])  
+        $("#pgcert").attr("value",para[0][10])  
+
         validcount = para[1].length
         for(let i=0;i<para[1].length;i++)
         {
@@ -1299,13 +1329,14 @@ $("#submit").click(function(){
     pancard = $("#rpan").val()
     adhaar=$("#rAdhaar").val()
     photo = $("#rPhoto").val()
-    graduate= $("#rgraduation").val()
     address=$("#rap").val()
     cancheck=$("#rcc").val()
     appletter=$("#ral").val()
     pastpayslip=$("#rpayslip").val()
-    relletter=$("#rrl").val()
     currcomp=$("#rccl").val()
+    ugcert=$("#rugcert").val()
+    pgcert=$("#rpgcert").val()
+
     
     var m = localStorage.getItem('currentemail')
     $('#parent').empty();
@@ -1323,12 +1354,12 @@ $("#submit").click(function(){
             "pancard" : pancard,
             "adhaar":adhaar,
             "photo" : photo,
-            "graduate": graduate,
             "address":address,
             "cancheck":cancheck,
             "appletter":appletter,
             "pastpayslip":pastpayslip,
-            "relletter":relletter,
+            "ugcert":ugcert,
+            "pgcert":pgcert,
             "mail":m
         },
         success:function(para)

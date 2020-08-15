@@ -16,10 +16,6 @@ include "db.php";
             $tempappletter = $_FILES["appletter"]['tmp_name'];
             move_uploaded_file($tempappletter,"../upload/".$folder."/".$nameappletter);
             $nameappletter = "upload/".$folder."/".$nameappletter;
-            //$namerelletter = $_FILES['relletter']['name'];
-            // $temprelletter = $_FILES["relletter"]['tmp_name'];
-            // move_uploaded_file($temprelletter,"../upload/".$folder."/".$namerelletter);
-            //$namerelletter = "upload/".$folder."/".$namerelletter;
             $namesalarybreak = $_FILES['salarybreak']['name'];
             $tempsalarybreak = $_FILES["salarybreak"]['tmp_name'];
             move_uploaded_file($tempsalarybreak,"../upload/".$folder."/".$namesalarybreak);
@@ -33,21 +29,16 @@ include "db.php";
             $tempcancelcheck = $_FILES["cancelcheck"]['tmp_name'];
             move_uploaded_file($tempcancelcheck,"../upload/".$folder."/".$namecancelcheck);
             $namecancelcheck = "upload/".$folder."/".$namecancelcheck;
-            
-            $namealldocs = $_FILES['alldocs']['name'];
-            $tempalldocs = $_FILES["alldocs"]['tmp_name'];
-            move_uploaded_file($tempalldocs,"../upload/".$folder."/".$namealldocs);
-            $namealldocs = "upload/".$folder."/".$namealldocs;
-            
-            $nameadhaar = $_FILES['adhaar']['name'];
-            $tempadhaar = $_FILES["adhaar"]['tmp_name'];
+                       
+            $nameadhaar = $_FILES['proof_identity_addhar']['name'];
+            $tempadhaar = $_FILES["proof_identity_addhar"]['tmp_name'];
             move_uploaded_file($tempadhaar,"../upload/".$folder."/".$nameadhaar);
             $nameadhaar = "upload/".$folder."/".$nameadhaar;
 
-            $namepancard = $_FILES['pancard']['name'];
-            $temppancard = $_FILES["pancard"]['tmp_name'];
-            move_uploaded_file($temppancard,"../upload/".$folder."/".$namepancard);
-            $namepancard = "upload/".$folder."/".$namepancard;
+            $nameidproof = $_FILES['proof_otherthanadhar']['name'];
+            $tempidproof = $_FILES["proof_otherthanadhar"]['tmp_name'];
+            move_uploaded_file($tempidproof,"../upload/".$folder."/".$nameidproof);
+            $nameidproof = "upload/".$folder."/".$nameidproof;
 
             $nameproof_address = $_FILES['proof_address']['name'];
             $tempproof_address = $_FILES["proof_address"]['tmp_name'];
@@ -67,11 +58,10 @@ include "db.php";
                 "salarybreakup"=>$namesalarybreak,
                 "uan"=>$uan,
                 "pastpayslip"=>$namepastpayslip,
-                "pancard"=>$namepancard,
                 "proof_address"=>$nameproof_address,
                 "adhaar"=>$nameadhaar,
+                "idproof"=>$nameidproof,
                 "cancelledcheck"=>$namecancelcheck,
-                "alldocs"=>$namealldocs,
                 "nom1"=>$nom1,
                 "nom2"=>$nom2,
                 "nom3"=>$nom3,

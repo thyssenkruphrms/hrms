@@ -22,7 +22,7 @@ if($cursor)
         foreach($cursor as $d)
         {
             $valid = $d['valid'];
-            $arr = array($d['usercv'],$d['proofidentity'],$d['proofaadhar'],$d['userphoto'],$d['alldocs'],$d['proofaddr'],$d['appletter'],$d['relletter'],$d['pastpayslip'],$d['uan'],$d['cancelledcheck']);
+            $arr = array($d['usercv'],$d['idproof'],$d['adhaar'],$d['userphoto'],$d['proof_address'],$d['appletter'],$d['pastpayslip'],$d['uan'],$d['cancelledcheck'],$d['ugcert'],$d['pgcert'],$d['salarybreakup']);
         }
         $arr1 = array($arr,$valid);
         echo json_encode($arr1);
@@ -33,7 +33,7 @@ if($cursor)
         $valid = array();
         foreach($cursor as $d)
         {
-            $arr = array($d['usercv'],$d['proofidentity'],$d['proofaadhar'],$d['userphoto'],$d['alldocs'],$d['proofaddr'],$d['appletter'],$d['relletter'],$d['pastpayslip'],$d['uan'],$d['cancelledcheck']);
+            $arr = array($d['usercv'],$d['idproof'],$d['adhaar'],$d['userphoto'],$d['proof_address'],$d['appletter'],$d['pastpayslip'],$d['uan'],$d['cancelledcheck'],$d['ugcert'],$d['pgcert'],$d['salarybreakup']);
         }
 
         // send valid and all documents

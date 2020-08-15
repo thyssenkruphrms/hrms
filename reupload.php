@@ -123,17 +123,32 @@ input[type="file"]
                             </td>
                         </tr>
 
-                        <tr id="tdgraduation">
+                        
+                        <tr id="tdugcert">
                             <td>
                                 <label class="custom-file-upload">
-                                    <a class="btn col s12 m12 blue darken-1"><input id="graduation" name="graduation" type="file" accept=".pdf" class="validate" required="" aria-required="true"><p id='letter5'>GRADUATION</p></a>
+                                    <a class="btn col s12 m12 blue darken-1"><input id="ugcert" name="ugcert" type="file" accept=".pdf" class="validate" required="" aria-required="true"><p id='letter5'>UNDER GRADUATION CERTIFICATE</p></a>
                                 </label>
                             </td>
                            
                             <td>
-                                <div class="input-field col s12 m12" id="rgraduation1">
-                                    <input id="rgraduation" type="text" class="validate" value="<?php echo $result['graduatereason'];?>" readonly>
-                                    <label for="rgraduation">Reason Specified</label>
+                                <div class="input-field col s12 m12" id="rugcert1">
+                                    <input id="rugcert" type="text" class="validate" value="<?php echo $result['ugcertreason'];?>" readonly>
+                                    <label for="rugcert">Reason Specified</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="tdpgcert">
+                            <td>
+                                <label class="custom-file-upload">
+                                    <a class="btn col s12 m12 blue darken-1"><input id="pgcert" name="pgcert" type="file" accept=".pdf" class="validate" required="" aria-required="true"><p id='letter12'>POST GRADUATION CERTIFICATE</p></a>
+                                </label>
+                            </td>
+                           
+                            <td>
+                                <div class="input-field col s12 m12" id="rpgcert1">
+                                    <input id="rpgcert" type="text" class="validate" value="<?php echo $result['pgcertreason'];?>" readonly>
+                                    <label for="rpgcert">Reason Specified</label>
                                 </div>
                             </td>
                         </tr>
@@ -167,20 +182,7 @@ input[type="file"]
                             </td>
                         </tr>
 
-                        <tr id="tdrl">
-                            <td>
-                            <label class="custom-file-upload">
-                                 <a class="btn col s12 m12 blue darken-1"><input id="rl" name="rl" type="file" accept=".pdf" class="validate" required="" aria-required="true" ><p id='letter8'>Relieving Letter</p></a>
-                                </label>
-                            </td>
-                            
-                            <td>
-                                <div class="input-field col s12 m12" id="rrl1">
-                                    <input id="rrl" type="text" class="validate" value="<?php echo $result['relletterreason'];?>" readonly>
-                                    <label for="rrl">Reason Specified</label>
-                                </div>
-                            </td>
-                        </tr>
+                        
 
                         <tr id="tdpayslip">
                             <td>
@@ -234,8 +236,8 @@ input[type="file"]
 
             </div><br>
             <center>
-</center>
-            <a class="waves-effect blue darken-1 btn col s12 m12" type="submit" id="submit" onclick="submitForm()">Submit</a>
+            <a class="waves-effect blue darken-1 btn" type="submit" id="submit" onclick="submitForm()">Submit</a>
+            </center>
         </div>
 
     </div>
@@ -303,11 +305,14 @@ $('#photo').change(function(){
 
 $('#letter4').replaceWith(f);
 })
-$('#graduation').change(function(){
-    var f=$('#graduation').val();
+
+$('#ugcert').change(function(){
+    var f=$('#ugcert').val();
 
 $('#letter5').replaceWith(f);
 })
+
+
 $('#ap').change(function(){
     var f=$('#ap').val();
 
@@ -344,6 +349,12 @@ $('#cc').change(function(){
 $('#letter11').replaceWith(f);
 })
 
+$('#pgcert').change(function(){
+    var f=$('#pgcert').val();
+    
+
+$('#letter12').replaceWith(f);
+})
 
 $(document).ready(function(){
     $("#details").hide();
@@ -397,7 +408,7 @@ $(document).ready(function(){
         {
 
             console.log(para)
-            if(para == '["cv","pan","Adhaar","Photo","graduation","ap","al","rl","payslip","cc"]')
+            if(para == '["cv","pan","Adhaar","Photo","ap","al","rl","payslip","cc","ugcert","pgcert"]')
             {
                 $("#formdiv").hide()
             }

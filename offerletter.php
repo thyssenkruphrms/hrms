@@ -334,7 +334,7 @@ $(document).ready(function(){
           var candidate = arr[j][5];
           digit13=arr[j][0]+'-'+arr[j][1]+'-'+arr[j][2]+'-'+arr[j][3];
           console.log("Digit13",digit13)
-          var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="pos">'+arr[j][1]+'</td><td id="iid">'+arr[j][2]+'</td><td id="rid">'+arr[j][3]+'</td><td id="'+j+'4" >'+arr[j][4]+'</td><td id="'+j+'5" >'+arr[j][5]+'</td><td id="interviewername">'+arr[j][6]+'</td><td id="interviewermail">'+arr[j][7]+'</td><td><a name="'+arr[j][5]+'" id="'+j+'-'+digit13+'" class="btn green darken-1" onclick="joined(this.id,this.name)">Offer Letter Accepted</a><a name="'+arr[j][5]+'" id="'+j+'-'+digit13+'" class="btn red darken-1" onclick="Rejected(this.id,this.name)">Offer Letter Rejected</a></td></tr>'
+          var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="pos">'+arr[j][1]+'</td><td id="iid">'+arr[j][2]+'</td><td id="rid">'+arr[j][3]+'</td><td id="'+j+'4" >'+arr[j][4]+'</td><td id="'+j+'5" >'+arr[j][5]+'</td><td id="interviewername">'+arr[j][6]+'</td><td id="interviewermail">'+arr[j][7]+'</td><td><a name="'+arr[j][5]+'" id="'+j+'-'+digit13+'" class="btn green darken-1" onclick="joined(this.id,this.name)"> Accepted </a><a name="'+arr[j][5]+'" id="'+j+'-'+digit13+'" class="btn red darken-1" onclick="Rejected(this.id,this.name)"> Rejected </a></td></tr>'
           $('#rawdata').append(x);
         }
       }
