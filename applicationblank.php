@@ -836,7 +836,7 @@ $_SESSION['positionapplied'] = $position;
                                             
                                 <div class="row">
                                         <div class=" col s6 offset-s3 center" id="submitform">
-                                             <input type="button" class="btn blue darken-1" value="Upload" id="submitformdata"> </input>
+                                             <input type="button" class="btn blue darken-1" value="Submit Application" id="submitformdata"> </input>
                                         
                                               <br>
                                               <b style="color:green" id="pleasewait">Submitting Your Form .. Please Wait</b>
@@ -891,7 +891,8 @@ designationref0 = []
 cmpnmref0 = []
 contref0 = []
 mailref0 = []
-
+phoneref0=[]
+stdref0=[]
 orgname0=[]
 olddesignation0=[]
 fromdate0 = []
@@ -1123,7 +1124,6 @@ $("#submitformdata").click(function ()
                    
             $('input[name^="orgname0"]').each(function() {
                 orgname0.push($(this).val());
-                alert($(this).val())
             });
             $('input[name^="olddesignation0"]').each(function() {
                 olddesignation0.push($(this).val());
@@ -1137,9 +1137,10 @@ $("#submitformdata").click(function ()
             $('input[name^="managername0"]').each(function() {
                 managername0.push($(this).val());
             });
-             $('input[name^="managermail0"]').each(function() {
+            $('input[name^="managermail0"]').each(function() {
                 managermail0.push($(this).val());
             });
+            
         fd.append("orgname0",JSON.stringify(orgname0))
         fd.append("olddesignation0",JSON.stringify(olddesignation0))
         fd.append("fromdate0",JSON.stringify(fromdate0))
@@ -1164,6 +1165,12 @@ $("#submitformdata").click(function ()
             $('input[name^="mailref0"]').each(function() {
                 mailref0.push($(this).val());
             });
+            $('input[name^="stdcoderef0"]').each(function() {
+                stdref0.push($(this).val());
+            });
+            $('input[name^="phoneref0"]').each(function() {
+                phoneref0.push($(this).val());
+            });
         
                
         fd.append("nameref0",JSON.stringify(nameref0))
@@ -1171,6 +1178,8 @@ $("#submitformdata").click(function ()
         fd.append("cmpnmref0",JSON.stringify(cmpnmref0))
         fd.append("contref0",JSON.stringify(contref0))
         fd.append("mailref0",JSON.stringify(mailref0))
+        fd.append("stdcoderef0",JSON.stringify(stdref0))
+        fd.append("phoneref0",JSON.stringify(phoneref0))
 
 
 
@@ -1209,7 +1218,7 @@ $("#passing").change(function()
         var pas = $("#passing").val();
         if(pas.length!=4)
         {
-                alert("Please Passing Year as 4-Digit Year");
+                alert("Please provide a valid year");
                 $("#passing").val("");
         }        
         

@@ -342,14 +342,23 @@ $("#submit").click(function(){
         success:function(para)
         {
             //alert(para)
-            console.log("This is - ",para)
-            if(para == "success")
+            para = JSON.parse(para)
+            console.log("This is success- ",para[0])
+            console.log("This is success- ",para[1])
+            if(para[0] == "success" && para[1] == "last")
             {
 
                 $("#submitting").hide()
                 $("#submitted").show(600)
                 alert("Details Submitted..!!")
                 self.opener.location.reload(); 
+                window.close()   
+            }
+            else
+            {
+                $("#submitting").hide()
+                $("#submitted").show(600)
+                alert("Details Submitted..!!") 
                 window.close()   
             }
         }

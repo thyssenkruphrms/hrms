@@ -324,6 +324,7 @@ function abort_round(confr)
     <b>Please wait.. while we Complete this Process</b>
   </div>
 </div>
+
 <div id="accept">
   <div id="txt">
     <b>Please wait.. while we schedule this interview</b>
@@ -815,13 +816,14 @@ function completeProcess(cnfrm)
                 $('#sentsuccess').fadeIn(600)
                 $('#sendingmail').hide()
                 window.setTimeout(function(){location.reload()},1000)
-              
+    
                 finalselectionmail = []
               }
               else
               {
                 alert("Mail was not sent.")
                 $('#sendingmail').hide()
+                window.setTimeout(function(){location.reload()},1000)
 
               }
               console.log((para))
@@ -918,6 +920,7 @@ function allocateSubmit(cnfrm)
       console.log(para);
       $('#accept').hide();
       $('#sentsuccess').fadeIn(600)
+
       for(let i=0;i<selectedmail.length;i++)
       {
         var ml = selectedmail[i];

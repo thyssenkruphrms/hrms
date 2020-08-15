@@ -49,7 +49,7 @@ if($cursor)
     $result1 = $db->interviews->find(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3]));
     $interviewcriteria=array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3],"intvmail"=>$cursor['mail']);
     $roundcriteria=array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3]);
-    
+    $response = [];
     if($result1)
     {
         //push evaluated candidates in evaluated array 
@@ -65,6 +65,11 @@ if($cursor)
         if($membercount == 0)
         {
            $db->interviews->updateOne($interviewcriteria,array('$set'=>array('accepted'=>'alleval')));    
+           $response[1] = "last";
+        }
+        else
+        {
+            $response[1] = "first";
         }
         
          //check if all our evaluated END
@@ -79,15 +84,13 @@ if($cursor)
         {
             //push selected/rejected/onhold candidates into array and pull members from members array
             //push only selected candidates in the selected remove array
-            $db->rounds->updateOne($roundcriteria,array('$push'=>array($selection=>$_GET["name"],"selectedremove"=>$selectedcandidate),'$pull'=>array("members"=>$_GET["name"])),array('safe'=>true,'timeout'=>5000,'upsert'=>true));  
-            
+            $db->rounds->updateOne($roundcriteria,array('$push'=>array($selection=>$_GET["name"],"selectedremove"=>$selectedcandidate),'$pull'=>array("members"=>$_GET["name"])),array('safe'=>true,'timeout'=>5000,'upsert'=>true));       
         }
-        echo "success";
+        $response[0] = 'success';
+        echo json_encode($response);
 
     }
-
-      
-    
+  
 }
 
 else{

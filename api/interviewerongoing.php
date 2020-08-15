@@ -25,7 +25,7 @@ if($cursor)
         $mail->addAddress($d);
         $mail->Subject = 'Mail Regarding Interview';
         $mail->Body    = 'You have been shortlisted for the interview. You have an interview on this '.$date.'Time : '.$time;
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+       
 
         if(!$mail->send()) 
         {

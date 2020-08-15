@@ -278,7 +278,7 @@ include 'db.php';
 
 
                     
-                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                   
                     $mail->send();
                     header("location:../applicationblank.php?token=123");
                 }

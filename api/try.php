@@ -20,7 +20,7 @@ foreach($_POST['emails'] as $d)
     $url='http://localhost/hrms/applicationblank.html?token='.$token;
     $mail->Subject = 'Mail Regarding to take Interview for interviewer';
     $mail->Body    = 'You have been shortlisted for the interview. You have an interview on this date.'.$url;
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+   
 
     if(!$mail->send()) 
     {

@@ -478,7 +478,7 @@ function notifyCandidate(id)
 {
   console.log("ID - "+id)
   $('#loader').show()
-  alert(id)
+  
   $.ajax({
     url:"http://localhost/hrms/api/notifyCandidate.php",
     type:"POST",

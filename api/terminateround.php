@@ -176,7 +176,7 @@ if(isset($_POST) and $cursor)
                     </body> ';
 
             
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+               
                 $result=$db->tokens->updateOne(array("email"=>$d),array('$set'=>array("afterselection"=>'0',"progress"=>"Post Selection Form Sent")));
                 $result=$db->rounds->updateOne(array("prf"=>$digit13[0],"pos"=>$digit13[1],'iid'=>$digit13[2],"rid"=>$digit13[3]),array('$addToSet'=>array('selected'=>$d)),array('safe'=>true,'timeout'=>5000,'upsert'=>true));
 

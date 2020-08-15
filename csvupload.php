@@ -154,7 +154,7 @@
     </div>
     <div class="modal-footer">
     <b class="red-text">Please ensure that the CSV file to be uploaded must have above columns only</b>   <br>
-    <a href="./formats/emaildumpformat.csv"  class="modal-close waves-effect waves-green btn-flat" style="color:green" download>Download</a>
+    <a href="./formats/prfdumpformat.csv"  class="modal-close waves-effect waves-green btn-flat" style="color:green" download>Download</a>
   
     </div>
     

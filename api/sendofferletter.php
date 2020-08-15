@@ -122,7 +122,7 @@ if($cursor)
             </tbody> 
         </table> 
     </body> ';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+   
 
     $result = $db->intereval->updateOne(array("prf"=>$_POST['prf'],"pos"=>$_POST['pos'],"iid"=>$_POST['iid'],"rid"=>$_POST['rid'],"email"=>$candidate),array('$set'=>array("offerletter"=>"sent")));
 

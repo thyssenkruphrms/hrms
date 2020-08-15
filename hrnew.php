@@ -525,7 +525,7 @@ function xyz(x)
     </div>
     <center><b class="red-text">Please ensure that the file to be uploaded must have above columns only</b></center>
     <div class="modal-footer">
-    <a href="excel/email_format.php" class="modal-close waves-effect waves-green btn-flat" style="color:green">Download</a>
+    <a href="./formats/emaildumpformat.csv" class="modal-close waves-effect waves-green btn-flat" style="color:green" download>Download</a>
     <a href="#!" class="modal-close waves-effect waves-green btn-flat" style="color:red">Close</a>
     </div>
   </div>
@@ -544,7 +544,7 @@ function xyz(x)
 <script>
 
 $("#but_upload").click(function(){
-    // $("#loader").show();
+    $("#loader").show();
 
   console.log("This is form submit",window.prf)
 
@@ -564,6 +564,17 @@ $("#but_upload").click(function(){
             contentType: false,
             processData: false,
             success: function(response){
+              
+              if(response == "success")
+              {
+                $("#loader").hide();
+                window.setTimeout(function(){location.reload()},1000)
+              }
+              else
+              {
+                $("#loader").hide();
+                window.setTimeout(function(){location.reload()},1000)
+              }
               console.log("Response",response)
       
             },

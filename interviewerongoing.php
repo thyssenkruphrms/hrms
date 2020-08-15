@@ -21,7 +21,7 @@ foreach($_POST['emails'] as $d)
     $mail->Body    = 'You have been shortlisted for the interview. 
     You have an interview on this '.$date.'Time : '.$time.' by '.$invname;
     
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+   
 
     if(!$mail->send()) 
     {
@@ -70,7 +70,7 @@ $db->tokens->updateMany(array("prf"=>$digit13[0],'iid'=>$digit13[2],"pos"=>$digi
      You have an interview on this '.$date.'Time : '.$time.'
      To access your dashboard for more details, please click <a href='.$dashurl.'>here</a>';
     
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+   
 
     if(!$mail->send()) 
     {

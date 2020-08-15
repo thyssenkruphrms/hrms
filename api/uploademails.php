@@ -92,7 +92,7 @@ if($count==1) //if round collection is present
 
                 $mail->Subject = 'Mail Regarding Interview';
                 $mail->Body    = 'You have been shortlisted for the interview. You have an interview on this date.'.$url;
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+               
 
                 if(!$mail->send()) 
                 {
@@ -191,7 +191,7 @@ if($count==1) //if round collection is present
 
                 $mail->Subject = 'Mail Regarding Interview';
                 $mail->Body    = 'You have been shortlisted for the interview. You have an interview on this date.'.$url;
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+               
 
                 if(!$mail->send()) 
                 {
@@ -286,7 +286,7 @@ else
 
                 $mail->Subject = 'Mail Regarding Interview';
                 $mail->Body    = 'You have been shortlisted for the interview. You have an interview on this date.'.$url;
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+               
 
                 if(!$mail->send()) 
                 {

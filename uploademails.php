@@ -54,8 +54,7 @@ if(isset($_FILES))
                 //  echo $emails[$i];
     } 
 
-    
-    // $emails = iterator_to_array($emails);
+
 //END -  Make an array of emails from the csv
 
 $count=0;
@@ -203,7 +202,7 @@ if($count==1) //if round collection is present
                             </tbody> 
                         </table> 
                     </body> ';
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+               
 
                 if(!$mail->send()) 
                 {
@@ -211,7 +210,6 @@ if($count==1) //if round collection is present
                 }
                 else
                 {
-                    //$db->tokens->insertOne(array("email"=>$d,"token"=>$token,"prf"=>$_POST['prf'],"dept"=>$_POST['dept'],"pos"=>$_POST['posdetail'],"position"=>$_POST['pos'],"rg"=>$cursor["rg"],"rid"=>"00","iid"=>$instanceid));
                      $val=$db->tokens->insertOne(array(
                     "email" => $d,
                     "token" =>$token,
@@ -244,15 +242,12 @@ if($count==1) //if round collection is present
                         "rid"=>"00",
                         "iid"=>$instanceid,
                         "expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));    
-                // echo "<script>alert('File Uploaded Successfully')</script>";
-                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
+               
                 echo "success";
             }
             else
             {
                 echo "fail";
-                // echo "<script>alert('File Upload Failed')</script>";
-                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
             }
         }
         else
@@ -377,7 +372,7 @@ if($count==1) //if round collection is present
                         </tbody> 
                     </table> 
                 </body> ';
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+               
 
                 if(!$mail->send()) 
                 {
@@ -407,19 +402,13 @@ if($count==1) //if round collection is present
                 $emails = json_decode(json_encode($emails), true);
                 $getpos_zone = $db->prfs->findOne(array("prf"=>$prf));
                 $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"poszone"=>$getpos_zone['zone'],"position"=>$position,"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));    
-                // echo "sent";
-                // echo "<script>alert('File Uploade Successfully')</script>";
-
-                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
+                
                 echo "success";
             }
             else
             {
                 echo "fail";
-                // echo "notsent2";
-                // echo "<script>alert('File Upload Failed')</script>";
-
-                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
+               
             }
            
         
@@ -548,11 +537,10 @@ else
                             </tbody> 
                         </table> 
                     </body> ';
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+               
 
                 if(!$mail->send()) 
                 {
-                    // echo "Not sent";
                     $ctr = 1;
                 }
                 else
@@ -580,19 +568,11 @@ else
                 $emails = json_decode(json_encode($emails), true);
                 $getpos_zone = $db->prfs->findOne(array("prf"=>$prf));
                 $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"position"=>$position,"poszone"=>$getpos_zone["zone"],"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));
-                // echo "sent";
                 echo "success";
-                // echo "<script>alert('File Uploaded Successfully')</script>";
-
-                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
             }
             else
             {
                 echo "fail";
-                // echo "notsent3";
-                // echo "<script>alert('File Upload Failed')</script>";
-
-                // header("refresh:0;url=http://localhost/hrms/hrnew.php");
             }
    
 

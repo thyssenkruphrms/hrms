@@ -162,7 +162,7 @@ if($cursor)
                             </tbody> 
                         </table> 
                     </body> ';
-                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                   
 
                     if(!$mail->send()) 
                     {
@@ -360,7 +360,7 @@ if($cursor)
                             </tbody> 
                         </table> 
                     </body> ';
-                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                   
 
                     if(!$mail->send()) 
                     {
@@ -567,7 +567,7 @@ if($cursor)
                             </tbody> 
                         </table> 
                     </body> ';
-                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                   
 
                     if(!$mail->send()) 
                     {

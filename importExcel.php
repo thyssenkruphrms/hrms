@@ -134,7 +134,7 @@ if(isset($_FILES))
                             
                             
 
-                            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                           
                         
                             $mail->send(); 
                             $mail->ClearAddresses();
@@ -153,7 +153,7 @@ if(isset($_FILES))
                                     In-case of any query, feel free to reach out to recruitment@tkeap.com
                                     
                                         tkEI Recruiting Team.');     
-                                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                               
                             
                                 $mail->send(); 
                                 $mail->ClearAddresses();
