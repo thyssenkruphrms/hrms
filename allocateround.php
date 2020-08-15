@@ -283,6 +283,7 @@ function abort_round(confr)
                 <tr>
                   <th>Name</th>
                   <th>Mail ID</th>
+                  <th>Status</th>
                   <th>Time</th>
                   <th>Date</th>
                   <th>Select</th>
@@ -854,14 +855,6 @@ function completeProcess(cnfrm)
 
 
 
-
-
-
-
-
-
-
-
 // Function for inv assignment
 
 $('#allocatesubmit').click(function()
@@ -1106,12 +1099,23 @@ function createnextround(id)
           var s1='<tr id="check'+i+'row">'
           var s2='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'&prf='+window.prf+'&iid='+window.iid+'&rid='+window.rid+'&s=1" target="_blank" "><p >'+arr[i][0]+'</p></a></td>'
           var s3='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'&prf='+window.prf+'&iid='+window.iid+'&rid='+window.rid+'&s=1" target="_blank" "><p id="check'+i+'mail">'+arr[i][1]+'</p></a></td>'
-          var s4='<td><input id="check'+i+'date" class="timepicker" ></td>'
-          var s5 ='<td><input id="check'+i+'date2" class="datepicker" ></td>'
-          var s6='<td><label><input type="checkbox" class="filled-in" id="check'+i+'" onclick="selection(this.id)">'
-          var s7='<span class="blue-text darken-1" ></span></label></td></tr>'
+          var s4='<td><p >'+arr[i][2]+'</p></td>'
+          if(arr[i][2] == "Selected")
+          {
+            var s5='<td><input id="check'+i+'date" class="timepicker" ></td>'
+            var s6 ='<td><input id="check'+i+'date2" class="datepicker" ></td>'
+            var s7='<td><label><input type="checkbox" class="filled-in" id="check'+i+'" onclick="selection(this.id)">'
+            var s8='<span class="blue-text darken-1" ></span></label></td></tr>'
           
-          var str=s1+s2+s3+s4+s5+s6+s7
+          }
+          else
+          {
+            var s5=''
+            var s6 =''
+            var s7=''
+            var s8='</tr>'
+          }
+          var str=s1+s2+s3+s4+s5+s6+s7+s8
           $('#adddetail').append(str)
           $('.timepicker').timepicker();
           $('.datepicker').datepicker();
