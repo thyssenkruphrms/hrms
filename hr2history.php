@@ -374,11 +374,11 @@ $(document).ready(function(){
             }
             if(para[j].status == "7")
             {
-              status = "Candidate Joined"
+              status = "Candidate Accepted Offerletter"
             }
             if(para[j].status == "8")
             {
-              status = "Candidate Rejected Offer"
+              status = "Candidate Rejected Offerletter"
             }
             var x='<tr id="rows"><td id="prf" value="'+para[j].prf+'">'+para[j].prf+'</td><td>'+para[j].posdetail+'</td><td>'+para[j].poszone+'</td><td>'+para[j].dept+'</td><td>'+para[j].position+'</td><td id="zone">'+para[j].name+'</td><td id="dept">'+para[j].members+'</td><td id="dept">'+status+'</td></tr>'
           $('#rawdata').append(x);
@@ -400,17 +400,17 @@ $(document).ready(function(){
             }
             else
             {
-                header("refresh:0;url=notfound.html");
+                header("refresh:0;url=notfound.php");
             }
         }
         else
         {
-            header("refresh:0;url=notfound.html");
+            header("refresh:0;url=notfound.php");
         }
     }
     else
     {
-        header("refresh:0;url=notfound.html");
+        header("refresh:0;url=notfound.php");
     }  
 ?>
        

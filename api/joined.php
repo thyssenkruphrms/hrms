@@ -11,7 +11,7 @@ if($cursor)
     if($result)
     {
         $q = $db->intereval->updateOne($criteria,array('$set'=>array("offerletter"=>"joined","joiningdate"=>$_POST['date'])));
-        $db->tokens->updateOne(array("email"=>$_POST['email']),array('$set'=>array("progress"=>"Candidate Joined","afterselection"=>"7")));
+        $db->tokens->updateOne(array("email"=>$_POST['email']),array('$set'=>array("progress"=>"Candidate Accepted Offerletter","afterselection"=>"7")));
 
         if($q)
         {
@@ -25,7 +25,7 @@ if($cursor)
 }
 else
 {
-    header("refresh:0;url=notfound.html");    
+    header("refresh:0;url=notfound.php");    
 }
 
 ?>
