@@ -154,7 +154,8 @@
     </div>
     <div class="modal-footer">
     <b class="red-text">Please ensure that the CSV file to be uploaded must have above columns only</b>   <br>
-    <a href="excel/prf_format.php" class="modal-close waves-effect waves-green btn-flat" style="color:green">Download</a>
+    <a href="./formats/emaildumpformat.csv"  class="modal-close waves-effect waves-green btn-flat" style="color:green" download>Download</a>
+  
     </div>
     
    
@@ -229,27 +230,46 @@ $(document).ready(function(){
               var files = $('#uploadcsv')[0].files[0];
               fd.append('uploadcsv',files);
               console.log("This is  - ",fd)
-              $.ajax({
-                  url: 'importExcel.php',
+              $.ajax({3
+                  url: 'http://localhost/hrms/importExcel.php',
                   type: 'post',
                   data: fd,
                   contentType: false,
                   processData: false,
                   success: function(response){
+                    response = response.trim()
                     console.log("Response",response)
-                      
+                     
                       if(response != "error"){
+
                         $("#loader").hide();
                         $('#forms').hide()
-                          s1 = '<div class="row">'
-                          s2 = '<div class="col s12 m6 offset-m3">'
-                          s3 = '<div class="card white">'
-                          s4 = ' <div class="card-content blue-text">'
-                          s5 = '<span class="card-title">Upload Dump Status :'+response+'New Entries added </span>'
-                          s7 = '</div></div></div></div>'
-                          s8 = s1+s2+s3+s4+s4+s5+s7;
-                          $('.success').append(s8)
-                          window.setTimeout(function(){location.reload()},3000)
+                          if(response == "No")
+                          {
+                              s1 = '<div class="row">'
+                              s2 = '<div class="col s12 m6 offset-m3">'
+                              s3 = '<div class="card white">'
+                              s4 = ' <div class="card-content blue-text">'
+                              s5 = '<center><span class="card-title" >Please upload the file in the given format </span></center>'
+                              s7 = '</div></div></div></div>'
+                              s8 = s1+s2+s3+s4+s4+s5+s7;
+                              $('.success').append(s8)
+                              window.setTimeout(function(){location.reload()},3000)
+                          }
+                          else
+                          {
+                              s1 = '<div class="row">'
+                              s2 = '<div class="col s12 m6 offset-m3">'
+                              s3 = '<div class="card white">'
+                              s4 = ' <div class="card-content blue-text">'
+                              s5 = '<span class="card-title">Upload Dump Status :'+response+'New Entries added </span>'
+                              s7 = '</div></div></div></div>'
+                              s8 = s1+s2+s3+s4+s4+s5+s7;
+                              $('.success').append(s8)
+                              window.setTimeout(function(){location.reload()},3000)
+                          }
+                       
+                         
                       }
                       else if(response == "error"){
                           alert('file not uploaded');
