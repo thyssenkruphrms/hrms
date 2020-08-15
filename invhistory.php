@@ -460,11 +460,15 @@ function xyz(x)
 {
   $('#prfdata').empty()
 
+
   roundid = x.split("*");
   
       console.log(roundid)
 
       $('#tabledataselect').empty()
+      $('#tabledatareject').empty()
+      $('#tabledatahold').empty()
+
 
       $.ajax({
 
