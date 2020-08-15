@@ -674,8 +674,7 @@ function completepro(id)
               var s6='<td><label><input type="checkbox" class="filled-in" id="finalcheck'+i+'" onclick="finalselection(this.id)">'
               var s7='<span class="blue-text darken-1" ></span></label></td></tr>'
               
-           
-
+        
               var str=s1+s2+s3+s6+s7
               $('#finalcands').append(str)
             }
@@ -689,10 +688,10 @@ function completepro(id)
         {
             var s1 = "<p style ='color:red;'>There are no candidates selected you can complete this round</p>"
             var foot1 = '<center>'
-            var foot2 = '<a id='+id+' onclick="terminateround(this.id,false)" class="modal-open waves-effect green btn openhr2" >Confirm<i class="material-icons left" >check_box</i></a> &nbsp;&nbsp;&nbsp;'
+            var foot2 = '<a id='+id+' onclick="terminateround(this.id,false)" class="modal-open waves-effect green btn openhr2" >Complete Process<i class="material-icons left" >check_box</i></a> &nbsp;&nbsp;&nbsp;'
             var foot3 = '<a  onclick="cancelModal()"class="modal-close waves-effect red btn">Cancel<i class="material-icons left">highlight_off</i></a>'
             var foot4 = '</center>'
-            $('#finalcands').append(str)
+            $('#finalcands').append(s1)
             $('.openhr2').append(foot1+foot2+foot3+foot4)
         }
       
@@ -1110,9 +1109,9 @@ function createnextround(id)
           }
           else
           {
-            var s5=''
-            var s6 =''
-            var s7=''
+            var s5='NA'
+            var s6 ='NA'
+            var s7='NA'
             var s8='</tr>'
           }
           var str=s1+s2+s3+s4+s5+s6+s7+s8
