@@ -1109,9 +1109,9 @@ function createnextround(id)
           }
           else
           {
-            var s5='NA'
-            var s6 ='NA'
-            var s7='NA'
+            var s5='<td><b>NA</b></td>'
+            var s6 ='<td><b>NA</b></td>'
+            var s7='<td><b>NA</b></td>'
             var s8='</tr>'
           }
           var str=s1+s2+s3+s4+s5+s6+s7+s8
