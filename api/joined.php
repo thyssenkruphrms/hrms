@@ -6,7 +6,7 @@ $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
 if($cursor)
 {
     $digit13 = preg_split('/[-]/', $_POST['id']);
-    $criteria = array("prf"=>$digit13[1],"pos"=>$digit13[2],"iid"=>$digit13[3],"email"=>$_POST['email']);
+    $criteria = array("prf"=>$digit13[1],"pos"=>$digit13[2],"iid"=>$digit13[3],"rid"=>$digit13[4],"email"=>$_POST['email']);
     $result = $db->intereval->findOne($criteria);
     if($result)
     {

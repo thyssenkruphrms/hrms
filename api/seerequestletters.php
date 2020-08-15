@@ -7,6 +7,7 @@ if($cursor)
 {
     if(isset($_POST))
     {
+        $arr = array();
         $result = $db->intereval->find(array("offerletter"=>array('$exists'=>true)));
         $i = 0;
         foreach($result as $doc)
@@ -26,7 +27,15 @@ if($cursor)
                 $i += 1;
             }
         }
-        echo json_encode($arr);
+        if(count($arr)==0)
+        {
+           echo "No Data";
+        }
+        else
+        {
+            echo json_encode($arr);
+        }
+       
     }
 }
 else

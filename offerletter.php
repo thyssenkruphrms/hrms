@@ -153,6 +153,7 @@ width: 350%;
     </div>
 </nav>
 <br><br>
+
 <!-- nav and side menu ended -->
 
  <div class="row" id="firsttb">
@@ -181,7 +182,23 @@ width: 350%;
 </div>
 
 
-
+<!-- No data modal starts here -->
+    <!-- Modal Structure -->
+    <div id="nodatamodal" class="modal">
+        <div class="modal-content">
+        <center><i class="material-icons large " style="color: #ff5252;">error_outline</i></center>
+        <br>
+        
+        <center><h2>No Data Available</h2></center>
+        
+        </div>
+        <div class="modal-footer">
+        <center>
+        <a class="modal-close waves-effect green btn" >OK<i class="material-icons left" >check_box</i></a>
+        </center>
+        </div>
+    </div>
+<!-- no data modal ends here -->
 
 
 </body>
@@ -312,32 +329,38 @@ $(document).ready(function(){
     type:'POST',
     success : function(para)
     {
-      para = JSON.parse(para)
-      console.log(para)
-      for(let i=0;i<para.length;i++)
+      if(para =="No Data")
       {
-        arr[i]=para[i];
+        $("#nodatamodal").modal("open");
       }
-    
-      for(let j=0;j<arr.length;j++)
+      else
       {
-        if(arr[j][8] == "requested")
+        para = JSON.parse(para)
+        console.log(para)
+        arr = para
+        
+      
+        for(let j=0;j<arr.length;j++)
         {
-          var candidate = arr[j][5];
-          digit13=arr[j][0]+'-'+arr[j][1]+'-'+arr[j][2]+'-'+arr[j][3];
-          console.log("Digit13",digit13)
-          var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="pos">'+arr[j][1]+'</td><td id="iid">'+arr[j][2]+'</td><td id="rid">'+arr[j][3]+'</td><td id="'+j+'4" >'+arr[j][4]+'</td><td id="'+j+'5" >'+arr[j][5]+'</td><td id="interviewername">'+arr[j][6]+'</td><td id="interviewermail">'+arr[j][7]+'</td><td><a name="'+arr[j][7]+'" id="'+j+'-'+digit13+'-'+'" class="btn green darken-1" onclick="sendmailtoinv(this.id,this.name)">Send Letter</a></td></tr>'
-          $('#rawdata').append(x);
-        }
-        else if(arr[j][8] == "sent")
-        {
-          var candidate = arr[j][5];
-          digit13=arr[j][0]+'-'+arr[j][1]+'-'+arr[j][2]+'-'+arr[j][3];
-          console.log("Digit13",digit13)
-          var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="pos">'+arr[j][1]+'</td><td id="iid">'+arr[j][2]+'</td><td id="rid">'+arr[j][3]+'</td><td id="'+j+'4" >'+arr[j][4]+'</td><td id="'+j+'5" >'+arr[j][5]+'</td><td id="interviewername">'+arr[j][6]+'</td><td id="interviewermail">'+arr[j][7]+'</td><td><a name="'+arr[j][5]+'" id="'+j+'-'+digit13+'" class="btn green darken-1" onclick="joined(this.id,this.name)"> Accepted </a><a name="'+arr[j][5]+'" id="'+j+'-'+digit13+'" class="btn red darken-1" onclick="Rejected(this.id,this.name)"> Rejected </a></td></tr>'
-          $('#rawdata').append(x);
-        }
+          if(arr[j][8] == "requested")
+          {
+            var candidate = arr[j][5];
+            digit13=arr[j][0]+'-'+arr[j][1]+'-'+arr[j][2]+'-'+arr[j][3];
+            console.log("Digit13",digit13)
+            var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="pos">'+arr[j][1]+'</td><td id="iid">'+arr[j][2]+'</td><td id="rid">'+arr[j][3]+'</td><td id="'+j+'4" >'+arr[j][4]+'</td><td id="'+j+'5" >'+arr[j][5]+'</td><td id="interviewername">'+arr[j][6]+'</td><td id="interviewermail">'+arr[j][7]+'</td><td><a name="'+arr[j][7]+'" id="'+j+'-'+digit13+'-'+'" class="btn green darken-1" onclick="sendmailtoinv(this.id,this.name)">Send Letter</a></td></tr>'
+            $('#rawdata').append(x);
+          }
+          else if(arr[j][8] == "sent")
+          {
+            var candidate = arr[j][5];
+            digit13=arr[j][0]+'-'+arr[j][1]+'-'+arr[j][2]+'-'+arr[j][3];
+            console.log("Digit13",digit13)
+            var x='<tr id="rows"><td id="prf" value="'+arr[j][0]+'">'+arr[j][0]+'</td><td id="pos">'+arr[j][1]+'</td><td id="iid">'+arr[j][2]+'</td><td id="rid">'+arr[j][3]+'</td><td id="'+j+'4" >'+arr[j][4]+'</td><td id="'+j+'5" >'+arr[j][5]+'</td><td id="interviewername">'+arr[j][6]+'</td><td id="interviewermail">'+arr[j][7]+'</td><td><a name="'+arr[j][5]+'" id="'+j+'-'+digit13+'" class="btn green darken-1" onclick="joined(this.id,this.name)"> Accepted </a><a name="'+arr[j][5]+'" id="'+j+'-'+digit13+'" class="btn red darken-1" onclick="Rejected(this.id,this.name)"> Rejected </a></td></tr>'
+            $('#rawdata').append(x);
+          }
+       }
       }
+
     }
   })
   
@@ -346,6 +369,8 @@ $(document).ready(function(){
 
 function joined(id,email)
 {
+  console.log("ID - ",id)
+  console.log("Email - ",email)
   window.id = id;
   window.email = email;
   $("#datemodal").modal("open");
@@ -366,9 +391,10 @@ function confirmDate()
       },
       success: function(para)
       {
+        console.log(para)
         if(para == "success")
         {
-          document.location.reload();
+          // document.location.reload();
         }
         else
         {
