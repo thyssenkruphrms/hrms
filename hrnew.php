@@ -261,7 +261,7 @@ width: 350%;
 
 <br>
 <center>
-<button class="button" id="kindlybtn">Kindly Enter the email IDs for below PRF</button>
+<button class="button" id="kindlybtn">kindly enter candidate's email ID for below PRF</button>
 </center>
 <br>
 <div class="col s7 offset-m3 blue lighten-4" id="selectedrow">
@@ -302,7 +302,7 @@ width: 350%;
     <div class="col s12 m4 offset-m4">
       <div class="card white darken-1">
         <div class="card-content blue-text">
-          <span class="card-title"><b><center>Upload Email Dump</center></b></span>
+          <span class="card-title"><b><center>Upload prospective candidate details</center></b></span>
           
 <script>
 
@@ -492,7 +492,7 @@ function xyz(x)
   
   <div class="card white darken-1" id="ordiv" style="width:15%;margin-left:42%;" ><center><b>OR <br></center></div><br>
   <div class="row card white darken-1" style="width:35%;margin-left:32%;" id="emailcollection">
-  <center> <br> Enter Email IDs Manually Here <br></b> </center>
+  <center> <br> Enter prospective candidate details <br></b> </center>
     <div class="input-field col s12 m4 offset-m4 blue-text" style="width:60%;margin-left:20%;">
       <i class="material-icons prefix">email</i>
       <input id="email" onfocus="addText(this)" type="text" class="validate" placeholder="Enter Email Address">

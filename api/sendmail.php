@@ -7,7 +7,7 @@ include 'db.php';
 $mail->setFrom('thyssenkrupp@tkep.com', 'tkei');
 $mail->addReplyTo(Email, 'Information');
 $mail->isHTML(true);   
-// $mail->SMTPDebug = 4;                               // Enable verbose debug output
+//$mail->SMTPDebug = 4;                               // Enable verbose debug output
 
 $expdate = strtotime("+7 day");
 $expdate = date("Y-m-d", $expdate);
