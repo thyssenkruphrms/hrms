@@ -403,7 +403,6 @@ var id;
 
 function xyz(x)
 {
-
   $('#kindlybtn').show();
   $('#selectedrow').show();
   $("#ordiv").show();
@@ -493,9 +492,11 @@ function xyz(x)
   <div class="card white darken-1" id="ordiv" style="width:15%;margin-left:42%;" ><center><b>OR <br></center></div><br>
   <div class="row card white darken-1" style="width:35%;margin-left:32%;" id="emailcollection">
   <center> <br> Enter prospective candidate details <br></b> </center>
-    <div class="input-field col s12 m4 offset-m4 blue-text" style="width:60%;margin-left:20%;">
-      <i class="material-icons prefix">email</i>
-      <input id="email" onfocus="addText(this)" type="text" class="validate" placeholder="Enter Email Address">
+    <div class="input-field col s12 m4 offset-m10 blue-text" style="width:60%;margin-left:20%;">
+      <i class="material-icons prefix">assignment</i>
+      <input id="cname" onfocus="addText(this)" type="text" class="validate" placeholder="Candidate 1 Full Name">
+      <input id="email" type="email" class="validate" placeholder="Candidate 1 Email Address">
+
     </div>
   </div>
 
@@ -519,7 +520,9 @@ function xyz(x)
     <table class="white-text teal">
       <tr>
         <th>SrNo.</th>
-        <th>Email Address</th>
+        <th>Candidate Full Name</th>
+        <th>Candidate Email Ad</th>
+
       </tr>
     </table>
     </div>
@@ -663,15 +666,19 @@ function filterbydept()
 
 
   var ctr = 0
+  var counter
+
 function addText(x)
 {
 ctr = ctr+1
+counter = ctr+1
 var str = 'email'+ctr
 var txt1 = "<div class='input-field col s12 m4 offset-m4  blue-text' style='width:60%;margin-left:20%;' >"
-var txt2 = "<i class='material-icons prefix'>email</i>"
-var txt3 = "<input id='"+str+"' onfocus='addText(this)' type='text' class='validate' placeholder='Enter Email Address'>"
-var txt4 = "</div>"
-$("#emailcollection").append(txt1+txt2+txt3+txt4);
+var txt2 = "<i class='material-icons prefix'>assignment</i>"
+var txt3 = "<input id='"+str+"_name' onfocus='addText(this)' type='text' class='validate' placeholder='Candidate "+counter+" Full Name'>"
+var txt4 = "<input id='"+str+"' type='text' class='validate' placeholder='Candidate "+counter+" Email Address'>"
+var txt5 = "</div>"
+$("#emailcollection").append(txt1+txt2+txt3+txt4+txt5);
 }
 var arr=[]
 var dept=[]
@@ -783,16 +790,17 @@ $('#submitmail').click(function()
   $("#loader").show();
   $('#submitmail').prop('disabled', true);
   $('#emailcollection').fadeOut(600)
-  // $('#creatinggrp').fadeIn(600)
+  $('#creatinggrp').fadeIn(600)
 
 
   var arr1=[]
-  arr1[0]= $('#email').val()
+  arr1[0]= [$('#email').val(),$('#cname').val()]
   for(let i =1;i<ctr;i++)
   {
     var x = '#email'+i
-    arr1[i] = $(x).val()
-    arr1= arr1.filter(function(entry) { return entry.trim() != ""; });
+    var y = '#email'+i+'_name'
+    arr1[i] = [$(x).val(),$(y).val()]
+    arr1[i] = arr1[i].filter(function(entry) { return entry.trim() != ""; });
   }
   
   $.ajax({
@@ -812,7 +820,7 @@ $('#submitmail').click(function()
     {
       // para=JSON.parse(para);
       console.log("this is ",para);
-      
+      // alert(para)
       if(para == "sent")
       {
         $("#loader").hide();

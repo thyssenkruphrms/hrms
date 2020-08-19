@@ -44,8 +44,12 @@ if($cursor)
               
                 $ctr=0;
                 $instanceid=$instanceId=(string)sprintf("%03s",1);
-                foreach($_POST['emails'] as $d)
+                $mailarray = array();
+                foreach($_POST['emails'] as $doc)
                 {
+                    $d = $doc[0];
+                    $cname = $doc[1];
+                    array_push($mailarray,$d);
                     $mail->addAddress($d);
                     $token=sha1($d);
                     $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
@@ -95,7 +99,7 @@ if($cursor)
                                                 align-items: center; 
                                                 font-size: 18px; 
                                                 padding-bottom: 12px;"> 
-                                                Dear Candidate,<br></br><br></br>
+                                                Dear '. $cname.',<br></br><br></br>
 
                                                 Further to our discussion for the profile of '. $positionorg.' in department - '.$_POST['dept'].' You are required to provide your basic
                                                 details by accessing the below link so that your application could be processed further.
@@ -170,7 +174,7 @@ if($cursor)
                     }
                     else
                     {
-                        $db->tokens->insertOne(array("email"=>$d,"token"=>$token,"prf"=>$_POST['prf'],"dept"=>$_POST['dept'],"pos"=>$_POST['pos'],"position"=>$_POST['position'],"rg"=>$cursor["rg"],"rid"=>"00","expiry"=>$expdate,"iid"=>$instanceid));
+                        $db->tokens->insertOne(array("email"=>$d,"full_name"=>$cname,"token"=>$token,"prf"=>$_POST['prf'],"dept"=>$_POST['dept'],"pos"=>$_POST['pos'],"position"=>$_POST['position'],"rg"=>$cursor["rg"],"rid"=>"00","expiry"=>$expdate,"iid"=>$instanceid));
                     }
 
                     $mail->ClearAddresses();
@@ -191,7 +195,7 @@ if($cursor)
                         "rid"=>"00",
                         "expiry"=>$expdate,
                         "iid"=>$instanceid,
-                        "members"=>$_POST['emails'],
+                        "members"=>$mailarray,
                         "selected"=>array(),
                         "rejected"=>array(),
                         "onhold"=>array())
@@ -244,8 +248,12 @@ if($cursor)
                 $instanceid=$instanceid+1;
                 $instanceid=(string)sprintf("%03s",$instanceid);
                 $ctr=0;
-                foreach($_POST['emails'] as $d)
+                $mailarray = array();
+                foreach($_POST['emails'] as $doc)
                 {
+                    $d = $doc[0];
+                    $cname = $doc[1];
+                    array_push($mailarray,$d);
                     $mail->addAddress($d);
                     $token=sha1($d);
                     $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
@@ -293,7 +301,7 @@ if($cursor)
                                                 align-items: center; 
                                                 font-size: 18px; 
                                                 padding-bottom: 12px;"> 
-                                                Dear Candidate,<br></br><br></br>
+                                                Dear '. $cname.',<br></br><br></br>
 
                                                 Further to our discussion for the profile of '. $positionorg.' in department - '.$_POST['dept'].' You are required to provide your basic
                                                 details by accessing the below link so that your application could be processed further.
@@ -368,7 +376,7 @@ if($cursor)
                     }
                     else
                     {
-                        $db->tokens->insertOne(array("email"=>$d,"token"=>$token,"prf"=>$_POST['prf'],"dept"=>$_POST['dept'],"pos"=>$_POST['pos'],"position"=>$_POST['position'],"rg"=>$cursor["rg"],"rid"=>"00","expiry"=>$expdate,"iid"=>$instanceid));
+                        $db->tokens->insertOne(array("email"=>$d,"full_name"=>$cname,"token"=>$token,"prf"=>$_POST['prf'],"dept"=>$_POST['dept'],"pos"=>$_POST['pos'],"position"=>$_POST['position'],"rg"=>$cursor["rg"],"rid"=>"00","expiry"=>$expdate,"iid"=>$instanceid));
                         $date = date_default_timezone_set('Asia/Kolkata');
            
                         $today = date("Y-m-d H-i-s");
@@ -412,7 +420,7 @@ if($cursor)
                         "rid"=>"00",
                         "expiry"=>$expdate,
                         "iid"=>$instanceid,
-                        "members"=>$_POST['emails'],
+                        "members"=>$mailarray,
                         "selected"=>array(),
                         "rejected"=>array(),
                         "onhold"=>array())
@@ -451,8 +459,12 @@ if($cursor)
     {//when there is no collection
             $ctr=0;
             $instanceid=$instanceId=(string)sprintf("%03s",1);
-                foreach($_POST['emails'] as $d)
+            $mailarray = array();
+                foreach($_POST['emails'] as $doc)
                 {
+                    $d = $doc[0];
+                    $cname = $doc[1];
+                    array_push($mailarray,$d);
                     $mail->addAddress($d);
                     $token=sha1($d);
                     $url='http://localhost/hrms/applicationblank.php?token='.$token.'&position='.$position;
@@ -500,7 +512,7 @@ if($cursor)
                                                 align-items: center; 
                                                 font-size: 18px; 
                                                 padding-bottom: 12px;"> 
-                                                Dear Candidate,<br></br><br></br>
+                                                Dear '. $cname.',<br></br><br></br>
 
                                                 Further to our discussion for the profile of '. $positionorg.' in department - '.$_POST['dept'].' You are required to provide your basic
                                                 details by accessing the below link so that your application could be processed further.
@@ -576,7 +588,7 @@ if($cursor)
                     else
                     {
                       
-                        $db->tokens->insertOne(array("email"=>$d,"token"=>$token,"prf"=>$_POST['prf'],"dept"=>$_POST['dept'],"pos"=>$_POST['pos'],"position"=>$_POST['position'],"rg"=>$cursor["rg"],"rid"=>"00","expiry"=>$expdate,"iid"=>$instanceid));
+                        $db->tokens->insertOne(array("email"=>$d,"full_name"=>$cname,"token"=>$token,"prf"=>$_POST['prf'],"dept"=>$_POST['dept'],"pos"=>$_POST['pos'],"position"=>$_POST['position'],"rg"=>$cursor["rg"],"rid"=>"00","expiry"=>$expdate,"iid"=>$instanceid));
                         
                         
                     }
@@ -599,7 +611,7 @@ if($cursor)
                             "rid"=>"00",
                             "expiry"=>$expdate,
                             "iid"=>$instanceid,
-                            "members"=>$_POST['emails'],
+                            "members"=>$mailarray,
                             "selected"=>array(),
                             "rejected"=>array(),
                             "onhold"=>array()));

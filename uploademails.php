@@ -49,9 +49,9 @@ if(isset($_FILES))
     $j = 0;
     for($i = 1; $i < count($csv)-1; $i++)
     {
-        $emails[$j]=$csv[$i][1] ? $csv[$i][1] :"null";
+        $emails[$j]=[$csv[$i][2]?$csv[$i][2]:"null" , $csv[$i][1]?$csv[$i][1]:"null"] ;
         $j++;
-                //  echo $emails[$i];
+        //  echo $emails[$i];
     } 
 
 
@@ -86,8 +86,12 @@ if($count==1) //if round collection is present
           
             $ctr=0;
             $instanceid=$instanceId=(string)sprintf("%03s",1);
-            foreach($emails as $d)
+            $mailarray = array();
+            foreach($emails as $doc)
             {
+                $d = $doc[0];
+                $cname = $doc[1];
+                array_push($mailarray,$d);
                 // echo $d;
                 $mail->addAddress($d);
                 $token=sha1($d);
@@ -135,7 +139,7 @@ if($count==1) //if round collection is present
                                                 align-items: center; 
                                                 font-size: 18px; 
                                                 padding-bottom: 12px;"> 
-                                                Dear Candidate,<br></br><br></br>
+                                                Dear '. $cname.',<br></br><br></br>
 
                                                 Further to our discussion for the profile of '. $position.' in department - '.$dept.' You are required to provide your basic
                                                 details by accessing the below link so that your application could be processed further.
@@ -212,6 +216,7 @@ if($count==1) //if round collection is present
                 {
                      $val=$db->tokens->insertOne(array(
                     "email" => $d,
+                    "full_name"=>$cname,
                     "token" =>$token,
                     "prf" =>$prf,
                     "pos"=>$pos,
@@ -229,7 +234,6 @@ if($count==1) //if round collection is present
             if($ctr==0)
             {
                 $r = $db->prfs->updateOne(array("prf"=>$prf,"department"=>$dept,"pos"=>$pos,"position"=>$position),array('$set'=>array("progress"=>"initiated")));
-                $emails = json_decode(json_encode($emails), true);
                 $getpos_zone = $db->prfs->findOne(array("prf"=>$prf));
                 $db->rounds->insertOne(
                     array(
@@ -241,7 +245,11 @@ if($count==1) //if round collection is present
                         "position"=>$position,
                         "rid"=>"00",
                         "iid"=>$instanceid,
-                        "expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));    
+                        "expiry"=>$expdate,
+                        "members"=>$mailarray,
+                        "selected"=>array(),
+                        "rejected"=>array(),
+                        "onhold"=>array()));    
                
                 echo "success";
             }
@@ -256,8 +264,12 @@ if($count==1) //if round collection is present
             $instanceid=$instanceid+1;
             $instanceid=(string)sprintf("%03s",$instanceid);
             $ctr=0;
-            foreach($emails as $d)
+            $mailarray = array();
+            foreach($emails as $doc)
             {
+                $d = $doc[0];
+                $cname = $doc[1];
+                array_push($mailarray,$d);
                 $mail->addAddress($d);
                 $token=sha1($d);
                 $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position2;
@@ -305,7 +317,7 @@ if($count==1) //if round collection is present
                                             align-items: center; 
                                             font-size: 18px; 
                                             padding-bottom: 12px;"> 
-                                            Dear Candidate,<br></br><br></br>
+                                            Dear '. $cname.',<br></br><br></br>
 
                                             Further to our discussion for the profile of '. $position.' in department - '.$dept.' You are required to provide your basic
                                             details by accessing the below link so that your application could be processed further.
@@ -383,6 +395,7 @@ if($count==1) //if round collection is present
                     // $db->tokens->insertOne(array("email"=>$d,"token"=>$token,"prf"=>$_POST['prf'],"dept"=>$_POST['dept'],"pos"=>$_POST['posdetail'],"position"=>$_POST['pos'],"rg"=>$cursor["rg"],"rid"=>"00","iid"=>$instanceid));
                     $val=$db->tokens->insertOne(array(
                         "email" => $d,
+                        "full_name"=>$cname,
                         "token" =>$token,
                         "prf" =>$prf,
                         "pos"=>$pos,
@@ -399,9 +412,8 @@ if($count==1) //if round collection is present
             if($ctr==0)
             {
                 $r = $db->prfs->updateOne(array("prf"=>$prf,"department"=>$dept,"pos"=>$pos,"position"=>$position),array('$set'=>array("progress"=>"initiated")));
-                $emails = json_decode(json_encode($emails), true);
                 $getpos_zone = $db->prfs->findOne(array("prf"=>$prf));
-                $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"poszone"=>$getpos_zone['zone'],"position"=>$position,"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));    
+                $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"poszone"=>$getpos_zone['zone'],"position"=>$position,"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$mailarray,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));    
                 
                 echo "success";
             }
@@ -421,8 +433,12 @@ else
         $ctr=0;
         $instanceid=$instanceId=(string)sprintf("%03s",1);
         
-            foreach($emails as $d)
+            $mailarray = array();
+            foreach($emails as $doc)
             {
+                $d = $doc[0];
+                $cname = $doc[1];
+                array_push($mailarray,$d);
                 $mail->addAddress($d);
                 $token=sha1($d);
                 $url='http://'.$_SERVER['SERVER_NAME'].'/hrms/applicationblank.php?token='.$token.'&position='.$position2;
@@ -470,7 +486,7 @@ else
                                                 align-items: center; 
                                                 font-size: 18px; 
                                                 padding-bottom: 12px;"> 
-                                                Dear Candidate,<br></br><br></br>
+                                                Dear '. $cname.',<br></br><br></br>
 
                                                 Further to our discussion for the profile of '. $position.' in department - '.$dept.' You are required to provide your basic
                                                 details by accessing the below link so that your application could be processed further.
@@ -548,6 +564,7 @@ else
                   
                    $val=$db->tokens->insertOne(array(
                         "email" => $d,
+                        "full_name"=>$cname,
                         "token" =>$token,
                         "prf" =>$prf,
                         "pos"=>$pos,
@@ -565,9 +582,8 @@ else
             if($ctr==0)
             {
                 $r = $db->prfs->updateOne(array("prf"=>$prf,"department"=>$dept,"pos"=>$pos,"position"=>$position),array('$set'=>array("progress"=>"initiated")));
-                $emails = json_decode(json_encode($emails), true);
                 $getpos_zone = $db->prfs->findOne(array("prf"=>$prf));
-                $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"position"=>$position,"poszone"=>$getpos_zone["zone"],"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$emails,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));
+                $db->rounds->insertOne(array("status"=>"bstart","prf"=>$prf,"dept"=>$dept,"pos"=>$pos,"position"=>$position,"poszone"=>$getpos_zone["zone"],"rid"=>"00","iid"=>$instanceid,"expiry"=>$expdate,"members"=>$mailarray,"selected"=>array(),"rejected"=>array(),"onhold"=>array()));
                 echo "success";
             }
             else
