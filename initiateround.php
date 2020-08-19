@@ -222,33 +222,31 @@ if(isset($_COOKIE['sid']))
                           <div class="row" id="allocation" >
                             <div class="col s12 m12" style="border: solid 5p">
                               <div class="card white">
+                              <div class="row">
+                              <div class="input-field col s3 m3 " >
+                              <select id='intchoice' class="dropdown-trigger btn blue darken-1 " onchange="feedvalue(this)">
+                              <option value=""  style="color: white">Select Interviewer</option> </select></div></div>
                                 <div class="card-content blue-text">
                                   <div class="row">
                                     <div class="input-field col s3 m3 " >
-                                      <input id="iname" type="text" class="text">
-                                      <label class="active" for="iname" id="iname" required>Interviewer Name</label>
-                                    </div>           
-                                    <div class="input-field col s3 m3 white-text" >
-                                      <input id="imail" type="text" required>
-                                      <label class="active" for="imail">Interviewer Mail ID</label>
-                                    </div> 
+                                      Interviewer Name: <input id="iname" type="text" class="text">
+                                     </div>           
+                                    <div class="input-field col s3 m3" >
+                                      Interviewer Mail Id: <input id="imail" type="text" required>
+                                      </div> 
                                     <div class="input-field col s3 m3 " >
-                                          <input id="location" type="text" class="text" required>
-                                          <label class="active" for="location" id="location">Interview Location</label>
-                                        </div>
+                                          Interview Location: <input id="location" type="text" class="text" required>
+                                         </div>
                                         <div class="input-field col s3 m3 " >
-                                          <input id="contactperson" type="text" class="text" required>
-                                          <label class="active" for="contactperson" id="contactperson">Contact Person Name</label>
-                                        </div>
+                                        Contact Person Name:  <input id="contactperson" type="text" class="text" required>
+                                          </div>
                                   </div>       
                                     <div class="row">
                                         <div class="input-field col s3 m3 " >
-                                          <input id="idept" type="text" class="text" required>
-                                          <label class="active" for="idept" id="idept">Interviewer Department</label>
+                                        Interviewer Department:  <input id="idept" type="text" class="text" required>
                                         </div>                                    
                                         <div class="input-field col s3 m3 " >
-                                          <input id="idesg" type="text" class="text" required>
-                                          <label class="active" for="idesg" id="idesg">Interviewer Designation</label>
+                                        Interviewer Designation:  <input id="idesg" type="text" class="text" required>
                                         </div>
                                        
                                         
@@ -432,17 +430,86 @@ $(document).ready(function(){
     }
 
     $('#allocation').show(600);
+    $.ajax({
+    url:'http://localhost/hrms/api/getinterviewers.php',
+    type:'POST',
+    success:function(para)
+    { 
+      para = JSON.parse(para)
+      names=para.names
+      console.log("this is para :",para)
+      para=para.interviewers
+      for(i=0;i<para.length;i++)
+       {
+         var str = '<option id="'+para[i]+'"  value="'+para[i]+'"  style="color: white">'+names[i]+'</option>'
+          $('#intchoice').append(str);
+
+       }
+      
+
+    }
+  })
+
     }
   
   })
 
   $('#allocatesubmit').click(function(){
-    $("#modal2").modal("open")
+    $("#modal2").modal("open");
+
+   
+
   })
 
 
 })
 //end of document.ready(function)   
+
+function feedvalue(select){
+
+ // console.log("selected "+id)
+  var interviewer=select.options[select.selectedIndex].getAttribute("id");
+  console.log(interviewer)
+  if(interviewer!=" "){
+
+    $.ajax({
+    url:'http://localhost/hrms/api/getinterviewerDetails.php',
+    type:'POST',
+    data:{
+      "interviewer":interviewer
+    },
+    success:function(para)
+    { 
+      para = JSON.parse(para)
+      console.log("this is para :",para)
+      para=para.interviewer
+      document.getElementById("imail").value=interviewer
+      document.getElementById("iname").value=para.name
+      document.getElementById("idept").value=para.dept
+      document.getElementById("idesg").value=para.dsg 
+      
+
+    }
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+
+  
+
+}
 
 function allocateSubmit(cnfrm)
 {
@@ -566,6 +633,7 @@ function selection(x)
   }
 }
 
+//add interviewers
 
 
 
