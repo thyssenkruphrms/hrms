@@ -1,3 +1,22 @@
+<?php
+error_reporting(0);
+
+if(isset($_COOKIE['sid']))
+{
+  include 'api/db.php';
+  
+  $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
+  
+  if($cursor)
+  {
+    $cursor = $db->users->findOne(array("uid" => $cursor['uid']));
+    $designation = $cursor['dsg'];
+    $name = $cursor['name'];
+    
+    if($designation == "hr" || $designation == "ceo" || $designation == "hod" || $designation == "rghead" )
+    {
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +36,7 @@
           
   <!-- <link rel="stylesheet" type="text/css" media="screen" href="css/materialize.css">
   <link rel="stylesheet" type="text/css" media="screen" href="css/materialize.min.css"> -->
+  <script src="./public/js/logout.js"></script>
 
         <!-- for sidenav -->
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -112,6 +132,11 @@ if(window.screen.width <= 720)
       <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
     </a>
     <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+    <a href="http://localhost/hrms/" style="margin-left: 93%;" ><?php echo($name) ?></a>
+ <select id="logout"class="dropdown-trigger btn blue darken-1" style="height:62px;width:30px;float:right;" >
+  <option value="profile">Profile</option>
+  <option value="logout">Logout</option>
+</select>
     </div>
 </nav>
 <br>
@@ -572,3 +597,22 @@ $('#updatebtn').click(function()
 
 </script>
 </html>
+ 
+<?php
+            }
+            else
+            {
+                header("refresh:0;url=notfound.php");
+            }
+        }
+        else
+        {
+            header("refresh:0;url=notfound.php");
+        }
+    }
+    else
+    {
+        header("refresh:0;url=notfound.php");
+    }  
+?>
+       
