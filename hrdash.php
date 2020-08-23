@@ -95,14 +95,18 @@ if(isset($_COOKIE['sid']))
 <div id="remin">
   <nav> 
       <div class="nav-wrapper blue darken-1">
-        <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
-      </a>
-      <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
-      <a href="http://localhost/hrms/" style="margin-left: 93%;" ><?php echo($name) ?></a>
- <select id="logout"class="dropdown-trigger btn blue darken-1" style="height:62px;width:30px;float:right;" >
-  <option value="profile">Profile</option>
-  <option value="logout">Logout</option>
-</select> 
+        <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i></a>
+        <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+        <!-- <a href="http://localhost/hrms/" style="margin-left: 93%;" ></a> -->
+        <ul style="float:right;">
+          <li>
+            <select id="logout"class="dropdown-trigger btn blue darken-1">
+              <option value=""><?php echo($name) ?></option>
+              <option value="profile">Profile</option>
+              <option value="logout">Logout</option>
+            </select>
+          </li>
+        </ul> 
       </div>
   </nav>
   <br><br>
