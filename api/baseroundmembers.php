@@ -43,8 +43,16 @@ if($cursor)
         $arr[$i]=array($getselectednames['full_name'],$d);
         $i++;
     }
+    $arr2 = [];
+    foreach($cursor2['members'] as $d)
+    {
+        $names =  $db->tokens->findOne(array("prf"=>$digit13[0],"pos"=>$digit13[1],"email"=>$d));
+        
+        // store name of candidates to frontend
+        array_push($arr2,array($names['full_name'],$d));
+    }
     // send names of candidates,count of application blank not filled candidates,email of not filled candidate, expiry days 
-    $variable = array($arr,$memcount,$cursor2['members'],$nodays);
+    $variable = array($arr,$memcount,$arr2,$nodays);
     echo json_encode($variable);
 }
 else

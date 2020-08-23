@@ -693,7 +693,7 @@ function createnextround(id)
               console.log("Members - "+para[2][i])
               j = parseInt(i)
               j += 1
-              var membersdata='<tr><td>'+j+'</td><td>'+j+'</td><td>'+para[2][i]+'</td</tr>'
+              var membersdata='<tr><td>'+j+'</td><td>'+para[2][i][0]+'</td><td>'+para[2][i][1]+'</td</tr>'
               $("#memberstable").append(membersdata)
             }
         }
@@ -923,7 +923,7 @@ function getit(){
             {
               j = parseInt(i)
               j += 1
-              var membersdata='<tr><td>'+j+'</td><td>'+para[2][i]+'</td</tr>'
+              var membersdata='<tr><td>'+j+'</td><td>'+para[2][i][0]+'</td><td>'+para[2][i][1]+'</td</tr>'
               $("#memberstable").append(membersdata)
             }
         }
