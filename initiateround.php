@@ -202,8 +202,8 @@ if(isset($_COOKIE['sid']))
                         <tr class="blue darken-1 white-text">
                           <br>
                           <th>Sr No.</th>
-                          <th>Email ID</th>
-                          <th><button id="notify" class="waves-effect orange  btn">Notify candidates</button>
+                          <th>Name</th>
+                          <th>Email ID &nbsp;&nbsp; <button id="notify" class="waves-effect orange  btn">Notify candidates</button>
                         </tr>
                       </thead>
                       
@@ -615,7 +615,7 @@ function createnextround(id)
               console.log("Members - "+para[2][i])
               j = parseInt(i)
               j += 1
-              var membersdata='<tr><td>'+j+'</td><td>'+para[2][i]+'</td</tr>'
+              var membersdata='<tr><td>'+j+'</td><td>'+j+'</td><td>'+para[2][i]+'</td</tr>'
               $("#memberstable").append(membersdata)
             }
         }
