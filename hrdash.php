@@ -30,6 +30,8 @@ if(isset($_COOKIE['sid']))
   {
     $cursor = $db->users->findOne(array("uid" => $cursor['uid']));
     $designation = $cursor['dsg'];
+    $name = $cursor['name'];
+
     
     if($designation == "hr" || $designation == "ceo" || $designation == "hod" || $designation == "rghead" )
     {
@@ -54,7 +56,8 @@ if(isset($_COOKIE['sid']))
     
         <script src="public/js/materialize.js"></script>
         <script src="public/js/materialize.min.js"></script>
-    
+        <script src="./public/js/logout.js"></script>
+
     </head>
     <style>
     .button {
@@ -95,6 +98,11 @@ if(isset($_COOKIE['sid']))
         <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
       </a>
       <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+      <a href="http://localhost/hrms/" style="margin-left: 93%;" ><?php echo($name) ?></a>
+ <select id="logout"class="dropdown-trigger btn blue darken-1" style="height:62px;width:30px;float:right;" >
+  <option value="profile">Profile</option>
+  <option value="logout">Logout</option>
+</select> 
       </div>
   </nav>
   <br><br>
