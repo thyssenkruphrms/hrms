@@ -97,7 +97,7 @@ if(isset($_COOKIE['sid']))
       <div class="nav-wrapper blue darken-1">
         <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i></a>
         <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
-        <!-- <a href="http://localhost/hrms/" style="margin-left: 93%;" ></a> -->
+
         <ul style="float:right;">
           <li>
             <select id="logout"class="dropdown-trigger btn blue darken-1">
