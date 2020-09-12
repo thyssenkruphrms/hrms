@@ -295,6 +295,7 @@ $(document).ready(function(){
                               s7 = '</div></div></div></div>'
                               s8 = s1+s2+s3+s4+s4+s5+s7;
                               $('.success').append(s8)
+                              alert(response+"  record(s) uploaded successfully")
                               window.setTimeout(function(){location.reload()},3000)
                           }
                        

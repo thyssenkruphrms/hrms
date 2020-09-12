@@ -25,6 +25,9 @@ session_start();
 </head>
 
 <style>
+.datepicker-controls .select-month input {
+    width: 100px;
+}
 #loader {
   position: fixed;
   top: 0;
@@ -205,12 +208,12 @@ $_SESSION['positionapplied'] = $position;
                                                 
                                             <div class="input-field col s4">
                                               <input   id="street" name="street" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onchange="return mytextvalid(event)" >
-                                              <label for="street">Street</label>
+                                              <label for="street"> House Number</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="Locality" name="Locality" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)">
-                                              <label for="Locality">Locality</label>
+                                              <input   id="Locality" name="Locality" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" >
+                                              <label for="Locality">Locality/society</label>
                                             </div>
 
                                             <div class="input-field col s4">
@@ -290,7 +293,7 @@ $_SESSION['positionapplied'] = $position;
                                           
                                              <div class="col s6">
                                                 <b style="font-size:15px;color:red">Select for Under Graduate</b>
-                                                <select class="dropdown-trigger btn blue darken-1" id="selectug">
+                                                <select class="dropdown-trigger btn blue darken-1" id="selectug" onchange="checkUG()">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <option value="ITI">ITI</option>
                                                 <option value="Diploma">Diploma</option>
@@ -308,7 +311,7 @@ $_SESSION['positionapplied'] = $position;
                                            
                                              <div class="col s6">
                                                 <b style="font-size:15px;color:red">Select Specialization for UG</b>
-                                                <select class="dropdown-trigger btn blue darken-1" id="specialug">
+                                                <select class="dropdown-trigger btn blue darken-1" id="specialug" onchange="checkSpecialUG()">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <option value="Mechanical">Mechanical</option>
                                                 <option value="Civil">Civil</option>
@@ -324,12 +327,24 @@ $_SESSION['positionapplied'] = $position;
                                                 <option value="Others">Others</option>
                                                 </select> 
                                               </div>
+                                              
+                                              <br>
+                                              </div>
+                                              <div class="row" >
+                                                <div class="input-field col s12" id="otherUg">
+                                                <input id="otherUgtxt" name="otherUgtxt" type="text" class="validate" required aria-required="true" >
+                                                <label for="otherUgtxt">Specify Other Under Graduate</label>
+                                                </div>
 
-                                                                                             
-                                                
+                                                <div class="input-field col s12 " id="otherspecialUg">
+                                                <input id="otherspecialUgtxt" name="otherspecialUgtxt" type="text" class="validate" required aria-required="true" >
+                                                <label for="otherspecialUgtxt">Specify Other  Under Graduate Specialization</label>
+                                                </div>
+                                                </div>                                    
+                                        <div class="row">
                                              <div class="col s6" style="margin-top:20px">
                                                 <b style="font-size:15px;color:red">Select for Post Graduate</b>
-                                                <select class="dropdown-trigger btn blue darken-1" id="selectpg">
+                                                <select class="dropdown-trigger btn blue darken-1" id="selectpg" onchange="checkPG()">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <option value="MBA">MBA</option>
                                                 <option value="ICWA">ICWA</option>
@@ -344,7 +359,7 @@ $_SESSION['positionapplied'] = $position;
 
                                               <div class="col s6" style="margin-top:20px">
                                                 <b style="font-size:15px;color:red">Select Specialization for PG</b>
-                                                <select class="dropdown-trigger btn blue darken-1" id="specialpg">
+                                                <select class="dropdown-trigger btn blue darken-1" id="specialpg" onchange="checkSpecialPG()">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <option value="Mechanical">Mechanical</option>
                                                 <option value="Civil">Civil</option>
@@ -354,7 +369,19 @@ $_SESSION['positionapplied'] = $position;
                                                 <option value="Others">Others</option>
                                                 </select> 
                                               </div> 
-                                        </div>   
+                                        </div>
+                                              <div class="row" >
+                                                <div class="input-field col s12" id="otherPg">
+                                                <input id="otherPgtxt" name="otherPgtxt" type="text" class="validate" required aria-required="true" >
+                                                <label for="otherPgtxt">Specify Other Post Graduate</label>
+                                                </div>
+
+                                                <div class="input-field col s12 " id="otherspecialPg">
+                                                <input id="otherspecialPgtxt" name="otherspecialPgtxt" type="text" class="validate" required aria-required="true" >
+                                                <label for="otherspecialPgtxt">Specify Other  Post Graduate Specialization</label>
+                                                </div>
+                                                </div>   
+                                           
 
                                         <div class="file-field input-field">
                                                 <div class="btn blue darken-1">
@@ -421,7 +448,12 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
                                                 <div class="col s12" id="mainexpdiv">
                                                   <div class="col s12" id="myexpdiv">
-                                                          
+                                                        <p>
+                                                        <label>
+                                                                <input type="checkbox" id="todate0,c" onchange="checkEmployer(this,this.id)" class="filled-in"/>
+                                                                <span>Is it current employer ?</span>
+                                                        </label>
+                                                        </p>
                                                         <div class="input-field col s6">
                                                                 <input id="orgname0" name="orgname0[]" type="text" class="validate"  onkeyup="this.value=this.value.toUpperCase();" aria-required="true">
                                                                 <label for="orgname0" style="font-size: 11px">Current Organization Name</label>
@@ -442,12 +474,12 @@ $_SESSION['positionapplied'] = $position;
                                                                 <label for="todate0" style="font-size: 11px">To</label>
                                                         </div> 
 
-                                                        <div class="input-field col s6">
+                                                        <div class="input-field col s6"  style="display:none;">
                                                                 <input id="managername0" name="managername0[]" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" aria-required="true" onkeypress="return mytextvalid(event)">
                                                                 <label for="managername0" style="font-size: 11px">Reporting Manager Name</label>
                                                         </div> 
                                                               
-                                                        <div class="input-field col s6">
+                                                        <div class="input-field col s6"  style="display:none;">
                                                                 <input id="managermail0" name="managermail0[]" type="email"  class="validate"  aria-required="true">
                                                                 <label for="managermail0" style="font-size: 11px">Enter Manager Email</label>
                                                         </div> 
@@ -462,6 +494,39 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
           
                                                    
+                                          </div>
+
+                                          
+
+
+
+                                          <div class="row">
+                                                <div class="input-field col s6">
+                                                  <input id="jdate" name="jdate" type="text" class="datepicker" required>
+                                                  <label for="jdate" style="font-size: 11px">If Selected, how soon you can join us?</label>
+                                                </div>
+                                                
+                                                
+                                                <div class="input-field col s6">
+                                                    <input id="notice" name="notice" type="number" required onchange="checknotice(this.id)">
+                                                    <label for="notice" style="font-size: 11px">Notice Period In Current Oraganization (IN DAYS)</label>
+                                                </div>
+
+                                                
+                                                <div class="input-field col s6" >
+                                                        <input id="manager" name="manager" type="text" onkeyup="this.value=this.value.toUpperCase();" required >
+                                                        <label for="manager" style="font-size: 11px">Reporting Manager's Designation</label>
+                                                </div>
+
+                                                <div class="input-field col s6" style="display:none;">
+                                                        <input id="ifselectposition" name="ifselectposition" type="text"  required onkeypress="return mytextvalid(event)" >
+                                                        <label for="ifselectposition" style="font-size: 11px">Current Position</label>
+                                                </div>
+
+                                                
+
+                                             
+                           
                                           </div>
 
                                           <b style="font-size:20px;">Referral Sources</b>
@@ -496,37 +561,6 @@ $_SESSION['positionapplied'] = $position;
                                                 
                                             
                                                    
-                                          </div>
-
-
-
-                                          <div class="row">
-                                                <div class="input-field col s6">
-                                                  <input id="jdate" name="jdate" type="text" class="datepicker" required>
-                                                  <label for="jdate" style="font-size: 11px">If Selected, how soon you can join us?</label>
-                                                </div>
-                                                
-                                                
-                                                <div class="input-field col s6">
-                                                    <input id="notice" name="notice" type="number" required onchange="checknotice(this.id)">
-                                                    <label for="notice" style="font-size: 11px">Notice Period In Current Oraganization (IN DAYS)</label>
-                                                </div>
-
-                                                
-                                                <div class="input-field col s6" >
-                                                        <input id="manager" name="manager" type="text" onkeyup="this.value=this.value.toUpperCase();" required onkeypress="return mytextvalid(event)">
-                                                        <label for="manager" style="font-size: 11px">Reporting Manager Name & Designation</label>
-                                                </div>
-
-                                                <div class="input-field col s6" >
-                                                        <input id="ifselectposition" name="ifselectposition" type="text"  required onkeypress="return mytextvalid(event)">
-                                                        <label for="ifselectposition" style="font-size: 11px">Current Position</label>
-                                                </div>
-
-                                                
-
-                                             
-                           
                                           </div>
 
 
@@ -878,7 +912,10 @@ $_SESSION['token'] = $_GET['token'];
 
 
 $("#pleasewait").hide()
-
+$("#otherUg").hide()
+$("#otherspecialUg").hide()
+$("#otherPg").hide()
+$("#otherspecialPg").hide()
 var expctr=0        
 var ctr=0
 var ctr2=0
@@ -967,12 +1004,12 @@ function addnewexp(x)
         expctr = expctr+1
         //var str = 'myexpdiv'+ctr
 
-                                                       
-        var exptxt='<div class="col s12" id="myexpdiv"><div class="input-field col s6"><input name="orgname0[]" id="orgname'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true" ><label for="orgname'+expctr+'" style="font-size: 11px">Current Organization Name</label></div><div class="input-field col s6"><input name="olddesignation0[]" id="olddesignation'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="olddesignation'+expctr+'" style="font-size: 11px">Designation</label></div><div class="input-field col s6"><input name="fromdate0[]" id="fromdate'+expctr+'" type="text" class="datepicker" ><label for="fromdate'+expctr+'" style="font-size: 11px;">From</label></div><div class="input-field col s6"><input name="todate0[]" id="todate'+expctr+'" type="text" class="datepicker"><label for="todate'+expctr+'" style="font-size: 11px;">To</label></div><div class="input-field col s6"><input name="managername0[]" id="managername'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="managername'+expctr+'" style="font-size: 11px">Reporting Manager Name</label></div><div class="input-field col s6"><input name="managermail0[]" id="managermail'+expctr+'" type="email" class="validate" aria-required="true"><label for="managermail'+expctr+'" style="font-size: 11px">Enter Manager Email</label></div><div class="row" id="addnextexp"><a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a><a class="btn-floating btn" style="float:right" onclick="removenewexp(this.id)" id="rembtn"><i class="material-icons">remove</i></a></div></div>'
+                                                  
+        var exptxt='<div class="col s12" id="myexpdiv"><p><label><input type="checkbox" id="todate'+expctr+',c" onchange="checkEmployer(this,this.id)" class="filled-in"/><span>Is it current employer ?</span></label></p><div class="input-field col s6"><input name="orgname0[]" id="orgname'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true" ><label for="orgname'+expctr+'" style="font-size: 11px">Current Organization Name</label></div><div class="input-field col s6"><input name="olddesignation0[]" id="olddesignation'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="olddesignation'+expctr+'" style="font-size: 11px">Designation</label></div><div class="input-field col s6"><input name="fromdate0[]" id="fromdate'+expctr+'" type="text" class="datepicker" ><label for="fromdate'+expctr+'" style="font-size: 11px;">From</label></div><div class="input-field col s6"><input name="todate0[]" id="todate'+expctr+'" type="text" class="datepicker"><label for="todate'+expctr+'" style="font-size: 11px;">To</label></div><div class="input-field col s6" style="display:none;"><input name="managername0[]" id="managername'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="managername'+expctr+'" style="font-size: 11px">Reporting Manager Name</label></div><div class="input-field col s6"  style="display:none;"><input name="managermail0[]" id="managermail'+expctr+'" type="email" class="validate" aria-required="true"><label for="managermail'+expctr+'" style="font-size: 11px">Enter Manager Email</label></div><div class="row" id="addnextexp"><a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a><a class="btn-floating btn" style="float:right" onclick="removenewexp(this.id)" id="rembtn"><i class="material-icons">remove</i></a></div></div>'
         $("#mainexpdiv").append(exptxt);
         $('.datepicker').datepicker({
                         //dateFormat:"dd/mm/yy",
-                        yearRange:[1960,cyear],
+                        yearRange:[1900,cyear],
                         changeMonth:true,
                         
                         //changeYear:true
@@ -1018,6 +1055,76 @@ function removelastref(x)
 {
         var id="#"+x;
         $(id).closest("#ref").remove();
+        
+}
+
+function checkUG()
+{
+       if( $("#selectug").val() == "Others")
+       {
+        $("#otherUg").show()
+       }
+       else
+       {
+        $("#otherUg").hide()
+       }
+}
+
+function checkSpecialUG()
+{
+       if( $("#specialug").val() == "Others")
+       {
+        $("#otherspecialUg").show()
+       }
+       else
+       {
+        $("#otherspecialUg").hide()
+       }
+}
+
+function checkPG()
+{
+       if( $("#selectpg").val() == "Others")
+       {
+        $("#otherPg").show()
+       }
+       else
+       {
+        $("#otherPg").hide()
+       }
+}
+
+function checkSpecialPG()
+{
+       if( $("#selectpg").val() == "Others")
+       {
+        $("#otherspecialPg").show()
+       }
+       else
+       {
+        $("#otherspecialPg").hide()
+       }
+}
+
+function checkEmployer(me,cid)
+{
+        cid = "#"+cid;
+        cid2 = cid.split(',');
+        cid2 = cid2[0];
+       
+        if(me.checked)
+        {
+                
+                $(cid2).prop('disabled',true)
+        }
+        else
+        {
+                $(cid2).prop('disabled',false)
+        }
+
+
+
+        
         
 }
 
@@ -1289,7 +1396,7 @@ $(document).ready(function(){
         $('.datepicker').datepicker
         ({
                 
-                yearRange:[1990,cyear],
+                yearRange:[1900,cyear],
                 
                 
         });
@@ -1297,7 +1404,7 @@ $(document).ready(function(){
         $('#jdate').datepicker
         ({
                 
-                yearRange:[1950,cyear],
+                yearRange:[1900,cyear],
                 minDate:new Date(),
                 changeMonth:true,
                 
