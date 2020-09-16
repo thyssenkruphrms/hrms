@@ -182,7 +182,20 @@ input[type="file"]
                             </td>
                         </tr>
 
-                        
+                        <tr id="tdsb">
+                            <td>
+                                <label class="custom-file-upload">
+                                 <a class="btn col s12 m12 blue darken-1"><input id="sb" name="sb" type="file" accept=".pdf" class="validate" required="" aria-required="true" ><p id='letter13'>Salary Breakup</p></a>
+                                </label>
+                            </td>
+                           
+                            <td>
+                                <div class="input-field col s12 m12" id="rsb1">
+                                    <input id="rsb" type="text" class="validate" value="<?php echo $result['salarybreakupreason'];?>" readonly>
+                                    <label for="rsb">Reason Specified</label>
+                                </div>
+                            </td>
+                        </tr>
 
                         <tr id="tdpayslip">
                             <td>
@@ -356,6 +369,12 @@ $('#pgcert').change(function(){
 $('#letter12').replaceWith(f);
 })
 
+$('#sb').change(function(){
+    var f=$('#sb').val();
+    
+$('#letter13').replaceWith(f);
+})
+
 $(document).ready(function(){
     $("#details").hide();
     function getUrlVars() {
@@ -408,7 +427,7 @@ $(document).ready(function(){
         {
 
             console.log(para)
-            if(para == '["cv","pan","Adhaar","Photo","ap","al","rl","payslip","cc","ugcert","pgcert"]')
+            if(para == '["cv","pan","Adhaar","Photo","ap","al","sb","rl","payslip","cc","ugcert","pgcert"]')
             {
                 $("#formdiv").hide()
             }

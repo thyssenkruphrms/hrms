@@ -26,6 +26,10 @@ if($cursor)
                 $arr[$i] = array($doc['prf'],$doc['pos'],$doc['iid'],$doc['rid'],$q['full_name'],$doc['email'],$q2['name'],$doc['requester'],$doc['offerletter']);
                 $i += 1;
             }
+            else if($doc['offerletter'] == "joined")
+            {
+                $arr = array("No Data");
+            }
         }
         if(count($arr)==0)
         {
