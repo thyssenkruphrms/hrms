@@ -4,6 +4,7 @@
 if(isset($_COOKIE['sid']))
 {
   include 'api/db.php';
+
   
   $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
   
@@ -80,9 +81,6 @@ if(isset($_COOKIE['sid']))
   </nav>
 
     <br>
-    <center>
-<button class="button">Only you can create delete or update info of users.</button>
-</center>
 
     <!-- card stars -->
     <div class="row">
@@ -105,9 +103,10 @@ if(isset($_COOKIE['sid']))
                                 <input id="uploadcsv" required type="file" accept=".csv" name="uploadcsv" onchange="readURL(this)"><p id='myfile0'><i class="material-icons right">open_in_browser</i> </p></a>
                             </label>
                             <br><br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="submit" class="btn blue darken-1" name="submit" id="submit" value="Upload">
-                      <i class="material-icons right">send</i>Upload</button>
-
+                    <!-- <button type="submit" class="btn blue darken-1" name="submit" id="submit" value="Upload">
+                      <i class="material-icons right">send</i>Upload</button> -->
+                      <input type="button" class="btn blue darken-1" value="Upload" id="but_upload"> </input>
+                   
                     </div>
                 </form>
                 <br><br><br><br><br>
@@ -185,7 +184,7 @@ if(isset($_COOKIE['sid']))
             <center>
             <div class="input-field col s12">
 
-              <button class="btn waves-effect waves-light blue darken-1" id="checkprf">Update if exist or create
+              <button class="btn waves-effect waves-light blue darken-1" id="checkprf">CREATE NEW USER
                 <i class="material-icons right">send</i>
               </button>
             </center>
@@ -197,15 +196,17 @@ if(isset($_COOKIE['sid']))
 
           </div>  
           <div class="row" >
-<center>
-<p style="color: green" id="creatinggrp"> Inserting Details ...</p>
+          <center>
+<div id="creatinggrp">
+<p style="color: yellow;font-size:50px;" > Inserting Details ...</p>
+</div>
 <p style="color: green" id="groupcreated"> Details inserted Successfully</p>
 <p style="color: red" id="groupnotcreated"> These Details already exist</p>
 </center>
-</div>
-          
+
           </div>
-         
+
+       </div>  
 
 
 </div>
@@ -340,17 +341,6 @@ $('#dsgchoice').change(function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //create PRF Number
 
 $('#checkprf').click(function(){
@@ -374,7 +364,9 @@ $('#creatinggrp').fadeIn(500);
  var password=$('#password').val()
  var cnfrmpassword=$('#cnfrmpassword').val()
 console.log("p "+department+" "+region+ " "+dsg)
-if(password==cnfrmpassword && (password!=''  && username!='' && mail!='' && department!=null &&  dsg!=null)){
+if(password==cnfrmpassword && (password!=''  && username!='' && mail!='' )){
+console.log("calling")
+
 $.ajax({
 url : 'http://localhost/hrms/api/users.php',
 type : 'POST',
@@ -391,48 +383,27 @@ data:{
 }
 ,
 success : function(para){
+  console.log("called")
   console.log(para)
   $('#creatinggrp').empty()
   if(para.status=="true"){
     $('#creatinggrp').css('color','green')
+    $('#creatinggrp').append("User Added");
   
   }
   else{
     $('#creatinggrp').css('color','red')
+    $('#creatinggrp').append("NOT Added");
   
   }
-  $('#creatinggrp').append(para.message);
+  
   
   //$('#creatinggrp').height()=300;
 
   $('#creatinggrp').fadeOut(15000);
   
 
-// if(para == '404')
-// {
 
-//   $('#groupnotcreated').fadeIn(600)
-
-//   console.log("PRF ALREADY EXISTS")
-// $('#notexist').hide()
-// groupStatus=1
-// var txt = '<b style="color: green" id="Exist">This PRF Number Already Exist</b>'
-// $('#exist').append(txt)
-// $('#histbtn').show()
-
-
-// }
-// else if(para == 'success')
-// {
-
-//   $('#groupcreated').fadeIn(600)
-
-// groupStatus=0;
-// $('#Exist').hide()
-// console.log("INSERTED")
-// var txt = '<b style="color: red" id="notexist">This PRF Number Does Not Exist</b> '
-// $('#exist').append(txt)
-// }
 },
 });
 }
@@ -480,6 +451,83 @@ document.location.replace("http://localhost/hrms/")
 })
 
 });
+
+$("#but_upload").click(function(){
+  
+
+  console.log("This is form submit")
+
+
+        if( document.getElementById("uploadcsv").files.length == 0 ){
+          alert("Please select a file");
+        }
+        else
+        {
+              $("#loader").show();
+              var fd = new FormData();
+              var files = $('#uploadcsv')[0].files[0];
+              fd.append('uploadcsv',files);
+              console.log("This is  - ",fd)
+              $.ajax({
+                  url: 'http://localhost/hrms/api/importUserExcel.php',
+                  type: 'post',
+                  data: fd,
+                  contentType: false,
+                  processData: false,
+                  success: function(response){
+                    response = response.trim()
+                    console.log("Response",response)
+                     
+                      // if(response != "error"){
+                      //   console.log("error")
+                      //   // $("#loader").hide();
+                        // $('#forms').hide()
+                        //   if(response == "No")
+                        //   {
+                        //       s1 = '<div class="row">'
+                        //       s2 = '<div class="col s12 m6 offset-m3">'
+                        //       s3 = '<div class="card white">'
+                        //       s4 = ' <div class="card-content blue-text">'
+                        //       s5 = '<center><span class="card-title" >Please upload the file in the given format </span></center>'
+                        //       s7 = '</div></div></div></div>'
+                        //       s8 = s1+s2+s3+s4+s4+s5+s7;
+                        //       $('.success').append(s8)
+                        //       window.setTimeout(function(){location.reload()},3000)
+                        //   }
+                        //   else
+                        //   {
+                        //       s1 = '<div class="row">'
+                        //       s2 = '<div class="col s12 m6 offset-m3">'
+                        //       s3 = '<div class="card white">'
+                        //       s4 = ' <div class="card-content blue-text">'
+                        //       s5 = '<span class="card-title">Upload Dump Status :'+response+' New Entries added </span>'
+                        //       s7 = '</div></div></div></div>'
+                        //       s8 = s1+s2+s3+s4+s4+s5+s7;
+                        //       $('.success').append(s8)
+                        //       window.setTimeout(function(){location.reload()},3000)
+                        //   }
+                       
+                         
+                      // }
+                      // else if(response == "error"){
+                      //     alert('file not uploaded');
+                      // }
+                  },
+              });
+        }
+        
+})
+ 
+
+
+
+
+
+
+
+
+
+
 
 
 </script>

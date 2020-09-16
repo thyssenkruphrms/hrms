@@ -1,10 +1,17 @@
 <?php
 
 include 'db.php';
+include 'maildetails.php';
+
+
+$mail->setFrom('thyssenkrupp@tkep.com', 'tkei');
+$mail->addReplyTo(Email, 'Information');
+$mail->isHTML(true);  
+
 header('Content-Type: application/json');
 //var_dump($GLOBALS);
 $action=$_POST['action'];
-$mail=$_POST['mail'];
+$mail2=$_POST['mail'];
 $username=$_POST['username'];
 
 if($action=='1'){
@@ -34,15 +41,23 @@ function checkByMail($db,$mail){
      return $db->users->count(["mail"=>$mail]);
    }
 
-function addUser($db,$uid,$password,$mail,$dsg,$rg,$dept){
-    if(checkByUID($db,$uid) or checkByMail($db,$mail)){
+function addUser($mail,$db,$uid,$password,$mail1,$dsg,$rg,$dept){
+    if(checkByUID($db,$uid) or checkByMail($db,$mail1)){
         echo json_encode(array("status"=>"false","message"=>"Hey User Already Found!"));
-    
     }
     else{
-        $db->users->insertOne(["uid"=>$dsg,"name"=>$uid,"password"=>$password,"mail"=>$mail,"dsg"=>$dsg,"rg"=>$rg,"dept"=>$dept]);
+        $db->users->insertOne(["uid"=>$dsg,"name"=>$uid,"password"=>$password,"mail"=>$mail1,"dsg"=>$dsg,"rg"=>$rg,"dept"=>$dept]);
+        // $mail->addAddress($mail1);
+        // $mail->Subject = "User Authentication";
+        // $mail->Body='
+        // Hello '.$name.' You are sucessfully added to the system.<br>. To use system further you need to authenticate yourself first.Click on following link to authenticate yourself.' ;   
+        // $mail->isHTML(true); 
+        // $mail->send(); 
         echo json_encode(array("status"=>"true","message"=>"User Added Successfully"));
-    
+        
+
+
+
     }   
 }
 
@@ -85,13 +100,13 @@ function UpdateUser($db,$uid,$name,$mail,$dsg,$region,$dept){
 }
 
 switch($action){
-    case "1": addUser($db,$username,$password,$mail,$dsg,$region,$dept);
+    case "1": addUser($mail,$db,$username,$password,$mail2,$dsg,$region,$dept);
             break;
     case "2":
-            deleteUser($db,$username,$mail);
+            deleteUser($db,$username,$mail2);
             break;
     case "3":
-            UpdateUser($db,$uid,$username,$mail,$dsg,$region,$dept);
+            UpdateUser($db,$uid,$username,$mail2,$dsg,$region,$dept);
             break;
 
     default: echo json_encode(["status"=>"false","message"=>"invalid action","dept"=>$dept]); 
