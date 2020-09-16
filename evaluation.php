@@ -188,7 +188,7 @@ if(isset($_COOKIE['sid']))
                 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="remark" type="text" >
+                        <input id="remark" type="text" required >
                         <label for="remark" >Remark if any</label>
                     </div>
                 </div>
