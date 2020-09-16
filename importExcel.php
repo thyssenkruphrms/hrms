@@ -17,6 +17,8 @@ if(isset($_FILES))
     $mail->addReplyTo(Email, 'Information');
     $mail->isHTML(true);
 
+    $prevCount = $db->prfs->count();
+ 
     $ctr = 0;
     // Set path to CSV file
     // $csvFile = 'test.csv';
@@ -165,9 +167,9 @@ if(isset($_FILES))
             
             
         }
-        $countInstances = $db->prfs->count(array("status"=>"open"));
-        $new = $countInstances - $ctr;
-        echo $new;
+        $newCount = $db->prfs->count();
+        // $new = $countInstances - $ctr;
+        echo abs($newCount - $prevCount);
 }
 else
 
