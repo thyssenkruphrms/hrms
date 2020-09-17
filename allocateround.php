@@ -300,7 +300,7 @@ function abort_round(confr)
                   <th>Time</th>
                   <th>Date</th>
                   <th>Select</th>
-                  <th class="btn blue darken-1" id="submit" disabled>Assign Interviewer</th>
+                  <th class="btn blue darken-1" id="submit">Assign Interviewer</th>
                   <th class="btn red" style="margin-left: 25px;" id="abort" onclick='$("#modal1").modal("open")'> Abort</th>
 
                 </tr>
