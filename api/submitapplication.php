@@ -94,7 +94,6 @@ include 'db.php';
                     "notice" => $_POST["notice"],
                     "manager" => $_POST["manager"],
                     "ifselectposition" => $_POST["ifselectposition"],
-                
                     "fathersname" => $_POST["father"],
                     "fdob" => $_POST["fdob"],
                     "mother" => $_POST["mother"],

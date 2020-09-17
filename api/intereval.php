@@ -41,7 +41,7 @@ if($cursor)
         "inv_dsg"=>$cursor['dsg'],
         "inv_date"=>$date,
         "inv_time"=>$time,
-        "inv_place"=>$interviews['iperson'],
+        "inv_place"=>$interviews['ilocation'],
         "inv_cperson"=>$interviews['iperson']
             
     );

@@ -294,8 +294,10 @@ function abort_round(confr)
             <table class="striped">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Mail ID</th>
+                  <th>Candidate Name</th>
+                  <th>Candidate Mail ID</th>
+                  <th>Interviewer Name</th>
+                  <th>Interviewer Mail ID</th>
                   <th>Status</th>
                   <th>Time</th>
                   <th>Date</th>
@@ -1114,6 +1116,10 @@ function createnextround(id)
           var s1='<tr id="check'+i+'row">'
           var s2='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'&prf='+window.prf+'&iid='+window.iid+'&rid='+window.rid+'&s=1" target="_blank" "><p >'+arr[i][0]+'</p></a></td>'
           var s3='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'&prf='+window.prf+'&iid='+window.iid+'&rid='+window.rid+'&s=1" target="_blank" "><p id="check'+i+'mail">'+arr[i][1]+'</p></a></td>'
+          
+          var s9='<td><p style="color:black">'+arr[i][4]+'</p></td>'
+          var s10='<td><p style="color:black">'+arr[i][3]+'</p></td>'
+          
           var s4='<td><p >'+arr[i][2]+'</p></td>'
           if(arr[i][2] == "Selected")
           {
@@ -1130,7 +1136,7 @@ function createnextround(id)
             var s7='<td><b>NA</b></td>'
             var s8='</tr>'
           }
-          var str=s1+s2+s3+s4+s5+s6+s7+s8
+          var str=s1+s2+s3+s9+s10+s4+s5+s6+s7+s8
           $('#adddetail').append(str)
           $('.timepicker').timepicker();
           $('.datepicker').datepicker();

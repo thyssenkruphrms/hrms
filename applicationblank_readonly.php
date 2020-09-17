@@ -321,15 +321,7 @@ input[type="file"]{
                                                                 <label for="todate0" >To</label>
                                                         </div> 
 
-                                                        <div class="input-field col s6">
-                                                                <input id="managername0" type="text" class="validate" required="" aria-required="true" value = "<?php echo $row["managername"][$i]?$row["managername"][$i]:"NA"; ?>" readonly>
-                                                                <label for="managername0" >Reporting Manager Name</label>
-                                                        </div> 
-                                                              
-                                                        <div class="input-field col s6">
-                                                                <input id="managermail0" type="text" class="validate" required="" aria-required="true" value = "<?php echo $row["managermail"][$i]?$row["managermail"][$i]:"NA"; ?>" readonly>
-                                                                <label for="managermail0" >Enter Manager Email</label>
-                                                        </div> 
+                                                        
 
                                                                                                                         
                                                   </div>
