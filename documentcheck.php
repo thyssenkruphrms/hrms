@@ -68,6 +68,9 @@ if(isset($_COOKIE['sid']))
 <center>
  <p id="candidatename" style="color: green;font-size: 30px"><b></b></p>
 </center>        
+<center>
+ <p id="previousrounds" style="color: green;font-size: 30px"> </p>
+</center>  
 <div class="row">
     <div class="col s12 m6 offset-m3">
         <div class="card white-text">
@@ -270,6 +273,10 @@ $(document).ready(function(){
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const cemail = urlParams.get('aid')
+const prf_ = urlParams.get('prf')
+const iid_ = urlParams.get('iid')
+const round = urlParams.get('rid')
+
 $.ajax({
 url:"http://localhost/hrms/api/getnameevaluation.php",
 type:"POST",
@@ -278,7 +285,22 @@ success:function(para)
 {
     if(para != "error")
     {
-        var str = "<b>Candidate  Name: "+para+"</b>";
+        if(round > 01)
+        {
+            var str1 = "<b>Previous Evaluation Sheets : </b> ";
+            var str2 = ""
+            for(let i=1;i<round;i++)
+            {
+                str2 += "<a href='http://localhost/hrms/documentcheck.php?aid="+cemail+"&prf="+prf_+"&iid="+iid_+"&rid="+i+"' target='_blank'><button class='btn waves-effect white darken-1'><b>Round 0"+i+"</b></a>    "
+            }
+            $("#previousrounds").append(str1+str2)
+        }
+        else
+        {
+            var str = "<b>Previous Evaluation Sheets : </b> This is the First Round for this Candidate";
+            $("#previousrounds").append(str)
+        }
+        var str = "<b>Candidate  Name: "+para+"<br>This is Round: "+round+" Evaluation Sheet</b>";
         $("#candidatename").append(str)
     }
 }
