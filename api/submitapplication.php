@@ -31,16 +31,7 @@ include 'db.php';
             move_uploaded_file($tempcv,"../upload/".$folder."/".$namecv);
             $namecv = "upload/".$folder."/".$namecv;
             
-            $namepgcert = $_FILES['pgcert']['name'];
-            $temppgcert = $_FILES["pgcert"]['tmp_name'];
-            move_uploaded_file($temppgcert,"../upload/".$folder."/".$namepgcert);
-            $namepgcert = "upload/".$folder."/".$namepgcert;
-
             
-            $nameugcert = $_FILES['ugcert']['name'];
-            $tempugcert = $_FILES["ugcert"]['tmp_name'];
-            move_uploaded_file($tempugcert,"../upload/".$folder."/".$nameugcert);
-            $nameugcert = "upload/".$folder."/".$nameugcert;
 
  
 
@@ -66,8 +57,7 @@ include 'db.php';
                 $values = array(
                     "userphoto" => $namephoto,
                     "usercv" => $namecv,
-                    "ugcert" => $nameugcert,
-                    "pgcert" => $namepgcert,
+               
                     "aadharno" => $_POST["aadharno"],
                     "first_name"=> $_POST['first_name'],
                     "mid_name"=>$_POST['mid_name'],
@@ -104,9 +94,7 @@ include 'db.php';
                     "notice" => $_POST["notice"],
                     "manager" => $_POST["manager"],
                     "ifselectposition" => $_POST["ifselectposition"],
-                    // "proofaadhar" => $nameaadhar,
-                    // "proofidentity" => $nameotheraadhar,
-                    // "proofaddr" => $nameaddr,
+                
                     "fathersname" => $_POST["father"],
                     "fdob" => $_POST["fdob"],
                     "mother" => $_POST["mother"],

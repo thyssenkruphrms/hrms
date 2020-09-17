@@ -287,24 +287,7 @@ input[type="file"]{
                                                 </select> 
                                               </div> 
                                         </div>
-
-                                        <div class="row">
-                                        <div class="input-field col s12">
-                                        <a class="waves-effect blue darken-1 btn" href ="<?php echo $row["ugcert"]; ?>" target="_blank" >View UG Certificate</a>
-                                        </div>                                       
-                                        </div>
-
-                                        <div class="row">
-                                        <div class="input-field col s12">
-                                        <a class="waves-effect blue darken-1 btn" href ="<?php echo $row["pgcert"]; ?>" target="_blank" >View PG Certificate</a>
-                                        </div>                                       
-                                        </div>                                          
-
-                                        
-
-                                                      
-                                          
-                                                
+     
                                           <b style="font-size:20px;">Professional Experience (Mention Company Name And Designation)</b>
                                           <?php  
                                           

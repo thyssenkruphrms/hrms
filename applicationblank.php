@@ -318,13 +318,8 @@ $_SESSION['positionapplied'] = $position;
                                                 <option value="Computer/IT">Computer/IT</option>
                                                 <option value="Electronics">Electronics</option>
                                                 <option value="Electrical">Electrical</option>
-                                                <option value="Sales/Marketing">Sales/Marketing</option>
-                                                <option value="HR">HR</option>
-                                                <option value="Finance">Finance</option>
-                                                <option value="Systems">Systems</option>
-                                                <option value="Operations">Operations</option>
-                                                <option value="Systems">Systems</option>
                                                 <option value="Others">Others</option>
+                                                
                                                 </select> 
                                               </div>
                                               
@@ -354,6 +349,9 @@ $_SESSION['positionapplied'] = $position;
                                                 <option value="M.TECH/M.E">M.TECH/M.E</option>
                                                 <option value="PG DIPLOMA">PG DIPLOMA</option>
                                                 <option value="Others">Others</option>
+                                                
+
+
                                                 </select> 
                                               </div> 
 
@@ -366,7 +364,14 @@ $_SESSION['positionapplied'] = $position;
                                                 <option value="Computer/IT">Computer/IT</option>
                                                 <option value="Electronics">Electronics</option>
                                                 <option value="Electrical">Electrical</option>
+                                                <option value="Sales/Marketing">Sales/Marketing</option>
+                                                <option value="HR">HR</option>
+                                                <option value="Finance">Finance</option>
+                                                <option value="Systems">Systems</option>
+                                                <option value="Operations">Operations</option>
+                                                <option value="Systems">Systems</option>
                                                 <option value="Others">Others</option>
+                                                
                                                 </select> 
                                               </div> 
                                         </div>
@@ -383,25 +388,7 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>   
                                            
 
-                                        <div class="file-field input-field">
-                                                <div class="btn blue darken-1">
-                                                        <span>Upload Under Graduate Certificate</span>
-                                                        <input id="ugcert" name="myug" required type="file" accept=".png, .jpg, .jpeg, .pdf">
-                                                </div>
-                                                <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text">
-                                                </div>
-                                        </div> 
-                                        
-                                        <div class="file-field input-field">
-                                                <div class="btn blue darken-1">
-                                                        <span>Upload Post Graduate Certificate</span>
-                                                        <input id="pgcert" name="mypg" required type="file" accept=".png, .jpg, .jpeg, .pdf">
-                                                </div>
-                                                <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text">
-                                                </div>
-                                        </div>
+                                      
 
                                           
                                  
@@ -857,6 +844,7 @@ $_SESSION['positionapplied'] = $position;
 
                                                 <div class="col s6" id="addnextref">
                                                         <a class="btn-floating btn" onclick="addnewref(this)" id="refaddbtn"><i class="material-icons">add</i></a>
+                                                        <span id="error-ref"></span>
                                                 </div>
                                         </div>
                                         </div>
@@ -923,19 +911,7 @@ var ctr2=0
 var cdate=new Date();
 var cyear=cdate.getFullYear();
 
-nameref0 = []
-designationref0 = []
-cmpnmref0 = []
-contref0 = []
-mailref0 = []
-phoneref0=[]
-stdref0=[]
-orgname0=[]
-olddesignation0=[]
-fromdate0 = []
-todate0=[]
-managername0=[]
-managermail0=[]
+
 
 function checkcont(x)
 {
@@ -966,7 +942,7 @@ function mytextvalid(e)
         //Written by Tanmay
         var charCode = event.keyCode;
         //Gets ASCII code of character
-        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8)
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8 || charCode >= 32 && charCode <= 47)
                 return true;
         else
                 return false;
@@ -1027,10 +1003,9 @@ function removenewexp(x)
 
 function addnewref(x)
 {
-        
+        $('#error-ref').empty()
         ctr2 = ctr2+1
-        
-        var txt='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email"><label for="mailref'+ctr2+'">Reference</label></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)"><i class="material-icons">add</i></a></div></div>'
+        var txt='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email"><label for="mailref'+ctr2+'">Reference</label></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)" ><i class="material-icons">add</i></a>&nbsp;<span id="error-ref0"></span></div></div>'
         if(ctr2==1)
         {
                 $("#mainref").append(txt);
@@ -1131,184 +1106,218 @@ function checkEmployer(me,cid)
 /******************AJAX CALL STARTS************************ */
 $("#submitformdata").click(function () 
 {
+        nameref0 = []
+        designationref0 = []
+        cmpnmref0 = []
+        contref0 = []
+        mailref0 = []
+        phoneref0=[]
+        stdref0=[]
+        orgname0=[]
+        olddesignation0=[]
+        fromdate0 = []
+        todate0=[]
+        managername0=[]
+        managermail0=[]
         var fd = new FormData();
-        var files = $('#photo')[0].files[0];
-        fd.append('photo',files);
 
-        var files = $('#mycv')[0].files[0];
-        fd.append('mycv',files);pgcert
+        //References
+                $('input[name^="nameref0"]').each(function() {
+                        nameref0.push($(this).val());
+                        });
+                        $('input[name^="designationref0"]').each(function() {
+                        designationref0.push($(this).val());
+                        });
+                        $('input[name^="cmpnmref0"]').each(function() {
+                        cmpnmref0.push($(this).val());
+                        });
+                        $('input[name^="contref0"]').each(function() {
+                        contref0.push($(this).val());
+                        });
+                        $('input[name^="mailref0"]').each(function() {
+                        mailref0.push($(this).val());
+                        });
+                        $('input[name^="stdcoderef0"]').each(function() {
+                        stdref0.push($(this).val());
+                        });
+                        $('input[name^="phoneref0"]').each(function() {
+                        phoneref0.push($(this).val());
+                        });
 
-        var files = $('#pgcert')[0].files[0];
-        fd.append('pgcert',files);
+                        if(nameref0.length<2)
+                        {
+                                alert("Enter atleast two references")
+                                $('#error-ref').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter Atleast 2 references*</p>")
+                                // $("#addnextref").parent().after("<div class='validation' style='color:red;margin-bottom: 20px;'>Please enter atleast 2 references</div>");
 
-        var files = $('#ugcert')[0].files[0];
-        fd.append('ugcert',files);
+                        }
+                        else
+                        {
+                                // cleanArray = nameref0.filter(function () { return true });
+                                arr = nameref0.filter(item => item);
+                                console.log("This is - "+arr.length)
+                                if(arr.length<2)
+                                {
+                                        alert("Wrong")
+                                        $('#error-ref0').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter Atleast 2 references*</p>")
+                                }
+                                else
+                                {
+                                        fd.append("nameref0",JSON.stringify(nameref0))
+                                        fd.append("designationref0",JSON.stringify(designationref0))
+                                        fd.append("cmpnmref0",JSON.stringify(cmpnmref0))
+                                        fd.append("contref0",JSON.stringify(contref0))
+                                        fd.append("mailref0",JSON.stringify(mailref0))
+                                        fd.append("stdcoderef0",JSON.stringify(stdref0))
+                                        fd.append("phoneref0",JSON.stringify(phoneref0))
 
-        fd.append("aadharno",$("#aadharno").val())
-        fd.append("last_name",$("#last_name").val())
-        fd.append("first_name",$("#first_name").val())
-        fd.append("mid_name",$("#mid_name").val())
-        fd.append("State",$("#State").val())
-        fd.append("street",$("#street").val())
-        fd.append("Locality",$("#Locality").val())
-        fd.append("City",$("#City").val())
-        fd.append("Pincode",$("#Pincode").val())
-        fd.append("unumber",$("#unumber").val())
-        fd.append("stdcode",$("#stdcode").val())
-        fd.append("pnumber",$("#pnumber").val())
-        fd.append("uemail",$("#uemail").val())
-        fd.append("udob",$("#udob").val())
-        fd.append("position",$("#position").val())
-        fd.append("location",$("#location").val())
-        fd.append("passport",$("#passport").val())
 
-        fd.append("selectug",$("#selectug").val())
-        fd.append("specialug",$("#specialug").val())
-        fd.append("selectpg",$("#selectpg").val())
-        fd.append("specialpg",$("#specialpg").val())
-        fd.append("jdate",$("#jdate").val())
-        fd.append("notice",$("#notice").val())
-        fd.append("manager",$("#manager").val())
-        fd.append("ifselectposition",$("#ifselectposition").val())
-        fd.append("father",$("#father").val())
-        fd.append("fdob",$("#fdob").val())
-        fd.append("mother",$("#mother").val())
-        fd.append("mdob",$("#mdob").val())
-        fd.append("spouse",$("#spouse").val())
-        fd.append("spdob",$("#spdob").val())
-        fd.append("sgender",$("#sgender").val())
-        fd.append("child1",$("#child1").val())
-        fd.append("c1dob",$("#c1dob").val())
-        fd.append("c1gender",$("#c2gender").val())
-        fd.append("child2",$("#child2").val())
-        fd.append("c2dob",$("#c2dob").val())
-        fd.append("c2gender",$("#c2gender").val())
-        fd.append("homepresent",$("#homepresent").val())
-        fd.append("homeexp",$("#homeexp").val())
-        fd.append("grosspresent",$("#grosspresent").val())
-        fd.append("grossexp",$("#grossexp").val())
-        fd.append("yearpresent",$("#yearpresent").val())
-        fd.append("yearexp",$("#yearexp").val())
-       
+                                        //Documents - PHOTO ,CV,PGCERT,UGCERT
+                                        var files = $('#photo')[0].files[0];
+                                        fd.append('photo',files);
 
-      
-        var referalchoice;
+                                        var files = $('#mycv')[0].files[0];
+                                        fd.append('mycv',files);
 
-        if($('#internet').prop("checked") == true)
-        {
-                // referalchoice=$('#internet').val();
-                fd.append("internet",$("#internet").val())
+                                       
 
-        }
 
-        if($('#empref').prop("checked") == true)
-        {
-                // referalchoice=$('#empref').val();
-                fd.append("empref",$("#empref").val())
+                                        //Personal Information
+                                        fd.append("aadharno",$("#aadharno").val())
+                                        fd.append("last_name",$("#last_name").val())
+                                        fd.append("first_name",$("#first_name").val())
+                                        fd.append("mid_name",$("#mid_name").val())
+                                        fd.append("State",$("#State").val())
+                                        fd.append("street",$("#street").val())
+                                        fd.append("Locality",$("#Locality").val())
+                                        fd.append("City",$("#City").val())
+                                        fd.append("Pincode",$("#Pincode").val())
+                                        fd.append("unumber",$("#unumber").val())
+                                        fd.append("stdcode",$("#stdcode").val())
+                                        fd.append("pnumber",$("#pnumber").val())
+                                        fd.append("uemail",$("#uemail").val())
+                                        fd.append("udob",$("#udob").val())
+                                        fd.append("position",$("#position").val())
+                                        fd.append("location",$("#location").val())
+                                        fd.append("passport",$("#passport").val())
 
-        }
-        if($('#walkin').prop("checked") == true)
-        {
-                // referalchoice=$('#walkin').val();
-                fd.append("walkin",$("#walkin").val())
-
-        }
-        if($('#website').prop("checked") == true)
-        {
-                fd.append("website",$("#website").val())
-                
-                // referalchoice=$('#website').val();
-        }
-        if($('#other').prop("checked") == true)
-        {
-                fd.append("other",$("#other").val())
-                referalchoice=$('#other').val();
-                fd.append("otherdetails",$("#otherdetails").val())
-
-        
-        }
-        // orgname0olddesignation0fromdate0todate0managername0managermail0
-                   
-            $('input[name^="orgname0"]').each(function() {
-                orgname0.push($(this).val());
-            });
-            $('input[name^="olddesignation0"]').each(function() {
-                olddesignation0.push($(this).val());
-            });
-            $('input[name^="fromdate0"]').each(function() {
-                fromdate0.push($(this).val());
-            });
-            $('input[name^="todate0"]').each(function() {
-                todate0.push($(this).val());
-            });
-            $('input[name^="managername0"]').each(function() {
-                managername0.push($(this).val());
-            });
-            $('input[name^="managermail0"]').each(function() {
-                managermail0.push($(this).val());
-            });
-            
-        fd.append("orgname0",JSON.stringify(orgname0))
-        fd.append("olddesignation0",JSON.stringify(olddesignation0))
-        fd.append("fromdate0",JSON.stringify(fromdate0))
-        fd.append("todate0",JSON.stringify(todate0))
-        fd.append("managername0",JSON.stringify(managername0))
-        fd.append("managermail0",JSON.stringify(managermail0))
-
-     
-       
-            $('input[name^="nameref0"]').each(function() {
-                nameref0.push($(this).val());
-            });
-            $('input[name^="designationref0"]').each(function() {
-                designationref0.push($(this).val());
-            });
-            $('input[name^="cmpnmref0"]').each(function() {
-                cmpnmref0.push($(this).val());
-            });
-            $('input[name^="contref0"]').each(function() {
-                contref0.push($(this).val());
-            });
-            $('input[name^="mailref0"]').each(function() {
-                mailref0.push($(this).val());
-            });
-            $('input[name^="stdcoderef0"]').each(function() {
-                stdref0.push($(this).val());
-            });
-            $('input[name^="phoneref0"]').each(function() {
-                phoneref0.push($(this).val());
-            });
-        
-               
-        fd.append("nameref0",JSON.stringify(nameref0))
-        fd.append("designationref0",JSON.stringify(designationref0))
-        fd.append("cmpnmref0",JSON.stringify(cmpnmref0))
-        fd.append("contref0",JSON.stringify(contref0))
-        fd.append("mailref0",JSON.stringify(mailref0))
-        fd.append("stdcoderef0",JSON.stringify(stdref0))
-        fd.append("phoneref0",JSON.stringify(phoneref0))
+                                        fd.append("selectug",$("#selectug").val())
+                                        fd.append("specialug",$("#specialug").val())
+                                        fd.append("selectpg",$("#selectpg").val())
+                                        fd.append("specialpg",$("#specialpg").val())
+                                        fd.append("jdate",$("#jdate").val())
+                                        fd.append("notice",$("#notice").val())
+                                        fd.append("manager",$("#manager").val())
+                                        fd.append("ifselectposition",$("#ifselectposition").val())
+                                        fd.append("father",$("#father").val())
+                                        fd.append("fdob",$("#fdob").val())
+                                        fd.append("mother",$("#mother").val())
+                                        fd.append("mdob",$("#mdob").val())
+                                        fd.append("spouse",$("#spouse").val())
+                                        fd.append("spdob",$("#spdob").val())
+                                        fd.append("sgender",$("#sgender").val())
+                                        fd.append("child1",$("#child1").val())
+                                        fd.append("c1dob",$("#c1dob").val())
+                                        fd.append("c1gender",$("#c2gender").val())
+                                        fd.append("child2",$("#child2").val())
+                                        fd.append("c2dob",$("#c2dob").val())
+                                        fd.append("c2gender",$("#c2gender").val())
+                                        fd.append("homepresent",$("#homepresent").val())
+                                        fd.append("homeexp",$("#homeexp").val())
+                                        fd.append("grosspresent",$("#grosspresent").val())
+                                        fd.append("grossexp",$("#grossexp").val())
+                                        fd.append("yearpresent",$("#yearpresent").val())
+                                        fd.append("yearexp",$("#yearexp").val())
 
 
 
-        $('#loader').show()
+                                        // Reference & Experiance
+                                        var referalchoice;
+
+                                        if($('#internet').prop("checked") == true)
+                                        {
+                                                // referalchoice=$('#internet').val();
+                                                fd.append("internet",$("#internet").val())
+
+                                        }
+
+                                        if($('#empref').prop("checked") == true)
+                                        {
+                                                // referalchoice=$('#empref').val();
+                                                fd.append("empref",$("#empref").val())
+
+                                        }
+                                        if($('#walkin').prop("checked") == true)
+                                        {
+                                                // referalchoice=$('#walkin').val();
+                                                fd.append("walkin",$("#walkin").val())
+
+                                        }
+                                        if($('#website').prop("checked") == true)
+                                        {
+                                                fd.append("website",$("#website").val())
+                                                
+                                                // referalchoice=$('#website').val();
+                                        }
+                                        if($('#other').prop("checked") == true)
+                                        {
+                                                fd.append("other",$("#other").val())
+                                                referalchoice=$('#other').val();
+                                                fd.append("otherdetails",$("#otherdetails").val())
+
+                                        
+                                        }
+                                        // orgname0olddesignation0fromdate0todate0managername0managermail0
+                                                
+                                        $('input[name^="orgname0"]').each(function() {
+                                                orgname0.push($(this).val());
+                                        });
+                                        $('input[name^="olddesignation0"]').each(function() {
+                                                olddesignation0.push($(this).val());
+                                        });
+                                        $('input[name^="fromdate0"]').each(function() {
+                                                fromdate0.push($(this).val());
+                                        });
+                                        $('input[name^="todate0"]').each(function() {
+                                                todate0.push($(this).val());
+                                        });
+                                        $('input[name^="managername0"]').each(function() {
+                                                managername0.push($(this).val());
+                                        });
+                                        $('input[name^="managermail0"]').each(function() {
+                                                managermail0.push($(this).val());
+                                        });
+                                        
+                                        fd.append("orgname0",JSON.stringify(orgname0))
+                                        fd.append("olddesignation0",JSON.stringify(olddesignation0))
+                                        fd.append("fromdate0",JSON.stringify(fromdate0))
+                                        fd.append("todate0",JSON.stringify(todate0))
+                                        fd.append("managername0",JSON.stringify(managername0))
+                                        fd.append("managermail0",JSON.stringify(managermail0))
+
+                                        $('#loader').show()
 
 
-        $.ajax({
-        
-                url:'http://localhost/hrms/api/submitapplication.php',
-                type:'POST',
-                data:fd,
-                contentType: false,
-                processData: false,
-                success:function(para)
-                {
-                        $("#submitformdata").prop('disabled',true);
-                        $('#loader').hide()
-                        $("#pleasewait").show()
-                        window.setTimeout(function(){location.reload()},1000)
-                        
-                },
-                })
+                                        $.ajax({
+                                        
+                                                url:'http://localhost/hrms/api/submitapplication.php',
+                                                type:'POST',
+                                                data:fd,
+                                                contentType: false,
+                                                processData: false,
+                                                success:function(para)
+                                                {
+                                                        $("#submitformdata").prop('disabled',true);
+                                                        $('#loader').hide()
+                                                        $("#pleasewait").show()
+                                                        window.setTimeout(function(){location.reload()},1000)
+                                                        
+                                                },
+                                                })
+                                }
+                              
+
+                        }
 
 })
 
@@ -1642,26 +1651,6 @@ $('#mycv').change(function(){
         
 })
 
-
-$('#ugcert').change(function(){ 
-        var f =$('#ugcert').val().split('.')
-        var x=f[1]
-        if(x!='pdf')
-        {         
-                alert('Invalid File \n Only PDF accepted')
-                document.getElementById("ugcert").value=null
-        }
-})
-
-$('#pgcert').change(function(){ 
-        var f =$('#pgcert').val().split('.')
-        var x=f[1]
-        if(x!='pdf')
-        {         
-                alert('Invalid File \n Only PDF accepted')
-                document.getElementById("pgcert").value=null
-        }
-})
 
 </script>
 </body>

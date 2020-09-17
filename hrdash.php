@@ -102,7 +102,7 @@ if(isset($_COOKIE['sid']))
           <li>
             <select id="logout"class="dropdown-trigger btn blue darken-1">
               <option value=""><?php echo($name) ?></option>
-              <option value="profile">Profile</option>
+              <option value="profile" id="profile" onclick="">Profile</option>
               <option value="logout">Logout</option>
             </select>
           </li>
@@ -225,6 +225,12 @@ if(isset($_COOKIE['sid']))
 <!-- main card ends here -->
 <script src="public/js/common.js"></script>
 <script>
+
+$("#profile").click(function()
+{
+  document.location.replace("http://localhost/hrms/profile.php")
+})
+
 
 $( document ).ready(function() {
   $('#badge_ongoing').hide();

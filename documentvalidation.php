@@ -260,7 +260,37 @@ $cursor = $db->tokens->find();
                             </td>
                         </tr>
 
-                        
+                        <tr id="tdsb">
+                            <td>
+                                <a class="waves-effect blue darken-1  modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="sb">Salary Breakup</a>
+                            </td>
+
+                            <td>
+                                <label style="color:green;">
+                                    <input class="with-gap" name="gsb" type="radio"  value="valid" id="sbv"/>
+                                    <span>Valid</span>
+                                </label>
+                            </td> 
+
+                            <td>
+                                <label style="color:red;">
+                                    <input class="with-gap" name="gsb" type="radio" value="invalid" id="sbi"/>
+                                    <span>Invalid</span>
+                                </label>
+                            </td>
+ 
+                            <td>
+                                <div class="input-field col s12 m12" id="rsb1">
+                                    <input id="rsb" type="text" class="validate" style="color:black" placeholder="Specify Reason">
+                                    <label for="rsb">Specify Reason</label>
+                                </div>
+                            </td>
+
+                            <td>
+                            <a class="waves-effect green btn" name="d5" id="sbf" onclick=freez(this.id) ><i class="material-icons right">done</i>Freez</a>
+                            </td>
+                        </tr>
+
                         
                         <tr id="tdpayslip">
                             <td>
@@ -531,7 +561,6 @@ function freezall()
     $("a[name='d5']").click();
     $("a[name='d6']").click();
     $("a[name='d7']").click();
-    $("a[name='d8']").click();
     $("a[name='d9']").click();
     $("a[name='d10']").click();
     $("a[name='d11']").click();
@@ -549,7 +578,7 @@ function clicked(x)
 
     $(".modal-content").empty();
     $(".modal-content").removeData();
-    var str='<object data="p.pdf" type="application/pdf" width="700" height="800" id="obj"><a href="p.pdf">test.pdf</a></object>'
+    var str='<object data="p.pdf" type="application/pdf" width="700" height="800" id="obj">Not Applicable</object>'
     $("#cnt").append(str)
     $("#obj").attr("href",v)
     $("#obj").attr("data",v)
@@ -814,6 +843,34 @@ $("#alv").click(function(){
         }
 });
 
+$("#sbv").click(function(){
+        var r = $("input[name='gsb']:checked").attr('id');
+        if(r=="sbi"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            //$("#ral").val("")
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
 $("#payslipv").click(function(){
         var r = $("input[name='gpayslip']:checked").attr('id');
         if(r=="payslipi"){
@@ -1014,6 +1071,34 @@ $("#api").click(function(){
 $("#ali").click(function(){
         var r = $("input[name='gal']:checked").attr('id');
         if(r=="ali"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            //$("#ral").val("")
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
+$("#sbi").click(function(){
+        var r = $("input[name='gsb']:checked").attr('id');
+        if(r=="sbi"){
             
             r = r.substring(0, r.length - 1);
             var btn = r
@@ -1264,6 +1349,7 @@ $("#rssc1").hide()
 $("#rhsc1").hide()
 $("#rap1").hide()
 $("#ral1").hide()
+$("#rsb1").hide()
 $("#rrl1").hide()
 $("#rpayslip1").hide()
 $("#ruan1").hide()
@@ -1296,6 +1382,7 @@ $.ajax({
         $("#Photo").attr("value",para[0][3])
         $("#ap").attr("value",para[0][4])
         $("#al").attr("value",para[0][5])
+        $("#sb").attr("value",para[0][11])
         $("#payslip").attr("value",para[0][6])
         $("#uan").attr("value","UAN:  "+para[0][7])
         $("#cc").attr("value",para[0][8]) 
@@ -1322,7 +1409,7 @@ $("#submit").click(function(){
     console.log("this is ctr:",ctr)
 
     $("#loader").show();
-    if(ctr==(10-validcount))    
+    if(ctr==(11-validcount))    
     {
     
     cv=$("#rcv").val()
@@ -1332,6 +1419,7 @@ $("#submit").click(function(){
     address=$("#rap").val()
     cancheck=$("#rcc").val()
     appletter=$("#ral").val()
+    salarybreakup=$("#rsb").val()
     pastpayslip=$("#rpayslip").val()
     currcomp=$("#rccl").val()
     ugcert=$("#rugcert").val()
@@ -1357,6 +1445,7 @@ $("#submit").click(function(){
             "address":address,
             "cancheck":cancheck,
             "appletter":appletter,
+            "salarybreakup":salarybreakup,
             "pastpayslip":pastpayslip,
             "ugcert":ugcert,
             "pgcert":pgcert,

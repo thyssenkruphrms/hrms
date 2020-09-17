@@ -17,6 +17,11 @@ $(function(){
     } 
 
 })	  }
+
+else if($(this).val()=="profile")
+{
+  document.location.replace("http://localhost/hrms/getcurrentuser.php")
+}
    
   });
 });
