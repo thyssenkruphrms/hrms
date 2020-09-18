@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,20 +59,20 @@ if(isset($_FILES))
     $csv = readCSV($csvFile);
     // echo count($csv);
     $new = 0;
-    for($i = 1; $i < count($csv); $i++)
+    for($i = 0; $i < count($csv); $i++)
     {
          
                         $val = array(              
-                            "uid"=> $csv[$i][0]  ? $csv[$i][0]  :"null",
-                            "name"=> $csv[$i][1]  ? $csv[$i][1]  :"null",
-                            "password"=> $csv[$i][2]  ? $csv[$i][2]  :"null",
-                            "mail" => $csv[$i][3]  ? $csv[$i][3]  :"null",
-                            "dsg" => $csv[$i][4]  ? $csv[$i][4]  :"null",
-                            "rg"=> $csv[$i][5]  ? $csv[$i][5]  :"null",
-                            "dept"=> $csv[$i][6]  ? $csv[$i][6]  :"null",
+                            "designation"=> $csv[$i+1][0]  ? $csv[$i+1][0]  :"null",
+                            "region"=> $csv[$i+1][1]  ? $csv[$i+1][1]  :"null",
+                            "department"=> $csv[$i+1][2]  ? $csv[$i+1][2]  :"null",
+                            "mailid" => $csv[$i+1][3]  ? $csv[$i+1][3]  :"null",
+                            "username" => $csv[$i+1][4]  ? $csv[$i+1][4]  :"null",
+                            "password"=> $csv[$i+1][5]  ? $csv[$i+1][5]  :"null"
+                            
                     );
                     
-                    $result = $db->user->insertOne($val);
+                    $result = $db->users->insertOne($val);
                     if($result)
                     {
                         $new = $new+1;
