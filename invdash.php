@@ -43,6 +43,9 @@ if(isset($_COOKIE['sid']))
     </head>
 
     <style>
+    .datepicker-controls .select-month input {
+    width: 100px;
+}
     .button {
   background-color: #4CAF50; /* Green */
   border: none;
