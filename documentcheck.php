@@ -229,6 +229,59 @@ if(isset($_COOKIE['sid']))
 
   </div>
 
+<?php
+          }
+          ?>
+<div class="row">
+                    <div class="input-field col s12">
+                        <input id="remark" type="text" value="<?php echo $doc['remark'];?>">
+                        <label for="remark">Remark if any</label>
+                    </div>
+                    <b><center style="color: green;font-size: 30px">Interviewer Details</center> </b><br><br>
+                    <table class="responsive-table">
+                    <tr>
+                    <td><b style="color: green;font-size: 20px">Name :</b> <b style="color:blue darken-1;font-size: 20px"><?php echo $doc['inv_name']; ?></b></td>
+                    <td><b style="color: green;font-size: 20px">Email ID :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['interviewer']; ?></b></td>
+                    </tr>
+                    <tr>
+                    <td><b style="color: green;font-size: 20px">Department :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_dept']; ?></b></td>
+                    <td><b style="color: green;font-size: 20px">Designation :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_dsg']; ?></b></td>
+                    </tr>
+                    <tr>
+                    <td><b style="color: green;font-size: 20px">Date :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_date']; ?></b></td>
+                    <td><b style="color: green;font-size: 20px">Time :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_time']; ?></b></td>
+                    </tr>
+                    <tr>
+                    <td><b style="color: green;font-size: 20px">Place :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_place']; ?></b></td>
+                    <td><b style="color: green;font-size: 20px">Contact Person :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_cperson']; ?></b></td>
+                    </tr>
+                    </table>
+                </div>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+          <?php
+          
+            }
+            else
+            {
+                header("refresh:0;url=notfound.php");
+            }
+        }
+        else
+        {
+            header("refresh:0;url=notfound.php");
+        }
+    }
+    else
+    {
+        header("refresh:0;url=notfound.php");
+    }  
+?>
+
 
 <!-- Script Starts Here -->
 <script>
@@ -283,6 +336,7 @@ type:"POST",
 data : { "email":cemail },
 success:function(para)
 {
+
     if(para != "error")
     {
         if(round > 01)
@@ -297,11 +351,16 @@ success:function(para)
         }
         else
         {
+
             var str = "<b>Previous Evaluation Sheets : </b> This is the First Round for this Candidate";
             $("#previousrounds").append(str)
         }
         var str = "<b>Candidate  Name: "+para+"<br>This is Round: "+round+" Evaluation Sheet</b>";
         $("#candidatename").append(str)
+    }
+    else
+    {
+        alert("no")
     }
 }
 })
@@ -349,55 +408,3 @@ $("#submit").click(function(){
 <!-- Script Ends -->
 </body>
 </html>
-<?php
-          }
-          ?>
-<div class="row">
-                    <div class="input-field col s12">
-                        <input id="remark" type="text" value="<?php echo $doc['remark'];?>">
-                        <label for="remark">Remark if any</label>
-                    </div>
-                    <b><center style="color: green;font-size: 30px">Interviewer Details</center> </b><br><br>
-                    <table class="responsive-table">
-                    <tr>
-                    <td><b style="color: green;font-size: 20px">Name :</b> <b style="color:blue darken-1;font-size: 20px"><?php echo $doc['inv_name']; ?></b></td>
-                    <td><b style="color: green;font-size: 20px">Email ID :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['interviewer']; ?></b></td>
-                    </tr>
-                    <tr>
-                    <td><b style="color: green;font-size: 20px">Department :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_dept']; ?></b></td>
-                    <td><b style="color: green;font-size: 20px">Designation :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_dsg']; ?></b></td>
-                    </tr>
-                    <tr>
-                    <td><b style="color: green;font-size: 20px">Date :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_date']; ?></b></td>
-                    <td><b style="color: green;font-size: 20px">Time :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_time']; ?></b></td>
-                    </tr>
-                    <tr>
-                    <td><b style="color: green;font-size: 20px">Place :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_place']; ?></b></td>
-                    <td><b style="color: green;font-size: 20px">Contact Person :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_cperson']; ?></b></td>
-                    </tr>
-                    </table>
-                </div>
-                </div>
-                
-                </div>
-            </div>
-        </div>
-    </div>
-          <?php
-          
-            }
-            else
-            {
-                header("refresh:0;url=notfound.php");
-            }
-        }
-        else
-        {
-            header("refresh:0;url=notfound.php");
-        }
-    }
-    else
-    {
-        header("refresh:0;url=notfound.php");
-    }  
-?>
