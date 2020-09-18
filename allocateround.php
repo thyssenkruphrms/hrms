@@ -1121,7 +1121,7 @@ function createnextround(id)
           var s10='<td><p style="color:black">'+arr[i][3]+'</p></td>'
           
           var s4='<td><p >'+arr[i][2]+'</p></td>'
-          if(arr[i][2] == "Selected")
+          if(arr[i][2] == "Selected" || arr[i][2]=="On Hold")
           {
             var s5='<td><input id="check'+i+'date" class="timepicker" ></td>'
             var s6 ='<td><input id="check'+i+'date2" class="datepicker" ></td>'

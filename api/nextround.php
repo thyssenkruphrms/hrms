@@ -27,7 +27,7 @@ if($cursor)
             else
             {
                 //get candidate of that particular prf initiated
-                $selectednames=$cursor['selectedremove'];
+                $selectednames=$cursor['selected'];
                 $i=0;
                 foreach($selectednames as $d)
                 {
