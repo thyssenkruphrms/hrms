@@ -20,6 +20,9 @@ $_SESSION['mailid'] = $_GET['token'];
     
 </head>
 <style>
+.datepicker-controls .select-month input {
+    width: 100px;
+}
 #loader {
   position: fixed;
   top: 0;
@@ -146,21 +149,37 @@ input::-webkit-inner-spin-button {
                                     <input id="nom1" name="nom1" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
                                     <label for="nom1">Nominnee 1</label>
                             </div>
+                            <div class="input-field col s6">
+                                <input id="n1dob dates" name="n1dob" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
+                                <label for="n1dob">Date Of Birth</label>
+                            </div>
 
                             <div class="input-field col s6">
                                     <input id="nom2" name="nom2" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
                                     <label for="nom2">Nominnee 2</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="n2dob dates" name="n2dob" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
+                                <label for="n2dob">Date Of Birth</label>
                             </div>
 
                             <div class="input-field col s6">
                                     <input id="nom3" name="nom3" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
                                     <label for="nom3">Nominnee 3</label>
                             </div>  
+                            <div class="input-field col s6">
+                                <input id="n3dob dates" name="n3dob" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
+                                <label for="n3dob">Date Of Birth</label>
+                            </div>
 
                             <div class="input-field col s6">
                                     <input id="nom4" name="nom4" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
                                     <label for="nom4">Nominnee 4</label>
-                            </div>                      
+                            </div> 
+                            <div class="input-field col s6">
+                                <input id="n4dob dates" name="n4dob" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
+                                <label for="n4dob">Date Of Birth</label>
+                            </div>                     
                     </div>
 
         
@@ -306,6 +325,16 @@ function mytextvalid(e)
 }
 
 $(document).ready(function(){
+var cdate=new Date();
+var cyear=cdate.getFullYear();
+        $('.datepicker').datepicker({
+                        //dateFormat:"dd/mm/yy",
+                        yearRange:[1900,cyear],
+                        changeMonth:true,
+                        
+                        //changeYear:true
+               
+        });
         $("#details").hide();
         $("#loader").hide()
         function getUrlVars() {
