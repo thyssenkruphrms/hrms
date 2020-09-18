@@ -5,11 +5,12 @@ header('Content-Type: application/json');
 
 if(isset($_COOKIE['sid']))
 {
-  
+    
   $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
   
   if($cursor)
   {
+    
     $cursor = $db->users->findOne(array("uid" => $cursor['uid']));
     $designation = $cursor['dsg'];
     
@@ -21,6 +22,8 @@ if(isset($_COOKIE['sid']))
         $userstoshow=array();
 
         foreach($users as $user=>$val){
+
+            
             $newuser=[];
 
             $newuser["uid"]=$val->uid;
@@ -35,6 +38,7 @@ if(isset($_COOKIE['sid']))
             //}
             
         }
+        echo "hi";
 
         echo json_encode(["status"=>"true","users"=>$userstoshow,"message"=>"Users Founds"]);
     }

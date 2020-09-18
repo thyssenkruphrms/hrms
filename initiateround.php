@@ -234,36 +234,92 @@ if(isset($_COOKIE['sid']))
                     <div class="col s12 m12">
                       <div class="card  white">
                         <div class="card-content blue-text">
-                          <p id='rid'><b></b></p>
+                          <p id='rid' style="display:inline;"><b></b></p>
+                         
                           <div class="row" id="allocation" >
                             <div class="col s12 m12" style="border: solid 5p">
                               <div class="card white">
                               <div class="row">
                               <div class="input-field col s3 m3 " >
                               <select id='intchoice' class="dropdown-trigger btn blue darken-1 " onchange="feedvalue(this)">
-                              <option value=""  style="color: white">Select Interviewer</option> </select></div></div>
+                              <option id="NO" value=""  style="color: white">Location</option>
+                              <option id="01-Head Quarter-Pune" value="Plot No. A-23, MIDC Chakan , Phase II Village Khalunmbre, Tal. Khed District Pune Maharashtra-410501"  style="color: white">01-Head Quarter-Pune</option>
+                              
+                              <option id="01-Head Quarter-Mumbai" value="A-24, Vardhan House, Street No. 3 M.I.D.C. Andheri(E) Mumbai Maharashtra-400093" style="color: white">01-Head Quarter-Mumbai</option>
+                              <option id="07-Delhi Branch"  value="429, Functional Industrial Estate Patparganj New Delhi Delhi-110092" style="color: white">07-Delhi Branch</option>
+                              <option id="08-Lucknow Branch"  value="415 A/B/C, Cyber Heights Vibhuti Khand, Gomti Nagar Lucknow Uttar Pradesh-226010" style="color: white">08-Lucknow Branch</option>
+                              <option id="09-Jaipur Branch"  value="Rajwada Palace, Barwada House Colony Ajmer Road, Civil Line Jaipur Rajasthan-302006" style="color: white">09-Jaipur Branch</option>
+                              <option id="10-Chandigarh Branch"  value="Plot No.422, Sector-82 JLPL Industrial Area, Airport Road Mohali (SAS Nagar) Punjab-160065" style="color: white">10-Chandigarh Branch</option>
+                              <option id="11-Gurugram Branch" value="Unit No. 808, 809, 810, 8th Floor Paras Trinity, Sector-63, Golf Course Road Extension Gurugram Haryana-122018"  style="color: white">11-Gurugram Branch</option>
+                              <option id="13-Noida Branch"  value="D-23, Ground Floor Sector-63 Noida Uttar Pradesh-201307"  style="color: white">13-Noida Branch</option>
+                              <option id="26-Kolkata Regional HQ"  value="Malik Court, 3rd Floor 39A, Harish Mukherjee Road Kolkata West Bengal-700025"  style="color: white">26-Kolkata Regional HQ</option>
+                              <option id="27-Kolkata Branch"  value="M-3/20, Shree Krishna Puri Basawan Park Patna Bihar-800001"  style="color: white">27-Kolkata Branch</option>
+                              <option id="28-Bhubaneswar Branch"  value="Plot No: 1A, Udyan Marg Forest Park Bhubaneswar Orissa-751009"  style="color: white">28-Bhubaneswar Branch</option>
+                              <option id="29-Guwahati Branch"  value="House No. 23, Ganapati Bhawan, S. K. Baruah Road Distt. Kamrup, Rukminigaon Guwahati Assam-781022"  style="color: white">29-Guwahati Branch</option>
+                              <option id="31-Jamshedpur Branch"  value="72 New Barduari, Sakchi Jamshedpur Jharkhand-831001"  style="color: white">31-Jamshedpur Branch</option>
+                              <option id="37-Bengaluru Branch"  value="No.18 (CITB 127), 11th  Main, 33rd Cross 4th  Block,  East  Jayanagar Bengaluru Karnataka-560011"  style="color: white">37-Bengaluru Branch</option>
+                              <option id="38-Hydrabad Branch"  value="S.C.B. D.No : 6-03-063, Phase -1, Plot No.25Ground Floor, Bandan Arcade Chandragiri Colony, Trimulgherry Secunderabad Telangana-500015"style="color: white">38-Hydrabad Branch</option>
+                              <option id="39-Mangalore Branch"  value="2-1-1(2), Kulur Ferry Road Commercial Complex, 2nd Floor, Opp. More Super Market, Chilimbi Mangalore Karnataka-575006"  style="color: white">39-Mangalore Branch</option>
+                              <option id="40-Goa Branch"  value="Shree Plaza, Shop No.308, 309, 310, Third Floor Near Damodar High School, Comba Margao  Goa-403601"  style="color: white">40-Goa Branch</option>
+                              <option id="42-Chennai Branch"  value="No.5/84-1, (Butt Road) Mount Poonamalle Road, St. Thomas Mount Chennai Tamilnadu-600016"  style="color: white">42-Chennai Branch</option>
+                              <option id="44-Coimbatore Branch"  value="No.G-S-370 Lalbagadhur Colony, Peelamedu Coimbatore Tamilnadu-641004"  style="color: white">44-Coimbatore Branch</option>
+                              <option id="46-Cochin Branch"  value="TC-4/477, ATRRA-118, Kousthubham Rangoon Line, Toll Junction, Kawdiar Thiruvananthapuram Kerala-695003"  style="color: white">46-Cochin Branch</option>
+                              <option id="47-Calicut Branch"  value="No. 53/2088, Ground Floor, 'Sree Parvathy' Near Kanakalaya Bank, Kannur Riad, West Hill Post Calicut Kerala-673005"  style="color: white">47-Calicut Branch</option>
+                              <option id="82-Pune Branch"  value="703, 7th floor, Building-A, East Court Next to Phoenix Mall, Viman Nagar Pune Maharashtra-411041"  style="color: white">82-Pune Branch</option>
+                              <option id="85-Indore Branch"  value="Plot No 582, Near 56 Shops M.G. Road Indore Madhya Pradesh-452001"  style="color: white">85-Indore Branch</option>
+                              <option id="87-Gujarat Branch"  value="Office No.204, Suyojan Building Near President Hotel, C.G. Road Ahmedabad Gujarat-380006"  style="color: white">87-Gujarat Branch</option>
+                              <option id="90-Chattishgarh Branch"  value="Plot No. 44 Navjeevan Colony, Wardha Road Nagpur Maharashtra-440015"  style="color: white">90-Chattishgarh Branch</option>
+                              <option id="94-Navi Mumbai Branch"  value="Unit No.302, 3rd Floor, Ellora Fiesta Plot No.8, Sector 11, Juinagar-West, Opposite Juinagar Station Navi Mumbai Maharashtra-400705"style="color: white">94-Navi Mumbai Branch</option>
+                             
+                                
+                               </select>
+                               
+
+                               
+                               </div></div>
                                 <div class="card-content blue-text">
                                   <div class="row">
-                                    <div class="input-field col s3 m3 " >
+                                    <div class="input-field col s4 m4 " >
                                       Interviewer Name: <input id="iname" type="text" class="text">
                                      </div>           
-                                    <div class="input-field col s3 m3" >
+                                    <div class="input-field col s4 m4" >
                                       Interviewer Mail Id: <input id="imail" type="text" required>
                                       </div> 
-                                    <div class="input-field col s3 m3 " >
-                                          Interview Location: <input id="location" type="text" class="text" required>
-                                         </div>
-                                        <div class="input-field col s3 m3 " >
-                                        Contact Person Name:  <input id="contactperson" type="text" class="text" required>
-                                          </div>
-                                  </div>       
-                                    <div class="row">
-                                        <div class="input-field col s3 m3 " >
-                                        Interviewer Department:  <input id="idept" type="text" class="text" required>
-                                        </div>                                    
-                                        <div class="input-field col s3 m3 " >
+
+                                      <div class="input-field col s4 m4 " >
                                         Interviewer Designation:  <input id="idesg" type="text" class="text" required>
                                         </div>
+                                      </div>
+                                      <div class="row">
+                                      
+                                    
+                                      
+                                      <div class="input-field col s4 m4 " >
+                                        Contact Person Name:  <input id="contactperson" type="text" class="text" required>
+                                          </div> 
+
+                                          <div class="input-field col s4 m4 " >
+                                        Interviewer Department:  <input id="idept" type="text" class="text" required>
+                                        </div>   
+
+                                                                    
+                                       
+                                    
+                                        
+                                  </div>       
+                                    <div class="row">
+                                            
+                                    <div class="input-field col s3 m3 " >
+                                        Interviewer Location:  <input id="iloc" type="text" class="text" required>
+                                        </div>                                    
+                                       
+                                       
+
+                                         <div class="input-field col s9 m9" >
+                                      Interview Address: <input id="iadd" type="text" required>
+                                      </div>
+                                    
+                                     
                                        
                                         
                                     </div>          
@@ -485,28 +541,33 @@ function feedvalue(select){
 
  // console.log("selected "+id)
   var interviewer=select.options[select.selectedIndex].getAttribute("id");
-  console.log(interviewer)
-  if(interviewer!=" "){
+  console.log("Location"+interviewer)
+  document.getElementById("iloc").value=interviewer
+  var sel = document.getElementById(interviewer);
+  console.log("adress",sel.value)
+  document.getElementById("iadd").value=sel.value
 
-    $.ajax({
-    url:'http://localhost/hrms/api/getinterviewerDetails.php',
-    type:'POST',
-    data:{
-      "interviewer":interviewer
-    },
-    success:function(para)
-    { 
-      para = JSON.parse(para)
-      console.log("this is para :",para)
-      para=para.interviewer
-      document.getElementById("imail").value=interviewer
-      document.getElementById("iname").value=para.name
-      document.getElementById("idept").value=para.dept
-      document.getElementById("idesg").value=para.dsg 
+  // if(interviewer!=" "){
+
+  //   $.ajax({
+  //   url:'http://localhost/hrms/api/getinterviewerDetails.php',
+  //   type:'POST',
+  //   data:{
+  //     "interviewer":interviewer
+  //   },
+  //   success:function(para)
+  //   { 
+  //     para = JSON.parse(para)
+  //     console.log("this is para :",para)
+  //     para=para.interviewer
+  //     document.getElementById("imail").value=interviewer
+  //     document.getElementById("iname").value=para.name
+  //     document.getElementById("idept").value=para.dept
+  //     document.getElementById("idesg").value=para.dsg 
       
 
-    }
-  })
+  //   }
+  // })
 
 
 
@@ -521,7 +582,7 @@ function feedvalue(select){
 
 
 
-  }
+  //}
 
   
 
@@ -537,6 +598,7 @@ function allocateSubmit(cnfrm)
       var idesg = $('#idesg').val();
       var iloc = $('#location').val();
       var iperson = $('#contactperson').val();
+      var address=$('#iadd').val()
       var posdept = window.dept
       var poszone = window.zone
       var candidatetime
@@ -575,8 +637,8 @@ function allocateSubmit(cnfrm)
           "iloc":iloc,
           "iperson":iperson,
           "dept":posdept,
-          "poszone":poszone
-          //"dept":"sales"
+          "poszone":poszone,
+          "address":address
 
         },
         success:function(para){

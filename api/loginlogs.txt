@@ -725,3 +725,5 @@ Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		17/09/2020	09:45:35 AM	Logout
 Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		17/09/2020	09:45:38 AM	Login
 Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		17/09/2020	09:47:59 AM	Logout
 Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		17/09/2020	09:48:06 AM	Login
+Pragati Gaikwad	psgaikwad@mitaoe.ac.in	sales		18/09/2020	08:55:58 PM	Login
+Dhanesh Pawar	dbpawar@mitaoe.ac.in	sales		18/09/2020	09:00:13 PM	Logout

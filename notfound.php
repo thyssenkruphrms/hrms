@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 if($_COOKIE)
 {
   setcookie("sid",$_COOKIE['sid'] , time()-3600 , '/');

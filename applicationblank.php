@@ -323,14 +323,13 @@ $_SESSION['positionapplied'] = $position;
                                                 <b style="font-size:15px;color:red">Select Specialization for UG</b>
                                                 <select class="dropdown-trigger btn blue darken-1" id="specialug" onchange="checkSpecialUG()">
                                                 <option value="" disabled selected>Choose your option</option>
-                                                <option value="MBA">MBA</option>
-                                                <option value="ICWA">ICWA</option>
-                                                <option value="CA">CA</option>
-                                                <option value="CS">CS</option>
-                                                <option value="LLM">LLM</option>
-                                                <option value="M.TECH/M.E">M.TECH/M.E</option>
-                                                <option value="PG DIPLOMA">PG DIPLOMA</option>
+                                                <option value="Mechanical">Mechanical</option>
+                                                <option value="Civil">Civil</option>
+                                                <option value="Computer/IT">Computer/IT</option>
+                                                <option value="Electronics">Electronics</option>
+                                                <option value="Electrical">Electrical</option>
                                                 <option value="Others">Others</option>
+
                                                 </select> 
                                               </div>
                                               
@@ -352,19 +351,14 @@ $_SESSION['positionapplied'] = $position;
                                                 <b style="font-size:15px;color:red">Select for Post Graduate</b>
                                                 <select class="dropdown-trigger btn blue darken-1" id="selectpg" onchange="checkPG()">
                                                 <option value="" disabled selected>Choose your option</option>
-                                                <option value="Mechanical">Mechanical</option>
-                                                <option value="Civil">Civil</option>
-                                                <option value="Computer/IT">Computer/IT</option>
-                                                <option value="Electronics">Electronics</option>
-                                                <option value="Electrical">Electrical</option>
-                                                <option value="Sales/Marketing">Sales/Marketing</option>
-                                                <option value="HR">HR</option>
-                                                <option value="Finance">Finance</option>
-                                                <option value="Systems">Systems</option>
-                                                <option value="Operations">Operations</option>
-                                                <option value="Systems">Systems</option>
+                                                <option value="MBA">MBA</option>
+                                                <option value="ICWA">ICWA</option>
+                                                <option value="CA">CA</option>
+                                                <option value="CS">CS</option>
+                                                <option value="LLM">LLM</option>
+                                                <option value="M.TECH/M.E">M.TECH/M.E</option>
+                                                <option value="PG DIPLOMA">PG DIPLOMA</option>
                                                 <option value="Others">Others</option>
-
 
                                                 </select> 
                                               </div> 
@@ -378,7 +372,14 @@ $_SESSION['positionapplied'] = $position;
                                                 <option value="Computer/IT">Computer/IT</option>
                                                 <option value="Electronics">Electronics</option>
                                                 <option value="Electrical">Electrical</option>
+                                                <option value="Sales/Marketing">Sales/Marketing</option>
+                                                <option value="HR">HR</option>
+                                                <option value="Finance">Finance</option>
+                                                <option value="Systems">Systems</option>
+                                                <option value="Operations">Operations</option>
+                                                <option value="Systems">Systems</option>
                                                 <option value="Others">Others</option>
+
                                                 </select> 
                                               </div> 
                                         </div>
@@ -881,14 +882,14 @@ function ValidateEmail(inputText,part)
                 if(inputText.value.match(mailformat))
                 {
                 //The pop up alert for a valid email address
-                document.applicationblank.uemail.focus();
+               // document.applicationblank.uemail.focus();
                 return true;
                 }
                 else
                 {
                 // alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
                 $('#error-mail').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter valid email address*</p>")
-                document.applicationblank.uemail.focus();
+               // document.applicationblank.uemail.focus();
                 return false;
                 }
         }
@@ -898,14 +899,14 @@ function ValidateEmail(inputText,part)
                 if(inputText.value.match(mailformat))
                 {
                 //The pop up alert for a valid email address
-                document.applicationblank.mailref0.focus();
+               // document.applicationblank.mailref0.focus();
                 return true;
                 }
                 else
                 {
                 // alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
                 $('#error-mail-ref').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter valid email address*</p>")
-                document.applicationblank.mailref0.focus();
+               // document.applicationblank.mailref0.focus();
                 return false;
                 }
         }

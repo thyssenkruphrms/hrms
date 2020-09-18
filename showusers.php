@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 
 if(isset($_COOKIE['sid']))
 {
@@ -438,11 +438,15 @@ $(document).ready(function(){
 
  
  $.ajax({
+
+
     url:'http://localhost/hrms/api/getallusers.php',
     type:'POST',
     // data:{'arr1':arr1},
     success : function(para)
     {
+
+      console.log("s")
       if(para == "No Data")
       {
         $("#nodatamodal").modal("open");
