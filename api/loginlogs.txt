@@ -1,0 +1,17 @@
+
+Atharva	asdeshpande@mitaoe.ac.in	sales		18/09/2020	12:11:04 PM	Login
+Atharva	asdeshpande@mitaoe.ac.in	sales		18/09/2020	03:45:45 PM	Login
+Atharva	asdeshpande@mitaoe.ac.in	sales		18/09/2020	03:45:57 PM	Logout
+Atharva	asdeshpande@mitaoe.ac.in	sales		18/09/2020	03:46:04 PM	Login
+Atharva	asdeshpande@mitaoe.ac.in	sales		18/09/2020	06:40:23 PM	Logout
+rabhosale@mitaoe.ac.in		aws		18/09/2020	06:42:04 PM	Login
+rabhosale@mitaoe.ac.in		aws		18/09/2020	06:42:07 PM	Login
+rabhosale@mitaoe.ac.in		aws		18/09/2020	06:42:08 PM	Login
+rabhosale@mitaoe.ac.in		aws		18/09/2020	06:42:10 PM	Login
+rabhosale@mitaoe.ac.in		aws		18/09/2020	06:42:10 PM	Login
+rabhosale@mitaoe.ac.in		aws		18/09/2020	06:42:10 PM	Login
+rabhosale@mitaoe.ac.in		aws		18/09/2020	06:42:10 PM	Login
+rabhosale@mitaoe.ac.in		aws		18/09/2020	06:42:11 PM	Login
+rabhosale@mitaoe.ac.in		aws		18/09/2020	06:42:12 PM	Login
+rabhosale@mitaoe.ac.in		aws		18/09/2020	06:42:22 PM	Logout
+rabhosale@mitaoe.ac.in		aws		18/09/2020	06:42:39 PM	Login

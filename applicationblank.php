@@ -970,14 +970,14 @@ function ValidateEmail(inputText,part)
                 if(inputText.value.match(mailformat))
                 {
                 //The pop up alert for a valid email address
-                document.applicationblank.uemail.focus();
+               // document.applicationblank.uemail.focus();
                 return true;
                 }
                 else
                 {
                 // alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
                 $('#error-mail').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter valid email address*</p>")
-                document.applicationblank.uemail.focus();
+               // document.applicationblank.uemail.focus();
                 return false;
                 }
         }
@@ -987,14 +987,14 @@ function ValidateEmail(inputText,part)
                 if(inputText.value.match(mailformat))
                 {
                 //The pop up alert for a valid email address
-                document.applicationblank.mailref0.focus();
+               // document.applicationblank.mailref0.focus();
                 return true;
                 }
                 else
                 {
                 // alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
                 $('#error-mail-ref').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter valid email address*</p>")
-                document.applicationblank.mailref0.focus();
+               // document.applicationblank.mailref0.focus();
                 return false;
                 }
         }
