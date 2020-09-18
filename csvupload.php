@@ -1,3 +1,21 @@
+<?php
+error_reporting(0);
+
+if(isset($_COOKIE['sid']))
+{
+  include 'api/db.php';
+  
+  $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
+  
+  if($cursor)
+  {
+    $cursor = $db->users->findOne(array("uid" => $cursor['uid']));
+    $designation = $cursor['dsg'];
+    $name = $cursor['name'];
+    
+    if($designation == "hr" || $designation == "ceo" || $designation == "hod" || $designation == "rghead" )
+    {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +32,9 @@
   
   <script src="./public/js/materialize.js"></script>
   <script src="./public/js/materialize.min.js"></script>
-            
+  <script src="./public/js/logout.js"></script>
+
+           
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -63,6 +83,15 @@
       <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
     </a>
     <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+    <ul style="float:right;">
+          <li>
+            <select id="logout"class="dropdown-trigger btn blue darken-1">
+              <option value=""><?php echo($name) ?></option>
+              <option value="profile">Profile</option>
+              <option value="logout">Logout</option>
+            </select>
+          </li>
+        </ul> 
     </div>
   </nav>
 <br><br>
@@ -335,3 +364,22 @@ document.location.replace("http://localhost/hrms/")
     
 </body>
 </html>
+ 
+<?php
+            }
+            else
+            {
+                header("refresh:0;url=notfound.php");
+            }
+        }
+        else
+        {
+            header("refresh:0;url=notfound.php");
+        }
+    }
+    else
+    {
+        header("refresh:0;url=notfound.php");
+    }  
+?>
+       

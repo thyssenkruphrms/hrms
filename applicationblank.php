@@ -25,6 +25,9 @@ session_start();
 </head>
 
 <style>
+.datepicker-controls .select-month input {
+    width: 100px;
+}
 #loader {
   position: fixed;
   top: 0;
@@ -180,60 +183,66 @@ $_SESSION['positionapplied'] = $position;
                                         <b style="font-size:20px;margin-left:2%;">Aadhaar Card Number</b><br>
 
                                                 <div class="input-field col s6">
-                                                        <input id="aadharno" name="aadharno" type="number" class="validate" required aria-required="true" >
+                                                        <input id="aadharno" name="aadharno" type="number" class="validate" required aria-required="true" onkeypress="return mynumbervalid(event)" required >
                                                         <label for="aadharno">Aadhaar Card Number</label>
+                                                        <span id="error-adhar"></span>
                                                 </div> 
                                           </div>                                           
                                         <b class="blue-text" style="font-size:20px;">Candidate Name</b>
                                         <div class="row">
 
                                             <div class="input-field col s4">
-                                              <input id="last_name" name="last_name" type="text" class="validate"  onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)">
+                                              <input id="last_name" name="last_name" type="text" class="validate"  onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)" required>
                                               <label for="last_name">Last Name</label>
+                                              <span id="error-lname"></span>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="first_name" name="first_name" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true"  onkeypress="return mytextvalid(event)">
+                                              <input id="first_name" name="first_name" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true"  onkeypress="return mytextvalid(event)" required>
                                               <label for="first_name">First Name</label>
+                                              <span id="error-fname"></span>
                                             </div>
                                             <div class="input-field col s4">
-                                              <input id="mid_name" name="mid_name" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
+                                              <input id="mid_name" name="mid_name" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)" required>
                                               <label for="mid_name">Middle Name</label>
+                                              <span id="error-mname"></span>
                                             </div>
                                         </div>
                                           <b class="blue-text" style="font-size:20px;">Present Address</b>
                                           <div class="row">
                                                 
                                             <div class="input-field col s4">
-                                              <input   id="street" name="street" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onchange="return mytextvalid(event)" >
-                                              <label for="street">Street</label>
+                                              <input   id="street" name="street" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onchange="return mytextvalid(event)" required>
+                                              <label for="street"> House Number</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="Locality" name="Locality" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)">
-                                              <label for="Locality">Locality</label>
+                                              <input   id="Locality" name="Locality" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true"required >
+                                              <label for="Locality">Locality/society</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="City" name="City" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)">
+                                              <input   id="City" name="City" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)" required>
                                               <label for="City">City</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="State" name="State" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)">
+                                              <input   id="State" name="State" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)" required>
                                               <label for="State">State</label>
                                             </div>
 
                                             <div class="input-field col s4">
-                                              <input   id="Pincode" name="Pincode" type="number" class="validate"  onchange="checkpincode(this.id)" required aria-required="true">
+                                              <input   id="Pincode" name="Pincode" type="number" class="validate"  onblur="checkpincode(this.id)" required aria-required="true" required>
                                               <label for="Pincode">Pincode</label>
+                                              <span id="error-pincode"></span>
                                             </div>
                                           </div>
 
                                           <b class="blue-text" style="font-size:20px">Contact Details</b>
                                           <div class="row">
                                             <div class="input-field col s4">
-                                              <input id="unumber" maxlength="10" onchange="checkcont(this.id)" name="unumber" type="number" class="validate" required aria-required="true">
+                                              <input id="unumber" maxlength="10" onchange="checkcont(this.id)" name="unumber" type="number" class="validate" required aria-required="true" required>
                                               <label for="unumber">Contact number</label>
+                                              <span id="error-cont"></span>
                                             </div>
 
                                             <div class="input-field col s4">
@@ -248,13 +257,13 @@ $_SESSION['positionapplied'] = $position;
                                           </div>
                                           <div class="row">
                                             <div class="input-field col s6">
-                                              <input id="uemail" name="uemail" type="email" class="validate" onchange="ValidateEmail(document.applicationblank.uemail)" required aria-required="true">
+                                              <input id="uemail" name="uemail" type="email" class="validate" onblur="ValidateEmail(document.applicationblank.uemail,'uemail')" required aria-required="true" required>
                                               <label for="uemail">Email</label>
+                                              <span id="error-mail"></span>
                                             </div>
-
-                                            
+                                           
                                             <div class="input-field col s6">
-                                                <input id="udob" name="udob" type="text" class="datepicker" required aria-required="true">
+                                                <input id="udob dates" name="udob" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
                                                 <label for="udob">Date Of Birth</label>
                                             </div>
                                                  
@@ -269,7 +278,7 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                    <input id="location" name="location" type="text" class="validate" required aria-required="true" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
+                                                    <input id="location" name="location" type="text" class="validate" required aria-required="true" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)" required>
                                                     <label for="location">Location</label>
                                                 </div>
                            
@@ -279,7 +288,7 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
                                             
                                                 <div class="input-field col s12">
-                                                  <input id="passport" name="passport" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)">
+                                                  <input id="passport" name="passport" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" required aria-required="true" onkeypress="return mytextvalid(event)" required>
                                                   <label for="passport">Passport Availability/Validity</label>
                                                 </div>
                                           </div>
@@ -290,7 +299,7 @@ $_SESSION['positionapplied'] = $position;
                                           
                                              <div class="col s6">
                                                 <b style="font-size:15px;color:red">Select for Under Graduate</b>
-                                                <select class="dropdown-trigger btn blue darken-1" id="selectug">
+                                                <select class="dropdown-trigger btn blue darken-1" id="selectug" onchange="checkUG()">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <option value="ITI">ITI</option>
                                                 <option value="Diploma">Diploma</option>
@@ -308,7 +317,36 @@ $_SESSION['positionapplied'] = $position;
                                            
                                              <div class="col s6">
                                                 <b style="font-size:15px;color:red">Select Specialization for UG</b>
-                                                <select class="dropdown-trigger btn blue darken-1" id="specialug">
+                                                <select class="dropdown-trigger btn blue darken-1" id="specialug" onchange="checkSpecialUG()">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="MBA">MBA</option>
+                                                <option value="ICWA">ICWA</option>
+                                                <option value="CA">CA</option>
+                                                <option value="CS">CS</option>
+                                                <option value="LLM">LLM</option>
+                                                <option value="M.TECH/M.E">M.TECH/M.E</option>
+                                                <option value="PG DIPLOMA">PG DIPLOMA</option>
+                                                <option value="Others">Others</option>
+                                                </select> 
+                                              </div>
+                                              
+                                              <br>
+                                              </div>
+                                              <div class="row" >
+                                                <div class="input-field col s12" id="otherUg">
+                                                <input id="otherUgtxt" name="otherUgtxt" type="text" class="validate" required aria-required="true" >
+                                                <label for="otherUgtxt">Specify Other Under Graduate</label>
+                                                </div>
+
+                                                <div class="input-field col s12 " id="otherspecialUg">
+                                                <input id="otherspecialUgtxt" name="otherspecialUgtxt" type="text" class="validate" required aria-required="true" >
+                                                <label for="otherspecialUgtxt">Specify Other  Under Graduate Specialization</label>
+                                                </div>
+                                                </div>                                    
+                                        <div class="row">
+                                             <div class="col s6" style="margin-top:20px">
+                                                <b style="font-size:15px;color:red">Select for Post Graduate</b>
+                                                <select class="dropdown-trigger btn blue darken-1" id="selectpg" onchange="checkPG()">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <option value="Mechanical">Mechanical</option>
                                                 <option value="Civil">Civil</option>
@@ -322,29 +360,14 @@ $_SESSION['positionapplied'] = $position;
                                                 <option value="Operations">Operations</option>
                                                 <option value="Systems">Systems</option>
                                                 <option value="Others">Others</option>
-                                                </select> 
-                                              </div>
 
-                                                                                             
-                                                
-                                             <div class="col s6" style="margin-top:20px">
-                                                <b style="font-size:15px;color:red">Select for Post Graduate</b>
-                                                <select class="dropdown-trigger btn blue darken-1" id="selectpg">
-                                                <option value="" disabled selected>Choose your option</option>
-                                                <option value="MBA">MBA</option>
-                                                <option value="ICWA">ICWA</option>
-                                                <option value="CA">CA</option>
-                                                <option value="CS">CS</option>
-                                                <option value="LLM">LLM</option>
-                                                <option value="M.TECH/M.E">M.TECH/M.E</option>
-                                                <option value="PG DIPLOMA">PG DIPLOMA</option>
-                                                <option value="Others">Others</option>
+
                                                 </select> 
                                               </div> 
 
                                               <div class="col s6" style="margin-top:20px">
                                                 <b style="font-size:15px;color:red">Select Specialization for PG</b>
-                                                <select class="dropdown-trigger btn blue darken-1" id="specialpg">
+                                                <select class="dropdown-trigger btn blue darken-1" id="specialpg" onchange="checkSpecialPG()">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <option value="Mechanical">Mechanical</option>
                                                 <option value="Civil">Civil</option>
@@ -354,27 +377,21 @@ $_SESSION['positionapplied'] = $position;
                                                 <option value="Others">Others</option>
                                                 </select> 
                                               </div> 
-                                        </div>   
-
-                                        <div class="file-field input-field">
-                                                <div class="btn blue darken-1">
-                                                        <span>Upload Under Graduate Certificate</span>
-                                                        <input id="ugcert" name="myug" required type="file" accept=".png, .jpg, .jpeg, .pdf">
-                                                </div>
-                                                <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text">
-                                                </div>
-                                        </div> 
-                                        
-                                        <div class="file-field input-field">
-                                                <div class="btn blue darken-1">
-                                                        <span>Upload Post Graduate Certificate</span>
-                                                        <input id="pgcert" name="mypg" required type="file" accept=".png, .jpg, .jpeg, .pdf">
-                                                </div>
-                                                <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text">
-                                                </div>
                                         </div>
+                                              <div class="row" >
+                                                <div class="input-field col s12" id="otherPg">
+                                                <input id="otherPgtxt" name="otherPgtxt" type="text" class="validate" required aria-required="true" required >
+                                                <label for="otherPgtxt">Specify Other Post Graduate</label>
+                                                </div>
+
+                                                <div class="input-field col s12 " id="otherspecialPg">
+                                                <input id="otherspecialPgtxt" name="otherspecialPgtxt" type="text" class="validate" required aria-required="true" required >
+                                                <label for="otherspecialPgtxt">Specify Other  Post Graduate Specialization</label>
+                                                </div>
+                                             </div>   
+                                           
+
+                                      
 
                                           
                                  
@@ -421,9 +438,14 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
                                                 <div class="col s12" id="mainexpdiv">
                                                   <div class="col s12" id="myexpdiv">
-                                                          
+                                                        <p>
+                                                        <label>
+                                                                <input type="checkbox" id="todate0,c" onchange="checkEmployer(this,this.id)" class="filled-in"/>
+                                                                <span>Is it current employer ?</span>
+                                                        </label>
+                                                        </p>
                                                         <div class="input-field col s6">
-                                                                <input id="orgname0" name="orgname0[]" type="text" class="validate"  onkeyup="this.value=this.value.toUpperCase();" aria-required="true">
+                                                                <input id="orgname0" name="orgname0[]" type="text" class="validate"  onkeyup="this.value=this.value.toUpperCase();" aria-required="true" >
                                                                 <label for="orgname0" style="font-size: 11px">Current Organization Name</label>
                                                         </div>
                                                                              
@@ -433,24 +455,16 @@ $_SESSION['positionapplied'] = $position;
                                                         </div>
                                                         
                                                         <div class="input-field col s6">
-                                                                <input id="fromdate0" name="fromdate0[]" type="text" class="datepicker">
+                                                                <input id="fromdate0" name="fromdate0[]" type="text" class="datepicker" onkeydown="return false">
                                                                 <label for="fromdate0" style="font-size: 11px">From</label>
                                                         </div>
 
                                                         <div class="input-field col s6">
-                                                                <input id="todate0" name="todate0[]" type="text" class="datepicker">
+                                                                <input id="todate0" name="todate0[]" type="text" class="datepicker" onkeydown="return false">
                                                                 <label for="todate0" style="font-size: 11px">To</label>
                                                         </div> 
 
-                                                        <div class="input-field col s6">
-                                                                <input id="managername0" name="managername0[]" type="text" class="validate" onkeyup="this.value=this.value.toUpperCase();" aria-required="true" onkeypress="return mytextvalid(event)">
-                                                                <label for="managername0" style="font-size: 11px">Reporting Manager Name</label>
-                                                        </div> 
-                                                              
-                                                        <div class="input-field col s6">
-                                                                <input id="managermail0" name="managermail0[]" type="email"  class="validate"  aria-required="true">
-                                                                <label for="managermail0" style="font-size: 11px">Enter Manager Email</label>
-                                                        </div> 
+                                                       
                                                         <div class="row" id="addnextexp">
                                                                 <a class="btn-floating btn" id="addbtn" onclick="addnewexp(this)"><i class="material-icons">add</i></a>                                                    
                                                                 <a class="btn-floating btn" onclick="$('#mainexpdiv').hide(300)" style="float:right;"><i class="material-icons">remove</i></a>                                                    
@@ -462,6 +476,40 @@ $_SESSION['positionapplied'] = $position;
                                                 </div>
           
                                                    
+                                          </div>
+
+                                          
+
+
+
+                                          <div class="row">
+                                                <div class="input-field col s6">
+                                                  <input id="jdate" name="jdate" type="text" class="datepicker" onkeydown="return false" required>
+                                                  <label for="jdate" style="font-size: 11px">If Selected, how soon you can join us?</label>
+                                                </div>
+                                                
+                                                
+                                                <div class="input-field col s6">
+                                                    <input id="notice" name="notice" type="number" required onblur="checknotice(this.id)" required>
+                                                    <label for="notice" style="font-size: 11px">Notice Period In Current Oraganization (IN DAYS)</label>
+                                                    <span id="error-notice"></span>
+                                                </div>
+
+                                                
+                                                <div class="input-field col s6" >
+                                                        <input id="manager" name="manager" type="text" onkeyup="this.value=this.value.toUpperCase();" required >
+                                                        <label for="manager" style="font-size: 11px">Reporting Manager's Designation</label>
+                                                </div>
+
+                                                <div class="input-field col s6" style="display:none;">
+                                                        <input id="ifselectposition" name="ifselectposition" type="text"   onkeypress="return mytextvalid(event)" required>
+                                                        <label for="ifselectposition" style="font-size: 11px">Current Position</label>
+                                                </div>
+
+                                                
+
+                                             
+                           
                                           </div>
 
                                           <b style="font-size:20px;">Referral Sources</b>
@@ -496,37 +544,6 @@ $_SESSION['positionapplied'] = $position;
                                                 
                                             
                                                    
-                                          </div>
-
-
-
-                                          <div class="row">
-                                                <div class="input-field col s6">
-                                                  <input id="jdate" name="jdate" type="text" class="datepicker" required>
-                                                  <label for="jdate" style="font-size: 11px">If Selected, how soon you can join us?</label>
-                                                </div>
-                                                
-                                                
-                                                <div class="input-field col s6">
-                                                    <input id="notice" name="notice" type="number" required onchange="checknotice(this.id)">
-                                                    <label for="notice" style="font-size: 11px">Notice Period In Current Oraganization (IN DAYS)</label>
-                                                </div>
-
-                                                
-                                                <div class="input-field col s6" >
-                                                        <input id="manager" name="manager" type="text" onkeyup="this.value=this.value.toUpperCase();" required onkeypress="return mytextvalid(event)">
-                                                        <label for="manager" style="font-size: 11px">Reporting Manager Name & Designation</label>
-                                                </div>
-
-                                                <div class="input-field col s6" >
-                                                        <input id="ifselectposition" name="ifselectposition" type="text"  required onkeypress="return mytextvalid(event)">
-                                                        <label for="ifselectposition" style="font-size: 11px">Current Position</label>
-                                                </div>
-
-                                                
-
-                                             
-                           
                                           </div>
 
 
@@ -580,39 +597,39 @@ $_SESSION['positionapplied'] = $position;
 
                                                 
                                             <div class="input-field col s6">
-                                                    <input id="father" name="father" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
+                                                    <input id="father" name="father" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)" required>
                                                     <label for="father">Father Name</label>
                                             </div>
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="fdob" name="fdob" type="text" class="datepicker">
+                                                    <input id="fdob" name="fdob" type="text" class="datepicker" onkeydown="return false" required>
                                                     <label for="fdob">DOB</label>
                                             </div>
 
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="mother" name="mother" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
+                                                    <input id="mother" name="mother" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)" required>
                                                     <label for="mother">Mother Name</label>
                                             </div>
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="mdob" name="mdob" type="text" class="datepicker">
+                                                    <input id="mdob" name="mdob" type="text" class="datepicker" onkeydown="return false" required>
                                                     <label for="mdob">DOB</label>
                                             </div>
 
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="spouse" name="spouse" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
-                                                    <label for="spouse">Spouse Name</label>
+                                                    <input id="spouse" name="spouse" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)" required>
+                                                    <label for="spouse">Spouse Name (Enter NA if not married)</label>
                                             </div>
 
                                             
                                             <div class="input-field col s3">
-                                                    <input id="spdob" name="spdob" type="text" class="datepicker">
+                                                    <input id="spdob" name="spdob" type="text" class="datepicker" onkeydown="return false">
                                                     <label for="spdob">DOB</label>
                                             </div>
                                             
@@ -630,13 +647,13 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="child1" name="child1" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
-                                                    <label for="child1">Child1 Name</label>
+                                                    <input id="child1" name="child1" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)" required>
+                                                    <label for="child1">Child1 Name (Enter NA if not married)</label>
                                             </div>
 
                                             
                                             <div class="input-field col s3">
-                                                    <input id="c1dob" name="c1dob" type="text" class="datepicker">
+                                                    <input id="c1dob" name="c1dob" type="text" class="datepicker" onkeydown="return false" required>
                                                     <label for="c1dob">DOB</label>
                                             </div>
                                             <div class="col s3 ">
@@ -653,13 +670,13 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="child2" name="child2" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
-                                                    <label for="child2">Child2 Name</label>
+                                                    <input id="child2" name="child2" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)" required>
+                                                    <label for="child2">Child2 Name (Enter NA if not married)</label>
                                             </div>
 
                                             
                                             <div class="input-field col s3">
-                                                    <input id="c2dob" name="c2dob" type="text" class="datepicker">
+                                                    <input id="c2dob" name="c2dob" type="text" class="datepicker" onkeydown="return false">
                                                     <label for="c2dob">DOB</label>
                                             </div>
 
@@ -682,36 +699,38 @@ $_SESSION['positionapplied'] = $position;
                                           <div class="row">
 
                                                 <div class="input-field col s6">
-                                                        <input id="monthhome" name="monthhome" type="text" disabled value="Annual Gross(CTC)" style="color: black">
-                                                        
+                                                        <input id="monthhome" name="monthhome" type="text" disabled value="Annual Gross(CTC)" style="color: black" >
+                                                        <span id="error-monthhome"></span>
                                                 </div>
     
                                                 
                                                 <div class="input-field col s3">
-                                                        <input id="homepresent" name="homepresent" type="number" >
+                                                        <input id="homepresent" name="homepresent" type="number" onkeypress="return mynumbervalid(event)" >
                                                         <label for="homepresent">Present</label>
+                                                        <span id="error-homepresent"></span>
                                                 </div>
                                                 
                                                 <div class="input-field col s3">
-                                                        <input id="homeexp" name="homeexp" type="number">
+                                                        <input id="homeexp" name="homeexp" type="number" onkeypress="return mynumbervalid(event)">
                                                         <label for="homeexp">Expected</label>
+                                                        <span id="error-homeexp"></span>
                                                 </div>
                                                 
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="monthgross" type="text" disabled value="Monthly Gross(CTC)" style="color: black">
-                                                        
+                                                        <input id="monthgross" type="text" disabled value="Monthly Gross(CTC)" style="color: black" >
+                                                        <span id="error-monthgross"></span>
                                                 </div>
     
                                                 
                                                 <div class="input-field col s3">
-                                                        <input id="grosspresent" name="grosspresent" type="number">
+                                                        <input id="grosspresent" name="grosspresent" type="number" onkeypress="return mynumbervalid(event)">
                                                         <label for="grosspresent">Present</label>
                                                 </div>
                                                 
                                                 
                                                 <div class="input-field col s3">
-                                                        <input id="grossexp" name="grossexp" type="number">
+                                                        <input id="grossexp" name="grossexp" type="number" onkeypress="return mynumbervalid(event)">
                                                         <label for="grossexp">Expected</label>
                                                 </div>
                                                 
@@ -725,12 +744,12 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s3">
-                                                        <input id="yearpresent" name="yearpresent" type="number">
+                                                        <input id="yearpresent" name="yearpresent" type="number" onkeypress="return mynumbervalid(event)">
                                                         <label for="yearpresent">Present</label>
                                                 </div>
                                                 
                                                 <div class="input-field col s3">
-                                                        <input id="yearexp" name="yearexp" type="number">
+                                                        <input id="yearexp" name="yearexp" type="number" onkeypress="return mynumbervalid(event)">
                                                         <label for="yearexp">Expected</label>
                                                 </div>
     
@@ -813,16 +832,20 @@ $_SESSION['positionapplied'] = $position;
                                                 
 
                                                 <div class="input-field col s6">
-                                                         <input id="emailref" type="email" disabled value="Email" style="color: black">
+                                                         <input id="emailref" type="email" disabled value="Email" name="refmail" style="color: black" >
+                                                         
                                                 </div>
-
+                                                
+                                            
                                                 <div class="input-field col s6">
-                                                        <input id="mailref0" name="mailref0[]" type="email"  class="validate" required aria-required="true">
+                                                        <input id="mailref0" name="mailref0[]" type="email"  class="validate" required aria-required="true" onblur="ValidateEmail(document.applicationblank.mailref0,'ref')">
                                                         <label for="mailref0">Reference</label>
+                                                        <span id="error-mail-ref"></span>
                                                 </div>
 
                                                 <div class="col s6" id="addnextref">
                                                         <a class="btn-floating btn" onclick="addnewref(this)" id="refaddbtn"><i class="material-icons">add</i></a>
+                                                        <span id="error-ref"></span>
                                                 </div>
                                         </div>
                                         </div>
@@ -878,7 +901,10 @@ $_SESSION['token'] = $_GET['token'];
 
 
 $("#pleasewait").hide()
-
+$("#otherUg").hide()
+$("#otherspecialUg").hide()
+$("#otherPg").hide()
+$("#otherspecialPg").hide()
 var expctr=0        
 var ctr=0
 var ctr2=0
@@ -886,19 +912,7 @@ var ctr2=0
 var cdate=new Date();
 var cyear=cdate.getFullYear();
 
-nameref0 = []
-designationref0 = []
-cmpnmref0 = []
-contref0 = []
-mailref0 = []
-phoneref0=[]
-stdref0=[]
-orgname0=[]
-olddesignation0=[]
-fromdate0 = []
-todate0=[]
-managername0=[]
-managermail0=[]
+
 
 function checkcont(x)
 {
@@ -906,21 +920,22 @@ function checkcont(x)
         var phone=$(id).val();
         console.log(id)
         console.log(phone)
-
+        $('#error-cont').empty()
         if(phone.length!=10)
         {
-                alert("Enter Valid Contact Details")
+                $('#error-cont').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter valid contact Number*</p>")
                 $(id).val(" ")
         }
 }
 
 function checkpincode(x)
 {
+        $('#error-pincode').empty()
         var id="#"+x;
         var txt=$(id).val();
         if(txt.length!=6)
         {
-                alert("Pincode Must be 6 Character Long");
+                $('#error-pincode').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter valid pincode*</p>")
                 $(id).val(" ")
         }
 }
@@ -929,36 +944,71 @@ function mytextvalid(e)
         //Written by Tanmay
         var charCode = event.keyCode;
         //Gets ASCII code of character
-        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8)
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8 || charCode >= 32 && charCode <= 47)
                 return true;
         else
                 return false;
 
 }
+function mynumbervalid(e)
+{
+        console.log("called");
+        var charCode = event.keyCode;
+        //Gets ASCII code of character
+        if ((charCode >= 48 && charCode <= 57))
+                return true;
+        else
+                return false;
 
-function ValidateEmail(inputText)
+}
+function ValidateEmail(inputText,part)
 {
         var mailformat =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(inputText.value.match(mailformat))
+        if(part=='uemail')
         {
-        //The pop up alert for a valid email address
-        document.applicationblank.uemail.focus();
-        return true;
+                $('#error-mail').empty()
+                if(inputText.value.match(mailformat))
+                {
+                //The pop up alert for a valid email address
+                document.applicationblank.uemail.focus();
+                return true;
+                }
+                else
+                {
+                // alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
+                $('#error-mail').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter valid email address*</p>")
+                document.applicationblank.uemail.focus();
+                return false;
+                }
         }
         else
         {
-        alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
-        document.applicationblank.uemail.focus();
-        return false;
+                $('#error-mail-ref').empty()
+                if(inputText.value.match(mailformat))
+                {
+                //The pop up alert for a valid email address
+                document.applicationblank.mailref0.focus();
+                return true;
+                }
+                else
+                {
+                // alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
+                $('#error-mail-ref').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter valid email address*</p>")
+                document.applicationblank.mailref0.focus();
+                return false;
+                }
         }
+        
 }
 function checknotice(x)
 {
+        $('#error-notice').empty()
         var id="#"+x;
         var noticeperiod=$(id).val();
+        
         if(!(noticeperiod.length>=1 && noticeperiod.length<=3))
         {
-                alert("Enter Valid Notice Period")
+                $('#error-notice').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter valid notice period*</p>")
                 $(id).val(" ")
         }
 }
@@ -967,12 +1017,12 @@ function addnewexp(x)
         expctr = expctr+1
         //var str = 'myexpdiv'+ctr
 
-                                                       
-        var exptxt='<div class="col s12" id="myexpdiv"><div class="input-field col s6"><input name="orgname0[]" id="orgname'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true" ><label for="orgname'+expctr+'" style="font-size: 11px">Current Organization Name</label></div><div class="input-field col s6"><input name="olddesignation0[]" id="olddesignation'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="olddesignation'+expctr+'" style="font-size: 11px">Designation</label></div><div class="input-field col s6"><input name="fromdate0[]" id="fromdate'+expctr+'" type="text" class="datepicker" ><label for="fromdate'+expctr+'" style="font-size: 11px;">From</label></div><div class="input-field col s6"><input name="todate0[]" id="todate'+expctr+'" type="text" class="datepicker"><label for="todate'+expctr+'" style="font-size: 11px;">To</label></div><div class="input-field col s6"><input name="managername0[]" id="managername'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="managername'+expctr+'" style="font-size: 11px">Reporting Manager Name</label></div><div class="input-field col s6"><input name="managermail0[]" id="managermail'+expctr+'" type="email" class="validate" aria-required="true"><label for="managermail'+expctr+'" style="font-size: 11px">Enter Manager Email</label></div><div class="row" id="addnextexp"><a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a><a class="btn-floating btn" style="float:right" onclick="removenewexp(this.id)" id="rembtn"><i class="material-icons">remove</i></a></div></div>'
+                                                  
+        var exptxt='<div class="col s12" id="myexpdiv"><p><label><input type="checkbox" id="todate'+expctr+',c" onchange="checkEmployer(this,this.id)" class="filled-in"/><span>Is it current employer ?</span></label></p><div class="input-field col s6"><input name="orgname0[]" id="orgname'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true" ><label for="orgname'+expctr+'" style="font-size: 11px">Current Organization Name</label></div><div class="input-field col s6"><input name="olddesignation0[]" id="olddesignation'+expctr+'" type="text" class="validate" onkeypress="return mytextvalid(event)" aria-required="true"><label for="olddesignation'+expctr+'" style="font-size: 11px">Designation</label></div><div class="input-field col s6"><input name="fromdate0[]" id="fromdate'+expctr+'" type="text" class="datepicker" onkeydown="return false" ><label for="fromdate'+expctr+'" style="font-size: 11px;">From</label></div><div class="input-field col s6"><input name="todate0[]" id="todate'+expctr+'" type="text" class="datepicker" onkeydown="return false"><label for="todate'+expctr+'" style="font-size: 11px;">To</label></div><div class="row" id="addnextexp"><a class="btn-floating btn" onclick="addnewexp(this)"><i class="material-icons">add</i></a><a class="btn-floating btn" style="float:right" onclick="removenewexp(this.id)" id="rembtn"><i class="material-icons">remove</i></a></div></div>'
         $("#mainexpdiv").append(exptxt);
         $('.datepicker').datepicker({
                         //dateFormat:"dd/mm/yy",
-                        yearRange:[1960,cyear],
+                        yearRange:[1900,cyear],
                         changeMonth:true,
                         
                         //changeYear:true
@@ -990,10 +1040,10 @@ function removenewexp(x)
 
 function addnewref(x)
 {
-        
+        $('#error-ref').empty()
         ctr2 = ctr2+1
         
-        var txt='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email"><label for="mailref'+ctr2+'">Reference</label></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)"><i class="material-icons">add</i></a></div></div>'
+        var txt='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email" onblur="ValidateEmail(document.applicationblank.uemail,"ref")""><label for="mailref'+ctr2+'">Reference</label><span id="error-mail-ref"></span></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)" ><i class="material-icons">add</i></a>&nbsp;<span id="error-ref0"></span></div></div>'
         if(ctr2==1)
         {
                 $("#mainref").append(txt);
@@ -1021,187 +1071,326 @@ function removelastref(x)
         
 }
 
+function checkUG()
+{
+       if( $("#selectug").val() == "Others")
+       {
+        $("#otherUg").show()
+       }
+       else
+       {
+        $("#otherUg").hide()
+       }
+}
+
+function checkSpecialUG()
+{
+       if( $("#specialug").val() == "Others")
+       {
+        $("#otherspecialUg").show()
+       }
+       else
+       {
+        $("#otherspecialUg").hide()
+       }
+}
+
+function checkPG()
+{
+       if( $("#selectpg").val() == "Others")
+       {
+        $("#otherPg").show()
+       }
+       else
+       {
+        $("#otherPg").hide()
+       }
+}
+
+function checkSpecialPG()
+{
+       if( $("#selectpg").val() == "Others")
+       {
+        $("#otherspecialPg").show()
+       }
+       else
+       {
+        $("#otherspecialPg").hide()
+       }
+}
+
+function checkEmployer(me,cid)
+{
+        cid = "#"+cid;
+        cid2 = cid.split(',');
+        cid2 = cid2[0];
+       
+        if(me.checked)
+        {
+                
+                $(cid2).prop('disabled',true)
+        }
+        else
+        {
+                $(cid2).prop('disabled',false)
+        }
+
+
+
+        
+        
+}
+
 /******************AJAX CALL STARTS************************ */
 $("#submitformdata").click(function () 
 {
+        nameref0 = []
+        designationref0 = []
+        cmpnmref0 = []
+        contref0 = []
+        mailref0 = []
+        phoneref0=[]
+        stdref0=[]
+        orgname0=[]
+        olddesignation0=[]
+        fromdate0 = []
+        todate0=[]
+        managername0=[]
+        managermail0=[]
         var fd = new FormData();
-        var files = $('#photo')[0].files[0];
-        fd.append('photo',files);
 
-        var files = $('#mycv')[0].files[0];
-        fd.append('mycv',files);pgcert
+        //References
+                $('input[name^="nameref0"]').each(function() {
+                        nameref0.push($(this).val());
+                        });
+                        $('input[name^="designationref0"]').each(function() {
+                        designationref0.push($(this).val());
+                        });
+                        $('input[name^="cmpnmref0"]').each(function() {
+                        cmpnmref0.push($(this).val());
+                        });
+                        $('input[name^="contref0"]').each(function() {
+                        contref0.push($(this).val());
+                        });
+                        $('input[name^="mailref0"]').each(function() {
+                        mailref0.push($(this).val());
+                        });
+                        $('input[name^="stdcoderef0"]').each(function() {
+                        stdref0.push($(this).val());
+                        });
+                        $('input[name^="phoneref0"]').each(function() {
+                        phoneref0.push($(this).val());
+                        });
 
-        var files = $('#pgcert')[0].files[0];
-        fd.append('pgcert',files);
+                        if(nameref0.length<2 )
+                        {
+                                alert("Enter atleast two references")
+                                $('#error-ref').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter Atleast 2 references*</p>")
+                                // $("#addnextref").parent().after("<div class='validation' style='color:red;margin-bottom: 20px;'>Please enter atleast 2 references</div>");
 
-        var files = $('#ugcert')[0].files[0];
-        fd.append('ugcert',files);
-
-        fd.append("aadharno",$("#aadharno").val())
-        fd.append("last_name",$("#last_name").val())
-        fd.append("first_name",$("#first_name").val())
-        fd.append("mid_name",$("#mid_name").val())
-        fd.append("State",$("#State").val())
-        fd.append("street",$("#street").val())
-        fd.append("Locality",$("#Locality").val())
-        fd.append("City",$("#City").val())
-        fd.append("Pincode",$("#Pincode").val())
-        fd.append("unumber",$("#unumber").val())
-        fd.append("stdcode",$("#stdcode").val())
-        fd.append("pnumber",$("#pnumber").val())
-        fd.append("uemail",$("#uemail").val())
-        fd.append("udob",$("#udob").val())
-        fd.append("position",$("#position").val())
-        fd.append("location",$("#location").val())
-        fd.append("passport",$("#passport").val())
-
-        fd.append("selectug",$("#selectug").val())
-        fd.append("specialug",$("#specialug").val())
-        fd.append("selectpg",$("#selectpg").val())
-        fd.append("specialpg",$("#specialpg").val())
-        fd.append("jdate",$("#jdate").val())
-        fd.append("notice",$("#notice").val())
-        fd.append("manager",$("#manager").val())
-        fd.append("ifselectposition",$("#ifselectposition").val())
-        fd.append("father",$("#father").val())
-        fd.append("fdob",$("#fdob").val())
-        fd.append("mother",$("#mother").val())
-        fd.append("mdob",$("#mdob").val())
-        fd.append("spouse",$("#spouse").val())
-        fd.append("spdob",$("#spdob").val())
-        fd.append("sgender",$("#sgender").val())
-        fd.append("child1",$("#child1").val())
-        fd.append("c1dob",$("#c1dob").val())
-        fd.append("c1gender",$("#c2gender").val())
-        fd.append("child2",$("#child2").val())
-        fd.append("c2dob",$("#c2dob").val())
-        fd.append("c2gender",$("#c2gender").val())
-        fd.append("homepresent",$("#homepresent").val())
-        fd.append("homeexp",$("#homeexp").val())
-        fd.append("grosspresent",$("#grosspresent").val())
-        fd.append("grossexp",$("#grossexp").val())
-        fd.append("yearpresent",$("#yearpresent").val())
-        fd.append("yearexp",$("#yearexp").val())
-       
-
-      
-        var referalchoice;
-
-        if($('#internet').prop("checked") == true)
-        {
-                // referalchoice=$('#internet').val();
-                fd.append("internet",$("#internet").val())
-
-        }
-
-        if($('#empref').prop("checked") == true)
-        {
-                // referalchoice=$('#empref').val();
-                fd.append("empref",$("#empref").val())
-
-        }
-        if($('#walkin').prop("checked") == true)
-        {
-                // referalchoice=$('#walkin').val();
-                fd.append("walkin",$("#walkin").val())
-
-        }
-        if($('#website').prop("checked") == true)
-        {
-                fd.append("website",$("#website").val())
-                
-                // referalchoice=$('#website').val();
-        }
-        if($('#other').prop("checked") == true)
-        {
-                fd.append("other",$("#other").val())
-                referalchoice=$('#other').val();
-                fd.append("otherdetails",$("#otherdetails").val())
-
-        
-        }
-        // orgname0olddesignation0fromdate0todate0managername0managermail0
-                   
-            $('input[name^="orgname0"]').each(function() {
-                orgname0.push($(this).val());
-            });
-            $('input[name^="olddesignation0"]').each(function() {
-                olddesignation0.push($(this).val());
-            });
-            $('input[name^="fromdate0"]').each(function() {
-                fromdate0.push($(this).val());
-            });
-            $('input[name^="todate0"]').each(function() {
-                todate0.push($(this).val());
-            });
-            $('input[name^="managername0"]').each(function() {
-                managername0.push($(this).val());
-            });
-            $('input[name^="managermail0"]').each(function() {
-                managermail0.push($(this).val());
-            });
-            
-        fd.append("orgname0",JSON.stringify(orgname0))
-        fd.append("olddesignation0",JSON.stringify(olddesignation0))
-        fd.append("fromdate0",JSON.stringify(fromdate0))
-        fd.append("todate0",JSON.stringify(todate0))
-        fd.append("managername0",JSON.stringify(managername0))
-        fd.append("managermail0",JSON.stringify(managermail0))
-
-     
-       
-            $('input[name^="nameref0"]').each(function() {
-                nameref0.push($(this).val());
-            });
-            $('input[name^="designationref0"]').each(function() {
-                designationref0.push($(this).val());
-            });
-            $('input[name^="cmpnmref0"]').each(function() {
-                cmpnmref0.push($(this).val());
-            });
-            $('input[name^="contref0"]').each(function() {
-                contref0.push($(this).val());
-            });
-            $('input[name^="mailref0"]').each(function() {
-                mailref0.push($(this).val());
-            });
-            $('input[name^="stdcoderef0"]').each(function() {
-                stdref0.push($(this).val());
-            });
-            $('input[name^="phoneref0"]').each(function() {
-                phoneref0.push($(this).val());
-            });
-        
-               
-        fd.append("nameref0",JSON.stringify(nameref0))
-        fd.append("designationref0",JSON.stringify(designationref0))
-        fd.append("cmpnmref0",JSON.stringify(cmpnmref0))
-        fd.append("contref0",JSON.stringify(contref0))
-        fd.append("mailref0",JSON.stringify(mailref0))
-        fd.append("stdcoderef0",JSON.stringify(stdref0))
-        fd.append("phoneref0",JSON.stringify(phoneref0))
+                        }
+                        else
+                        {
+                                // cleanArray = nameref0.filter(function () { return true });
+                                arr = nameref0.filter(item => item);
+                                console.log("This is - "+arr.length)
+                                if(arr.length<2)
+                                {
+                                        alert("Wrong")
+                                        $('#error-ref0').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter Atleast 2 references*</p>")
+                                }
+                                else
+                                {
+                                        fd.append("nameref0",JSON.stringify(nameref0))
+                                        fd.append("designationref0",JSON.stringify(designationref0))
+                                        fd.append("cmpnmref0",JSON.stringify(cmpnmref0))
+                                        fd.append("contref0",JSON.stringify(contref0))
+                                        fd.append("mailref0",JSON.stringify(mailref0))
+                                        fd.append("stdcoderef0",JSON.stringify(stdref0))
+                                        fd.append("phoneref0",JSON.stringify(phoneref0))
 
 
+                                        //Documents - PHOTO ,CV,PGCERT,UGCERT
+                                        var files = $('#photo')[0].files[0];
+                                        fd.append('photo',files);
 
-        $('#loader').show()
+                                        var files = $('#mycv')[0].files[0];
+                                        fd.append('mycv',files);
+
+                                       
 
 
-        $.ajax({
-        
-                url:'http://localhost/hrms/api/submitapplication.php',
-                type:'POST',
-                data:fd,
-                contentType: false,
-                processData: false,
-                success:function(para)
-                {
-                        $("#submitformdata").prop('disabled',true);
-                        $('#loader').hide()
-                        $("#pleasewait").show()
-                        window.setTimeout(function(){location.reload()},1000)
+                                        //Personal Information
+                                        if($("#aadharno").val()==" ")
+                                        {
+                                                alert("Wrong")
+                                                $('#error-adhar').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter Adha*</p>")
+                                        }
+                                        fd.append("aadharno",$("#aadharno").val())
+                                        fd.append("last_name",$("#last_name").val())
+                                        fd.append("first_name",$("#first_name").val())
+                                        fd.append("mid_name",$("#mid_name").val())
+                                        fd.append("State",$("#State").val())
+                                        fd.append("street",$("#street").val())
+                                        fd.append("Locality",$("#Locality").val())
+                                        fd.append("City",$("#City").val())
+                                        fd.append("Pincode",$("#Pincode").val())
+                                        fd.append("unumber",$("#unumber").val())
+                                        fd.append("stdcode",$("#stdcode").val())
+                                        fd.append("pnumber",$("#pnumber").val())
+                                        fd.append("uemail",$("#uemail").val())
+                                        fd.append("udob",$("#udob").val())
+                                        fd.append("position",$("#position").val())
+                                        fd.append("location",$("#location").val())
+                                        fd.append("passport",$("#passport").val())
+                                    
+                                        if($("#selectug").val()=="Others")
+                                        {
+                                                fd.append("selectug",$("#otherUgtxt").val())
+                                        }
+                                        else
+                                        {
+                                                fd.append("selectug",$("#selectug").val())
+                                        }
+                                        if($("#specialug").val()=="Others")
+                                        {
+                                                fd.append("specialug",$("#otherspecialUgtxt").val())
+                                        }
+                                        else
+                                        {
+                                                fd.append("specialug",$("#specialug").val())
+                                        }
+                                        if($("#selectpg").val()=="Others")
+                                        {
+                                                fd.append("selectpg",$("#otherPgtxt").val())
+                                        }
+                                        else
+                                        {
+                                                fd.append("selectpg",$("#selectpg").val())
+                                        }
+                                        if($("#specialpg").val()=="Others")
+                                        {
+                                                fd.append("specialpg",$("#otherspecialPgtxt").val())
+                                        }
+                                        else
+                                        {
+                                                fd.append("specialpg",$("#specialpg").val())
+                                        }
+                                        
                         
-                },
-                })
+                                        fd.append("jdate",$("#jdate").val())
+                                        fd.append("notice",$("#notice").val())
+                                        fd.append("manager",$("#manager").val())
+                                        fd.append("ifselectposition",$("#ifselectposition").val())
+                                        fd.append("father",$("#father").val())
+                                        fd.append("fdob",$("#fdob").val())
+                                        fd.append("mother",$("#mother").val())
+                                        fd.append("mdob",$("#mdob").val())
+                                        fd.append("spouse",$("#spouse").val())
+                                        fd.append("spdob",$("#spdob").val())
+                                        fd.append("sgender",$("#sgender").val())
+                                        fd.append("child1",$("#child1").val())
+                                        fd.append("c1dob",$("#c1dob").val())
+                                        fd.append("c1gender",$("#c2gender").val())
+                                        fd.append("child2",$("#child2").val())
+                                        fd.append("c2dob",$("#c2dob").val())
+                                        fd.append("c2gender",$("#c2gender").val())
+                                        fd.append("homepresent",$("#homepresent").val())
+                                        fd.append("homeexp",$("#homeexp").val())
+                                        fd.append("grosspresent",$("#grosspresent").val())
+                                        fd.append("grossexp",$("#grossexp").val())
+                                        fd.append("yearpresent",$("#yearpresent").val())
+                                        fd.append("yearexp",$("#yearexp").val())
+
+
+
+                                        // Reference & Experiance
+                                        var referalchoice;
+
+                                        if($('#internet').prop("checked") == true)
+                                        {
+                                                // referalchoice=$('#internet').val();
+                                                fd.append("internet",$("#internet").val())
+
+                                        }
+
+                                        if($('#empref').prop("checked") == true)
+                                        {
+                                                // referalchoice=$('#empref').val();
+                                                fd.append("empref",$("#empref").val())
+
+                                        }
+                                        if($('#walkin').prop("checked") == true)
+                                        {
+                                                // referalchoice=$('#walkin').val();
+                                                fd.append("walkin",$("#walkin").val())
+
+                                        }
+                                        if($('#website').prop("checked") == true)
+                                        {
+                                                fd.append("website",$("#website").val())
+                                                
+                                                // referalchoice=$('#website').val();
+                                        }
+                                        if($('#other').prop("checked") == true)
+                                        {
+                                                fd.append("other",$("#other").val())
+                                                referalchoice=$('#other').val();
+                                                fd.append("otherdetails",$("#otherdetails").val())
+
+                                        
+                                        }
+                                        // orgname0olddesignation0fromdate0todate0managername0managermail0
+                                                
+                                        $('input[name^="orgname0"]').each(function() {
+                                                orgname0.push($(this).val());
+                                        });
+                                        $('input[name^="olddesignation0"]').each(function() {
+                                                olddesignation0.push($(this).val());
+                                        });
+                                        $('input[name^="fromdate0"]').each(function() {
+                                                fromdate0.push($(this).val());
+                                        });
+                                        $('input[name^="todate0"]').each(function() {
+                                                todate0.push($(this).val());
+                                        });
+                                        $('input[name^="managername0"]').each(function() {
+                                                managername0.push($(this).val());
+                                        });
+                                        $('input[name^="managermail0"]').each(function() {
+                                                managermail0.push($(this).val());
+                                        });
+                                        
+                                        fd.append("orgname0",JSON.stringify(orgname0))
+                                        fd.append("olddesignation0",JSON.stringify(olddesignation0))
+                                        fd.append("fromdate0",JSON.stringify(fromdate0))
+                                        fd.append("todate0",JSON.stringify(todate0))
+                                        fd.append("managername0",JSON.stringify(managername0))
+                                        fd.append("managermail0",JSON.stringify(managermail0))
+
+                                        $('#loader').show()
+
+
+                                        $.ajax({
+                                        
+                                                url:'http://localhost/hrms/api/submitapplication.php',
+                                                type:'POST',
+                                                data:fd,
+                                                contentType: false,
+                                                processData: false,
+                                                success:function(para)
+                                                {
+                                                        $("#submitformdata").prop('disabled',true);
+                                                        $('#loader').hide()
+                                                        $("#pleasewait").show()
+                                                        window.setTimeout(function(){location.reload()},1000)
+                                                        
+                                                },
+                                                })
+                                }
+                              
+
+                        }
 
 })
 
@@ -1289,7 +1478,7 @@ $(document).ready(function(){
         $('.datepicker').datepicker
         ({
                 
-                yearRange:[1990,cyear],
+                yearRange:[1900,cyear],
                 
                 
         });
@@ -1297,7 +1486,7 @@ $(document).ready(function(){
         $('#jdate').datepicker
         ({
                 
-                yearRange:[1950,cyear],
+                yearRange:[1900,cyear],
                 minDate:new Date(),
                 changeMonth:true,
                 
@@ -1349,29 +1538,22 @@ $("#addnextexp").click(function(){
 
 $('#alphaaddh').hide();
 $('#12addh').hide();
+
+function checkValidDate() {
+        var addharnumber=$('#udob').val();
+        console.log(addharnumber);
+}
 $( "#aadharno" ).change(function() {
-  
+        $('#error-adhar').empty()
         var addharnumber=$('#aadharno').val();
-        //alert(addharnumber)
         if(addharnumber.length != 12)
         {
-                alert("Please Enter 12 Digits of Aadhar");
+               
+                $('#error-adhar').append("<p style='color:red;font-weight:bold;display:inline;'>Please Enter 12 Digits of Aadhar*</p>")
                 $('#aadharno').val(" ")
-
-                
+                // document.getElementById('aadharno').select();
         }
-        else if(addharnumber>="a" && addharnumber<="z")
-        {
-                alert("Please Enter Valid Aadhar Details");
-                $('#aadharno').val(" ")
-
-        }
-       else if(addharnumber>="A" && addharnumber<="Z")
-        {
-                alert("Please Enter Valid Aadhar Details");
-                $('#aadharno').val(" ")
-
-        }
+        
         var data={"aadharno":addharnumber};
         //console.log(addharnumber);
 
@@ -1535,26 +1717,6 @@ $('#mycv').change(function(){
         
 })
 
-
-$('#ugcert').change(function(){ 
-        var f =$('#ugcert').val().split('.')
-        var x=f[1]
-        if(x!='pdf')
-        {         
-                alert('Invalid File \n Only PDF accepted')
-                document.getElementById("ugcert").value=null
-        }
-})
-
-$('#pgcert').change(function(){ 
-        var f =$('#pgcert').val().split('.')
-        var x=f[1]
-        if(x!='pdf')
-        {         
-                alert('Invalid File \n Only PDF accepted')
-                document.getElementById("pgcert").value=null
-        }
-})
 
 </script>
 </body>

@@ -84,6 +84,16 @@
    
    }
    
+   if(isset($_FILES['sb']))
+   {
+        $namephoto = $_FILES['sb']['name'];
+        $tempphoto = $_FILES['sb']['tmp_name'];
+        move_uploaded_file($tempphoto,"upload/".$folder."/".$namephoto);
+        $sb = "upload/".$folder."/".$namephoto;
+        $result=$db->tokens->updateOne(array("email"=>$mail),array('$set'=>array("salarybreakup"=>$sb)));
+   
+   }
+
    if(isset($_FILES['ccl']))
    {
         $namephoto = $_FILES['ccl']['name'];

@@ -21,29 +21,24 @@ include 'db.php';
             $date = date("Y.m.d");
             $folder = $folder."(".$date."--".$time.")";
             mkdir("../upload/".$folder);
+
             $namephoto = $_FILES['photo']['name'];
             $tempphoto = $_FILES["photo"]['tmp_name'];
+            $namephoto =  str_replace(' ', '_', $namephoto);
+            $ext = pathinfo($namephoto, PATHINFO_EXTENSION);
+            $namephoto = round(microtime(true)).mt_rand().$namephoto;
             move_uploaded_file($tempphoto,"../upload/".$folder."/".$namephoto);
             $namephoto = "upload/".$folder."/".$namephoto;
             
             $namecv = $_FILES['mycv']['name'];
             $tempcv = $_FILES["mycv"]['tmp_name'];
+            $namecv =  str_replace(' ', '_', $namecv);
+            $ext = pathinfo($namecv, PATHINFO_EXTENSION);
+            $namecv = round(microtime(true)).mt_rand().$namecv;
             move_uploaded_file($tempcv,"../upload/".$folder."/".$namecv);
             $namecv = "upload/".$folder."/".$namecv;
             
-            $namepgcert = $_FILES['pgcert']['name'];
-            $temppgcert = $_FILES["pgcert"]['tmp_name'];
-            move_uploaded_file($temppgcert,"../upload/".$folder."/".$namepgcert);
-            $namepgcert = "upload/".$folder."/".$namepgcert;
-
             
-            $nameugcert = $_FILES['ugcert']['name'];
-            $tempugcert = $_FILES["ugcert"]['tmp_name'];
-            move_uploaded_file($tempugcert,"../upload/".$folder."/".$nameugcert);
-            $nameugcert = "upload/".$folder."/".$nameugcert;
-
- 
-
             if($result1)
             {
                 $refname = $_POST['nameref0']?json_decode($_POST['nameref0']):"NA";
@@ -66,8 +61,7 @@ include 'db.php';
                 $values = array(
                     "userphoto" => $namephoto,
                     "usercv" => $namecv,
-                    "ugcert" => $nameugcert,
-                    "pgcert" => $namepgcert,
+               
                     "aadharno" => $_POST["aadharno"],
                     "first_name"=> $_POST['first_name'],
                     "mid_name"=>$_POST['mid_name'],
@@ -104,9 +98,6 @@ include 'db.php';
                     "notice" => $_POST["notice"],
                     "manager" => $_POST["manager"],
                     "ifselectposition" => $_POST["ifselectposition"],
-                    // "proofaadhar" => $nameaadhar,
-                    // "proofidentity" => $nameotheraadhar,
-                    // "proofaddr" => $nameaddr,
                     "fathersname" => $_POST["father"],
                     "fdob" => $_POST["fdob"],
                     "mother" => $_POST["mother"],

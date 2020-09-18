@@ -11,7 +11,8 @@ if(isset($_COOKIE['sid']))
   {
     $cursor = $db->users->findOne(array("uid" => $cursor['uid']));
     $designation = $cursor['dsg'];
-    
+    $name = $cursor['name'];
+
     if($designation == "hr" || $designation == "ceo" || $designation == "hod" || $designation == "rghead" )
     {
 ?>
@@ -32,6 +33,10 @@ if(isset($_COOKIE['sid']))
         <link rel="stylesheet" type="text/css" media="screen" href="public/css/common.css">
 
     <script src="public/jquery-3.2.1.min.js"></script>
+    <script src="./public/js/logout.js"></script>
+
+    <script src="./public/js/logout.js"></script>
+
 
     <script src="public/js/materialize.js"></script>
     <script src="public/js/materialize.min.js"></script>
@@ -151,6 +156,15 @@ if(isset($_COOKIE['sid']))
       <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
     </a>
     <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
+    <ul style="float:right;">
+          <li>
+            <select id="logout"class="dropdown-trigger btn blue darken-1">
+              <option value=""><?php echo($name) ?></option>
+              <option value="profile">Profile</option>
+              <option value="logout">Logout</option>
+            </select>
+          </li>
+        </ul>  
     </div>
 </nav>
 <br><br>
@@ -202,8 +216,8 @@ if(isset($_COOKIE['sid']))
                         <tr class="blue darken-1 white-text">
                           <br>
                           <th>Sr No.</th>
-                          <th>Email ID</th>
-                          <th><button id="notify" class="waves-effect orange  btn">Notify candidates</button>
+                          <th>Name</th>
+                          <th>Email ID &nbsp;&nbsp; <button id="notify" class="waves-effect orange  btn">Notify candidates</button>
                         </tr>
                       </thead>
                       
@@ -683,7 +697,7 @@ function createnextround(id)
               console.log("Members - "+para[2][i])
               j = parseInt(i)
               j += 1
-              var membersdata='<tr><td>'+j+'</td><td>'+para[2][i]+'</td</tr>'
+              var membersdata='<tr><td>'+j+'</td><td>'+para[2][i][0]+'</td><td>'+para[2][i][1]+'</td</tr>'
               $("#memberstable").append(membersdata)
             }
         }
@@ -913,7 +927,7 @@ function getit(){
             {
               j = parseInt(i)
               j += 1
-              var membersdata='<tr><td>'+j+'</td><td>'+para[2][i]+'</td</tr>'
+              var membersdata='<tr><td>'+j+'</td><td>'+para[2][i][0]+'</td><td>'+para[2][i][1]+'</td</tr>'
               $("#memberstable").append(membersdata)
             }
         }

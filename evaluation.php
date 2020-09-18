@@ -175,7 +175,7 @@ if(isset($_COOKIE['sid']))
                 <div class="row" id="ifselected">
                     <b class="col">Please Fill Following Information :</b>
                     <div class="input-field col s12">
-                        <input id="designation" type="text" class="validate">
+                        <input id="designation" type="text" class="validate" >
                         <label for="designation">Designation for which candidate is found suitable</label>
                     </div>
                     
@@ -188,8 +188,8 @@ if(isset($_COOKIE['sid']))
                 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="remark" type="text" >
-                        <label for="remark">Remark if any</label>
+                        <input id="remark" type="text" required >
+                        <label for="remark" >Remark if any</label>
                     </div>
                 </div>
 
@@ -296,74 +296,158 @@ $.ajax({
 
 
 $("#submit").click(function(){
-    var knowledge = $("input[name='group1']:checked").val();
-    if(knowledge){
-            console.log(knowledge);
-    }
-    var experience = $("input[name='group2']:checked").val();
-    if(experience){
-        console.log(experience);
-    }
-
-    var candidateknowledge = knowledge
-    var candidateexperience = experience
-    var candidatestrength = $("#strength").val()
-    var candidateweakness = $("#weakness").val()
-    
-    var candidatespecial = $("#special").val()
-    var candidatereasonhold = $("#reasonhold").val()
-    var candidatedesignation = $("#designation").val()
-    var date = $("#date").val()
-    var remark = $("#remark").val()
-    var name = localStorage.getItem('currentemail')
-     var id=localStorage.getItem('id') //added by sarang
-    // console.log("Hello",name)
-    $("#submitting").show(600)
-   
-    $.ajax({
-        url:"http://localhost/hrms/api/intereval.php",
-        type:"GET",
-        data : {
-            "candidateknowledge":candidateknowledge,
-            "candidateexperience":candidateexperience,
-            "candidatestrength":candidatestrength,
-            "candidateweakness":candidateweakness,
-            "candidatespecial":candidatespecial,
-            "candidatereasonhold":candidatereasonhold,
-            "candidatedesignation":candidatedesignation,
-            "date":date,
-            "remark":remark,
-            "name":name,
-            "result":window.selection,
-            "id":window.digit13//added by sarang
-            // provide 13 digit number as "id"
-
-        },
-        success:function(para)
+    var result = $("input[name='group3']:checked").val();
+    console.log(result)
+    if(result=="rejected" || result=="onhold")
+    {
+        if($("#remark").val() != "")
         {
-            //alert(para)
-            para = JSON.parse(para)
-            console.log("This is success- ",para[0])
-            console.log("This is success- ",para[1])
-            if(para[0] == "success" && para[1] == "last")
-            {
+            var knowledge = $("input[name='group1']:checked").val();
+            if(knowledge){
+                    console.log(knowledge);
+            }
+            var experience = $("input[name='group2']:checked").val();
+            if(experience){
+                console.log(experience);
+            }
 
-                $("#submitting").hide()
-                $("#submitted").show(600)
-                alert("Details Submitted..!!")
-                self.opener.location.reload(); 
-                window.close()   
-            }
-            else
-            {
-                $("#submitting").hide()
-                $("#submitted").show(600)
-                alert("Details Submitted..!!") 
-                window.close()   
-            }
-        }
+            var candidateknowledge = knowledge
+            var candidateexperience = experience
+            var candidatestrength = $("#strength").val()
+            var candidateweakness = $("#weakness").val()
+            
+            var candidatespecial = $("#special").val()
+            var candidatereasonhold = $("#reasonhold").val()
+            var candidatedesignation = $("#designation").val()
+            var date = $("#date").val()
+            var remark = $("#remark").val()
+            var name = localStorage.getItem('currentemail')
+            var id=localStorage.getItem('id') //added by sarang
+            // console.log("Hello",name)
+            $("#submitting").show(600)
         
-    })
+            $.ajax({
+                url:"http://localhost/hrms/api/intereval.php",
+                type:"GET",
+                data : {
+                    "candidateknowledge":candidateknowledge,
+                    "candidateexperience":candidateexperience,
+                    "candidatestrength":candidatestrength,
+                    "candidateweakness":candidateweakness,
+                    "candidatespecial":candidatespecial,
+                    "candidatereasonhold":candidatereasonhold,
+                    "candidatedesignation":candidatedesignation,
+                    "date":date,
+                    "remark":remark,
+                    "name":name,
+                    "result":window.selection,
+                    "id":window.digit13//added by sarang
+                    // provide 13 digit number as "id"
+
+                },
+                success:function(para)
+                {
+                    //alert(para)
+                    para = JSON.parse(para)
+                    console.log("This is success- ",para[0])
+                    console.log("This is success- ",para[1])
+                    if(para[0] == "success" && para[1] == "last")
+                    {
+
+                        $("#submitting").hide()
+                        $("#submitted").show(600)
+                        alert("Details Submitted..!!")
+                        self.opener.location.reload(); 
+                        window.close()   
+                    }
+                    else
+                    {
+                        $("#submitting").hide()
+                        $("#submitted").show(600)
+                        alert("Details Submitted..!!") 
+                        window.close()   
+                    }
+                }
+                
+            })
+        }
+        else
+        {
+            alert("Please Specify Remark")
+        }
+    }
+    else
+    {
+        var knowledge = $("input[name='group1']:checked").val();
+        if(knowledge){
+                console.log(knowledge);
+        }
+        var experience = $("input[name='group2']:checked").val();
+        if(experience){
+            console.log(experience);
+        }
+
+        var candidateknowledge = knowledge
+        var candidateexperience = experience
+        var candidatestrength = $("#strength").val()
+        var candidateweakness = $("#weakness").val()
+        
+        var candidatespecial = $("#special").val()
+        var candidatereasonhold = $("#reasonhold").val()
+        var candidatedesignation = $("#designation").val()
+        var date = $("#date").val()
+        var remark = $("#remark").val()
+        var name = localStorage.getItem('currentemail')
+        var id=localStorage.getItem('id') //added by sarang
+        // console.log("Hello",name)
+        $("#submitting").show(600)
+    
+        $.ajax({
+            url:"http://localhost/hrms/api/intereval.php",
+            type:"GET",
+            data : {
+                "candidateknowledge":candidateknowledge,
+                "candidateexperience":candidateexperience,
+                "candidatestrength":candidatestrength,
+                "candidateweakness":candidateweakness,
+                "candidatespecial":candidatespecial,
+                "candidatereasonhold":candidatereasonhold,
+                "candidatedesignation":candidatedesignation,
+                "date":date,
+                "remark":remark,
+                "name":name,
+                "result":window.selection,
+                "id":window.digit13//added by sarang
+                // provide 13 digit number as "id"
+
+            },
+            success:function(para)
+            {
+                //alert(para)
+                para = JSON.parse(para)
+                console.log("This is success- ",para[0])
+                console.log("This is success- ",para[1])
+                if(para[0] == "success" && para[1] == "last")
+                {
+
+                    $("#submitting").hide()
+                    $("#submitted").show(600)
+                    alert("Details Submitted..!!")
+                    self.opener.location.reload(); 
+                    window.close()   
+                }
+                else
+                {
+                    $("#submitting").hide()
+                    $("#submitted").show(600)
+                    alert("Details Submitted..!!") 
+                    window.close()   
+                }
+            }
+            
+        })
+    }
+
 });
 
 

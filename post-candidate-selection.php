@@ -202,6 +202,28 @@ input::-webkit-inner-spin-button {
                                         <input class="file-path validate" type="text">
                                 </div>
                         </div>
+
+                        <b style="font-size:15px;">Under Graduation Certificate</b>
+                        <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                <span>Upload File</span>
+                                        <input id="ugcert" name="ugcert" required type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                </div>
+                                <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                </div>
+                        </div>
+
+                        <b style="font-size:15px;">Post Graduation Certificate (If Applicable)</b>
+                        <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                <span>Upload File</span>
+                                        <input id="pgcert" name="pgcert" type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                </div>
+                                <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                </div>
+                        </div>
                      
 
                         <div class="row">
@@ -414,6 +436,29 @@ $('#cancelcheck').change(function(){
  
 })
 
+
+$('#ugcert').change(function(){
+        var f = $('#ugcert').val().split('.')
+        var x=f[1]
+        if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
+        {
+                alert('Invalid File\n Only PDF/IMAGES accepted')
+                document.getElementById("ugcert").value=null
+        }   
+ 
+})
+
+$('#pgcert').change(function(){
+        var f = $('#pgcert').val().split('.')
+        var x=f[1]
+        if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
+        {
+                alert('Invalid File\n Only PDF/IMAGES accepted')
+                document.getElementById("pgcert").value=null
+        }   
+ 
+})
+
 var appletter
 var uan
 var salarybreak
@@ -423,7 +468,8 @@ var nom1
 var nom2
 var nom3
 var nom4
-
+var ugcert
+var pgcert
 
 // $('#submitformdata').click(function(){
 //         var fd = new FormData();
