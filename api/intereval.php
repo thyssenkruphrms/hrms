@@ -73,7 +73,7 @@ if($cursor)
         }
         
          //check if all our evaluated END
-        $selectedcandidate = ($selection=="selected") ? $_GET['name']:"false";
+        $selectedcandidate = ($selection=="selected" || $selection=="onhold") ? $_GET['name']:"false";
         if($selectedcandidate=="false")
         {
                 //enter logic for rejected
