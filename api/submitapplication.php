@@ -21,20 +21,24 @@ include 'db.php';
             $date = date("Y.m.d");
             $folder = $folder."(".$date."--".$time.")";
             mkdir("../upload/".$folder);
+
             $namephoto = $_FILES['photo']['name'];
             $tempphoto = $_FILES["photo"]['tmp_name'];
+            $namephoto =  str_replace(' ', '_', $namephoto);
+            $ext = pathinfo($namephoto, PATHINFO_EXTENSION);
+            $namephoto = round(microtime(true)).mt_rand().$namephoto;
             move_uploaded_file($tempphoto,"../upload/".$folder."/".$namephoto);
             $namephoto = "upload/".$folder."/".$namephoto;
             
             $namecv = $_FILES['mycv']['name'];
             $tempcv = $_FILES["mycv"]['tmp_name'];
+            $namecv =  str_replace(' ', '_', $namecv);
+            $ext = pathinfo($namecv, PATHINFO_EXTENSION);
+            $namecv = round(microtime(true)).mt_rand().$namecv;
             move_uploaded_file($tempcv,"../upload/".$folder."/".$namecv);
             $namecv = "upload/".$folder."/".$namecv;
             
             
-
- 
-
             if($result1)
             {
                 $refname = $_POST['nameref0']?json_decode($_POST['nameref0']):"NA";
