@@ -308,7 +308,7 @@ if(isset($_COOKIE['sid']))
                                     <div class="row">
                                             
                                     <div class="input-field col s3 m3 " >
-                                        Interviewer Location:  <input id="iloc" type="text" class="text" required>
+                                        Interviewer Location:  <input id="loc" type="text" class="text" required>
                                         </div>                                    
                                        
                                        
@@ -509,12 +509,12 @@ $(document).ready(function(){
       names=para.names
       console.log("this is para :",para)
       para=para.interviewers
-      for(i=0;i<para.length;i++)
-       {
-         var str = '<option id="'+para[i]+'"  value="'+para[i]+'"  style="color: white">'+names[i]+'</option>'
-          $('#intchoice').append(str);
+      // for(i=0;i<para.length;i++)
+      //  {
+      //    var str = '<option id="'+para[i]+'"  value="'+para[i]+'"  style="color: white">'+names[i]+'</option>'
+      //     $('#intchoice').append(str);
 
-       }
+      //  }
       
 
     }
@@ -540,47 +540,15 @@ function feedvalue(select){
  // console.log("selected "+id)
   var interviewer=select.options[select.selectedIndex].getAttribute("id");
   console.log("Location"+interviewer)
-  document.getElementById("iloc").value=interviewer
+  document.getElementById("loc").value=interviewer
   var sel = document.getElementById(interviewer);
   console.log("adress",sel.value)
   document.getElementById("iadd").value=sel.value
 
-  // if(interviewer!=" "){
-
-  //   $.ajax({
-  //   url:'http://localhost/hrms/api/getinterviewerDetails.php',
-  //   type:'POST',
-  //   data:{
-  //     "interviewer":interviewer
-  //   },
-  //   success:function(para)
-  //   { 
-  //     para = JSON.parse(para)
-  //     console.log("this is para :",para)
-  //     para=para.interviewer
-  //     document.getElementById("imail").value=interviewer
-  //     document.getElementById("iname").value=para.name
-  //     document.getElementById("idept").value=para.dept
-  //     document.getElementById("idesg").value=para.dsg 
-      
-
-  //   }
-  // })
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-  //}
 
   
 
@@ -594,7 +562,7 @@ function allocateSubmit(cnfrm)
       var iname = $('#iname').val();
       var idept = $('#idept').val();
       var idesg = $('#idesg').val();
-      var iloc = $('#location').val();
+      var iloc = $('#loc').val();
       var iperson = $('#contactperson').val();
       var address=$('#iadd').val()
       var posdept = window.dept

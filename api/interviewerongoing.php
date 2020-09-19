@@ -10,7 +10,7 @@ $invname=$_POST['iname'];
 $intvmail=$_POST['intvmail'];
 $date=$_POST['candates'];
 $time=$_POST['cantimes'];
-
+$imail=$_POST['intvmail'];
 
 // echo json_encode($_POST['candates']);
 // echo json_encode($_POST['cantimes']);
@@ -75,6 +75,9 @@ if($cursor)
 
     $db->interviews->insertOne(array("rid"=>$rid,"prf"=>$digit13[0],'pos'=>$digit13[1],"iid"=>$digit13[2],"members"=>$_POST['emails'],"evaluated"=>array(),"times"=>$_POST['cantimes'],"modtimes"=>$_POST['cantimes'],"dates"=>$_POST['candates'],"moddates"=>$_POST['candates'],"invname"=>$_POST['iname'],"designation"=>$_POST['idesg'],"intvmail"=>$_POST['intvmail'],"ilocation"=>$_POST['iloc'],"iperson"=>$_POST['iperson'],"dept"=>$_POST['dept'],"status"=>"0","invstatus"=>"0","accepted"=>"no"));
 
+
+    $createuser= $db->users->insertOne(array("uid"=>$imail,"name"=>$invname,'password'=>$imail,"mail"=>$imail,"dsg"=>"inv","dept"=>$_POST['idept'],"rg"=>$_POST['iloc']));
+    
     //updating status of base round
     //deleting tokens
     $db->tokens->updateMany(array("prf"=>$digit13[0],'iid'=>$digit13[2],"pos"=>$digit13[1]),array('$set'=>array("token"=>"1")));
