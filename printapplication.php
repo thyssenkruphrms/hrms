@@ -49,6 +49,9 @@ if(isset($_COOKIE['sid']))
 
 </head>
 <style>
+.datepicker-controls .select-month input {
+    width: 100px;
+}
 input[type="text"] {
   text-transform: uppercase;
 }

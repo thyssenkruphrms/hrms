@@ -24,7 +24,9 @@
         <link rel="stylesheet" type="text/css" media="screen" href="public/css/common.css">
 
 <style>
-   
+   .datepicker-controls .select-month input {
+    width: 100px;
+}
    #loader {
      position: fixed;
      top: 0;

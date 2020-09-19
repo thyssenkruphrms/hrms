@@ -41,6 +41,9 @@ if(isset($_COOKIE['sid']))
     <script src="public/js/materialize.js"></script>
     <script src="public/js/materialize.min.js"></script>
     <style>
+    .datepicker-controls .select-month input {
+    width: 100px;
+}
   #loader {
     position: fixed;
     top: 0;
@@ -763,8 +766,8 @@ function completepro(id)
               // console.log(arr[i])
               allmail[i] = arr[i]
               var s1='<tr id="check'+i+'row">'
-              var s2='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'" target="_blank" "><p >'+arr[i][0]+'</p></a></td>'
-              var s3='<td><a href="http://localhost/hrms/documentcheck.php?aid='+arr[i][1]+'" target="_blank" "><p id="finalcheck'+i+'mail">'+arr[i][1]+'</p></a></td>'
+              var s2='<td><p >'+arr[i][0]+'</p></td>'
+              var s3='<td><p id="finalcheck'+i+'mail">'+arr[i][1]+'</p></td>'
             
               var s6='<td><label><input type="checkbox" class="filled-in" id="finalcheck'+i+'" onclick="finalselection(this.id)">'
               var s7='<span class="blue-text darken-1" ></span></label></td></tr>'

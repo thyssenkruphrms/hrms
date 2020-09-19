@@ -29,7 +29,11 @@ if(isset($_COOKIE['sid']))
 
     <script src="public/js/materialize.js"></script>
     <script src="public/js/materialize.min.js"></script>
-
+<style>
+.datepicker-controls .select-month input {
+    width: 100px;
+}
+</style>
 </head>
 <body >
 

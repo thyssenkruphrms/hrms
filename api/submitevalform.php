@@ -64,6 +64,12 @@ $nom1=$_POST['nom1'];
 $nom2=$_POST['nom2'];
 $nom3=$_POST['nom3'];
 $nom4=$_POST['nom4'];
+
+$n1dob=$_POST['n1dob'];
+$n2dob=$_POST['n2dob'];
+$n3dob=$_POST['n3dob'];
+$n4dob=$_POST['n4dob'];
+
 echo $namecancelcheck;
 echo "<br>".$mailid;
 $criteria=array("email"=>$mailid);
@@ -82,6 +88,12 @@ $info=array(
     "nom2"=>$nom2,
     "nom3"=>$nom3,
     "nom4"=>$nom4,
+    "n1dob"=>$n1dob,
+    "n2dob"=>$n2dob,
+    "n3dob"=>$n3dob,
+    "n4dob"=>$n4dob,
+
+
     "postfilled"=>"filled",
     "progress"=>"Post Selection Form Submitted");
 $queryInsert=$db->tokens->updateOne($criteria,array('$set'=>$info));
