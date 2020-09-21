@@ -150,8 +150,8 @@ input::-webkit-inner-spin-button {
                                     <label for="nom1">Nominnee 1</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="n1dob dates" name="n1dob" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
-                                <label for="n1dob">Date Of Birth</label>
+                                <input id="n1dobdates" name="mydate" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
+                                <label for="mydate">Date Of Birth</label>
                             </div>
 
                             <div class="input-field col s6">
@@ -159,8 +159,8 @@ input::-webkit-inner-spin-button {
                                     <label for="nom2">Nominnee 2</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="n2dob dates" name="n2dob" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
-                                <label for="n2dob">Date Of Birth</label>
+                                <input id="n2dobdates" name="mydate" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
+                                <label for="mydate">Date Of Birth</label>
                             </div>
 
                             <div class="input-field col s6">
@@ -168,8 +168,8 @@ input::-webkit-inner-spin-button {
                                     <label for="nom3">Nominnee 3</label>
                             </div>  
                             <div class="input-field col s6">
-                                <input id="n3dob dates" name="n3dob" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
-                                <label for="n3dob">Date Of Birth</label>
+                                <input id="n3dobdates" name="mydate" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
+                                <label for="mydate">Date Of Birth</label>
                             </div>
 
                             <div class="input-field col s6">
@@ -177,8 +177,8 @@ input::-webkit-inner-spin-button {
                                     <label for="nom4">Nominnee 4</label>
                             </div> 
                             <div class="input-field col s6">
-                                <input id="n4dob dates" name="n4dob" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
-                                <label for="n4dob">Date Of Birth</label>
+                                <input id="n4dobdates" name="mydate" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
+                                <label for="mydate">Date Of Birth</label>
                             </div>                     
                     </div>
 
