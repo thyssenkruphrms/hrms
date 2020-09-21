@@ -270,7 +270,7 @@ function abort_round(confr)
                                     
                                       
                                       <div class="input-field col s4 m4 " >
-                                        Contact Person Name:  <input id="contactperson" type="text" class="text" required>
+                                        Contact Person Name:  <input id="iperson" type="text" class="text" required>
                                           </div> 
 
                                           <div class="input-field col s4 m4 " >
@@ -289,13 +289,13 @@ function abort_round(confr)
                     <div class="row">
                                             
                                     <div class="input-field col s3 m3 " >
-                                        Interviewer Location:  <input id="iloc" type="text" class="text" required>
+                                        Interviewer Location:  <input id="iadd" type="text" class="text" required>
                                         </div>                                    
                                        
                                        
 
                                          <div class="input-field col s9 m9" >
-                                      Interview Address: <input id="iadd" type="text" required>
+                                      Interview Address: <input id="iloc" type="text" required>
                                       </div>
                                     
                                      
@@ -387,7 +387,7 @@ function abort_round(confr)
   <div class="row" >
     <center>
     <p style="color: green" id="sendingmail">Sending Mail to the candidate...Please Wait !  </p>
-    <p style="color: green" id="sentsuccess">Mail sent successfully </p>
+    <p style="color: green" id="sentsuccess">Interviewer Updated </p>
     <p style="color: red" id="fail">Unable to send mail </p>
     </center>
   </div> 
@@ -706,10 +706,10 @@ function feedvalue(select){
 // console.log("selected "+id)
  var interviewer=select.options[select.selectedIndex].getAttribute("id");
  console.log("Location"+interviewer)
- document.getElementById("iloc").value=interviewer
+ document.getElementById("iadd").value=interviewer
  var sel = document.getElementById(interviewer);
  console.log("adress",sel.value)
- document.getElementById("iadd").value=sel.value
+ document.getElementById("iloc").value=sel.value
 
 
 
@@ -912,9 +912,9 @@ function completeProcess(cnfrm)
               {
                 $('#sentsuccess').fadeIn(600)
                 $('#sendingmail').hide()
+                finalselectionmail = []
                 window.setTimeout(function(){location.reload()},1000)
     
-                finalselectionmail = []
               }
               else
               {

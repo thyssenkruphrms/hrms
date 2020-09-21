@@ -20,21 +20,21 @@ $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
 if($cursor)
 {
         
-    foreach($_POST['emails'] as $d)
-    {
+    // foreach($_POST['emails'] as $d)
+    // {
     
-        $mail->addAddress($d);
-        $mail->Subject = 'Mail Regarding Interview';
-        $mail->Body    = 'You have been shortlisted for the interview. You have an interview on this '.$date[$j].'Time : '.$time[$j];
-        $j = $j+1;
+    //     $mail->addAddress($d);
+    //     $mail->Subject = 'Mail Regarding Interview';
+    //     $mail->Body    = 'You have been shortlisted for the interview. You have an interview on this '.$date[$j].'Time : '.$time[$j];
+    //     $j = $j+1;
 
-        if(!$mail->send()) 
-        {
-            $ctr = 1;
-        }
+    //     if(!$mail->send()) 
+    //     {
+    //         $ctr = 1;
+    //     }
     
-        $mail->ClearAddresses();
-    }
+    //     $mail->ClearAddresses();
+    // }
 
     if($ctr == 0)
     {
@@ -73,7 +73,7 @@ if($cursor)
     }
 
 
-    $db->interviews->insertOne(array("rid"=>$rid,"prf"=>$digit13[0],'pos'=>$digit13[1],"iid"=>$digit13[2],"members"=>$_POST['emails'],"evaluated"=>array(),"times"=>$_POST['cantimes'],"modtimes"=>$_POST['cantimes'],"dates"=>$_POST['candates'],"moddates"=>$_POST['candates'],"invname"=>$_POST['iname'],"designation"=>$_POST['idesg'],"intvmail"=>$_POST['intvmail'],"ilocation"=>$_POST['iloc'],"iperson"=>$_POST['iperson'],"dept"=>$_POST['dept'],"status"=>"0","invstatus"=>"0","accepted"=>"no"));
+    $db->interviews->insertOne(array("rid"=>$rid,"prf"=>$digit13[0],'pos'=>$digit13[1],"iid"=>$digit13[2],"members"=>$_POST['emails'],"evaluated"=>array(),"times"=>$_POST['cantimes'],"modtimes"=>$_POST['cantimes'],"dates"=>$_POST['candates'],"moddates"=>$_POST['candates'],"invname"=>$_POST['iname'],"designation"=>$_POST['idesg'],"intvmail"=>$_POST['intvmail'],"ilocation"=>$_POST['iloc'],"addresscode"=>$_POST['address'],"iperson"=>$_POST['iperson'],"dept"=>$_POST['idept'],"status"=>"0","invstatus"=>"0","accepted"=>"no"));
 
 
     $createuser= $db->users->insertOne(array("uid"=>$imail,"name"=>$invname,'password'=>$imail,"mail"=>$imail,"dsg"=>"inv","dept"=>$_POST['idept'],"rg"=>$_POST['iloc']));

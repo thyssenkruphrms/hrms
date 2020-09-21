@@ -389,16 +389,8 @@ input[type="file"]{
                                                 <div class="input-field col s6" >
                                                         <input id="manager" type="text" value="<?php echo $row["manager"]; ?>" readonly >
                                                         <label for="manager" >Reporting Manager Name & Designation</label>
-                                                </div>
-
-                                                <div class="input-field col s6" >
-                                                        <input id="ifselectposition" type="text"  value = "<?php echo $row["ifselectposition"]; ?>" readonly>
-                                                        <label for="ifselectposition" >Current Position</label>
-                                                </div>
-
-                                                
-
-                                             
+                                                </div>                                             
+                                        
                            
                                           </div>
 

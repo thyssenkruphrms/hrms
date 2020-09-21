@@ -16,6 +16,8 @@ if($cursor)
     $add=$_POST['address'];
     $iname=$_POST['iname'];
     $iloc=$_POST['iloc'];
+    $addresscode=$_POST['address'];
+
     $digit13 = explode("/", $_POST['prf']);
 
     // //Server Side Validation - Added by Sarang
@@ -50,7 +52,7 @@ if($cursor)
     $result3 = $db->prfs->findOne(array("prf"=>$digit13[0]));
 
     //Inserting a new interview in interviews collection 
-    $insertinvrecord = $db->interviews->insertOne(array("rid"=>$rid,"prf"=>$digit13[0],'pos'=>$digit13[1],"iid"=>$digit13[2],"members"=>$_POST['emails'],"times"=>$_POST['times'],"modtimes"=>$_POST['times'],"dates"=>$_POST['dates'],"moddates"=>$_POST['dates'],"evaluated"=>array(),"intvmail"=>$_POST['intv'],"invname"=>$_POST['iname'],"designation"=>$_POST['idesg'],"dept"=>$_POST['idept'],"ilocation"=>$_POST['iloc'],"iperson"=>$_POST['iperson'],"status"=>"0","invstatus"=>"0","accepted"=>"no"));
+    $insertinvrecord = $db->interviews->insertOne(array("rid"=>$rid,"prf"=>$digit13[0],'pos'=>$digit13[1],"iid"=>$digit13[2],"members"=>$_POST['emails'],"times"=>$_POST['times'],"modtimes"=>$_POST['times'],"dates"=>$_POST['dates'],"moddates"=>$_POST['dates'],"evaluated"=>array(),"intvmail"=>$_POST['intv'],"invname"=>$_POST['iname'],"designation"=>$_POST['idesg'],"dept"=>$_POST['idept'],"ilocation"=>$_POST['address'],"addresscode"=>$_POST['iloc'],"iperson"=>$_POST['iperson'],"status"=>"0","invstatus"=>"0","accepted"=>"no"));
     
 
     $createuser= $db->users->insertOne(array("uid"=>$invname,"name"=>$iname,'password'=>$invname,"mail"=>$invname,"dsg"=>"inv","dept"=>$_POST['idept'],"rg"=>$_POST['iloc']));

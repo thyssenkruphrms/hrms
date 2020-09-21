@@ -252,8 +252,11 @@ if(isset($_COOKIE['sid']))
                     <td><b style="color: green;font-size: 20px">Time :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_time']; ?></b></td>
                     </tr>
                     <tr>
-                    <td><b style="color: green;font-size: 20px">Place :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_place']; ?></b></td>
+                    <td><b style="color: green;font-size: 20px">Place :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['addresscode']; ?></b></td>
                     <td><b style="color: green;font-size: 20px">Contact Person :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_cperson']; ?></b></td>
+                    </tr>
+                    <tr>
+                    <td colspan="2"><b style="color: green;font-size: 20px">Address :</b> <b style="color: blue darken-1;font-size: 20px"><?php echo $doc['inv_place']; ?></b></td>
                     </tr>
                     </table>
                 </div>

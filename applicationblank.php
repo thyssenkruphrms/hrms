@@ -267,7 +267,7 @@ $_SESSION['positionapplied'] = $position;
                                             </div>
                                            
                                             <div class="input-field col s6">
-                                                <input id="udob dates" name="udob" onkeydown="return false" type="text" class="datepicker" onkeydown="return false"   required>
+                                                <input id="udob" name="udob" onkeydown="return false" type="text" class="datepicker" required>
                                                 <label for="udob">Date Of Birth</label>
                                             </div>
                                                  
@@ -538,13 +538,13 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="spouse" name="spouse" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)" >
+                                                    <input id="spouse" name="spouse" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
                                                     <label for="spouse">Spouse Name (Enter NA if not married)</label>
                                             </div>
 
                                             
                                             <div class="input-field col s3">
-                                                    <input id="spdob" name="spdob" type="text" class="datepicker" onkeydown="return false">
+                                                    <input id="spdob" name="spdob" type="text" class="datepicker" >
                                                     <label for="spdob">DOB</label>
                                             </div>
                                             
@@ -568,7 +568,7 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s3">
-                                                    <input id="c1dob" name="c1dob" type="text" class="datepicker" onkeydown="return false" >
+                                                    <input id="c1dob" name="c1dob" type="text" class="datepicker" >
                                                     <label for="c1dob">DOB</label>
                                             </div>
                                             <div class="col s3 ">
@@ -585,13 +585,13 @@ $_SESSION['positionapplied'] = $position;
 
                                             
                                             <div class="input-field col s6">
-                                                    <input id="child2" name="child2" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)" >
+                                                    <input id="child2" name="child2" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
                                                     <label for="child2">Child2 Name (Enter NA if not married)</label>
                                             </div>
 
                                             
                                             <div class="input-field col s3">
-                                                    <input id="c2dob" name="c2dob" type="text" class="datepicker" onkeydown="return false">
+                                                    <input id="c2dob" name="c2dob" type="text" class="datepicker">
                                                     <label for="c2dob">DOB</label>
                                             </div>
 
@@ -681,12 +681,12 @@ $_SESSION['positionapplied'] = $position;
                                           <div id="ref" class="col">
   
                                                 <div class="input-field col s6">
-                                                        <input id="refname" type="text" disabled value="Name" style="color: black">
+                                                        <input id="refname" onkeyup="this.value=this.value.toUpperCase();" type="text" disabled value="Name" style="color: black">
                                                 </div>
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="nameref0" name="nameref0[]" required class="validate" type="text" onkeypress="return mytextvalid(event)">
+                                                        <input id="nameref0" name="nameref0[]" onkeyup="this.value=this.value.toUpperCase();" required class="validate" type="text" onkeypress="return mytextvalid(event)">
                                                         <label for="nameref0">Reference</label>
                                                 </div>
                                                 
@@ -694,25 +694,25 @@ $_SESSION['positionapplied'] = $position;
                                                 
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="dsgref" type="text" disabled value="Designation" style="color: black">
+                                                        <input id="dsgref" onkeyup="this.value=this.value.toUpperCase();" type="text" disabled value="Designation" style="color: black">
                                                 </div>
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="designationref0" name="designationref0[]" required class="validate" type="text" onkeypress="return mytextvalid(event)">
+                                                        <input id="designationref0" name="designationref0[]" onkeyup="this.value=this.value.toUpperCase();" required class="validate" type="text" onkeypress="return mytextvalid(event)">
                                                         <label for="designationref0">Reference</label>
                                                 </div>
                                                 
                                                
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="cnameref" type="text" disabled value="Company Name" style="color: black">
+                                                        <input id="cnameref" onkeyup="this.value=this.value.toUpperCase();" type="text" disabled value="Company Name" style="color: black">
                                                         
                                                 </div>
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="cmpnmref0" name="cmpnmref0[]" required class="validate" type="text" onkeypress="return mytextvalid(event)">
+                                                        <input id="cmpnmref0" name="cmpnmref0[]" onkeyup="this.value=this.value.toUpperCase();" required class="validate" type="text" >
                                                         <label for="cmpnmref0">Reference </label>
                                                 </div>
 
@@ -723,7 +723,7 @@ $_SESSION['positionapplied'] = $position;
     
                                                 
                                                 <div class="input-field col s6">
-                                                        <input id="contref0" name="contref0[]" type="number" class="validate" required />
+                                                        <input id="contref0" name="contref0[]" onkeyup="this.value=this.value.toUpperCase();" type="number" class="validate" required />
                                                         <label for="contref0">Reference</label>
                                                 </div>
 
@@ -955,7 +955,7 @@ function addnewref(x)
         $('#error-ref').empty()
         ctr2 = ctr2+1
         
-        var txt='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email" onblur="ValidateEmail(document.applicationblank.uemail,"ref")""><label for="mailref'+ctr2+'">Reference</label><span id="error-mail-ref"></span></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)" ><i class="material-icons">add</i></a>&nbsp;<span id="error-ref0"></span></div></div>'
+        var txt='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black" onkeyup="this.value=this.value.toUpperCase();"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)" onkeyup="this.value=this.value.toUpperCase();"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onkeyup="this.value=this.value.toUpperCase();" ><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email" onblur="ValidateEmail(document.applicationblank.uemail,"ref")""><label for="mailref'+ctr2+'">Reference</label><span id="error-mail-ref"></span></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)" ><i class="material-icons">add</i></a>&nbsp;<span id="error-ref0"></span></div></div>'
         if(ctr2==1)
         {
                 $("#mainref").append(txt);
@@ -963,7 +963,7 @@ function addnewref(x)
         
         if(ctr2==2)
         {
-          var addclosebtn='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onkeypress="return mytextvalid(event)"><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email"><label for="mailref'+ctr2+'">Reference</label></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)"><i class="material-icons">add</i></a><a class="btn-floating btn" id="refrembtn" style="float:right" onclick="removelastref(this.id)"><i class="material-icons">close</i></a></div></div>'      
+          var addclosebtn='<div id="ref" class="col"><div class="input-field col s6"><input id="child2" type="text" disabled value="Name" style="color: black"></div><div class="input-field col s6"><input name="nameref0[]" id="nameref'+ctr2+'" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)"><label for="nameref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Designation" style="color: black"></div><div class="input-field col s6"><input name="designationref0[]" id="designationref'+ctr2+'" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)"><label for="designationref'+ctr2+'">Reference</label></div><div class="input-field col s6"> <input id="child2" type="text" disabled value="Company Name" style="color: black"></div><div class="input-field col s6"><input name="cmpnmref0[]" id="cmpnmref'+ctr2+'" type="text" onkeyup="this.value=this.value.toUpperCase();"><label for="cpmnmref'+ctr2+'">Reference </label></div><div class="input-field col s6"><input id="child2" type="text" disabled value="Contact Number" style="color: black"></div><div class="input-field col s6"><input name="contref0[]" id="contref'+ctr2+'" type="number" onchange="checkcont(this.id)" required><label for="contref'+ctr2+'">Reference</label></div><div class="input-field col s6"><input id="phoneref" type="text" disabled value="LandLine Number (Optional)" style="color: black"></div><div class="input-field col s3"><input id="stdcoderef'+ctr2+'" name="stdcoderef0[]" type="number"/><label for="stdcoderef'+ctr2+'" id="stdref">STD Code</label></div><div class="input-field col s3"><input id="phoneref'+ctr2+'" name="phoneref0[]" type="number"/><label for="phoneref'+ctr2+'" id="teleref">Phone Number</label></div><div class="input-field col s6"><input id="child2" type="text" d<isabled value="Email" style="color: black"></div><div class="input-field col s6"><input name="mailref0[]" id="mailref'+ctr2+'" type="email"><label for="mailref'+ctr2+'">Reference</label></div><div class="col s6" id="addnextref"><a class="btn-floating btn" onclick="addnewref(this)"><i class="material-icons">add</i></a><a class="btn-floating btn" id="refrembtn" style="float:right" onclick="removelastref(this.id)"><i class="material-icons">close</i></a></div></div>'      
           $("#mainref").append(addclosebtn);
           
         }
@@ -1126,7 +1126,6 @@ $("#submitformdata").click(function ()
                                         } 
                                         else
                                         {
-                                                alert("This si");
                                                 $('#loader').show()
                                                 fd.append("nameref0",JSON.stringify(nameref0))
                                                 fd.append("designationref0",JSON.stringify(designationref0))
