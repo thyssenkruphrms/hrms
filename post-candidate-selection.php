@@ -143,42 +143,42 @@ input::-webkit-inner-spin-button {
                     </div>
 
 
-                    <b>Name of Nominnees</b>
+                    <b>Name of Nominees</b>
                     <div class="row">
                             <div class="input-field col s6">
                                     <input id="nom1" name="nom1" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
-                                    <label for="nom1">Nominnee 1</label>
+                                    <label for="nom1">Nominee 1</label>
                             </div>
                             <div class="input-field col s6">
                                 <input id="n1dobdates" name="mydate" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
-                                <label for="mydate">Date Of Birth</label>
+                                <label for="n1dobdates">Date Of Birth</label>
                             </div>
 
                             <div class="input-field col s6">
                                     <input id="nom2" name="nom2" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
-                                    <label for="nom2">Nominnee 2</label>
+                                    <label for="nom2">Nominee 2</label>
                             </div>
                             <div class="input-field col s6">
                                 <input id="n2dobdates" name="mydate" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
-                                <label for="mydate">Date Of Birth</label>
+                                <label for="n2dobdates">Date Of Birth</label>
                             </div>
 
                             <div class="input-field col s6">
                                     <input id="nom3" name="nom3" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
-                                    <label for="nom3">Nominnee 3</label>
+                                    <label for="nom3">Nominee 3</label>
                             </div>  
                             <div class="input-field col s6">
                                 <input id="n3dobdates" name="mydate" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
-                                <label for="mydate">Date Of Birth</label>
+                                <label for="n3dobdates">Date Of Birth</label>
                             </div>
 
                             <div class="input-field col s6">
                                     <input id="nom4" name="nom4" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
-                                    <label for="nom4">Nominnee 4</label>
+                                    <label for="nom4">Nominee 4</label>
                             </div> 
                             <div class="input-field col s6">
                                 <input id="n4dobdates" name="mydate" onkeydown="return false" type="text" class="datepicker" onkeydown="return false" required aria-required="true" required>
-                                <label for="mydate">Date Of Birth</label>
+                                <label for="n4dobdates">Date Of Birth</label>
                             </div>                     
                     </div>
 

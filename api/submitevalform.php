@@ -65,10 +65,10 @@ $nom2=$_POST['nom2'];
 $nom3=$_POST['nom3'];
 $nom4=$_POST['nom4'];
 
-$n1dob=$_POST['n1dob'];
-$n2dob=$_POST['n2dob'];
-$n3dob=$_POST['n3dob'];
-$n4dob=$_POST['n4dob'];
+$n1dob=$_POST['n1dobdates'];
+$n2dob=$_POST['n2dobdates'];
+$n3dob=$_POST['n3dobdates'];
+$n4dob=$_POST['n4dobdates'];
 
 echo $namecancelcheck;
 echo "<br>".$mailid;

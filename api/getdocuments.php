@@ -33,7 +33,7 @@ if($cursor)
         $valid = array();
         foreach($cursor as $d)
         {
-            $arr = array($d['usercv'],$d['idproof'],$d['adhaar'],$d['userphoto'],$d['proof_address'],$d['appletter'],$d['pastpayslip'],$d['uan'],$d['cancelledcheck'],$d['ugcert'],$d['pgcert'],$d['salarybreakup']);
+            $arr = array($d['usercv'],$d['idproof'],$d['adhaar'],$d['userphoto'],$d['proof_address'],$d['appletter'],$d['pastpayslip'],$d['uan'],$d['cancelledcheck'],$d['ugcert'],$d['pgcert'],$d['salarybreakup'],$d['nom1'],$d['nom2'],$d['nom3'],$d['nom4'],$d['n1dob'],$d['n2dob'],$d['n3dob'],$d['n4dob']);
         }
 
         // send valid and all documents

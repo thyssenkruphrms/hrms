@@ -51,7 +51,36 @@ $cursor = $db->tokens->find();
         <div class="card white">
             <div class="card-content blue-text">
                 <span class="card-title"><p id="mail" style="color: green"></p></span> <br>
-                <input type="text" value="" id="uan" name="uan" disabled style="color:green;text-align:center;font-weight: bold;font-size:30px;"><br>
+                <p id="uan" name="uan" disabled style="color:green;text-align:center;font-weight: bold;font-size:30px;"></p><br>
+                <center>
+                <table id="noms" style="color:green;width:50%;">
+                <tr>
+                    <th>Nominee1 Name</th>
+                    <td id="nom1n" style="color:#1e88e5;"></td>
+                    <th>Nominee1 DOB</th>
+                    <td id="nom1d" style="color:#1e88e5;"></td>
+                </tr>
+                <tr>
+                    <th>Nominee2 Name</th>
+                    <td id="nom2n" style="color:#1e88e5;"></td>
+                    <th>Nominee2 DOB</th>
+                    <td id="nom2d" style="color:#1e88e5;"></td>
+                </tr>
+                <tr>
+                    <th>Nominee3 Name</th>
+                    <td id="nom3n" style="color:#1e88e5;"></td>
+                    <th>Nominee3 DOB</th>
+                    <td id="nom3d" style="color:#1e88e5;"></td>
+                </tr>
+                <tr>
+                    <th>Nominee4 Name</th>
+                    <td id="nom4n" style="color:#1e88e5;"></td>
+                    <th>Nominee4 DOB</th>
+                    <td id="nom4d" style="color:#1e88e5;"></td>
+                </tr>                
+                </table>
+                </center>
+                <br><br>
                 <table class="striped">
                     <thead>
                       <tr>
@@ -1334,12 +1363,14 @@ $.ajax({
     success:function(para)
     {
         // alert(para)
-       window.name = para 
+       window.name = para
+       var str = "<center><b>Candidate Name : "+window.name+"</b></center><br><center><b>Candidate Application Blank : <b><a href='http://localhost/hrms/applicationblank_readonly.php?aid="+m+"' target='_blank'><button class='btn waves-effect white darken-1'><b>View Form</b></a></center>"
+       $("#mail").append(str) 
     }
 })
 
-var str = "<center><b>Candidate Name : "+window.name+"</b></center><br><center><b>Candidate Application Blank : <b><a href='http://localhost/hrms/applicationblank_readonly.php?aid="+m+"' target='_blank'><button class='btn waves-effect white darken-1'><b>View Form</b></a></center>"
-$("#mail").append(str)
+// var str = "<center><b>Candidate Name : "+window.name+"</b></center><br><center><b>Candidate Application Blank : <b><a href='http://localhost/hrms/applicationblank_readonly.php?aid="+m+"' target='_blank'><button class='btn waves-effect white darken-1'><b>View Form</b></a></center>"
+// $("#mail").append(str)
 $("#rcv1").hide()
 $("#raf1").hide()
 $("#rpan1").hide()
@@ -1384,10 +1415,18 @@ $.ajax({
         $("#al").attr("value",para[0][5])
         $("#sb").attr("value",para[0][11])
         $("#payslip").attr("value",para[0][6])
-        $("#uan").attr("value","UAN:  "+para[0][7])
+        $("#uan").append("UAN : "+para[0][7])
         $("#cc").attr("value",para[0][8]) 
         $("#ugcert").attr("value",para[0][9])  
         $("#pgcert").attr("value",para[0][10])  
+        $("#nom1n").append(para[0][12]?para[0][12]:"NA")
+        $("#nom1d").append(para[0][16]?para[0][16]:"NA")
+        $("#nom2n").append(para[0][13]?para[0][13]:"NA")
+        $("#nom2d").append(para[0][17]?para[0][17]:"NA")
+        $("#nom3n").append(para[0][14]?para[0][14]:"NA")
+        $("#nom3d").append(para[0][18]?para[0][18]:"NA")
+        $("#nom4n").append(para[0][15]?para[0][15]:"NA")
+        $("#nom4d").append(para[0][19]?para[0][19]:"NA")
 
         validcount = para[1].length
         for(let i=0;i<para[1].length;i++)
