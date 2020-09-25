@@ -539,7 +539,7 @@ $_SESSION['positionapplied'] = $position;
                                             
                                             <div class="input-field col s6">
                                                     <input id="spouse" name="spouse" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
-                                                    <label for="spouse">Spouse Name (Enter NA if not married)</label>
+                                                    <label for="spouse">Spouse Name (Enter NA if NOT APPLICABLE)</label>
                                             </div>
 
                                             
@@ -563,7 +563,7 @@ $_SESSION['positionapplied'] = $position;
                                             
                                             <div class="input-field col s6">
                                                     <input id="child1" name="child1" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)" >
-                                                    <label for="child1">Child1 Name (Enter NA if not married)</label>
+                                                    <label for="child1">Child1 Name (Enter NA if NOT APPLICABLE)</label>
                                             </div>
 
                                             
@@ -586,7 +586,7 @@ $_SESSION['positionapplied'] = $position;
                                             
                                             <div class="input-field col s6">
                                                     <input id="child2" name="child2" type="text" onkeyup="this.value=this.value.toUpperCase();" onkeypress="return mytextvalid(event)">
-                                                    <label for="child2">Child2 Name (Enter NA if not married)</label>
+                                                    <label for="child2">Child2 Name (Enter NA if NOT APPLICABLE)</label>
                                             </div>
 
                                             
@@ -985,50 +985,50 @@ function removelastref(x)
 
 function checkUG()
 {
-       if( $("#selectug").val() == "Others")
-       {
-        $("#otherUg").show()
-       }
-       else
-       {
-        $("#otherUg").hide()
-       }
+        if( $("#selectug").val() == "Others")
+        {
+                $("#otherUg").show(800)
+        }
+        else
+        {
+                $("#otherUg").hide(800)
+        }
 }
 
 function checkSpecialUG()
 {
-       if( $("#specialug").val() == "Others")
-       {
-        $("#otherspecialUg").show()
-       }
-       else
-       {
-        $("#otherspecialUg").hide()
-       }
+        if( $("#specialug").val() == "Others")
+        {
+                $("#otherspecialUg").show(800)
+        }
+        else
+        {
+                $("#otherspecialUg").hide(800)
+        }
 }
 
 function checkPG()
 {
-       if( $("#selectpg").val() == "Others")
-       {
-        $("#otherPg").show()
-       }
-       else
-       {
-        $("#otherPg").hide()
-       }
+        if( $("#selectpg").val() == "Others")
+        {
+                $("#otherPg").show(800)
+        }
+        else
+        {
+                $("#otherPg").hide(800)
+        }
 }
 
 function checkSpecialPG()
 {
-       if( $("#selectpg").val() == "Others")
-       {
-        $("#otherspecialPg").show()
-       }
-       else
-       {
-        $("#otherspecialPg").hide()
-       }
+        if( $("#specialpg").val() == "Others")
+        {
+                $("#otherspecialPg").show(800)
+        }
+        else
+        {
+                $("#otherspecialPg").hide(800)
+        }
 }
 
 function checkEmployer(me,cid)
