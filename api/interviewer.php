@@ -56,7 +56,6 @@ if($cursor)
     
 
     $createuser= $db->users->insertOne(array("uid"=>$invname,"name"=>$iname,'password'=>$invname,"mail"=>$invname,"dsg"=>"inv","dept"=>$_POST['idept'],"rg"=>$_POST['iloc']));
-    $credentials = '';
      
     $credentials = '<br><br>Your Credentials for Login are as follows : <br><br>User ID : '.$invname.'<br><br>Password : '.$invname.'<br>';
 
