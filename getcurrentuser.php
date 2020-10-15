@@ -11,7 +11,7 @@ if(isset($_COOKIE['sid']))
   {
     $cursor = $db->users->findOne(array("uid" => $cursor['uid']));
     
-    
+    $mymail=$cursor["mail"];
   }
 ?>
 <!DOCTYPE html>
@@ -114,7 +114,7 @@ if(isset($_COOKIE['sid']))
     
    
 
-    <td><?php echo $cursor['dsg']; ?></td>
+    <td><?php echo $cursor['name']; ?></td>
     
     
     
@@ -122,7 +122,7 @@ if(isset($_COOKIE['sid']))
     
   </tr>
   <tr><th>Mail</th>
-  <td><?php echo  $cursor['mail']; ?></td></tr>
+  <td id="mail"><?php echo  $cursor['mail']; ?></td></tr>
 
   <tr><th>Designation</th>
   <td><?php echo  $cursor['dsg']; ?></td></tr>
@@ -133,10 +133,25 @@ if(isset($_COOKIE['sid']))
   <tr><th>Department</th>
      <td><?php echo  $cursor['dept']; ?></td></tr>
 
-  <tr> <th>Edit</th>
-  <td><input type="button" value="Edit"/></td></tr>
+  <tr> <th>Enable Change Password</th>
+  <td><input type="button" value="Enable Change Password" onclick="showhide()"/></td></tr>
+
+  
+  <tr> <th>Type New  Password</th>
+  <td><input type="text" style="visibility:hidden" id="case"/></td></tr>
+  
+  
+  
   
 </table>
+<br>
+<center>
+<div>
+<button type="button"  style="visibility:hidden" id="chps" onclick="changepassword()">Change Password</input>
+</div>
+<br>
+<div class="msg" id="msg"/>
+</center>
 
 </body>
 <script src="public/js/common.js"></script>
@@ -145,6 +160,63 @@ if(isset($_COOKIE['sid']))
 <script src="public/js/materialize.min.js"></script>
 <script src="./public/js/logout.js"></script>
 </html>
+
+<script>
+
+function showhide(){
+  console.log("hi")
+document.getElementById("case").style.visibility = 'visible '
+document.getElementById("chps").style.visibility = 'visible '
+}
+
+function changepassword(){
+  var newpassword=document.getElementById("case").value
+ 
+  
+ 
+  if(newpassword==""){
+    console.log("null")
+  }else{
+    //console.log("mymail"+mymail)
+    $.ajax({
+    url:'http://localhost/hrms/api/updatepass.php',
+    type:'POST',
+    data:{
+      "pass":newpassword
+      
+    },
+    success:function(para)
+    {
+      console.log(para)
+
+      if(para.success=="true"){
+        setTimeout(function(){
+     document.getElementById("msg").innerHTML="Password Updated";
+     },100);
+
+
+     setTimeout(function(){
+     document.getElementById("msg").innerHTML="";
+     document.getElementById("msg").color="green"
+     },5000);
+      }
+
+    }});
+
+
+
+  
+
+    
+    
+    
+
+
+
+  }
+}
+
+</script>
 
 <?php
 
