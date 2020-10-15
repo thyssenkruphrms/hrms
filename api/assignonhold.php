@@ -11,7 +11,7 @@ if($cursor)
     if(isset($_POST))
     {
         include 'maildetails.php';
-        $mail->setFrom("tkep", 'tkei');
+        $mail->setFrom("thyssenkrupp", 'tkei');
         $mail->addReplyTo(Email, 'Information');
         $mail->isHTML(true);  
         $result = $db->rounds->find(array("prf"=>$_POST["prf"],"pos"=>$_POST['pos'],"iid"=>$_POST['iid']),array('sort' => array('_id' => -1)));

@@ -6,7 +6,7 @@ $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
 
 if($cursor)
 {
-    $mail->setFrom("tkep", 'tkei');
+    $mail->setFrom("thyssenkrupp", 'tkei');
     $mail->addReplyTo(Email, 'Information');
     $mail->isHTML(true);   
     //$mail->SMTPDebug=4;
@@ -56,7 +56,9 @@ if($cursor)
     
 
     $createuser= $db->users->insertOne(array("uid"=>$invname,"name"=>$iname,'password'=>$invname,"mail"=>$invname,"dsg"=>"inv","dept"=>$_POST['idept'],"rg"=>$_POST['iloc']));
-    
+    $credentials = '';
+     
+    $credentials = '<br><br>Your Credentials for Login are as follows : <br><br>User ID : '.$invname.'<br><br>Password : '.$invname.'<br>';
 
 
 
@@ -146,6 +148,7 @@ if($cursor)
                                     Contact Person - '.$_POST['iperson'].'
                                     <br><br>
                                     To access your dashboard for more details, please click <a href='.$dashurl.'>here</a> 
+                                    '.$credentials.'
                                     In-case of any query, feel free to reach out to recruitment@tkeap.com
                                     
                                     tkEI Recruiting Team.
