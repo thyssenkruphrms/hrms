@@ -4,7 +4,7 @@
 include 'maildetails.php';
 include 'db.php';
 
-$mail->setFrom("thyssenkrupp", 'Interview Call');
+$mail->setFrom("thyssenkrupp", 'tkei');
 $mail->addReplyTo(Email, 'Information');
 $mail->isHTML(true);   
 
