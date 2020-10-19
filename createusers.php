@@ -82,49 +82,16 @@ if(isset($_COOKIE['sid']))
 
     <br>
 
-    <!-- card stars -->
-    <div class="row">
-        <div class="col s12 m6 offset-m3">
-            <div class="card white">
-                <div class="card-content blue-text">
-                <a class="btn red modal-trigger" href="#modal1" style="float:right;" id="mymodal">CSV FILE FORMAT</a>
-                <span class="card-title">Upload Dump</span>
-                <p>Upload csv dump here cosisting of all the previous data.<br>
-                    Once the file is uploaded
-                 cannot be changed.   
-                </p>
-
-                <form method="POST" id="myform" action="api/importUserExcel.php"  enctype="multipart/form-data">
-                            
-                         
-                    <div class="input-field col s12 offset-m4" id="uphoto">
-                            <label class="custom-file-upload" id="prof">
-                                <a class="btn blue darken-1">
-                                <input id="uploadcsv" required type="file" accept=".csv" name="uploadcsv" onchange="readURL(this)"><p id='myfile0'><i class="material-icons right">open_in_browser</i> </p></a>
-                            </label>
-                            <br><br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <!-- <button type="submit" class="btn blue darken-1" name="submit" id="submit" value="Upload">
-                      <i class="material-icons right">send</i>Upload</button> -->
-                      <input type="button" class="btn blue darken-1" value="Upload" id="but_upload"> </input>
-                   
-                    </div>
-                </form>
-                <br><br><br><br><br>
-                </div>
-
-            </div>
-        </div>
-  </div>
     <!-- card ends -->
 
     <br>
   <div class="row" id='row' >
-    <div class="col m4 offset-m4">
+    <div class="col m6 offset-m4">
       <div class="card  white">
         <div class="card-content white-text">
           
           
-          <div class="col s12 ">
+          <div class="col s16 ">
 
           <div class="input-field col s1 blue-text">
           <i class="material-icons prefix ">assignment_ind</i>
