@@ -81,7 +81,7 @@ if($cursor)
                 }
                     echo json_encode($arr);
             }
-            
+             
 
         }
         else
