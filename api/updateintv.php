@@ -12,6 +12,7 @@ if($cursor)
     $invname=$_POST['intv'];
     $oldintv=$_POST['oldintv'];
     $emails = $_POST['emails'];
+    $iname=$_POST['iname'];
     $ctr = 0;
     $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
 
@@ -107,6 +108,8 @@ if($cursor)
                         //Start - Create new document if the new interviewer doesnt exists.
                         $result=$db->interviews->updateOne(array("rid"=>$digit13[3],"prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"intvmail"=>$_POST['oldintv']),array('$set'=>array("intvmail"=>$_POST['intv'],"invname"=>$_POST['iname'],"designation"=>$_POST['idesg'],"dept"=>$_POST['idept'],"dates"=>$dates,"moddates"=>$dates,"times"=>$times,"modtimes"=>$times,"ilocation"=>$_POST['iloc'],"iperson"=>$_POST['iperson'],"invstatus"=>"0","accepted"=>"no")));
                         //END - Create new document if the new interviewer doesnt exists.
+                        $createuser= $db->users->insertOne(array("uid"=>$invname,"name"=>$iname,'password'=>$invname,"mail"=>$invname,"dsg"=>"inv","dept"=>$_POST['idept'],"rg"=>$_POST['iloc']));
+    
                     }
         
         
