@@ -338,6 +338,9 @@ function abort_round(confr)
                           <label class="active" for="hr2desg" id="hr2desg" required>HR2 Designation</label>
                         </div>
       
+
+
+
                     </div>
                       
                     
@@ -494,26 +497,38 @@ function abort_round(confr)
       </div>
       <div class="row" id="allocation3" style="display:none;">
               <div class="col s12 m12" style="border: solid 5p">
-                <div class="card white">
-                  <div class="card-content blue-text">
-                    <div class="row">
-                  
-                    <div class="input-field col s3 m3 " >
-                        <input id="hr2name" type="text" class="text">
-                        <label class="active" for="hr2name" id="hr2name" required>HR2 Name</label>
-                      </div>  
+            
 
-                      <div class="input-field col s3 m3 white-text" >
-                        <input id="hr2mail" type="text" >
-                        <label class="active" for="hr2mail" required>HR2 Mail ID</label>
-                      </div>
+                <div class="card white" class="col s4 m4">
+               
+                
+                 
+                 
+                  <div class="card-content blue-text">
+                  
+                  <div class="row">
+                  
+                <div class="col s4 m4" style="border: solid 5p">
+                <select id='selecthr2' class="dropdown-trigger btn blue darken-1 " onchange="selecthr2data(this.id)">
+                              <option id="" value=""  style="color: white">Select HR2</option>
+                  </select>
+                </div>
+
+                </div>
+                 
+    
+                    <div class="input-field col s3 m3 " >
+                        Name<input id="hr2name" type="text" class="text" required>
+                                             </div>  
+
                       <div class="input-field col s3 m3 " >
-                          <input id="hr2dept" type="text" class="text">
-                          <label class="active" for="hr2dept" id="hr2dept" required>HR2 Department</label>
+                        Mail Id<input id="hr2mail" type="text" required>
+                       </div>
+                      <div class="input-field col s3 m3 " >
+                        Department  <input id="hr2dept" type="text" class="text" required>
                         </div>                                    
                         <div class="input-field col s3 m3 " >
-                          <input id="hr2desg" type="text" class="text">
-                          <label class="active" for="hr2desg" id="hr2desg" required>HR2 Designation</label>
+                         Designation <input id="hr2desg" type="text" class="text" required>
                         </div>
       
                     </div>
@@ -701,6 +716,51 @@ $('#submit').click(function()
 })
 
 
+function selecthr2data(id){
+
+ 
+  var x = document.getElementById("selecthr2").value;
+  console.log(x)
+
+  if(x!=""){
+
+    
+    $.ajax({
+            url:'http://localhost/hrms/api/gethr2alldata.php',
+            type:'POST',
+            data:{
+
+              "hr2":x
+
+            },
+          
+            success:function(para)
+
+            {
+              var para=JSON.parse(para)
+              var para=para.hr2s
+              console.log(para[0])
+              document.getElementById('hr2name').value=para[1]
+              document.getElementById('hr2desg').value=para[3]
+              document.getElementById('hr2mail').value=para[0]
+              document.getElementById('hr2dept').value=para[2]
+
+
+            }
+    }
+    );
+    
+
+  }else{
+              document.getElementById('hr2name').value=""
+              document.getElementById('hr2desg').value=""
+              document.getElementById('hr2mail').value=""
+              document.getElementById('hr2dept').value=""
+  }
+ 
+}
+
+
 function feedvalue(select){
 
 // console.log("selected "+id)
@@ -819,6 +879,8 @@ $('#completeinvprocess').click(function()
         });
   $("#modal8").modal("open")
 
+  
+
 })
 function terminateround(id,status)
 {
@@ -834,7 +896,30 @@ function terminateround(id,status)
     {
        $('#allocation3').css("display","block")
        $('#hiddenID').attr('value', id);
-       console.log("this is ")
+       
+      $.ajax({
+            url:'http://localhost/hrms/api/gethr2.php',
+            type:'GET',
+          
+            success:function(para)
+
+            {
+              var para=JSON.parse(para)
+              console.log(para.interviewers)
+              var len=para.interviewers.length
+              var daySelect = document.getElementById('selecthr2');
+        
+
+              for(i=0;i<len;i++){
+                daySelect.innerHTML += "<option value="+para.interviewers[i]+">"+para.interviewers[i]+"</option >";
+              }
+
+
+              console.log(daySelect.innerHTML)
+            }
+    }
+    );
+       
     }
   }
   else
@@ -844,6 +929,7 @@ function terminateround(id,status)
           backdrop: "static"
         });
       $("#modal8").modal("open")
+
   }
 
     
@@ -858,8 +944,12 @@ function completeProcess(cnfrm)
 
   if(cnfrm)
   {
-    // id=id.split('/')
-    // id = id[0]+'-'+id[1]+'-'+id[2]+'-'+id[3]
+
+
+  
+
+
+
     var id  = $("#hiddenID").val();
     console.log("This is prf - "+id)
     
