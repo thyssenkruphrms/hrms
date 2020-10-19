@@ -123,7 +123,7 @@ if(isset($_COOKIE['sid']))
       <br>
       
       <center><h2>Are You Sure ?</h2></center>
-      <center><p>Interview Process Will Be Completed.You Can See These Members in Your History</p></center>
+      <center><p>Interviewer Will be Assigned to the candidate(s)</p></center>
     </div>
     <div class="modal-footer">
       <center>

@@ -93,6 +93,13 @@ if($cursor)
         //Query to add empty arrays to documents - selected, rejected, onhold
         $db->rounds->updateOne($criteria,array('$set'=>array("selected"=>array(),"rejected"=>array(),"onhold"=>array())));
         //send mail to  interviewer 
+        $candidates = [];
+        for($i=0;$i<count($_POST['emails']);$i++)
+        {
+            $q = $db->tokens->findOne(array("email"=>$_POST['emails'][$i]));
+            array_push($candidates,$q["full_name"]);
+        }
+        $candidates = implode(", ",$candidates);
         $dashurl="http://localhost/hrms/invdash.php";
         $mail->addAddress($_POST['intv']);
         $mail->Subject = 'Interview schedule for '.$result3['department'].' - '.$result3['position'].' .';
@@ -145,6 +152,10 @@ if($cursor)
                                     Location - '.$_POST['iloc'].'
                                     <br><br>
                                     Contact Person - '.$_POST['iperson'].'
+                                    <br><br>
+                                    Candidates Name: 
+                                    <br>
+                                    '.$candidates.'
                                     <br><br>
                                     To access your dashboard for more details, please click <a href='.$dashurl.'>here</a> 
                                     '.$credentials.'

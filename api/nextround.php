@@ -28,20 +28,32 @@ if($cursor)
             {
                 //get candidate of that particular prf initiated
                 $selectednames=$cursor['selected'];
+                $inve = [];
+                $invn = [];
                 $i=0;
                 foreach($selectednames as $d)
                 {
-                    $invdetails = $db->intereval->findOne(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3],"email"=>$d));
+                    $invdetails = $db->intereval->find(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"email"=>$d));
+                    foreach($invdetails as $ids)
+                    {
+                        array_push($inve,$ids['interviewer']);
+                        array_push($invn,$ids['inv_name']);
+                    }
                     $getselectednames =  $db->tokens->findOne(array("prf"=>$digit13[0],"pos"=>$digit13[1],"email"=>$d));
-                    $arr[$i]=array($getselectednames['full_name'],$d,"Selected",$invdetails['interviewer'],$invdetails['inv_name']);
+                    $arr[$i]=array($getselectednames['full_name'],$d,"Selected",implode(", ",$inve),implode(", ",$invn));
                     $i++;
                 }
                 $rejectednames=$cursor['rejected'];
                 foreach($rejectednames as $d)
                 {
                     $invdetails = $db->intereval->findOne(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3],"email"=>$d));
+                    foreach($invdetails as $ids)
+                    {
+                        array_push($inve,$ids['interviewer']);
+                        array_push($invn,$ids['inv_name']);
+                    }
                     $getrejectednames =  $db->tokens->findOne(array("prf"=>$digit13[0],"pos"=>$digit13[1],"email"=>$d));
-                    $arr[$i]=array($getrejectednames['full_name'],$d,"Rejected",$invdetails['interviewer'],$invdetails['inv_name']);
+                    $arr[$i]=array($getrejectednames['full_name'],$d,"Rejected",implode(", ",$inve),implode(", ",$invn));
                     $i++;
                 }
 
@@ -50,15 +62,20 @@ if($cursor)
                 {
                     $email = explode(",",$d);
                     $invdetails = $db->intereval->findOne(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3],"email"=>$d));
+                    foreach($invdetails as $ids)
+                    {
+                        array_push($inve,$ids['interviewer']);
+                        array_push($invn,$ids['inv_name']);
+                    }
                     $getholdnames =  $db->tokens->findOne(array("prf"=>$digit13[0],"pos"=>$digit13[1],"email"=>$email[0]));
                     if($email[1] != "")
                     {
-                        $arr[$i]=array($getholdnames['full_name'],$email[0],$email[1],$invdetails['interviewer'],$invdetails['inv_name']);
+                        $arr[$i]=array($getholdnames['full_name'],$email[0],$email[1],implode(", ",$inve),implode(", ",$invn));
                         $i++;
                     }
                     else
                     {
-                        $arr[$i]=array($getholdnames['full_name'],$email[0],"On Hold",$invdetails['interviewer'],$invdetails['inv_name']);
+                        $arr[$i]=array($getholdnames['full_name'],$email[0],"On Hold",implode(", ",$inve),implode(", ",$invn));
                         $i++;
                     }
                 }

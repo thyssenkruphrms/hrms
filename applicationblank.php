@@ -175,7 +175,7 @@ $_SESSION['positionapplied'] = $position;
                                         <div class="file-field input-field">
                                                 <div class="btn blue darken-1">
                                                         <span>Upload CV</span>
-                                                        <input id="mycv" name="mycv" required type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                                        <input id="mycv" name="mycv" required type="file" accept=".pdf">
                                                 </div>
                                                 <div class="file-path-wrapper">
                                                         <input class="file-path validate" type="text">
