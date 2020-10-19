@@ -9,7 +9,6 @@ if($cursor)
 {
     if(isset($_GET))
     {
-       
         // get prf from GET request
         $digit13 = explode("-",$_GET["id"]);
         $cursor = $db->tokens->find(array("prf"=>$digit13[0],"pos"=>$digit13[1],"afterselection"=>array('$exists'=>true)));
@@ -19,7 +18,6 @@ if($cursor)
             if($doc['afterselection']=="6" or $doc['afterselection']=="7" or $doc['afterselection']=="8")
             {
                 $members_arr = array(array());
-                
             }
             else
             {
@@ -48,7 +46,6 @@ if($cursor)
                     else
                     {
                         $members_arr = array(array());
-                        
                     }
                 }
                 }
