@@ -22,7 +22,6 @@ if($cursor)
     $result = $db->rounds->find(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2]),array('sort' => array('_id' => -1)));
 
     $i = 0;
-    
     foreach($result as $doc)
     {
         $arr[$i] = $doc;
