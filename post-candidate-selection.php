@@ -150,7 +150,7 @@ input::-webkit-inner-spin-button {
                                     <label for="nom1">Nominee 1</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="n1dobdates" name="mydate" type="text" class="datepicker"  required aria-required="true" required>
+                                <input id="n1dobdates" name="n1dobdates" type="text" class="datepicker"  required aria-required="true" required>
                                 <label for="n1dobdates">Date Of Birth</label>
                             </div>
 
@@ -159,7 +159,7 @@ input::-webkit-inner-spin-button {
                                     <label for="nom2">Nominee 2</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="n2dobdates" name="mydate"  type="text" class="datepicker"  required aria-required="true" required>
+                                <input id="n2dobdates" name="n2dobdates"  type="text" class="datepicker"  required aria-required="true" required>
                                 <label for="n2dobdates">Date Of Birth</label>
                             </div>
 
@@ -168,7 +168,7 @@ input::-webkit-inner-spin-button {
                                     <label for="nom3">Nominee 3</label>
                             </div>  
                             <div class="input-field col s6">
-                                <input id="n3dobdates" name="mydate"  type="text" class="datepicker"  required aria-required="true" required>
+                                <input id="n3dobdates" name="n3dobdates"  type="text" class="datepicker"  required aria-required="true" required>
                                 <label for="n3dobdates">Date Of Birth</label>
                             </div>
 
@@ -177,7 +177,7 @@ input::-webkit-inner-spin-button {
                                     <label for="nom4">Nominee 4</label>
                             </div> 
                             <div class="input-field col s6">
-                                <input id="n4dobdates" name="mydate"  type="text" class="datepicker"  required aria-required="true" required>
+                                <input id="n4dobdates" name="n4dobdates"  type="text" class="datepicker"  required aria-required="true" required>
                                 <label for="n4dobdates">Date Of Birth</label>
                             </div>                     
                     </div>
