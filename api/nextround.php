@@ -78,7 +78,7 @@ if($cursor)
                             $inve = [];
                             $invn = [];
                             $email = explode(",",$d);
-                            $invdetails = $db->intereval->find(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"rid"=>$digit13[3],"email"=>$d));
+                            $invdetails = $db->intereval->find(array("prf"=>$digit13[0],"pos"=>$digit13[1],"iid"=>$digit13[2],"email"=>$email[0]));
                             foreach($invdetails as $ids)
                             {
                                 array_push($inve,$ids['interviewer']);

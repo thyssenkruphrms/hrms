@@ -13,6 +13,9 @@ if($cursor1)
         $i = 0;
         $ctr = 0;
         $p = 0;
+        $s = 0;
+        $r = 0;
+        $h = 0;
         
         foreach($cursor as $doc)
         {
@@ -25,9 +28,6 @@ if($cursor1)
                 $orderCount2 = iterator_to_array($getselectedStatus['rejected']);
                 $orderCount3 = iterator_to_array($getselectedStatus['onhold']);
 
-                $s = 0;
-                $r = 0;
-                $h = 0;
 
                 if(in_array($doc['evaluated'][$j],$orderCount1))
                 {

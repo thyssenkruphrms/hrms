@@ -500,7 +500,7 @@ function xyz(x)
               {
                 
                 $("#select").click()
-               console.log( JSON.parse(para))
+               console.log( "hii : ",JSON.parse(para))
               if(para != "no data")
               {
                 parseddata = JSON.parse(para)
