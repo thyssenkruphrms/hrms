@@ -1,5 +1,5 @@
 <?php 
-
+error_reporting(0);
 include "db.php";
 $cursor = $db->session->findOne(array("sid" => $_COOKIE['sid']));
 if($cursor)
@@ -21,18 +21,22 @@ if($cursor)
     $newiperson=$_POST['iperson']?$_POST['iperson']:"null";
     $members=$_POST['members']?$_POST['members']:"null";
 
-    // echo $newname." ".$newemail." ".$prf." ".$rid." ".$iid;
-
+    echo $newname." ".$newemail." ".$prf." ".$rid." ".$iid;
+    echo $oldname." ".$oldemail." ".$prf." ".$rid." ".$iid;
+    // $res  = $db->interviews.count(
+    //     array(
+    //         "rid"=>$rid,'iid'=>$iid,"prf"=>$prf,"intvmail"=>$newemail,"invname"=>$newname),
+    //         array('limit'=> 1 ));
+    // echo "Count => ".count($res);
+    
     $res=$db->interviews->findOne(
         array("rid"=>$rid,
             'iid'=>$iid,
             "prf"=>$prf,
             "intvmail"=>$newemail,
             "invname"=>$newname));
-        
-    $res=count($res);
-    
-    if($res != 0)
+
+    if(count($res) != 0)
     {
 
         // echo "NEew".$newemail;

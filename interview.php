@@ -404,14 +404,21 @@ function xyz(x)
     $('#iperson').val(prfints[12])
 
     prf=prfints[0];
-    rid=prfints[1];
-    iid=prfints[2];
-    oldname=prfints[5];
-    olddept=prfints[6];
-    olddsg=prfints[7];
-    oldemail=prfints[3];
-    oldiloc=prfints[10];
-    oldiperson=prfints[9];
+    rid=prfints[2];
+    iid=prfints[1];
+    oldname=prfints[6];
+    olddept=prfints[5];
+    olddsg=prfints[10];
+    oldemail=prfints[7];
+    oldiloc=prfints[13];
+    oldiperson=prfints[12];
+    
+    // console.log(prfints[5])
+    // console.log(prfints[6])
+    // console.log(prfints[7])
+    // console.log(prfints[8])
+    // console.log(prfints[9])
+    // console.log(prfints[10])
 
 }
 
