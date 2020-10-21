@@ -408,7 +408,7 @@ function confirmDate()
         console.log(para)
         if(para == "success")
         {
-          // document.location.reload();
+          document.location.reload();
         }
         else
         {

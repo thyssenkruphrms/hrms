@@ -33,7 +33,7 @@ if($cursor)
             $name1 = $name['full_name'];
             $_SESSION['posi'] = $name['position'];
             $mail->addAddress($d);
-            $mail->Subject = "Your interview at tkEI - Interview Schedule";
+            $mail->Subject = "Your interview at tkEI : Interview Schedule";
             //$mail->Subject = "Invitation to interview with thyssenkrupp for the ". $name['position']." position";
             $mail->AddEmbeddedImage("../public/logo.png", "logoimg", "../public/logo.png");
             $mail->isHTML(true); 

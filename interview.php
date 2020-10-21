@@ -597,6 +597,7 @@ $('#updatebtn').click(function()
                    $('#updatediv').hide(800);
                   $('#successdiv').show(800);
                   $('#updated').hide()     
+                  window.setTimeout(function(){location.reload()},2000)
 
             }
 
