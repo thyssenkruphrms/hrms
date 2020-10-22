@@ -171,12 +171,12 @@ if($cursor)
                                                 Contact Person - '.$_POST['iperson'].'
                                                 <br><br>
                                                 Candidates Name: 
-                                                <br>
+                                                <br><br>
                                                 '.$candidates.'
                                                 <br><br>
                                                 To access your dashboard for more details, please click <a href='.$dashurl.'>here</a> 
                                                 <br><br>
-                                                Your Credentials for Login are as follows : <br><br>User ID : '.$invname.'<br><br>Password : '.$invname.'<br>
+                                                Your Credentials for Login are as follows : <br><br>User ID : '.$invname.'<br><br>Password : '.$invname.'<br><br>
 
                                                 In-case of any query, feel free to reach out to recruitment@tkeap.com
                                                 

@@ -57,7 +57,7 @@ if($cursor)
 
     $createuser= $db->users->insertOne(array("uid"=>$invname,"name"=>$iname,'password'=>$invname,"mail"=>$invname,"dsg"=>"inv","dept"=>$_POST['idept'],"rg"=>$_POST['iloc']));
      
-    $credentials = '<br><br>Your Credentials for Login are as follows : <br><br>User ID : '.$invname.'<br><br>Password : '.$invname.'<br>';
+    $credentials = '<br><br>Your Credentials for Login are as follows : <br><br>User ID : '.$invname.'<br><br>Password : '.$invname.'<br><br>';
 
 
 
@@ -154,7 +154,7 @@ if($cursor)
                                     Contact Person - '.$_POST['iperson'].'
                                     <br><br>
                                     Candidates Name: 
-                                    <br>
+                                    <br><br>
                                     '.$candidates.'
                                     <br><br>
                                     To access your dashboard for more details, please click <a href='.$dashurl.'>here</a> 

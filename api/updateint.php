@@ -143,7 +143,7 @@ if($cursor)
                                         Contact Person - '.$newiperson.'
                                         <br><br>
                                         Candidates Name: 
-                                        <br>
+                                        <br><br>
                                         '.$candidates.'
                                         <br><br>
                                         To access your dashboard for more details, please click <a href='.$dashurl.'>here</a> 

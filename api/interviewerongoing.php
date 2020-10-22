@@ -54,7 +54,7 @@ if($cursor)
 
 
     $createuser= $db->users->insertOne(array("uid"=>$imail,"name"=>$invname,'password'=>$imail,"mail"=>$imail,"dsg"=>"inv","dept"=>$_POST['idept'],"rg"=>$_POST['iloc']));
-    $credentials = '<br><br>Your Credentials for Login are as follows : <br><br>User ID : '.$imail.'<br><br>Password : '.$imail.'<br>';
+    $credentials = '<br><br>Your Credentials for Login are as follows : <br><br>User ID : '.$imail.'<br><br>Password : '.$imail.'<br><br>';
     
     //updating status of base round
     //deleting tokens
@@ -169,7 +169,7 @@ if($cursor)
                                     Contact Person - '.$_POST['iperson'].'
                                     <br><br>
                                     Candidates Name: 
-                                    <br>
+                                    <br><br>
                                     '.$candidates.'
                                     <br><br>
                                     To access your dashboard for more details, please click <a href='.$dashurl.'>here</a> 
