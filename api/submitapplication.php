@@ -61,7 +61,6 @@ include 'db.php';
                 $values = array(
                     "userphoto" => $namephoto,
                     "usercv" => $namecv,
-               
                     "aadharno" => $_POST["aadharno"],
                     "first_name"=> $_POST['first_name'],
                     "mid_name"=>$_POST['mid_name'],
