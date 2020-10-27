@@ -48,7 +48,7 @@ $n = 1;
 		$sheet->setCellValue('K'.$rowNum, $row['candidatedesignation']);
         $sheet->setCellValue('L'.$rowNum, $row['date']);
         $sheet->setCellValue('M'.$rowNum, $row['remark']);
-        $sheet->setCellValue('N'.$rowNum, $fullname['full_name']);
+        
 	
 		$n++;
 	}

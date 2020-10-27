@@ -61,7 +61,6 @@ include 'db.php';
                 $values = array(
                     "userphoto" => $namephoto,
                     "usercv" => $namecv,
-               
                     "aadharno" => $_POST["aadharno"],
                     "first_name"=> $_POST['first_name'],
                     "mid_name"=>$_POST['mid_name'],
@@ -84,11 +83,6 @@ include 'db.php';
                     "specialug" => $_POST["specialug"],
                     "selectpg" => $_POST["selectpg"],
                     "specialpg" => $_POST["specialpg"],
-
-                    // "qualification" => $_POST["qualification"],
-                    // "passing" => $_POST["passing"],
-                    
-                    //"alldocs" => $namealldocs,
                     "internet" => $_POST["internet"],
                     "checkemp" => $_POST["empref"],
                     "walk" => $_POST["walkin"],
