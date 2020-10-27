@@ -123,11 +123,55 @@ input[type="file"]
                             </td>
                         </tr>
 
+                        <tr id="tdmarks10">
+                            <td>
+                                <label class="custom-file-upload">
+                                    <a class="btn col s12 m12 blue darken-1"><input id="marks10" name="marks10" type="file" accept=".pdf" class="validate" required="" aria-required="true"><p id='letter14'>10th MARKSHEET</p></a>
+                                </label>
+                            </td>
+                           
+                            <td>
+                                <div class="input-field col s12 m12" id="rmarks101">
+                                    <input id="rmarks10" type="text" class="validate" value="<?php echo $result['marks10reason'];?>" readonly>
+                                    <label for="rmarks10">Reason Specified</label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr id="tdmarks12">
+                            <td>
+                                <label class="custom-file-upload">
+                                    <a class="btn col s12 m12 blue darken-1"><input id="marks12" name="marks12" type="file" accept=".pdf" class="validate" required="" aria-required="true"><p id='letter15'>12th MARKSHEET</p></a>
+                                </label>
+                            </td>
+                           
+                            <td>
+                                <div class="input-field col s12 m12" id="rmarks121">
+                                    <input id="rmarks12" type="text" class="validate" value="<?php echo $result['marks12reason'];?>" readonly>
+                                    <label for="rmarks12">Reason Specified</label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr id="tditidiploma">
+                            <td>
+                                <label class="custom-file-upload">
+                                    <a class="btn col s12 m12 blue darken-1"><input id="itidiploma" name="itidiploma" type="file" accept=".pdf" class="validate" required="" aria-required="true"><p id='letter16'>ITI / DIPLOMA MARKSHEET</p></a>
+                                </label>
+                            </td>
+                           
+                            <td>
+                                <div class="input-field col s12 m12" id="ritidiploma1">
+                                    <input id="ritidiploma" type="text" class="validate" value="<?php echo $result['itidiplomareason'];?>" readonly>
+                                    <label for="ritidiploma">Reason Specified</label>
+                                </div>
+                            </td>
+                        </tr>
                         
                         <tr id="tdugcert">
                             <td>
                                 <label class="custom-file-upload">
-                                    <a class="btn col s12 m12 blue darken-1"><input id="ugcert" name="ugcert" type="file" accept=".pdf" class="validate" required="" aria-required="true"><p id='letter5'>UNDER GRADUATION CERTIFICATE</p></a>
+                                    <a class="btn col s12 m12 blue darken-1"><input id="ugcert" name="ugcert" type="file" accept=".pdf" class="validate" required="" aria-required="true"><p id='letter5'>GRADUATION MARKSHEET</p></a>
                                 </label>
                             </td>
                            
@@ -141,7 +185,7 @@ input[type="file"]
                         <tr id="tdpgcert">
                             <td>
                                 <label class="custom-file-upload">
-                                    <a class="btn col s12 m12 blue darken-1"><input id="pgcert" name="pgcert" type="file" accept=".pdf" class="validate" required="" aria-required="true"><p id='letter12'>POST GRADUATION CERTIFICATE</p></a>
+                                    <a class="btn col s12 m12 blue darken-1"><input id="pgcert" name="pgcert" type="file" accept=".pdf" class="validate" required="" aria-required="true"><p id='letter12'>POST GRADUATION MARKSHEET</p></a>
                                 </label>
                             </td>
                            
@@ -170,7 +214,7 @@ input[type="file"]
                         <tr id="tdal">
                             <td>
                                 <label class="custom-file-upload">
-                                 <a class="btn col s12 m12 blue darken-1"><input id="al" name="al" type="file" accept=".pdf" class="validate" required="" aria-required="true" ><p id='letter7'>APPOINTMENT LETTER</p></a>
+                                 <a class="btn col s12 m12 blue darken-1"><input id="al" name="al" type="file" accept=".pdf" class="validate" required="" aria-required="true" ><p id='letter7'>APPOINTMENT LETTER / SALARY BREAKUP</p></a>
                                 </label>
                             </td>
                            
@@ -182,7 +226,7 @@ input[type="file"]
                             </td>
                         </tr>
 
-                        <tr id="tdsb">
+                        <!-- <tr id="tdsb">
                             <td>
                                 <label class="custom-file-upload">
                                  <a class="btn col s12 m12 blue darken-1"><input id="sb" name="sb" type="file" accept=".pdf" class="validate" required="" aria-required="true" ><p id='letter13'>Salary Breakup</p></a>
@@ -191,11 +235,11 @@ input[type="file"]
                            
                             <td>
                                 <div class="input-field col s12 m12" id="rsb1">
-                                    <input id="rsb" type="text" class="validate" value="<?php echo $result['salarybreakupreason'];?>" readonly>
+                                    <input id="rsb" type="text" class="validate" value="" readonly>
                                     <label for="rsb">Reason Specified</label>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> -->
 
                         <tr id="tdpayslip">
                             <td>
@@ -369,10 +413,28 @@ $('#pgcert').change(function(){
 $('#letter12').replaceWith(f);
 })
 
-$('#sb').change(function(){
-    var f=$('#sb').val();
+// $('#sb').change(function(){
+//     var f=$('#sb').val();
     
-$('#letter13').replaceWith(f);
+// $('#letter13').replaceWith(f);
+// })
+
+$('#marks10').change(function(){
+    var f=$('#marks10').val();
+    
+$('#letter14').replaceWith(f);
+})
+
+$('#marks12').change(function(){
+    var f=$('#marks12').val();
+    
+$('#letter15').replaceWith(f);
+})
+
+$('#itidiploma').change(function(){
+    var f=$('#itidiploma').val();
+    
+$('#letter16').replaceWith(f);
 })
 
 $(document).ready(function(){
@@ -427,7 +489,7 @@ $(document).ready(function(){
         {
 
             console.log(para)
-            if(para == '["cv","pan","Adhaar","Photo","ap","al","sb","rl","payslip","cc","ugcert","pgcert"]')
+            if(para == '["cv","pan","Adhaar","Photo","ap","al","rl","payslip","cc","marks10","marks12","itidiploma","ugcert","pgcert"]')
             {
                 $("#formdiv").hide()
             }

@@ -14,15 +14,19 @@ $nameappletter = $_FILES['appletter']['name'];
 $tempappletter = $_FILES["appletter"]['tmp_name'];
 move_uploaded_file($tempappletter,"../upload/".$folder."/".$nameappletter);
 $nameappletter = "upload/".$folder."/".$nameappletter;
-$namesalarybreak = $_FILES['salarybreak']['name'];
-$tempsalarybreak = $_FILES["salarybreak"]['tmp_name'];
-move_uploaded_file($tempsalarybreak,"../upload/".$folder."/".$namesalarybreak);
-$namesalarybreak = "upload/".$folder."/".$namesalarybreak;
+
+// $namesalarybreak = $_FILES['salarybreak']['name'];
+// $tempsalarybreak = $_FILES["salarybreak"]['tmp_name'];
+// move_uploaded_file($tempsalarybreak,"../upload/".$folder."/".$namesalarybreak);
+// $namesalarybreak = "upload/".$folder."/".$namesalarybreak;
+
 $namepastpayslip = $_FILES['pastpayslip']['name'];
 $temppastpayslip = $_FILES["pastpayslip"]['tmp_name'];
 move_uploaded_file($temppastpayslip,"../upload/".$folder."/".$namepastpayslip);
 $namepastpayslip = "upload/".$folder."/".$namepastpayslip;
+
 $uan = $_POST['uan'];
+
 $namecancelcheck = $_FILES['cancelcheck']['name'];
 $tempcancelcheck = $_FILES["cancelcheck"]['tmp_name'];
 move_uploaded_file($tempcancelcheck,"../upload/".$folder."/".$namecancelcheck);
@@ -42,6 +46,21 @@ $nameproof_address = $_FILES['proof_address']['name'];
 $tempproof_address = $_FILES["proof_address"]['tmp_name'];
 move_uploaded_file($tempproof_address,"../upload/".$folder."/".$nameproof_address);
 $nameproof_address = "upload/".$folder."/".$nameproof_address;
+
+$namemarks10 = $_FILES['marks10']['name'];
+$tempmarks10 = $_FILES["marks10"]['tmp_name'];
+move_uploaded_file($tempmarks10,"../upload/".$folder."/".$namemarks10);
+$namemarks10 = "upload/".$folder."/".$namemarks10;
+
+$namemarks12 = $_FILES['marks12']['name'];
+$tempmarks12 = $_FILES["marks12"]['tmp_name'];
+move_uploaded_file($tempmarks12,"../upload/".$folder."/".$namemarks12);
+$namemarks12 = "upload/".$folder."/".$namemarks12;
+
+$nameitidiploma = $_FILES['itidiploma']['name'];
+$tempitidiploma = $_FILES["itidiploma"]['tmp_name'];
+move_uploaded_file($tempitidiploma,"../upload/".$folder."/".$nameitidiploma);
+$nameitidiploma = "upload/".$folder."/".$nameitidiploma;
 
 $nameugcert = $_FILES['ugcert']['name'];
 $tempugcert = $_FILES["ugcert"]['tmp_name'];
@@ -70,18 +89,29 @@ $n2dob=$_POST['n2dobdates'];
 $n3dob=$_POST['n3dobdates'];
 $n4dob=$_POST['n4dobdates'];
 
+$n1gender = $_POST['n1gender'];
+$n2gender = $_POST['n2gender'];
+$n3gender = $_POST['n3gender'];
+$n4gender = $_POST['n4gender'];
+
+
 echo $namecancelcheck;
 echo "<br>".$mailid;
 $criteria=array("email"=>$mailid);
 $info=array(
     "appletter"=>$nameappletter,
-    "salarybreakup"=>$namesalarybreak,
+    // "salarybreakup"=>$namesalarybreak,
     "uan"=>$uan,
     "pastpayslip"=>$namepastpayslip,
     "proof_address"=>$nameproof_address,
     "adhaar"=>$nameadhaar,
     "idproof"=>$nameidproof,
     "cancelledcheck"=>$namecancelcheck,
+
+    "marks10"=>$namemarks10,
+    "marks12"=>$namemarks12,
+    "itidiploma"=>$nameitidiploma,
+
     "ugcert"=>$nameugcert,
     "pgcert"=>$namepgcert,
     "nom1"=>$nom1,
@@ -92,6 +122,11 @@ $info=array(
     "n2dob"=>$n2dob,
     "n3dob"=>$n3dob,
     "n4dob"=>$n4dob,
+    
+    "n1gender"=>$n1gender,
+    "n2gender"=>$n2gender,
+    "n3gender"=>$n3gender,
+    "n4gender"=>$n4gender,
 
 
     "postfilled"=>"filled",

@@ -59,24 +59,32 @@ $cursor = $db->tokens->find();
                     <td id="nom1n" style="color:#1e88e5;"></td>
                     <th>Nominee1 DOB</th>
                     <td id="nom1d" style="color:#1e88e5;"></td>
+                    <th>Nominee1 Gender</th>
+                    <td id="nom1g" style="color:#1e88e5;"></td>
                 </tr>
                 <tr>
                     <th>Nominee2 Name</th>
                     <td id="nom2n" style="color:#1e88e5;"></td>
                     <th>Nominee2 DOB</th>
                     <td id="nom2d" style="color:#1e88e5;"></td>
+                    <th>Nominee2 Gender</th>
+                    <td id="nom2g" style="color:#1e88e5;"></td>
                 </tr>
                 <tr>
                     <th>Nominee3 Name</th>
                     <td id="nom3n" style="color:#1e88e5;"></td>
                     <th>Nominee3 DOB</th>
                     <td id="nom3d" style="color:#1e88e5;"></td>
+                    <th>Nominee3 Gender</th>
+                    <td id="nom3g" style="color:#1e88e5;"></td>
                 </tr>
                 <tr>
                     <th>Nominee4 Name</th>
                     <td id="nom4n" style="color:#1e88e5;"></td>
                     <th>Nominee4 DOB</th>
                     <td id="nom4d" style="color:#1e88e5;"></td>
+                    <th>Nominee4 Gender</th>
+                    <td id="nom4g" style="color:#1e88e5;"></td>
                 </tr>                
                 </table>
                 </center>
@@ -260,7 +268,7 @@ $cursor = $db->tokens->find();
 
                         <tr id="tdal">
                             <td>
-                                <a class="waves-effect blue darken-1  modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="al">Appointment Letter</a>
+                                <a class="waves-effect blue darken-1  modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="al">Appointment Letter / Salary Breakup</a>
                             </td>
 
                             <td>
@@ -289,7 +297,7 @@ $cursor = $db->tokens->find();
                             </td>
                         </tr>
 
-                        <tr id="tdsb">
+                        <!-- <tr id="tdsb">
                             <td>
                                 <a class="waves-effect blue darken-1  modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="sb">Salary Breakup</a>
                             </td>
@@ -318,7 +326,7 @@ $cursor = $db->tokens->find();
                             <td>
                             <a class="waves-effect green btn" name="d5" id="sbf" onclick=freez(this.id) ><i class="material-icons right">done</i>Freez</a>
                             </td>
-                        </tr>
+                        </tr> -->
 
                         
                         <tr id="tdpayslip">
@@ -384,9 +392,105 @@ $cursor = $db->tokens->find();
                             </td>
                         </tr>
 
+
+                        <tr id="tdmarks10">
+                            <td>
+                                <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="marks10">10th Marksheet</a>
+                            </td>
+
+                            <td>
+                                <label style="color:green;">
+                                    <input class="with-gap" name="gmarks10" type="radio"  value="valid" id="marks10v"/>
+                                    <span>Valid</span>
+                                </label>
+                            </td> 
+
+                            <td>
+                                <label style="color:red;">
+                                    <input class="with-gap" name="gmarks10" type="radio" value="invalid" id="marks10i"/>
+                                    <span>Invalid</span>
+                                </label>
+                            </td>
+
+                            <td>
+                                <div class="input-field col s12 m12" id="rmarks101">
+                                    <input id="rmarks10" type="text" class="validate" style="color:black" placeholder="Specify Reason">
+                                    <label for="rmarks10">Specify Reason</label>
+                                </div>
+                            </td>
+
+                            <td>
+                            <a class="waves-effect green btn" name="d13" id="marks10f" onclick=freez(this.id) ><i class="material-icons right">done</i>Freez</a>
+                            </td>
+                        </tr>
+
+                        
+                        <tr id="tdmarks12">
+                            <td>
+                                <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="marks12">12th Marksheet</a>
+                            </td>
+
+                            <td>
+                                <label style="color:green;">
+                                    <input class="with-gap" name="gmarks12" type="radio"  value="valid" id="marks12v"/>
+                                    <span>Valid</span>
+                                </label>
+                            </td> 
+
+                            <td>
+                                <label style="color:red;">
+                                    <input class="with-gap" name="gmarks12" type="radio" value="invalid" id="marks12i"/>
+                                    <span>Invalid</span>
+                                </label>
+                            </td>
+
+                            <td>
+                                <div class="input-field col s12 m12" id="rmarks121">
+                                    <input id="rmarks12" type="text" class="validate" style="color:black" placeholder="Specify Reason">
+                                    <label for="rmarks12">Specify Reason</label>
+                                </div>
+                            </td>
+
+                            <td>
+                            <a class="waves-effect green btn" name="d14" id="marks12f" onclick=freez(this.id) ><i class="material-icons right">done</i>Freez</a>
+                            </td>
+                        </tr>
+
+                        <tr id="tditidiploma">
+                            <td>
+                                <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="itidiploma">ITI/Diploma Marksheet</a>
+                            </td>
+
+                            <td>
+                                <label style="color:green;">
+                                    <input class="with-gap" name="gitidiploma" type="radio"  value="valid" id="itidiplomav"/>
+                                    <span>Valid</span>
+                                </label>
+                            </td> 
+
+                            <td>
+                                <label style="color:red;">
+                                    <input class="with-gap" name="gitidiploma" type="radio" value="invalid" id="itidiplomai"/>
+                                    <span>Invalid</span>
+                                </label>
+                            </td>
+
+                            <td>
+                                <div class="input-field col s12 m12" id="ritidiploma1">
+                                    <input id="ritidiploma" type="text" class="validate" style="color:black" placeholder="Specify Reason">
+                                    <label for="ritidiploma">Specify Reason</label>
+                                </div>
+                            </td>
+
+                            <td>
+                            <a class="waves-effect green btn" name="d15" id="itidiplomaf" onclick=freez(this.id) ><i class="material-icons right">done</i>Freez</a>
+                            </td>
+                        </tr>
+
+
                         <tr id="tdugcert">
                             <td>
-                                <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="ugcert">Under Graduate Certificate</a>
+                                <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="ugcert">Graduation Marksheet</a>
                             </td>
 
                             <td>
@@ -414,9 +518,10 @@ $cursor = $db->tokens->find();
                             <a class="waves-effect green btn" name="d11" id="ugcertf" onclick=freez(this.id) ><i class="material-icons right">done</i>Freez</a>
                             </td>
                         </tr>
+
                         <tr id="tdpgcert">
                             <td>
-                                <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="pgcert">Post Graduate Certificate</a>
+                                <a class="waves-effect blue darken-1 modal-trigger btn col s12 m6" value="" href="#modal1" onclick="clicked(this)" id="pgcert">Post Graduate Marksheet</a>
                             </td>
 
                             <td>
@@ -589,11 +694,15 @@ function freezall()
     $("a[name='d4']").click();
     $("a[name='d5']").click();
     $("a[name='d6']").click();
-    $("a[name='d7']").click();
+    // $("a[name='d7']").click();
     $("a[name='d9']").click();
     $("a[name='d10']").click();
     $("a[name='d11']").click();
     $("a[name='d12']").click();
+    $("a[name='d13']").click();
+    $("a[name='d14']").click();
+    $("a[name='d15']").click();
+
 
 }
 
@@ -872,33 +981,33 @@ $("#alv").click(function(){
         }
 });
 
-$("#sbv").click(function(){
-        var r = $("input[name='gsb']:checked").attr('id');
-        if(r=="sbi"){
+// $("#sbv").click(function(){
+//         var r = $("input[name='gsb']:checked").attr('id');
+//         if(r=="sbi"){
             
-            r = r.substring(0, r.length - 1);
-            var btn = r
-            btn = '#'+btn+'f'
-            r = '#r'+r+'1' 
-            $(r).fadeIn(600)
-            r = r.substring(0, r.length - 1);
-            //$("#ral").val("")
-            $(r).prop("disabled", false)
+//             r = r.substring(0, r.length - 1);
+//             var btn = r
+//             btn = '#'+btn+'f'
+//             r = '#r'+r+'1' 
+//             $(r).fadeIn(600)
+//             r = r.substring(0, r.length - 1);
+//             //$("#ral").val("")
+//             $(r).prop("disabled", false)
                     
-        }
-        else
-        {
+//         }
+//         else
+//         {
             
-            r = r.substring(0, r.length - 1);
-            var btn = r
-            btn = '#'+btn+'f'
-            r = '#r'+r+'1' 
-            $(r).fadeIn(600)
-            r = r.substring(0, r.length - 1);
-            $(r).val("Validated")
-            $(r).prop("disabled", true)
-        }
-});
+//             r = r.substring(0, r.length - 1);
+//             var btn = r
+//             btn = '#'+btn+'f'
+//             r = '#r'+r+'1' 
+//             $(r).fadeIn(600)
+//             r = r.substring(0, r.length - 1);
+//             $(r).val("Validated")
+//             $(r).prop("disabled", true)
+//         }
+// });
 
 $("#payslipv").click(function(){
         var r = $("input[name='gpayslip']:checked").attr('id');
@@ -1125,33 +1234,33 @@ $("#ali").click(function(){
         }
 });
 
-$("#sbi").click(function(){
-        var r = $("input[name='gsb']:checked").attr('id');
-        if(r=="sbi"){
+// $("#sbi").click(function(){
+//         var r = $("input[name='gsb']:checked").attr('id');
+//         if(r=="sbi"){
             
-            r = r.substring(0, r.length - 1);
-            var btn = r
-            btn = '#'+btn+'f'
-            r = '#r'+r+'1' 
-            $(r).fadeIn(600)
-            r = r.substring(0, r.length - 1);
-            //$("#ral").val("")
-            $(r).prop("disabled", false)
+//             r = r.substring(0, r.length - 1);
+//             var btn = r
+//             btn = '#'+btn+'f'
+//             r = '#r'+r+'1' 
+//             $(r).fadeIn(600)
+//             r = r.substring(0, r.length - 1);
+//             //$("#ral").val("")
+//             $(r).prop("disabled", false)
                     
-        }
-        else
-        {
+//         }
+//         else
+//         {
             
-            r = r.substring(0, r.length - 1);
-            var btn = r
-            btn = '#'+btn+'f'
-            r = '#r'+r+'1' 
-            $(r).fadeIn(600)
-            r = r.substring(0, r.length - 1);
-            $(r).val("Validated")
-            $(r).prop("disabled", true)
-        }
-});
+//             r = r.substring(0, r.length - 1);
+//             var btn = r
+//             btn = '#'+btn+'f'
+//             r = '#r'+r+'1' 
+//             $(r).fadeIn(600)
+//             r = r.substring(0, r.length - 1);
+//             $(r).val("Validated")
+//             $(r).prop("disabled", true)
+//         }
+// });
 
 $("#rli").click(function(){
         var r = $("input[name='grl']:checked").attr('id');
@@ -1236,6 +1345,172 @@ $("#cci").click(function(){
             $(r).prop("disabled", true)
         }
 });
+
+$("#marks10i").click(function(){
+        var r = $("input[name='gmarks10']:checked").attr('id');
+        if(r=="marks10i"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            //$("#rcc").val("")
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
+$("#marks10v").click(function(){
+        var r = $("input[name='gmarks10']:checked").attr('id');
+        if(r=="marks10i"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
+$("#marks12i").click(function(){
+        var r = $("input[name='gmarks12']:checked").attr('id');
+        if(r=="marks12i"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            //$("#rcc").val("")
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
+$("#marks12v").click(function(){
+        var r = $("input[name='gmarks12']:checked").attr('id');
+        if(r=="marks12i"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
+$("#itidiplomai").click(function(){
+        var r = $("input[name='gitidiploma']:checked").attr('id');
+        if(r=="itidiplomai"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            //$("#rcc").val("")
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
+$("#itidiplomav").click(function(){
+        var r = $("input[name='gitidiploma']:checked").attr('id');
+        if(r=="itidiplomai"){
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).prop("disabled", false)
+                    
+        }
+        else
+        {
+            
+            r = r.substring(0, r.length - 1);
+            var btn = r
+            btn = '#'+btn+'f'
+            r = '#r'+r+'1' 
+            $(r).fadeIn(600)
+            r = r.substring(0, r.length - 1);
+            $(r).val("Validated")
+            $(r).prop("disabled", true)
+        }
+});
+
 
 $("#ugcerti").click(function(){
         var r = $("input[name='gugcert']:checked").attr('id');
@@ -1380,11 +1655,17 @@ $("#rssc1").hide()
 $("#rhsc1").hide()
 $("#rap1").hide()
 $("#ral1").hide()
-$("#rsb1").hide()
+// $("#rsb1").hide()
 $("#rrl1").hide()
 $("#rpayslip1").hide()
 $("#ruan1").hide()
 $("#rcc1").hide()
+
+$("#rmarks101").hide()
+$("#rmarks121").hide()
+$("#ritidiploma1").hide()
+
+
 $("#rugcert1").hide()
 $("#rpgcert1").hide()
 
@@ -1413,20 +1694,32 @@ $.ajax({
         $("#Photo").attr("value",para[0][3])
         $("#ap").attr("value",para[0][4])
         $("#al").attr("value",para[0][5])
-        $("#sb").attr("value",para[0][11])
+        // $("#sb").attr("value",para[0][11])
         $("#payslip").attr("value",para[0][6])
         $("#uan").append("UAN : "+para[0][7])
         $("#cc").attr("value",para[0][8]) 
-        $("#ugcert").attr("value",para[0][9])  
-        $("#pgcert").attr("value",para[0][10])  
-        $("#nom1n").append(para[0][12]?para[0][12]:"NA")
-        $("#nom1d").append(para[0][16]?para[0][16]:"NA")
-        $("#nom2n").append(para[0][13]?para[0][13]:"NA")
-        $("#nom2d").append(para[0][17]?para[0][17]:"NA")
-        $("#nom3n").append(para[0][14]?para[0][14]:"NA")
-        $("#nom3d").append(para[0][18]?para[0][18]:"NA")
-        $("#nom4n").append(para[0][15]?para[0][15]:"NA")
-        $("#nom4d").append(para[0][19]?para[0][19]:"NA")
+
+        $("#marks10").attr("value",para[0][9])  
+        $("#marks12").attr("value",para[0][10])  
+        $("#itidiploma").attr("value",para[0][11])  
+
+
+        $("#ugcert").attr("value",para[0][12])  
+        $("#pgcert").attr("value",para[0][13])  
+        $("#nom1n").append(para[0][12]?para[0][14]:"")
+        $("#nom2n").append(para[0][15]?para[0][15]:"")
+        $("#nom3n").append(para[0][16]?para[0][16]:"")
+        $("#nom4n").append(para[0][17]?para[0][17]:"")
+
+        $("#nom1d").append(para[0][18]?para[0][18]:"")
+        $("#nom2d").append(para[0][19]?para[0][19]:"")
+        $("#nom3d").append(para[0][20]?para[0][20]:"")
+        $("#nom4d").append(para[0][21]?para[0][21]:"")
+
+        $("#nom1g").append(para[0][22]?para[0][22]:"")
+        $("#nom2g").append(para[0][23]?para[0][23]:"")
+        $("#nom3g").append(para[0][24]?para[0][24]:"")
+        $("#nom4g").append(para[0][25]?para[0][25]:"")
 
         validcount = para[1].length
         for(let i=0;i<para[1].length;i++)
@@ -1448,7 +1741,7 @@ $("#submit").click(function(){
     console.log("this is ctr:",ctr)
 
     $("#loader").show();
-    if(ctr==(11-validcount))    
+    if(ctr==(12-validcount))    
     {
     
     cv=$("#rcv").val()
@@ -1458,9 +1751,15 @@ $("#submit").click(function(){
     address=$("#rap").val()
     cancheck=$("#rcc").val()
     appletter=$("#ral").val()
-    salarybreakup=$("#rsb").val()
+    // salarybreakup=$("#rsb").val()
     pastpayslip=$("#rpayslip").val()
     currcomp=$("#rccl").val()
+
+    marks10=$("#rmarks10").val()
+    marks12=$("#rmarks12").val()
+    itidiploma=$("#ritidiploma").val()
+
+
     ugcert=$("#rugcert").val()
     pgcert=$("#rpgcert").val()
 
@@ -1484,8 +1783,13 @@ $("#submit").click(function(){
             "address":address,
             "cancheck":cancheck,
             "appletter":appletter,
-            "salarybreakup":salarybreakup,
+            // "salarybreakup":salarybreakup,
             "pastpayslip":pastpayslip,
+
+            "marks10":marks10,
+            "marks12":marks12,
+            "itidiploma":itidiploma,
+
             "ugcert":ugcert,
             "pgcert":pgcert,
             "mail":m

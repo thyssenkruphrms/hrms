@@ -78,12 +78,12 @@ input::-webkit-inner-spin-button {
             <div class="card white">
                 <div class="card-content blue-text darken-1" id="main">
                     <form action="#">
-                    <b>Upload Latest Company Appointment Letter</b>
+                    <b>Upload Latest Company Appointment Letter / Salary Breakup</b>
                     <div class="row">
                         <div class="file-field input-field">
                                 <div class="btn blue darken-1">
-                                        <span>Appointment Letter</span>
-                                                <input id="appletter" name="appletter" type="file"  required accept=".pdf">
+                                        <span>Appointment Letter/Salary Breakup</span>
+                                                <input id="appletter" name="appletter" type="file" accept=".pdf">
                                 </div>
                                 <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text">
@@ -93,18 +93,18 @@ input::-webkit-inner-spin-button {
 
 
                     
-                    <b>Current Company's Latest Letter Indicating Salary Breakup</b>
+                    <!-- <b>Current Company's Latest Letter Indicating Salary Breakup</b>
                     <div class="row">  
                         <div class="file-field input-field">
                                 <div class="btn blue darken-1">
                                         <span>Salary Breakup Letter</span>
-                                                <input id="salarybreak" name="salarybreak" type="file"  required accept=".pdf">
+                                                <input id="salarybreak" name="salarybreak" type="file" accept=".pdf">
                                 </div>
                                 <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text">
                                 </div>
                         </div>                                                   
-                    </div>
+                    </div> -->
                                       
                     
                     <b>Past Three Months Pay Slip</b>
@@ -112,7 +112,7 @@ input::-webkit-inner-spin-button {
                         <div class="file-field input-field">
                                 <div class="btn blue darken-1">
                                         <span>Past Pay Slip</span>
-                                                <input id="pastpayslip" name="pastpayslip" type="file"  required accept=".pdf">
+                                                <input id="pastpayslip" name="pastpayslip" type="file" accept=".pdf">
                                 </div>
                                 <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text">
@@ -122,19 +122,19 @@ input::-webkit-inner-spin-button {
                     
                     <div class="row">
                             <div class="input-field col s6">
-                                    <input id="uan" name="uan" type="text" class="validate" maxlength="12" required="" aria-required="true" onkeypress="return validuan(event)" onchange="uanlength(this.id);">
+                                    <input id="uan" name="uan" type="text" class="validate" maxlength="12" onkeypress="return validuan(event)" onchange="uanlength(this.id);">
                                     <label for="uan">UAN</label>
                                     <b id="checkuan"></b>
                                   </div>            
                     </div>
 
 
-                    <b>Cancelled Cheque</b>
+                    <b>Cancelled Cheque *</b>
                     <div class="row">
                             <div class="file-field input-field">
                                                 <div class="btn blue darken-1">
-                                                        <span>Cancelled Cheque</span>
-                                                        <input id="cancelcheck" name="cancelcheck" type="file"  required accept=".pdf">
+                                                        <span>Cancelled Cheque *</span>
+                                                        <input id="cancelcheck" name="cancelcheck" type="file" accept=".pdf">
                                                 </div>
                                                 <div class="file-path-wrapper">
                                                         <input class="file-path validate" type="text">
@@ -143,52 +143,84 @@ input::-webkit-inner-spin-button {
                     </div>
 
 
-                    <b>Name of Nominees</b>
+                    <b>Name of Nominees (Atleast 1 Compulsory)</b>
                     <div class="row">
                             <div class="input-field col s6">
-                                    <input id="nom1" name="nom1" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
-                                    <label for="nom1">Nominee 1</label>
+                                    <input id="nom1" name="nom1" type="text" required="" aria-required="true" >
+                                    <label for="nom1">Nominee 1 *</label>
                             </div>
-                            <div class="input-field col s6">
-                                <input id="n1dobdates" name="n1dobdates" type="text" class="datepicker"  required aria-required="true" required>
-                                <label for="n1dobdates">Date Of Birth</label>
+                            <div class="input-field col s3">
+                                <input id="n1dobdates" name="n1dobdates" type="text" class="datepicker" aria-required="true" required>
+                                <label for="n1dobdates">Date Of Birth *</label>
+                            </div>
+                            <div class="col s3 "><br>
+                                <select id='n1gender' name='n1gender' class="dropdown-trigger btn blue darken-1" required>
+                                <option value="" disabled selected style="color: white">Gender *</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                                </select>
                             </div>
 
                             <div class="input-field col s6">
-                                    <input id="nom2" name="nom2" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
+                                    <input id="nom2" name="nom2" type="text">
                                     <label for="nom2">Nominee 2</label>
                             </div>
-                            <div class="input-field col s6">
-                                <input id="n2dobdates" name="n2dobdates"  type="text" class="datepicker"  required aria-required="true" required>
+                            <div class="input-field col s3">
+                                <input id="n2dobdates" name="n2dobdates"  type="text" class="datepicker">
                                 <label for="n2dobdates">Date Of Birth</label>
                             </div>
-
-                            <div class="input-field col s6">
-                                    <input id="nom3" name="nom3" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
-                                    <label for="nom3">Nominee 3</label>
-                            </div>  
-                            <div class="input-field col s6">
-                                <input id="n3dobdates" name="n3dobdates"  type="text" class="datepicker"  required aria-required="true" required>
-                                <label for="n3dobdates">Date Of Birth</label>
+                            <div class="col s3 "><br>
+                                <select id='n2gender' name='n2gender' class="dropdown-trigger btn blue darken-1" >
+                                <option value="" disabled selected style="color: white">Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                                </select>
                             </div>
 
                             <div class="input-field col s6">
-                                    <input id="nom4" name="nom4" type="text" required="" aria-required="true" onkeypress="return mytextvalid(event)">
+                                    <input id="nom3" name="nom3" type="text">
+                                    <label for="nom3">Nominee 3</label>
+                            </div>  
+                            <div class="input-field col s3">
+                                <input id="n3dobdates" name="n3dobdates"  type="text" class="datepicker">
+                                <label for="n3dobdates">Date Of Birth</label>
+                            </div>
+                            <div class="col s3 "><br>
+                                <select id='n3gender' name='n3gender' class="dropdown-trigger btn blue darken-1">
+                                <option value="" disabled selected style="color: white">Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="input-field col s6">
+                                    <input id="nom4" name="nom4" type="text">
                                     <label for="nom4">Nominee 4</label>
                             </div> 
-                            <div class="input-field col s6">
-                                <input id="n4dobdates" name="n4dobdates"  type="text" class="datepicker"  required aria-required="true" required>
+                            <div class="input-field col s3">
+                                <input id="n4dobdates" name="n4dobdates"  type="text" class="datepicker">
                                 <label for="n4dobdates">Date Of Birth</label>
-                            </div>                     
+                            </div> 
+                            <div class="col s3 "><br>
+                                <select id='n4gender' name='n4gender' class="dropdown-trigger btn blue darken-1">
+                                <option value="" disabled selected style="color: white">Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                                </select>
+                            </div>                    
                     </div>
 
         
 
 
-                        <b style="font-size:15px;">Upload your Aadhar Card as Proof Of Identity</b>
+                        <b style="font-size:15px;">Upload your Aadhar Card as Proof Of Identity *</b>
                         <div class="file-field input-field">
                                 <div class="btn blue darken-1">
-                                <span>Upload File</span>
+                                <span>Upload File *</span>
                                         <input id="proof_identity_addhar" name="proof_identity_addhar" type="file" accept=".png, .jpg, .jpeg, .pdf" required>
                                         </div>
                                 <div class="file-path-wrapper">
@@ -198,10 +230,10 @@ input::-webkit-inner-spin-button {
 
 
                         <div id="uploadotherdoc">
-                        <b style="font-size:15px;">Proof Of Identity(PAN/Voter ID/Driving Licence/Passport)</b>
+                        <b style="font-size:15px;">Proof Of Identity(PAN/Voter ID/Driving Licence/Passport) *</b>
                                 <div class="file-field input-field">
                                         <div class="btn blue darken-1">
-                                        <span>Upload File</span>
+                                        <span>Upload File *</span>
                                                 <input id="proof_otherthanadhar" name="proof_otherthanadhar" type="file" accept=".png, .jpg, .jpeg, .pdf">
                                         </div>
                                         <div class="file-path-wrapper">
@@ -211,10 +243,10 @@ input::-webkit-inner-spin-button {
                         </div>
 
 
-                        <b style="font-size:15px;">Proof Of Address(Rent Agreement/Voter ID/Driving Licence/Passport)</b>
+                        <b style="font-size:15px;">Proof Of Address(Rent Agreement/Voter ID/Driving Licence/Passport) *</b>
                         <div class="file-field input-field">
                                 <div class="btn blue darken-1">
-                                <span>Upload File</span>
+                                <span>Upload File *</span>
                                         <input id="proof_address" name="proof_address" required type="file" accept=".png, .jpg, .jpeg, .pdf">
                                 </div>
                                 <div class="file-path-wrapper">
@@ -222,18 +254,51 @@ input::-webkit-inner-spin-button {
                                 </div>
                         </div>
 
-                        <b style="font-size:15px;">Under Graduation Certificate</b>
+                        <b style="font-size:15px;">10th Marksheet *</b>
                         <div class="file-field input-field">
                                 <div class="btn blue darken-1">
-                                <span>Upload File</span>
-                                        <input id="ugcert" name="ugcert" required type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                <span>Upload File *</span>
+                                        <input id="marks10" name="marks10" required type="file" accept=".png, .jpg, .jpeg, .pdf">
                                 </div>
                                 <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text">
                                 </div>
                         </div>
 
-                        <b style="font-size:15px;">Post Graduation Certificate (If Applicable)</b>
+                        <b style="font-size:15px;">12th Marksheet (If Applicable)</b>
+                        <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                <span>Upload File</span>
+                                        <input id="marks12" name="marks12" type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                </div>
+                                <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                </div>
+                        </div>
+
+                        <b style="font-size:15px;">ITI/Diploma Marksheet (If Applicable)</b>
+                        <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                <span>Upload File</span>
+                                        <input id="itidiploma" name="itidiploma" type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                </div>
+                                <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                </div>
+                        </div>
+
+                        <b style="font-size:15px;">Graduation Marksheet</b>
+                        <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                <span>Upload File</span>
+                                        <input id="ugcert" name="ugcert" type="file" accept=".png, .jpg, .jpeg, .pdf">
+                                </div>
+                                <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                </div>
+                        </div>
+
+                        <b style="font-size:15px;">Post Graduation Marksheet (If Applicable)</b>
                         <div class="file-field input-field">
                                 <div class="btn blue darken-1">
                                 <span>Upload File</span>
@@ -429,17 +494,17 @@ $('#appletter').change(function(){
  })
 
 
-$('#salarybreak').change(function(){
-        var f = $('#salarybreak').val().split('.');
-        var x=f[1]
-        if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
-        {
-                alert('Invalid File\n Only PDF/IMAGES accepted')
-                document.getElementById("salarybreak").value=null
-        }
+// $('#salarybreak').change(function(){
+//         var f = $('#salarybreak').val().split('.');
+//         var x=f[1]
+//         if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
+//         {
+//                 alert('Invalid File\n Only PDF/IMAGES accepted')
+//                 document.getElementById("salarybreak").value=null
+//         }
 
    
-})
+// })
 
 
 $('#pastpayslip').change(function(){
@@ -465,6 +530,38 @@ $('#cancelcheck').change(function(){
  
 })
 
+$('#marks10').change(function(){
+        var f = $('#marks10').val().split('.')
+        var x=f[1]
+        if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
+        {
+                alert('Invalid File\n Only PDF/IMAGES accepted')
+                document.getElementById("marks10").value=null
+        }   
+ 
+})
+
+$('#marks12').change(function(){
+        var f = $('#marks12').val().split('.')
+        var x=f[1]
+        if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
+        {
+                alert('Invalid File\n Only PDF/IMAGES accepted')
+                document.getElementById("marks12").value=null
+        }   
+ 
+})
+
+$('#itidiploma').change(function(){
+        var f = $('#itidiploma').val().split('.')
+        var x=f[1]
+        if(!(x=='pdf'||x=='jpeg'||x=='png'||x=='jpg'))
+        {
+                alert('Invalid File\n Only PDF/IMAGES accepted')
+                document.getElementById("itidiploma").value=null
+        }   
+ 
+})
 
 $('#ugcert').change(function(){
         var f = $('#ugcert').val().split('.')
@@ -490,7 +587,7 @@ $('#pgcert').change(function(){
 
 var appletter
 var uan
-var salarybreak
+// var salarybreak
 var pastpayslip
 var cancelcheck
 var nom1

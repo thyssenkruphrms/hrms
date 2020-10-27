@@ -65,7 +65,7 @@ if($cursor)
         //END - pulling values from invalid to valid
 
 
-        $result=$db->tokens->updateOne(array("email"=>$mails),array('$set'=>array("cvreason"=>$_POST['cv']?$_POST['cv']:"Validated","pancardreason"=>$_POST['pancard']?$_POST['pancard']:"Validated","adhaarreason"=>$_POST['adhaar']?$_POST['adhaar']:"Validated","photoreason"=>$_POST['photo']?$_POST['photo']:"Validated","ugcertreason"=>$_POST['ugcert']?$_POST['ugcert']:"Validated","pgcertreason"=>$_POST['pgcert']?$_POST['pgcert']:"Validated","addressreason"=>$_POST['address']?$_POST['address']:"Validated","cancheckreason"=>$_POST['cancheck']?$_POST['cancheck']:"Validated","appletterreason"=>$_POST['appletter']?$_POST['appletter']:"Validated","salarybreakupreason"=>$_POST['salarybreakup']?$_POST['salarybreakup']:"Validated","pastpayslipreason"=>$_POST['pastpayslip']?$_POST['pastpayslip']:"Validated")));
+        $result=$db->tokens->updateOne(array("email"=>$mails),array('$set'=>array("cvreason"=>$_POST['cv']?$_POST['cv']:"Validated","pancardreason"=>$_POST['pancard']?$_POST['pancard']:"Validated","adhaarreason"=>$_POST['adhaar']?$_POST['adhaar']:"Validated","photoreason"=>$_POST['photo']?$_POST['photo']:"Validated","marks10reason"=>$_POST['marks10']?$_POST['marks10']:"Validated","marks12reason"=>$_POST['marks12']?$_POST['marks12']:"Validated","itidiplomareason"=>$_POST['itidiploma']?$_POST['itidiploma']:"Validated","ugcertreason"=>$_POST['ugcert']?$_POST['ugcert']:"Validated","pgcertreason"=>$_POST['pgcert']?$_POST['pgcert']:"Validated","addressreason"=>$_POST['address']?$_POST['address']:"Validated","cancheckreason"=>$_POST['cancheck']?$_POST['cancheck']:"Validated","appletterreason"=>$_POST['appletter']?$_POST['appletter']:"Validated","pastpayslipreason"=>$_POST['pastpayslip']?$_POST['pastpayslip']:"Validated")));
         
         
         if($result)
@@ -332,7 +332,7 @@ if($cursor)
             }   
         else
         {
-            //    echo "Hud";
+            //    echo "none";
         }
     }
     else
