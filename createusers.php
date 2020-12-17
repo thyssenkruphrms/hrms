@@ -83,7 +83,7 @@ if(isset($_COOKIE['sid']))
     <br>
 
     <!-- card stars -->
-    <div class="row">
+ <!--   <div class="row">
         <div class="col s12 m6 offset-m3">
             <div class="card white">
                 <div class="card-content blue-text">
@@ -103,8 +103,8 @@ if(isset($_COOKIE['sid']))
                                 <input id="uploadcsv" required type="file" accept=".csv" name="uploadcsv" onchange="readURL(this)"><p id='myfile0'><i class="material-icons right">open_in_browser</i> </p></a>
                             </label>
                             <br><br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <!-- <button type="submit" class="btn blue darken-1" name="submit" id="submit" value="Upload">
-                      <i class="material-icons right">send</i>Upload</button> -->
+                     <button type="submit" class="btn blue darken-1" name="submit" id="submit" value="Upload">
+                      <i class="material-icons right">send</i>Upload</button>
                       <input type="button" class="btn blue darken-1" value="Upload" id="but_upload"> </input>
                    
                     </div>
@@ -115,6 +115,7 @@ if(isset($_COOKIE['sid']))
             </div>
         </div>
   </div>
+-->
     <!-- card ends -->
 
     <br>
