@@ -196,12 +196,28 @@ if(isset($_COOKIE['sid']))
 
           </div>  
           <div class="row" >
+        
           <center>
 <div id="creatinggrp">
 <p style="color: yellow;font-size:50px;" > Inserting Details ...</p>
 </div>
 <p style="color: green" id="groupcreated"> Details inserted Successfully</p>
 <p style="color: red" id="groupnotcreated"> These Details already exist</p>
+
+<p style="color: green" id="groupcreated1"> </p>
+
+
+
+
+
+
+<p style="color: red" id="nc"> These Details already exist..User Not Added</p>
+
+
+
+<p style="color: green" id="ua">  Success! User Added...</p>
+
+<p style="color: green" id="uaa"> </p>
 </center>
 
           </div>
@@ -271,7 +287,8 @@ $('#creatinggrp').hide()
 $('#groupcreation').hide();
 
 
-$('#newgroup').hide();
+$('#ua').hide();
+$('#nc').hide();
 $('#notexist').hide();
 
 $('#groupcreation').click(function(){
@@ -388,12 +405,13 @@ success : function(para){
   $('#creatinggrp').empty()
   if(para.status=="true"){
     $('#creatinggrp').css('color','green')
-    $('#creatinggrp').append("User Added");
-  
+    
+    $('#ua').show();
   }
   else{
     $('#creatinggrp').css('color','red')
-    $('#creatinggrp').append("NOT Added");
+    //$('#creatinggrp').append("NOT Added");
+    $('#nc').show();
   
   }
   

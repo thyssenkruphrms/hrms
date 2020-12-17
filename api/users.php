@@ -1,6 +1,6 @@
 <?php
 
-include 'db.php';
+include './db.php';
 include 'maildetails.php';
 
 
@@ -55,7 +55,7 @@ function addUser($mail,$db,$uid,$password,$mail1,$dsg,$rg,$dept){
         // $mail->send(); 
         echo json_encode(array("status"=>"true","message"=>"User Added Successfully"));
         
-
+        
 
 
     }   
