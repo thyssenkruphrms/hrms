@@ -47,14 +47,16 @@ function addUser($mail,$db,$uid,$password,$mail1,$dsg,$rg,$dept){
     }
     else{
         $db->users->insertOne(["uid"=>$dsg,"name"=>$uid,"password"=>$password,"mail"=>$mail1,"dsg"=>$dsg,"rg"=>$rg,"dept"=>$dept]);
-        // $mail->addAddress($mail1);
-        // $mail->Subject = "User Authentication";
-        // $mail->Body='
-        // Hello '.$name.' You are sucessfully added to the system.<br>. To use system further you need to authenticate yourself first.Click on following link to authenticate yourself.' ;   
-        // $mail->isHTML(true); 
-        // $mail->send(); 
+        //  $mail->addAddress($mail1);
+        //  $mail->Subject = "User Authentication";
+        //  $mail->Body='
+        //  Hello '.$mail1.' You are successfully added to the system.<br>. To use system further you need to authenticate yourself first.' ;   
+       
+        //  $mail->send(); 
+
+
         echo json_encode(array("status"=>"true","message"=>"User Added Successfully"));
-        
+       
         
 
 

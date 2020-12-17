@@ -408,11 +408,15 @@ success : function(para){
     $('#creatinggrp').css('color','green')
     
     $('#ua').show();
+    $('#ua').fadeOut(20000);
+    
   }
   else{
     $('#creatinggrp').css('color','red')
     //$('#creatinggrp').append("NOT Added");
     $('#nc').show();
+    $('#nc').fadeOut(20000);
+   
   
   }
   
