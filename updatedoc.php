@@ -18,6 +18,7 @@
         $photo = "upload/".$folder."/".$namephoto;
        $result=$db->tokens->updateOne(array("email"=>$mail),array('$set'=>array("userphoto"=>$photo)));
 
+       
    }
    if(isset($_FILES['pan']))
    {

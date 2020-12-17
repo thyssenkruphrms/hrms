@@ -215,7 +215,7 @@ if(isset($_COOKIE['sid']))
 
 
 
-<p style="color: green" id="ua">  Success! User Added...</p>
+<p style="color: green" id="ua">  Success! User Added</p>
 
 <p style="color: green" id="uaa"> </p>
 </center>
@@ -304,8 +304,8 @@ type:"GET",
 url:"demo.txt",
 
 success : function(para){
-para = ['chakan','xyz','pqr','abc']
-var para2 = ['dept1','dept2','dept3']
+para = ['	Head Quarter','South','North','East','West']
+var para2 = ['U-Field Operations','Service Operations','New Installations-Sales','New Installations-Operations','Modernisation-Operations','Modernisation-Sales','U-Administrations','U-Finance & Contrlling-Accounting & Reporting']
 //for loop -> region
 for(let i =0;i<para.length;i++)
 {
