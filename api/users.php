@@ -46,7 +46,7 @@ function addUser($mail,$db,$uid,$password,$mail1,$dsg,$rg,$dept){
         echo json_encode(array("status"=>"false","message"=>"Hey User Already Found!"));
     }
     else{
-        $db->users->insertOne(["uid"=>$dsg,"name"=>$uid,"password"=>$password,"mail"=>$mail1,"dsg"=>$dsg,"rg"=>$rg,"dept"=>$dept]);
+        $db->users->insertOne(["uid"=>$uid,"name"=>$uid,"password"=>$password,"mail"=>$mail1,"dsg"=>$dsg,"rg"=>$rg,"dept"=>$dept]);
         //  $mail->addAddress($mail1);
         //  $mail->Subject = "User Authentication";
         //  $mail->Body='
