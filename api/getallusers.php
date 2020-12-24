@@ -32,13 +32,15 @@ if(isset($_COOKIE['sid']))
             $newuser["dept"]=$val->dept;
             $newuser["rg"]=$val->rg;
             $newuser["dsg"]=$val->dsg;
+            $newuser["password"]=$val->password;
+            
 
             //if($val->dsg!="ceo"){
             $userstoshow[]=$newuser;
             //}
             
         }
-        echo "hi";
+        //echo "hi";
 
         echo json_encode(["status"=>"true","users"=>$userstoshow,"message"=>"Users Founds"]);
     }

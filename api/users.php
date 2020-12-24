@@ -27,6 +27,7 @@ if($action=='3'){
     $region=$_POST['region'];
     $dsg=$_POST['dsg'];
     $dept=$_POST['dept'];
+    $pass=$_POST['pass'];
 }
 
 function checkByUID($db,$uid){
@@ -81,10 +82,10 @@ function deleteUser($db,$name,$mail){
 
 
 
-function UpdateUser($db,$uid,$name,$mail,$dsg,$region,$dept){
+function UpdateUser($db,$uid,$name,$mail,$dsg,$region,$dept,$pass){
         $criteria=array('mail'=>$mail);
         if(checkByMail($db,$mail)){
-       if( $db->users->updateOne($criteria,array('$set'=>array("rg"=>$region,"name"=>$name,"uid"=>$uid,"dsg"=>$dsg,"dept"=>$dept)))){
+       if( $db->users->updateOne($criteria,array('$set'=>array("rg"=>$region,"name"=>$name,"uid"=>$uid,"dsg"=>$dsg,"dept"=>$dept,"password"=>$pass)))){
 
        echo json_encode(["status"=>true,"message"=>"user updated successfully"]);
        }
@@ -108,7 +109,7 @@ switch($action){
             deleteUser($db,$username,$mail2);
             break;
     case "3":
-            UpdateUser($db,$uid,$username,$mail2,$dsg,$region,$dept);
+            UpdateUser($db,$uid,$username,$mail2,$dsg,$region,$dept,$pass);
             break;
 
     default: echo json_encode(["status"=>"false","message"=>"invalid action","dept"=>$dept]); 

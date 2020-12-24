@@ -52,6 +52,7 @@ if(isset($_COOKIE['sid']))
           <a href="#!" class="brand-logo center">thyssenkrupp Elevators</a>
           <div id="logoutuser" class="row">
     <button class="btn waves-effect blue darken-1" type="submit" name="action" style="float:right;margin-top: 18px;margin-right: 18px ">LOGOUT</button>
+    
   </div>
 
         </div>
@@ -83,7 +84,7 @@ if(isset($_COOKIE['sid']))
                                         </a>
 
 
-
+<!--
                                         <a href="http://localhost/hrms/createdepartment.php">
                                             <div class="col  m6 s6">
                                               <div class="card " style="background: #677E8C">
@@ -148,7 +149,7 @@ if(isset($_COOKIE['sid']))
                                               </div>
                                             </div>
                                         </a>
-
+-->
                                          
                                     <a href="http://localhost/hrms/showusers.php">
                                             <div class="col  m6 s6">

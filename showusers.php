@@ -134,8 +134,9 @@ width: 350%;
 <div id="remin">
 <nav> 
   <div class="nav-wrapper blue darken-1">
-    <a href="#!" class="brand-logo left" style="margin-left: 2%;"><i id="showsidenbutton" class="material-icons">menu</i>
-  </a>
+  <a href="http://localhost/hrms/">
+      <button class="btn waves-effect blue darken-1" style="float:left;margin-top: 18px;margin-right: 18px "> <- BACK</button>
+      </a> 
   <a href="http://localhost/hrms/" class="brand-logo center">thyssenkrupp Elevators</a>
   </div>
 </nav>
@@ -149,6 +150,7 @@ width: 350%;
     <thead>
       <tr>
           <th>User Id</th>
+          <th>Password</th>
           <th>Name</th>
           <th>Mail</th>
           <th>Department</th>
@@ -194,7 +196,14 @@ width: 350%;
       <div class="input-field col s4 m4 " >
       <strong>  Designation: <input id="udsg" type="text" class="text" required>
       </strong>   </div>
-    </div>          
+    </div>   
+    <div class="row">
+    
+    <div class="input-field col s4 m4 " >
+      <strong>Update Password: <input id="upass" type="text" class="text" required>
+      </strong>    </div> 
+
+    </div>       
 
                                 
           <div class="row">
@@ -366,13 +375,15 @@ function updateUser(){
 
  document.getElementById("userupdate").style.display="block";
 
- document.getElementById("uname").value=myarr[1];
+ document.getElementById("uname").value=myarr[2];
  
- document.getElementById("umail").value=myarr[2];
+ document.getElementById("umail").value=myarr[3];
  document.getElementById("urole").value=myarr[0];
- document.getElementById("uregion").value=myarr[5];
- document.getElementById("udept").value=myarr[3];
- document.getElementById("udsg").value=myarr[4];
+ document.getElementById("uregion").value=myarr[6];
+ document.getElementById("udept").value=myarr[4];
+ document.getElementById("udsg").value=myarr[5];
+ document.getElementById("upass").value=myarr[1];
+ 
  if(myarr[4]=="ceo"){
     document.getElementById("udsg").readOnly=true;
   }
@@ -390,6 +401,9 @@ var name=document.getElementById("uname").value;
   var region=document.getElementById("uregion").value;
   var dept=document.getElementById("udept").value;
   var dsg=document.getElementById("udsg").value;
+  var pass=document.getElementById("upass").value;
+  
+  
   
  console.log(typeof(mail2))
    
@@ -404,7 +418,8 @@ var name=document.getElementById("uname").value;
    "region":region,
    "dsg":dsg,
    "dept":dept,
-   "mail":mail2
+   "mail":mail2,
+   "pass":pass
  },
  success:function(para){
  
@@ -432,7 +447,7 @@ $(document).ready(function(){
   $('#userupdate').hide();
   
 
-
+  
 
 
 
@@ -446,7 +461,7 @@ $(document).ready(function(){
     success : function(para)
     {
 
-      console.log("s")
+      console.log(para)
       if(para == "No Data")
       {
         $("#nodatamodal").modal("open");
@@ -467,20 +482,22 @@ $(document).ready(function(){
        
         for(let j=0;j<arr.length-1;j++)
         {
-            //var usid=arr[j].email+"-"+arr[j].email;
-            //console.log(usid)
-            var x='<tr id="rows" style=""><td id="uid" value="'+arr[j].uid+' id="'+arr[j].name+'>'+arr[j].uid+'</b></td><td id="name">'+arr[j].name+'</td><td id="zone">'+arr[j].mail+'</td><td id="dept">'+arr[j].dept+'</td><td id="posno">'+arr[j].dsg+'</td><td id="status">'+arr[j].rg+'</td>'
+            var usid=arr[j].email+"-"+arr[j].email;
+            console.log(usid)
+           var x='<tr id="rows" style=""><td id="uid" value="'+arr[j].uid+' id="'+arr[j].name+'>'+arr[j].uid+'</b></td><td id="password">'+arr[j].password+'</b></td><td id="name">'+arr[j].name+'</td><td id="zone">'+arr[j].mail+'</td><td id="dept">'+arr[j].dept+'</td><td id="posno">'+arr[j].dsg+'</td><td id="status">'+arr[j].rg+'</td>'
             if((arr[j].dsg=='ceo')){
-            var btns='<td><button id="'+(arr[j].uid+"-"+arr[j].name+"-"+arr[j].mail+"-"+arr[j].dept+"-"+arr[j].dsg+"-"+arr[j].rg)+'"   class="btn green darken-1" onclick="updateUser()">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()" disabled>DELETE</button></td></tr>'
+            var btns='<td><button id="'+(arr[j].uid+"-"+arr[j].password+"-"+arr[j].name+"-"+arr[j].mail+"-"+arr[j].dept+"-"+arr[j].dsg+"-"+arr[j].rg)+'"   class="btn green darken-1" onclick="updateUser()">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()" disabled>DELETE</button></td></tr>'
             }
             else{
-              var btns='<td><button id="'+(arr[j].uid+"-"+arr[j].name+"-"+arr[j].mail+"-"+arr[j].dept+"-"+arr[j].dsg+"-"+arr[j].rg)+'"  class="btn green darken-1" onclick="updateUser()">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()">DELETE</button></td></tr>'
+              var btns='<td><button id="'+(arr[j].uid+"-"+arr[j].password+"-"+arr[j].name+"-"+arr[j].mail+"-"+arr[j].dept+"-"+arr[j].dsg+"-"+arr[j].rg)+'"  class="btn green darken-1" onclick="updateUser()">Update</button></td>'+'<td ><button id="'+arr[j].mail+'" name="'+arr[j].name+'"  class="btn red darken-1" onclick="deleteUser()">DELETE</button></td></tr>'
             
             }
-            //var x="hi"
+           // var x="hi"
         $('#rawdata').append(x+btns);
         }
       }    
+    },error:function(para){
+      console.log("error"+para.users)
     },
   })
 
